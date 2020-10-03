@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Whisker
+  - Enemy
+  - Environment
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: BaseLayer
+    uniqueID: 165928247
+    locked: 0
+  - name: BaseDecoration
+    uniqueID: 1941442269
+    locked: 0
+  - name: DecorationForeground
+    uniqueID: 3898162977
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 1699988613
+    locked: 0
+  - name: MiniMap
+    uniqueID: 3896383563
+    locked: 0
+  - name: ScreenTransitions
+    uniqueID: 1725181347
+    locked: 0
+  - name: RenderTexture
+    uniqueID: 3675425773
+    locked: 0
