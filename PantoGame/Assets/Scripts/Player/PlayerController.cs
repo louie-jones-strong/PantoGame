@@ -33,6 +33,14 @@ public class PlayerController : MonoBehaviour
         {
             acceleration.x += Speed;
         }
+		if (SimpleInput.GetInputActive(EInput.dpadDown))
+        {
+            acceleration.z -= Speed;
+        }
+        if (SimpleInput.GetInputActive(EInput.dpadUp))
+        {
+            acceleration.z += Speed;
+        }
 		if (SimpleInput.GetInputState(EInput.A) == EButtonState.Pressed &&
 			DashCoolDownLeft <= 0)
 		{
@@ -50,7 +58,7 @@ public class PlayerController : MonoBehaviour
 			DashCoolDownLeft -= Time.deltaTime;
 		}
 
-        acceleration.x += -(Velocity.x * Drag);
+        acceleration += -(Velocity * Drag);
 
         acceleration *= Time.deltaTime;
         Velocity += acceleration;

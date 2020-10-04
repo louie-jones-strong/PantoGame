@@ -19,9 +19,10 @@ public class PhysicsRotation : MonoBehaviour
     {
 
         var force = Mass * acceleration;
-        float rotation = (float)(2 * Math.PI * force.x * Time.deltaTime);
+        var rotation = force * (float)(2 * Math.PI * Time.deltaTime);
         rotation *= -1;
-        transform.Rotate(0, 0, rotation);
+        //transform.Rotate(-rotation.z, 0, 0);
+		transform.Rotate(0, 0, rotation.x);
 
     }
 }
