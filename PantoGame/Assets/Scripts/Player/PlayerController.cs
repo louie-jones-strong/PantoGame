@@ -5,6 +5,7 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
+	[SerializeField] Animator PlayerAnimator;
     public PhysicsRotation[] PhysicsParts;
     public float Speed;
 	public float DashSpeedMultiplier;
@@ -66,6 +67,8 @@ public class PlayerController : MonoBehaviour
         transform.position += (Velocity * Time.deltaTime);
 
         RefreshPhysicsParts(acceleration);
+		PlayerAnimator.SetFloat("XV", Velocity.x);
+		PlayerAnimator.SetFloat("YV", Velocity.z);
     }
 
     void RefreshPhysicsParts(Vector3 acceleration)

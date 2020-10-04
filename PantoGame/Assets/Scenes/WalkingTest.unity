@@ -681,6 +681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cec98a47068ed04b95fbf90ec80d6d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerAnimator: {fileID: 1306065299}
   PhysicsParts: []
   Speed: 50
   DashSpeedMultiplier: 2
@@ -697,7 +698,7 @@ Animator:
   m_GameObject: {fileID: 1306065296}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ae606708b334d4f40a86f5f331a730ff, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
