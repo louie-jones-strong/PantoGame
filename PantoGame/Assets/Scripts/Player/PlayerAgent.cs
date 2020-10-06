@@ -4,11 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 
-public class PlayerController : MonoBehaviour
+public class PlayerAgent : Agent
 {
-	[SerializeField] NavMeshAgent NavMeshAgent;
-	[SerializeField] Animator PlayerAnimator;
-    public PhysicsRotation[] PhysicsParts;
     public float Speed;
 	public float DashSpeedMultiplier;
 	public float DashCoolDown = 1.5f;
@@ -19,11 +16,6 @@ public class PlayerController : MonoBehaviour
 	float TimeLeftOfDash;
 	float DashCoolDownLeft;
     
-    void Start()
-    {
-        PhysicsParts = GetComponentsInChildren<PhysicsRotation>();
-    }
-
     void Update()
     {
         var acceleration = Vector3.zero;
@@ -67,17 +59,7 @@ public class PlayerController : MonoBehaviour
         Velocity += acceleration;
 
 		NavMeshAgent.Move((Velocity * Time.deltaTime));
-
-        RefreshPhysicsParts(acceleration);
-		PlayerAnimator.SetFloat("XV", Velocity.x);
-		PlayerAnimator.SetFloat("YV", Velocity.z);
-    }
-
-    void RefreshPhysicsParts(Vector3 acceleration)
-    {
-        foreach (var part in PhysicsParts)
-        {
-            part.Refresh(acceleration);
-        }
+		
+		UpdateVisuals(acceleration, Velocity);
     }
 }
