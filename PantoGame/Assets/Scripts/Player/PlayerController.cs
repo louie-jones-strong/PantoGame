@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using System;
 
 public class PlayerController : MonoBehaviour
 {
+	[SerializeField] NavMeshAgent NavMeshAgent;
 	[SerializeField] Animator PlayerAnimator;
     public PhysicsRotation[] PhysicsParts;
     public float Speed;
@@ -64,7 +66,7 @@ public class PlayerController : MonoBehaviour
         acceleration *= Time.deltaTime;
         Velocity += acceleration;
 
-        transform.position += (Velocity * Time.deltaTime);
+		NavMeshAgent.Move((Velocity * Time.deltaTime));
 
         RefreshPhysicsParts(acceleration);
 		PlayerAnimator.SetFloat("XV", Velocity.x);
