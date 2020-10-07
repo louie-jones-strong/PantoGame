@@ -17,6 +17,7 @@ public class Agent : MonoBehaviour
     void Start()
     {
         PhysicsParts = GetComponentsInChildren<PhysicsRotation>();
+		CameraController.Instance.TargetTransfroms.Add(transform);
     }
 
 	void Update()
