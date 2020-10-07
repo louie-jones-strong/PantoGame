@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
 	public static CameraController Instance;
 	
 	[SerializeField] Camera Camera;
-	public List<Transform> TargetTransfroms;
+	List<Transform> TargetList;
 	float MoveSmoothTime = 0.5f;
 	float MinZoom = 70;
 	float MaxZoom = 20;
@@ -21,6 +21,7 @@ public class CameraController : MonoBehaviour
 		if (Instance == null)
 		{
 			Instance = this;
+			TargetList = new List<Transform>();
 		}
 		else
 		{
@@ -33,9 +34,30 @@ public class CameraController : MonoBehaviour
 		Instance = null;
 	}
 
+	public static void AddTarget(Transform toAdd)
+	{
+		if (Instance == null)
+		{
+			return;
+		}
+
+		Instance.TargetList.Add(toAdd);
+	}
+
+	public static void RemoveTarget(Transform toRemove)
+	{
+		if (Instance == null)
+		{
+			return;
+		}
+
+		Instance.TargetList.Remove(toRemove);
+	}
+
+
 	void LateUpdate()
 	{
-		if (TargetTransfroms.Count == 0)
+		if (TargetList.Count == 0)
 		{
 			return;
 		}
@@ -73,8 +95,8 @@ public class CameraController : MonoBehaviour
 
 	Bounds GetTargetsBounds()
 	{
-		var bounds = new Bounds(TargetTransfroms[0].position, Vector3.zero);
-		foreach (var target in TargetTransfroms)
+		var bounds = new Bounds(TargetList[0].position, Vector3.zero);
+		foreach (var target in TargetList)
 		{
 			bounds.Encapsulate(target.position);
 		}
