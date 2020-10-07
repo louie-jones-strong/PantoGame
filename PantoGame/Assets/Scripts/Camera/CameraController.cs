@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
 	public static CameraController Instance;
 	
-	[SerializeField] Camera Camera;
+	public Camera Camera;
 	List<Transform> TargetList;
 	float MoveSmoothTime = 0.5f;
 	float MinZoom = 70;
@@ -79,7 +79,10 @@ public class CameraController : MonoBehaviour
 		normalizedMaxDistance = Mathf.Clamp(normalizedMaxDistance, 0, 1);
 
 		var zoomValue = Mathf.Lerp(MaxZoom, MinZoom, normalizedMaxDistance);
-		Camera.fieldOfView = Mathf.Lerp(Camera.fieldOfView, zoomValue, Time.deltaTime);
+		
+		var newZoom = Mathf.Lerp(Camera.fieldOfView, zoomValue, Time.deltaTime);
+		Camera.fieldOfView = newZoom;
+		Camera.orthographicSize = newZoom/2;
 	}
 
 	Vector3 GetCenterOfTargets()

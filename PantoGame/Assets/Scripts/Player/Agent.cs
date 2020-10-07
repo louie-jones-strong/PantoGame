@@ -26,7 +26,7 @@ public class Agent : MonoBehaviour
 	}
 	void LateUpdate()
 	{
-		Root.localEulerAngles = -transform.localEulerAngles;
+		Root.localEulerAngles = -transform.localEulerAngles + CameraController.Instance.Camera.transform.eulerAngles;
 	}
 
     protected void UpdateVisuals()
