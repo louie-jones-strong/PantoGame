@@ -5,6 +5,14 @@ using UnityEngine.AI;
 
 public class AudienceAgent : Agent
 {
+	Chair SetSeat;
+	
+	protected override void Start()
+	{
+		SetSeat = Theatre.Instance.AddAudienceAgent(this);
+		base.Start();
+	}
+
 	void Update()
     {
 		var rangeSize = 16;
@@ -15,6 +23,12 @@ public class AudienceAgent : Agent
 			while (!foundRoute)
 			{
 				var target = new Vector3(Random.Range(-rangeSize, rangeSize), 0, Random.Range(-rangeSize, rangeSize));
+
+				if (SetSeat != null)
+				{
+					target = SetSeat.transform.position;
+				}
+
 				foundRoute = NavMeshAgent.SetDestination(target);
 			}
 		}

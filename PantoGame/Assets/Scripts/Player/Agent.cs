@@ -14,7 +14,7 @@ public class Agent : MonoBehaviour
 	Vector3 LastVelocity;
 	Vector3 LastPos;
     
-    void Start()
+    protected virtual void Start()
     {
         PhysicsParts = GetComponentsInChildren<PhysicsRotation>();
 		CameraController.AddTarget(transform);
@@ -50,6 +50,12 @@ public class Agent : MonoBehaviour
 
     void RefreshPhysicsParts(Vector3 acceleration)
     {
+		if (PhysicsParts == null)
+		{
+			Logger.LogError("found no PhysicsParts");
+			return;
+		}
+
         foreach (var part in PhysicsParts)
         {
             part.Refresh(acceleration);
