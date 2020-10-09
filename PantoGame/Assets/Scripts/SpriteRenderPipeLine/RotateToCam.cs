@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class RotateToCam : MonoBehaviour
 {
-	void LateUpdate()
+	protected virtual void LateUpdate()
+	{
+		PointAtCam();
+	}
+
+	public void PointAtCam()
 	{
 		transform.localEulerAngles = CameraController.Instance.Camera.transform.eulerAngles * Settings.RotateToCamMultiplier;
 	}
