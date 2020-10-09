@@ -17,7 +17,6 @@ public class Agent : MonoBehaviour
     protected virtual void Start()
     {
         PhysicsParts = GetComponentsInChildren<PhysicsRotation>();
-		CameraController.AddTarget(transform);
     }
 
 	void Update()

@@ -472,6 +472,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 1833327209}
+  MinZoom: 110
+  MaxZoom: 15
+  MaxTargetDistance: 100
 --- !u!4 &215160601
 Transform:
   m_ObjectHideFlags: 0

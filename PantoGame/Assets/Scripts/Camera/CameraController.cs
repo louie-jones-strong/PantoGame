@@ -7,11 +7,23 @@ public class CameraController : MonoBehaviour
 	public static CameraController Instance;
 	
 	public Camera Camera;
-	List<Transform> TargetList;
+	List<TrackerTarget> TargetList;
+	class TrackerTarget
+	{
+		public Transform Transform;
+		public float Weighting;
+
+		public TrackerTarget(Transform target, float weighting)
+		{
+			Transform = target;
+			Weighting = weighting;
+		}
+	}
+
 	float MoveSmoothTime = 0.5f;
-	float MinZoom = 70;
-	float MaxZoom = 20;
-	float MaxTargetDistance = 50f;
+	[SerializeField] float MinZoom = 70;
+	[SerializeField] float MaxZoom = 20;
+	[SerializeField] float MaxTargetDistance = 50f;
 
 
 	Vector3 Velocity;
@@ -21,7 +33,7 @@ public class CameraController : MonoBehaviour
 		if (Instance == null)
 		{
 			Instance = this;
-			TargetList = new List<Transform>();
+			TargetList = new List<TrackerTarget>();
 		}
 		else
 		{
@@ -34,14 +46,15 @@ public class CameraController : MonoBehaviour
 		Instance = null;
 	}
 
-	public static void AddTarget(Transform toAdd)
+	public static void AddTarget(Transform toAdd, float weighting=1)
 	{
 		if (Instance == null)
 		{
 			return;
 		}
+		var trackerTarget = new TrackerTarget(toAdd, weighting);
 
-		Instance.TargetList.Add(toAdd);
+		Instance.TargetList.Add(trackerTarget);
 	}
 
 	public static void RemoveTarget(Transform toRemove)
@@ -51,7 +64,19 @@ public class CameraController : MonoBehaviour
 			return;
 		}
 
-		Instance.TargetList.Remove(toRemove);
+		int index = 0;
+		while (Instance.TargetList.Count <= index)
+		{
+			
+			if (Instance.TargetList[index].Transform == toRemove)
+			{
+				Instance.TargetList.RemoveAt(index);
+			}
+			else
+			{
+				index += 1;
+			}
+		}
 	}
 
 
@@ -62,19 +87,13 @@ public class CameraController : MonoBehaviour
 			return;
 		}
 
-		SetPos();
-		SetZoom();
-	}
+		//set the pos of the cam
+		var centerPos = GetCenterOfTargets();
+		transform.position = Vector3.SmoothDamp(transform.position, centerPos, ref Velocity, MoveSmoothTime);
 
-	void SetPos()
-	{
-		var targetPos = GetCenterOfTargets();
-		transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref Velocity, MoveSmoothTime);
-	}
-
-	void SetZoom()
-	{
-		var maxDistance = GetMaxDistanceBetweenTargets();
+		//set the zoom of the cam
+		var maxDistance = GetMaxDistanceFromCenter(centerPos);
+		maxDistance *= 2;
 		var normalizedMaxDistance = maxDistance / MaxTargetDistance;
 		normalizedMaxDistance = Mathf.Clamp(normalizedMaxDistance, 0, 1);
 
@@ -87,22 +106,29 @@ public class CameraController : MonoBehaviour
 
 	Vector3 GetCenterOfTargets()
 	{
-		return GetTargetsBounds().center;
-	}
-
-	float GetMaxDistanceBetweenTargets()
-	{
-		var boundsSize = GetTargetsBounds().size;
-		return Mathf.Max(boundsSize.x, boundsSize.y, boundsSize.z);
-	}
-
-	Bounds GetTargetsBounds()
-	{
-		var bounds = new Bounds(TargetList[0].position, Vector3.zero);
+		var center = Vector3.zero;
+		float totalWeight = 0;
 		foreach (var target in TargetList)
 		{
-			bounds.Encapsulate(target.position);
+			center += target.Transform.position * target.Weighting;
+			totalWeight += target.Weighting;
 		}
-		return bounds;
+		return center / totalWeight;
 	}
+
+	float GetMaxDistanceFromCenter(Vector3 center)
+	{
+		float largestDistance = 0;
+		foreach (var target in TargetList)
+		{
+			var distance = (target.Transform.position - center).magnitude;
+			if (distance >= largestDistance)
+			{
+				largestDistance = distance;
+			}
+		}
+
+		return largestDistance;
+	}
+
 }

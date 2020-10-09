@@ -15,6 +15,12 @@ public class PlayerAgent : Agent
 
 	float TimeLeftOfDash;
 	float DashCoolDownLeft;
+
+	protected override void Start()
+	{
+		CameraController.AddTarget(transform, weighting:10);
+		base.Start();
+	}
     
     void Update()
     {
