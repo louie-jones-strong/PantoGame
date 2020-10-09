@@ -25,6 +25,12 @@ public class CameraController : MonoBehaviour
 	[SerializeField] float MaxZoom = 20;
 	[SerializeField] float MaxTargetDistance = 50f;
 
+	[SerializeField] float MinXMove = -7.5f;
+	[SerializeField] float MaxXMove = 7.5f;
+
+	[SerializeField] float MinYMove = -7.5f;
+	[SerializeField] float MaxYMove = 7.5f;
+
 
 	Vector3 Velocity;
 
@@ -89,6 +95,9 @@ public class CameraController : MonoBehaviour
 
 		//set the pos of the cam
 		var centerPos = GetCenterOfTargets();
+		centerPos = LimitMoveAmount(centerPos);
+	
+
 		transform.position = Vector3.SmoothDamp(transform.position, centerPos, ref Velocity, MoveSmoothTime);
 
 		//set the zoom of the cam
@@ -102,6 +111,14 @@ public class CameraController : MonoBehaviour
 		var newZoom = Mathf.Lerp(Camera.fieldOfView, zoomValue, Time.deltaTime);
 		Camera.fieldOfView = newZoom;
 		Camera.orthographicSize = newZoom/2;
+	}
+	
+	Vector3 LimitMoveAmount(Vector3 centerPos)
+	{
+		float x = Mathf.Clamp(centerPos.x, MinXMove, MaxXMove);
+		float y = centerPos.y;
+		float z = Mathf.Clamp(centerPos.z, MinYMove, MaxYMove);
+		return new Vector3(x, y, z);
 	}
 
 	Vector3 GetCenterOfTargets()
