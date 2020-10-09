@@ -25,7 +25,7 @@ public class Agent : MonoBehaviour
 	}
 	void LateUpdate()
 	{
-		Root.localEulerAngles = -transform.localEulerAngles + CameraController.Instance.Camera.transform.eulerAngles;
+		Root.localEulerAngles = -transform.localEulerAngles + (CameraController.Instance.Camera.transform.eulerAngles * Settings.RotateToCamMultiplier);
 	}
 
     protected void UpdateVisuals()

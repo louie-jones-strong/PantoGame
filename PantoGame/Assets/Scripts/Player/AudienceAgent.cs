@@ -10,7 +10,7 @@ public class AudienceAgent : Agent
 	protected override void Start()
 	{
 		SetSeat = Theatre.Instance.AddAudienceAgent(this);
-		CameraController.AddTarget(transform, weighting:0.1f);
+		CameraController.AddTarget(transform, weighting:Settings.AudienceCamWeighting);
 		base.Start();
 	}
 

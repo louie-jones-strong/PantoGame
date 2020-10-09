@@ -18,7 +18,7 @@ public class PlayerAgent : Agent
 
 	protected override void Start()
 	{
-		CameraController.AddTarget(transform, weighting:10);
+		CameraController.AddTarget(transform, weighting:Settings.PlayerCamWeighting);
 		base.Start();
 	}
     
