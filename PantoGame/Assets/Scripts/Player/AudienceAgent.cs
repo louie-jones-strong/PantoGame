@@ -5,7 +5,18 @@ using UnityEngine.AI;
 
 public class AudienceAgent : Agent
 {
+	public AudienceProfileData ProfileData;
 	Chair SetSeat;
+	float BladderTime = 0;
+	eIntent AudienceIntent;
+
+	enum eIntent
+	{
+		None,
+		Sit,
+		Toilet,
+		RandomWalk
+	}
 	
 	protected override void Start()
 	{
@@ -16,23 +27,48 @@ public class AudienceAgent : Agent
 
 	void Update()
     {
-		var rangeSize = 16;
-		
-		if (NavMeshAgent.remainingDistance <= NavMeshAgent.stoppingDistance + 1.5f)
+		BladderTime += Time.deltaTime;
+		var intent = GetIntent();
+
+		Vector3 target = Vector3.zero;
+		switch (intent)
 		{
-			bool foundRoute = false;
-			while (!foundRoute)
+			case eIntent.Sit:
 			{
-				var target = new Vector3(Random.Range(-rangeSize, rangeSize), 0, Random.Range(-rangeSize, rangeSize));
-
-				if (SetSeat != null)
-				{
-					target = SetSeat.transform.position;
-				}
-
-				foundRoute = NavMeshAgent.SetDestination(target);
+				target = SetSeat.transform.position;
+				break;
 			}
+			case eIntent.Toilet:
+			{
+				target = Theatre.Instance.Toilet.position;
+				break;
+			}
+			default:
+			{
+				break;
+			}
+		}
+
+		if (AudienceIntent != intent)
+		{
+			NavMeshAgent.SetDestination(target);
+			AudienceIntent = intent;
+		}
+
+
+		if (AudienceIntent == eIntent.Toilet && (target-transform.position).magnitude <= 1)
+		{
+			BladderTime = 0;
 		}
 		UpdateVisuals();
     }
+
+	eIntent GetIntent()
+	{
+		if (ProfileData.BladderTimeToFill <= BladderTime)
+		{
+			return eIntent.Toilet;
+		}
+		return eIntent.Sit;
+	}
 }

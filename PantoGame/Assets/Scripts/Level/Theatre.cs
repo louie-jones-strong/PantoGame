@@ -5,6 +5,8 @@ using UnityEngine;
 public class Theatre : MonoBehaviour
 {
 	public static Theatre Instance;
+	public Transform Toilet;
+
 	Chair[] Chairs;
 	List<AudienceAgent> AudienceAgents = new List<AudienceAgent>();
 

@@ -53,6 +53,10 @@ MonoBehaviour:
   Root: {fileID: 972033208015368304}
   BodyCenter: {fileID: 972033207393149996}
   PlayerAnimator: {fileID: 972033207960869404}
+  ProfileData:
+    Name: jeff
+    Age: 13
+    BladderTimeToFill: 10
 --- !u!95 &972033207960869404
 Animator:
   serializedVersion: 3
