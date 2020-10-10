@@ -26,23 +26,23 @@ public class PlayerAgent : Agent
     {
         var acceleration = Vector3.zero;
 
-        if (SimpleInput.GetInputActive(EInput.dpadLeft))
+        if (SimpleInput.GetInputActive(eInput.dpadLeft))
         {
             acceleration.x -= Speed;
         }
-        if (SimpleInput.GetInputActive(EInput.dpadRight))
+        if (SimpleInput.GetInputActive(eInput.dpadRight))
         {
             acceleration.x += Speed;
         }
-		if (SimpleInput.GetInputActive(EInput.dpadDown))
+		if (SimpleInput.GetInputActive(eInput.dpadDown))
         {
             acceleration.z -= Speed;
         }
-        if (SimpleInput.GetInputActive(EInput.dpadUp))
+        if (SimpleInput.GetInputActive(eInput.dpadUp))
         {
             acceleration.z += Speed;
         }
-		if (SimpleInput.GetInputState(EInput.A) == EButtonState.Pressed &&
+		if (SimpleInput.GetInputState(eInput.A) == eButtonState.Pressed &&
 			DashCoolDownLeft <= 0)
 		{
 			TimeLeftOfDash = DashAffectTime;

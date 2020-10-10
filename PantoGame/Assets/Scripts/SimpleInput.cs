@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EButtonState { none = -1, Pressed, Held, Released };
-public enum EInput { none = -1, dpadUp, dpadRight, dpadDown, dpadLeft, A, B, Start, Select };
+public enum eButtonState { none = -1, Pressed, Held, Released };
+public enum eInput { none = -1, dpadUp, dpadRight, dpadDown, dpadLeft, A, B, Start, Select };
 public class SimpleInput : MonoBehaviour
 {
 	static SimpleInput instance;
@@ -13,9 +13,9 @@ public class SimpleInput : MonoBehaviour
 		if (instance == null)
 		{
 			instance = this;
-			for (int i = 0; i <= (int)EInput.Select; ++i)
+			for (int i = 0; i <= (int)eInput.Select; ++i)
 			{
-				Buttons.Add(new ButtonInfo((EInput)i));
+				Buttons.Add(new ButtonInfo((eInput)i));
 			}
 		}
 		else
@@ -28,19 +28,19 @@ public class SimpleInput : MonoBehaviour
 
 	public class ButtonInfo
 	{
-		EInput button;
+		eInput button;
 		bool isDpad;
 
-		public EButtonState State { get; private set;}
+		public eButtonState State { get; private set;}
 		public float TimeInState { get; private set;}
 		public bool Active { get; private set; }
 
-		public ButtonInfo(EInput b)
+		public ButtonInfo(eInput b)
 		{
 			button = b;
-			State = EButtonState.none;
+			State = eButtonState.none;
 			Active = false;
-			isDpad = (button == EInput.dpadUp || button == EInput.dpadRight || button == EInput.dpadDown || button == EInput.dpadLeft);
+			isDpad = (button == eInput.dpadUp || button == eInput.dpadRight || button == eInput.dpadDown || button == eInput.dpadLeft);
 		}
 
 		public override string ToString()
@@ -48,7 +48,7 @@ public class SimpleInput : MonoBehaviour
 			return $"Active: {Active}, state: {State}";
 		}
 
-		void SetState(EButtonState state)
+		void SetState(eButtonState state)
 		{
 			if (State != state)
 			{
@@ -64,13 +64,13 @@ public class SimpleInput : MonoBehaviour
 			Active = active;
 			if (Active)
 			{
-				if (State == EButtonState.Held || State == EButtonState.Pressed)
+				if (State == eButtonState.Held || State == eButtonState.Pressed)
 				{
-					SetState(EButtonState.Held);
+					SetState(eButtonState.Held);
 				}
 				else
 				{
-					SetState(EButtonState.Pressed);
+					SetState(eButtonState.Pressed);
 					if(isDpad)
 					{
 						recentDpadInput = button;
@@ -79,13 +79,13 @@ public class SimpleInput : MonoBehaviour
 			}
 			else
 			{
-				if (State == EButtonState.Held || State == EButtonState.Pressed)
+				if (State == eButtonState.Held || State == eButtonState.Pressed)
 				{
-					SetState(EButtonState.Released);
+					SetState(eButtonState.Released);
 				}
 				else
 				{
-					SetState(EButtonState.none);
+					SetState(eButtonState.none);
 				}
 			}
 		}
@@ -93,39 +93,39 @@ public class SimpleInput : MonoBehaviour
 
 	static List<ButtonInfo> Buttons = new List<ButtonInfo>();
 
-	static EInput recentDpadInput;
+	static eInput recentDpadInput;
 
 	List<string> AxisStrings = new List<string>() {
 		 "Vertical", "Horizontal" , "Vertical" ,"Horizontal" , "ButtonA", "ButtonB", "Start", "Select" };
 
 	void Update()
 	{
-		Buttons[(int)EInput.dpadUp].SetActive(Input.GetAxisRaw(AxisStrings[(int)EInput.dpadUp]) > DeadZone);
-		Buttons[(int)EInput.dpadRight].SetActive(Input.GetAxisRaw(AxisStrings[(int)EInput.dpadRight]) > DeadZone);
-		Buttons[(int)EInput.dpadDown].SetActive(Input.GetAxisRaw(AxisStrings[(int)EInput.dpadDown]) < -DeadZone);
-		Buttons[(int)EInput.dpadLeft].SetActive(Input.GetAxisRaw(AxisStrings[(int)EInput.dpadLeft]) < -DeadZone);
-		for (int i = (int)EInput.A; i <= (int)EInput.Select; ++i)
+		Buttons[(int)eInput.dpadUp].SetActive(Input.GetAxisRaw(AxisStrings[(int)eInput.dpadUp]) > DeadZone);
+		Buttons[(int)eInput.dpadRight].SetActive(Input.GetAxisRaw(AxisStrings[(int)eInput.dpadRight]) > DeadZone);
+		Buttons[(int)eInput.dpadDown].SetActive(Input.GetAxisRaw(AxisStrings[(int)eInput.dpadDown]) < -DeadZone);
+		Buttons[(int)eInput.dpadLeft].SetActive(Input.GetAxisRaw(AxisStrings[(int)eInput.dpadLeft]) < -DeadZone);
+		for (int i = (int)eInput.A; i <= (int)eInput.Select; ++i)
 		{
 			Buttons[i].SetActive(Input.GetButton(AxisStrings[i]));
 		}
 	}
 
-	public static EButtonState GetInputState(EInput input)
+	public static eButtonState GetInputState(eInput input)
 	{
 		return Buttons[(int)input].State;
 	}
 
-	public static float GetTimeInState(EInput input)
+	public static float GetTimeInState(eInput input)
 	{
 		return Buttons[(int)input].TimeInState;
 	}
 
-	public static bool GetInputActive(EInput input)
+	public static bool GetInputActive(eInput input)
 	{
 		return Buttons[(int)input].Active;
 	}
 
-	public static EInput GetRecentDpad()
+	public static eInput GetRecentDpad()
 	{
 		return recentDpadInput;
 	}
