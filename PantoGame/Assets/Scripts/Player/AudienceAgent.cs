@@ -23,6 +23,7 @@ public class AudienceAgent : Agent
 		SetSeat = Theatre.Instance.AddAudienceAgent(this);
 		CameraController.AddTarget(transform, weighting:Settings.AudienceCamWeighting);
 		base.Start();
+		BladderTime = ProfileData.BladderStartFill;
 	}
 
 	void Update()

@@ -9,4 +9,5 @@ public class AudienceProfileData
 	public string Name;
 	public int Age;
 	public float BladderTimeToFill;
+	public float BladderStartFill;
 }
