@@ -5,7 +5,7 @@ using UnityEngine;
 public class TurboWindow : EditorWindow
 {
 
-	[MenuItem("MonsterMash/Turbo")]
+	[MenuItem("PantoGame/Turbo")]
 	static void Init()
 	{
 		var window = (TurboWindow)GetWindow(typeof(TurboWindow));
