@@ -21,20 +21,20 @@ public class SpriteToObjectRenderer : RotateToCam
 
 	public void SetImage(SpriteRenderer spriteRenderer, bool emissionOn=false, bool rotateToCamOn=true)
 	{
-		var image = spriteRenderer.sprite;
+		var sprite = spriteRenderer.sprite;
 		EmissionOn = emissionOn;
 		RotateToCamOn = rotateToCamOn;
 
 		var newImageMaterial = new Material(FrontRenderer.material);
 
-		var texName = image.name;
+		var texName = sprite.name;
 		newImageMaterial.name = texName;
-		newImageMaterial.mainTexture = image.texture;
+		newImageMaterial.mainTexture = sprite.texture;
 
 		if (EmissionOn)
 		{
 			newImageMaterial.EnableKeyword("_EMISSION");
-			newImageMaterial.SetTexture("_EmissionMap", image.texture);
+			newImageMaterial.SetTexture("_EmissionMap", sprite.texture);
 		}
 		else
 		{
@@ -48,13 +48,12 @@ public class SpriteToObjectRenderer : RotateToCam
 
 	void SetImageSizePos(SpriteRenderer spriteRenderer)
 	{
-		var image = spriteRenderer.sprite;
-		float width = image.texture.width / image.pixelsPerUnit;
-		float height = image.texture.height / image.pixelsPerUnit;
+		var sprite = spriteRenderer.sprite;
+		float width = sprite.texture.width / sprite.pixelsPerUnit;
+		float height = sprite.texture.height / sprite.pixelsPerUnit;
 
-		var xPos = ((image.texture.width/2) - image.pivot.x) / image.pixelsPerUnit;
-		var yPos = ((image.texture.height/2) - image.pivot.y) / image.pixelsPerUnit;
-
+		var xPos = ((sprite.texture.width/2) - sprite.pivot.x) / sprite.pixelsPerUnit;
+		var yPos = ((sprite.texture.height/2) - sprite.pivot.y) / sprite.pixelsPerUnit;
 
 		if (spriteRenderer.flipX)
 		{
