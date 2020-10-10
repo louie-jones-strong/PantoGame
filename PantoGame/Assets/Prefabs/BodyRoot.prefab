@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CentreOfMassOffset: {x: 0, y: 0, z: 0}
-  Mass: 10
+  Mass: 15
 --- !u!212 &4358081613872984469
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -685,7 +685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CentreOfMassOffset: {x: 0, y: 0, z: 0}
-  Mass: 10
+  Mass: 15
 --- !u!212 &4358081614576636284
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CentreOfMassOffset: {x: 0, y: 0, z: 0}
-  Mass: -7.5
+  Mass: -12
 --- !u!212 &4358081614750085722
 SpriteRenderer:
   m_ObjectHideFlags: 0
