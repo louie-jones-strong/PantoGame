@@ -19,8 +19,9 @@ public class SpriteToObjectRenderer : RotateToCam
 		}
 	}
 
-	public void SetImage(Sprite image, bool emissionOn=false, bool rotateToCamOn=true)
+	public void SetImage(SpriteRenderer spriteRenderer, bool emissionOn=false, bool rotateToCamOn=true)
 	{
+		var image = spriteRenderer.sprite;
 		EmissionOn = emissionOn;
 		RotateToCamOn = rotateToCamOn;
 
@@ -42,18 +43,32 @@ public class SpriteToObjectRenderer : RotateToCam
 
 		FrontRenderer.material = newImageMaterial;
 		BackRenderer.material = newImageMaterial;
-		SetImageSizePos(image);
+		SetImageSizePos(spriteRenderer);
 	}
 
-	void SetImageSizePos(Sprite image)
+	void SetImageSizePos(SpriteRenderer spriteRenderer)
 	{
+		var image = spriteRenderer.sprite;
 		float width = image.texture.width / image.pixelsPerUnit;
 		float height = image.texture.height / image.pixelsPerUnit;
 
-		transform.localScale = new Vector3(width, height, 0);
+		var xPos = ((image.texture.width/2) - image.pivot.x) / image.pixelsPerUnit;
+		var yPos = ((image.texture.height/2) - image.pivot.y) / image.pixelsPerUnit;
 
-		var xPos = (image.pivot.x - (image.texture.width/2)) / image.pixelsPerUnit;
-		var yPos = (image.pivot.y + (image.texture.height/2)) / image.pixelsPerUnit;
+
+		if (spriteRenderer.flipX)
+		{
+			width *= -1;
+			xPos *= -1;
+		}
+		
+		if (spriteRenderer.flipY)
+		{
+			height *= -1;
+			yPos *= -1;
+		}
+
+		transform.localScale = new Vector3(width, height, 1);
 		transform.localPosition = new Vector3(xPos, yPos, 0);
 	}
 }
