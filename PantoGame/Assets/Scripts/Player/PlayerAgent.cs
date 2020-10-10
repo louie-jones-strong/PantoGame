@@ -67,5 +67,31 @@ public class PlayerAgent : Agent
 		NavMeshAgent.Move((Velocity * Time.deltaTime));
 		
 		UpdateVisuals(acceleration, Velocity);
+		TryHideObjectsHiddingPlayer();
+
     }
+
+	void TryHideObjectsHiddingPlayer()
+	{
+		var startPos = CameraController.Instance.Camera.transform.position;
+		var endPos = BodyCenter.position;
+
+		var delta = endPos-startPos;
+
+		Debug.DrawRay(startPos, delta, Color.red);
+		var hits = Physics.RaycastAll(startPos, delta, delta.magnitude);
+		if (hits == null)
+		{
+			return;
+		}
+
+		foreach (var hit in hits)
+		{
+			var fadeableSet = hit.transform.GetComponent<FadeableSet>();
+			if (fadeableSet != null)
+			{
+				fadeableSet.TriggerFade();
+			}
+		}
+	}
 }

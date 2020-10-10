@@ -70,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NavMeshAgent: {fileID: 1679723919424694261}
   Root: {fileID: 3816184429125906380}
+  BodyCenter: {fileID: 3816184428368231312}
   PlayerAnimator: {fileID: 4110958259888655840}
   Speed: 50
   DashSpeedMultiplier: 2
@@ -229,5 +230,10 @@ PrefabInstance:
 --- !u!4 &3816184429125906380 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4358081613339672120, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}
+  m_PrefabInstance: {fileID: 616654120575078900}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3816184428368231312 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4358081612989819492, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}
   m_PrefabInstance: {fileID: 616654120575078900}
   m_PrefabAsset: {fileID: 0}

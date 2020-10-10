@@ -8,6 +8,7 @@ public class Agent : MonoBehaviour
 {
 	[SerializeField] protected NavMeshAgent NavMeshAgent;
 	[SerializeField] protected Transform Root;
+	[SerializeField] protected Transform BodyCenter;
 	[SerializeField] protected Animator PlayerAnimator;
     protected PhysicsRotation[] PhysicsParts;
 

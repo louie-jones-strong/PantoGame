@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NavMeshAgent: {fileID: 972033207960869403}
   Root: {fileID: 972033208015368304}
+  BodyCenter: {fileID: 972033207393149996}
   PlayerAnimator: {fileID: 972033207960869404}
 --- !u!95 &972033207960869404
 Animator:
@@ -224,5 +225,10 @@ PrefabInstance:
 --- !u!4 &972033208015368304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4358081613339672120, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}
+  m_PrefabInstance: {fileID: 3532615610383339080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &972033207393149996 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4358081612989819492, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}
   m_PrefabInstance: {fileID: 3532615610383339080}
   m_PrefabAsset: {fileID: 0}
