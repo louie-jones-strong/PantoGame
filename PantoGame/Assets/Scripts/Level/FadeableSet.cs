@@ -5,8 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(Renderer))]
 public class FadeableSet : MonoBehaviour
 {
+	[SerializeField] float AttackTime = 0.25f;
+	[SerializeField] float DecayTime = 0.25f;
+	[SerializeField] float FadeAmount = 0.6f;
+
 	Renderer ObjectRender;
 	float TimeSinceLastTrigger = float.MaxValue;
+	float TimeSinceFirstTrigger = float.MaxValue;
 
 	void Awake()
 	{
@@ -15,22 +20,29 @@ public class FadeableSet : MonoBehaviour
 
 	public void TriggerFade()
 	{
-		Logger.Log("TriggerFade");
+		if (TimeSinceLastTrigger >= DecayTime)
+		{
+			TimeSinceFirstTrigger = 0;
+		}
 		TimeSinceLastTrigger = 0;
 	}
 	
 	void Update()
 	{
+		TimeSinceFirstTrigger += Time.deltaTime;
 		TimeSinceLastTrigger += Time.deltaTime;
 
-		if (TimeSinceLastTrigger >= 1)
+		float fadeAmount = 1f;
+		if (TimeSinceFirstTrigger <= AttackTime)
 		{
-			SetFade(1);
+			fadeAmount = Mathf.Lerp(1, FadeAmount, TimeSinceFirstTrigger / AttackTime);
 		}
 		else
 		{
-			SetFade(0.5f);
+			fadeAmount = Mathf.Lerp(FadeAmount, 1, TimeSinceLastTrigger / DecayTime);
 		}
+		SetFade(fadeAmount);
+
 	}
 
 	void SetFade(float value)
