@@ -7,7 +7,9 @@ public class CameraController : MonoBehaviour
 	public static CameraController Instance;
 	
 	public Camera Camera;
-	List<TrackerTarget> TargetList;
+	[SerializeField] List<TrackerTarget> TargetList;
+
+	[Serializable]
 	class TrackerTarget
 	{
 		public Transform Transform;

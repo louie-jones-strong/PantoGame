@@ -383,6 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Toilet: {fileID: 1628503823}
+  Player: {fileID: 438073558}
 --- !u!4 &153317277
 Transform:
   m_ObjectHideFlags: 0
@@ -454,6 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 1833327209}
+  TargetList: []
   MinZoom: 110
   MaxZoom: 15
   MaxTargetDistance: 100
@@ -725,6 +727,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c32af72e559a1b24faf2c500ec0dba38, type: 3}
+--- !u!114 &438073558 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2229273628982793845, guid: 8bd9cb8160bf82744b61a9c2925214db, type: 3}
+  m_PrefabInstance: {fileID: 4110958260755362931}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c81de294b44ddf4e81f3f25f8ddac29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &441902477 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 972033207960869406, guid: c32af72e559a1b24faf2c500ec0dba38, type: 3}
@@ -1550,7 +1563,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 915592960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7f7e436a7d529843bbe1c245f25409b, type: 3}
+  m_Script: {fileID: 11500000, guid: cf77c14ff65e9fb4495cd7d2f14b0f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &915592962

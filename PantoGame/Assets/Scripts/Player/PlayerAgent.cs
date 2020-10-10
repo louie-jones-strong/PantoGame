@@ -6,6 +6,7 @@ using System;
 
 public class PlayerAgent : Agent
 {
+	public int ControlType = -1;
     public float Speed;
 	public float DashSpeedMultiplier;
 	public float DashCoolDown = 1.5f;
@@ -25,24 +26,10 @@ public class PlayerAgent : Agent
     void Update()
     {
         var acceleration = Vector3.zero;
+		acceleration.x = SimpleInput.GetInputValue(eInput.XAxis, index: ControlType) * Speed;
+		acceleration.z = SimpleInput.GetInputValue(eInput.YAxis, index: ControlType) * Speed;
 
-        if (SimpleInput.GetInputActive(eInput.dpadLeft))
-        {
-            acceleration.x -= Speed;
-        }
-        if (SimpleInput.GetInputActive(eInput.dpadRight))
-        {
-            acceleration.x += Speed;
-        }
-		if (SimpleInput.GetInputActive(eInput.dpadDown))
-        {
-            acceleration.z -= Speed;
-        }
-        if (SimpleInput.GetInputActive(eInput.dpadUp))
-        {
-            acceleration.z += Speed;
-        }
-		if (SimpleInput.GetInputState(eInput.A) == eButtonState.Pressed &&
+		if (SimpleInput.IsInputInState(eInput.Dash, eButtonState.Pressed, index: ControlType) &&
 			DashCoolDownLeft <= 0)
 		{
 			TimeLeftOfDash = DashAffectTime;
