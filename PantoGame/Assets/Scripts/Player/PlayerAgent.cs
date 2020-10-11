@@ -67,22 +67,23 @@ public class PlayerAgent : Agent
 
 		var hits = Physics.RaycastAll(startPos, delta, delta.magnitude);
 
-		if (hits != null && hits.Length > 1)
+		int found = 0;
+		if (hits != null)
 		{
-			Debug.DrawRay(startPos, delta, Color.red);
-
 			foreach (var hit in hits)
 			{
-				var fadeableSet = hit.transform.GetComponent<FadeableSet>();
-				if (fadeableSet != null)
+				if (hit.transform != transform)
 				{
-					fadeableSet.TriggerFade();
+					found += 1;
+					var fadeableSet = hit.transform.GetComponent<FadeableSet>();
+					if (fadeableSet != null)
+					{
+						fadeableSet.TriggerFade();
+					}
 				}
 			}
 		}
-		else
-		{
-			Debug.DrawRay(startPos, delta, Color.green);
-		}
+
+		Debug.DrawRay(startPos, delta, found > 0 ? Color.red : Color.green);
 	}
 }
