@@ -15,7 +15,7 @@ public class SpriteToObjectRenderer : RotateToCam
 	{
 		if (RotateToCamOn)
 		{
-			base.LateUpdate();
+			PointAtCam();
 		}
 	}
 

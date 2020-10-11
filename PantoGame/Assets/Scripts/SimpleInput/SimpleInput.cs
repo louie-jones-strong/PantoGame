@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum eButtonState { none = -1, Pressed, Held, Released };
-public enum eInput { none = -1, XAxis, YAxis, Dash};
+public enum eInput { none = -1, XAxis, YAxis, Dash, Interact};
 
 public class SimpleInput : MonoBehaviour
 {
@@ -17,10 +17,10 @@ public class SimpleInput : MonoBehaviour
 		{
 			Instance = this;
 
-			ControlSets.Add( new ControlSet("Horizontal_1", "Vertical_1", "Dash_1") );
-			ControlSets.Add( new ControlSet("Horizontal_2", "Vertical_2", "Dash_2") );
-			ControlSets.Add( new ControlSet("Horizontal_3", "Vertical_3", "Dash_3") );
-			ControlSets.Add( new ControlSet("Horizontal_4", "Vertical_4", "Dash_4") );
+			ControlSets.Add(new ControlSet("Horizontal_1", "Vertical_1", "Dash_1", "Dash_1"));
+			ControlSets.Add(new ControlSet("Horizontal_2", "Vertical_2", "Dash_2", "Dash_2"));
+			ControlSets.Add(new ControlSet("Horizontal_3", "Vertical_3", "Dash_3", "Dash_3"));
+			ControlSets.Add(new ControlSet("Horizontal_4", "Vertical_4", "Dash_4", "Dash_4"));
 		}
 		else
 		{

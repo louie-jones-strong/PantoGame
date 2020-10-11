@@ -6,7 +6,7 @@ using System;
 
 public class PlayerAgent : Agent
 {
-	public int ControlType = -1;
+	public int ControlType = -1;//todo this should be enum
     public float Speed;
 	public float DashSpeedMultiplier;
 	public float DashCoolDown = 1.5f;
@@ -17,6 +17,8 @@ public class PlayerAgent : Agent
 	float TimeLeftOfDash;
 	float DashCoolDownLeft;
 
+	Task CurrentTask;
+
 	protected override void Start()
 	{
 		CameraController.AddTarget(transform, weighting:Settings.PlayerCamWeighting);
@@ -25,7 +27,48 @@ public class PlayerAgent : Agent
     
     void Update()
     {
-        var acceleration = Vector3.zero;
+		var acceleration = Vector3.zero;
+
+		if (CurrentTask == null)
+		{
+        	acceleration = UpdateMovement();
+
+			if (SimpleInput.IsInputInState(eInput.Interact, eButtonState.Pressed, index: ControlType))
+			{
+				float minDistance = float.MaxValue;
+				foreach (var task in Theatre.Instance.Tasks)
+				{
+					var distance = (transform.position-task.transform.position).magnitude;
+					if (distance <= minDistance && task.CanInteract(transform.position))
+					{
+						CurrentTask = task;
+						minDistance = distance;
+					}
+				}
+			}
+		}
+		else
+		{
+			Debug.DrawLine(transform.position, CurrentTask.transform.position, Color.green);
+			if (SimpleInput.IsInputInState(eInput.Interact, eButtonState.Pressed, index: ControlType))
+			{
+				CurrentTask = null;
+			}
+			else
+			{
+				CurrentTask.Interact(ControlType);
+			}
+			
+		}
+		
+		UpdateVisuals(acceleration, Velocity);
+		TryHideObjectsHiddingPlayer();
+
+    }
+
+	Vector3 UpdateMovement()
+	{
+		var acceleration = Vector3.zero;
 		acceleration.x = SimpleInput.GetInputValue(eInput.XAxis, index: ControlType) * Speed;
 		acceleration.z = SimpleInput.GetInputValue(eInput.YAxis, index: ControlType) * Speed;
 
@@ -52,11 +95,8 @@ public class PlayerAgent : Agent
         Velocity += acceleration;
 
 		NavMeshAgent.Move((Velocity * Time.deltaTime));
-		
-		UpdateVisuals(acceleration, Velocity);
-		TryHideObjectsHiddingPlayer();
-
-    }
+		return acceleration;
+	}
 
 	void TryHideObjectsHiddingPlayer()
 	{

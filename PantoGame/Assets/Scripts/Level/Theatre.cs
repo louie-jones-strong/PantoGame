@@ -6,6 +6,7 @@ public class Theatre : MonoBehaviour
 {
 	public static Theatre Instance;
 	public Transform Toilet;
+	public List<Task> Tasks = new List<Task>();
 
 	[SerializeField] PlayerAgent Player;
 	Dictionary<int, PlayerAgent> Players = new Dictionary<int, PlayerAgent>();

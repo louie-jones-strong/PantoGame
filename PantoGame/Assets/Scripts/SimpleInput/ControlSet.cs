@@ -6,20 +6,22 @@ public class ControlSet
 {
 	Dictionary<eInput, ButtonInfo> Buttons;
 
-	public ControlSet(string xAxis, string yAxis, string dash)
+	public ControlSet(string xAxis, string yAxis, string dash, string interact)
 	{
 		Buttons = new Dictionary<eInput, ButtonInfo>();
 
 		Buttons[eInput.XAxis] = new ButtonInfo(xAxis, true, Settings.DeadZone);
 		Buttons[eInput.YAxis] = new ButtonInfo(yAxis, true, Settings.DeadZone);
 		Buttons[eInput.Dash]  = new ButtonInfo(dash, false, Settings.DeadZone);
+		Buttons[eInput.Interact] = new ButtonInfo(interact, false, Settings.DeadZone);
 	}
 
 	public void Refresh(float deltaTime)
 	{
-		Buttons[eInput.XAxis].Refresh(deltaTime);
-		Buttons[eInput.YAxis].Refresh(deltaTime);
-		Buttons[eInput.Dash].Refresh(deltaTime);
+		foreach (var kvp in Buttons)
+		{
+			kvp.Value.Refresh(deltaTime);
+		}
 	}
 
 	public eButtonState GetInputState(eInput input)
