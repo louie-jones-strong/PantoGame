@@ -65,20 +65,24 @@ public class PlayerAgent : Agent
 
 		var delta = endPos-startPos;
 
-		Debug.DrawRay(startPos, delta, Color.red);
 		var hits = Physics.RaycastAll(startPos, delta, delta.magnitude);
-		if (hits == null)
-		{
-			return;
-		}
 
-		foreach (var hit in hits)
+		if (hits != null && hits.Length > 1)
 		{
-			var fadeableSet = hit.transform.GetComponent<FadeableSet>();
-			if (fadeableSet != null)
+			Debug.DrawRay(startPos, delta, Color.red);
+
+			foreach (var hit in hits)
 			{
-				fadeableSet.TriggerFade();
+				var fadeableSet = hit.transform.GetComponent<FadeableSet>();
+				if (fadeableSet != null)
+				{
+					fadeableSet.TriggerFade();
+				}
 			}
+		}
+		else
+		{
+			Debug.DrawRay(startPos, delta, Color.green);
 		}
 	}
 }
