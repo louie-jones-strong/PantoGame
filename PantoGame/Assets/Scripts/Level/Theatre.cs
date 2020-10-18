@@ -9,6 +9,7 @@ public class Theatre : MonoBehaviour
 	public List<Task> Tasks = new List<Task>();
 
 	[SerializeField] PlayerAgent Player;
+	[SerializeField] AudienceAgent Audience;
 	Dictionary<int, PlayerAgent> Players = new Dictionary<int, PlayerAgent>();
 
 	Chair[] Chairs;
@@ -21,8 +22,10 @@ public class Theatre : MonoBehaviour
 		{
 			Instance = this;
 			Chairs = GetComponentsInChildren<Chair>();
-			Players[0] = Player;
-			Player.ControlType = 0;
+			for (int i = 0; i < Chairs.Length; i++)
+			{
+				Instantiate(Audience);
+			}
 		}
 		else
 		{
