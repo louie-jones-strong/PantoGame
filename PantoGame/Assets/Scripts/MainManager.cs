@@ -30,11 +30,28 @@ public class MainManager : MonoBehaviour
 		}
 	}
 
-	public void AddScene(string scene)
+
+	public static IEnumerator LoadBootCo()
 	{
-		StartCoroutine(AddSceneCo(scene));
+		yield return AddSceneCo(Settings.BootScreenName);
+		for (int i = 0; i < SceneManager.sceneCount; i++)
+		{
+			var scene = SceneManager.GetSceneAt(i);
+			if (scene.name != Settings.BootScreenName)
+			{
+				yield return SceneManager.UnloadSceneAsync(scene);
+			}
+		}
 	}
-	public IEnumerator AddSceneCo(string scene)
+
+
+
+#region private Screen stuff
+	static void AddScene(string scene)
+	{
+		Instance.StartCoroutine(AddSceneCo(scene));
+	}
+	static IEnumerator AddSceneCo(string scene)
 	{
 		if (!SceneManager.GetSceneByName(scene).isLoaded)
 		{
@@ -42,15 +59,16 @@ public class MainManager : MonoBehaviour
 		}
 	}
 
-	public void SubtractScene(string scene)
+	static void SubtractScene(string scene)
 	{
-		StartCoroutine(SubtractSceneCo(scene));
+		Instance.StartCoroutine(SubtractSceneCo(scene));
 	}
-	public IEnumerator SubtractSceneCo(string scene)
+	static IEnumerator SubtractSceneCo(string scene)
 	{
 		if (SceneManager.GetSceneByName(scene).isLoaded)
 		{
 			yield return SceneManager.UnloadSceneAsync(scene);
 		}
 	}
+#endregion
 }

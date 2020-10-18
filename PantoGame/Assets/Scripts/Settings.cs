@@ -6,4 +6,6 @@ public class Settings
 	public const float PlayerCamWeighting = 10f;
 	public const float DeadZone = 0.1f;
 
+
+	public const string BootScreenName = "Boot";
 }
