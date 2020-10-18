@@ -68,6 +68,9 @@ public class SpriteToObjectRenderer : RotateToCam
 
 		var data = MaterialCache[texName];
 		FrontRenderer.material = data.Material;
+		BackRenderer.material = data.Material;
+
+
 		transform.localScale = new Vector3(data.Width, data.Height, 1);
 		transform.localPosition = new Vector3(data.XPos, data.YPos, 0);
 	}
