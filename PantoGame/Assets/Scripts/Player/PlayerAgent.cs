@@ -94,7 +94,8 @@ public class PlayerAgent : Agent
         acceleration *= Time.deltaTime;
         Velocity += acceleration;
 
-		NavMeshAgent.Move((Velocity * Time.deltaTime));
+		var moveAmount = Velocity * Time.deltaTime;
+		NavMeshAgent.Move(moveAmount);
 		return acceleration;
 	}
 

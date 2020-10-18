@@ -382,8 +382,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c516abd923ee21b489da136b58b2da1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentScript:
+    SceneIndex: 0
+    Scenes: []
   Toilet: {fileID: 1628503823}
   Tasks: []
+  Generator:
+    Scenes: []
   Player: {fileID: 438073558}
 --- !u!4 &153317277
 Transform:
@@ -4519,17 +4524,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 726367273}
     m_Modifications:
+    - target: {fileID: 3816184428055739968, guid: 8bd9cb8160bf82744b61a9c2925214db, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2915034706872494343, guid: 0d5b34394dbc11d449af0fdbfa103a7d, type: 3}
+    - target: {fileID: 3816184428055739975, guid: 8bd9cb8160bf82744b61a9c2925214db, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4110958259888655842, guid: 8bd9cb8160bf82744b61a9c2925214db, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.47
+      value: -1.54
       objectReference: {fileID: 0}
     - target: {fileID: 4110958259888655842, guid: 8bd9cb8160bf82744b61a9c2925214db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 4110958259888655842, guid: 8bd9cb8160bf82744b61a9c2925214db, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.96
+      value: -17.11
       objectReference: {fileID: 0}
     - target: {fileID: 4110958259888655842, guid: 8bd9cb8160bf82744b61a9c2925214db, type: 3}
       propertyPath: m_LocalRotation.x
