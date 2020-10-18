@@ -72,6 +72,7 @@ MonoBehaviour:
   Root: {fileID: 3816184429125906380}
   BodyCenter: {fileID: 3816184428368231312}
   PlayerAnimator: {fileID: 4110958259888655840}
+  MaxMoveSpeed: 7.5
   ControlType: -1
   Speed: 50
   DashSpeedMultiplier: 2

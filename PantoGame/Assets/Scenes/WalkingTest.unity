@@ -2127,6 +2127,10 @@ PrefabInstance:
       propertyPath: ProfileData.BladderTimeToFill
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 972033207960869405, guid: c32af72e559a1b24faf2c500ec0dba38, type: 3}
+      propertyPath: MaxMoveSpeed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 972033207960869406, guid: c32af72e559a1b24faf2c500ec0dba38, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.27

@@ -10,6 +10,7 @@ public class Agent : MonoBehaviour
 	[SerializeField] protected Transform Root;
 	[SerializeField] protected Transform BodyCenter;
 	[SerializeField] protected Animator PlayerAnimator;
+	[SerializeField] protected float MaxMoveSpeed = 7.5f;
     protected PhysicsRotation[] PhysicsParts;
 
 	Vector3 LastVelocity;
@@ -34,11 +35,11 @@ public class Agent : MonoBehaviour
 		var pos = transform.localPosition;
 		var velocity = pos - LastPos;
 		var acceleration = velocity - LastVelocity;
+		UpdateVisuals(acceleration/Time.deltaTime, velocity/Time.deltaTime);
 
 		LastVelocity = velocity;
 		LastPos = pos;
-
-		UpdateVisuals(acceleration, velocity);
+		Logger.Log($"velocity: {velocity}");
     }
 
 	protected void UpdateVisuals(Vector3 acceleration, Vector3 velocity)
@@ -46,6 +47,7 @@ public class Agent : MonoBehaviour
         RefreshPhysicsParts(acceleration);
 		PlayerAnimator.SetFloat("XV", velocity.x);
 		PlayerAnimator.SetFloat("YV", velocity.z);
+		PlayerAnimator.speed = Mathf.Clamp01(Mathf.Abs(velocity.x) / MaxMoveSpeed);
     }
 
     void RefreshPhysicsParts(Vector3 acceleration)
