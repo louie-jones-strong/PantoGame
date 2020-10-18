@@ -72,6 +72,7 @@ MonoBehaviour:
   Root: {fileID: 3816184429125906380}
   BodyCenter: {fileID: 3816184428368231312}
   PlayerAnimator: {fileID: 4110958259888655840}
+  ControlType: -1
   Speed: 50
   DashSpeedMultiplier: 2
   DashCoolDown: 1.5
@@ -102,7 +103,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 4110958259888655843}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 1.25
   m_Height: 4
   m_Direction: 1

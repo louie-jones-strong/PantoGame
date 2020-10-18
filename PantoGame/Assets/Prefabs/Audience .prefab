@@ -57,6 +57,7 @@ MonoBehaviour:
     Name: jeff
     Age: 13
     BladderTimeToFill: 10
+    BladderStartFill: 0
 --- !u!95 &972033207960869404
 Animator:
   serializedVersion: 3
@@ -148,7 +149,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 972033207960869401}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 1.25
   m_Height: 4
   m_Direction: 1

@@ -11,6 +11,17 @@ public class SpriteToObjectRenderer : RotateToCam
 	[SerializeField] bool EmissionOn;
 	[SerializeField] bool RotateToCamOn;
 
+
+	static Dictionary<string, MaterialData> MaterialCache = new Dictionary<string, MaterialData>();
+	class MaterialData
+	{
+		public Material Material;
+		public float Width;
+		public float Height;
+		public float XPos;
+		public float YPos;
+	}
+
 	SpriteRenderer SpriteRenderer;
 	Sprite LastSprite = null;
 
@@ -20,78 +31,93 @@ public class SpriteToObjectRenderer : RotateToCam
 		{
 			PointAtCam();
 		}
-		UpdateImage();
+
+		UpdateMaterial();
 	}
 
-	public void SetImage(SpriteRenderer spriteRenderer, bool emissionOn=false, bool rotateToCamOn=true)
+	public void Setup(SpriteRenderer spriteRenderer, bool emissionOn=false, bool rotateToCamOn=true)
 	{
 		SpriteRenderer = spriteRenderer;
 		EmissionOn = emissionOn;
 		RotateToCamOn = rotateToCamOn;
 
-		var newImageMaterial = new Material(FrontRenderer.material);
-		
-		var texName = SpriteRenderer.sprite.name;
-		newImageMaterial.name = texName;
-
-		if (EmissionOn)
-		{
-			newImageMaterial.EnableKeyword("_EMISSION");
-		}
-		else
-		{
-			newImageMaterial.DisableKeyword("_EMISSION");
-		}
-
-		UpdateImage();
+		UpdateMaterial();
 	}
 
-	void UpdateImage()
+	void UpdateMaterial()
 	{
 		if (SpriteRenderer?.sprite == null)
 		{
 			return;
 		}
-		
-		if (LastSprite == SpriteRenderer?.sprite)
+		var sprite = SpriteRenderer.sprite;
+
+		if (LastSprite == sprite)
 		{
 			return;
 		}
 
-		var material = FrontRenderer.material;
+		var texName = sprite.name;
+		if (!MaterialCache.ContainsKey(texName))
+		{
+			var newMaterial = MakeNewMaterial();
+			newMaterial.Material.name = texName;
 
+			MaterialCache[texName] = newMaterial;
+		}
+
+		var data = MaterialCache[texName];
+		FrontRenderer.material = data.Material;
+		transform.localScale = new Vector3(data.Width, data.Height, 1);
+		transform.localPosition = new Vector3(data.XPos, data.YPos, 0);
+	}
+
+	MaterialData MakeNewMaterial()
+	{
 		var sprite = SpriteRenderer.sprite;
+		var newMaterial = new Material(FrontRenderer.material);
+		var materialData = new MaterialData();
+		materialData.Material = newMaterial;
+
+		if (EmissionOn)
+		{
+			newMaterial.EnableKeyword("_EMISSION");
+		}
+		else
+		{
+			newMaterial.DisableKeyword("_EMISSION");
+		}
+
 		Texture spriteTexture = GetSpriteTexture(sprite);
 
 		if (spriteTexture == null)
 		{
-			return;
+			return materialData;
 		}
 		
-		material.mainTexture = spriteTexture;
-		material.SetTexture("_EmissionMap", spriteTexture);
+		newMaterial.mainTexture = spriteTexture;
+		newMaterial.SetTexture("_EmissionMap", spriteTexture);
 
 		//set pos
-		float width = spriteTexture.width / sprite.pixelsPerUnit;
-		float height = spriteTexture.height / sprite.pixelsPerUnit;
+		materialData.Width = spriteTexture.width / sprite.pixelsPerUnit;
+		materialData.Height = spriteTexture.height / sprite.pixelsPerUnit;
 
-		var xPos = ((spriteTexture.width/2) - sprite.pivot.x) / sprite.pixelsPerUnit;
-		var yPos = ((spriteTexture.height/2) - sprite.pivot.y) / sprite.pixelsPerUnit;
+		materialData.XPos = ((spriteTexture.width/2) - sprite.pivot.x) / sprite.pixelsPerUnit;
+		materialData.YPos = ((spriteTexture.height/2) - sprite.pivot.y) / sprite.pixelsPerUnit;
 
 		if (SpriteRenderer.flipX)
 		{
-			width *= -1;
-			xPos *= -1;
+			materialData.Width *= -1;
+			materialData.XPos *= -1;
 		}
 		
 		if (SpriteRenderer.flipY)
 		{
-			height *= -1;
-			yPos *= -1;
+			materialData.Height *= -1;
+			materialData.YPos *= -1;
 		}
 
-		transform.localScale = new Vector3(width, height, 1);
-		transform.localPosition = new Vector3(xPos, yPos, 0);
+		return materialData;
 	}
 
 	Texture GetSpriteTexture(Sprite sprite)

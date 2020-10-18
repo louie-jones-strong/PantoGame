@@ -13,6 +13,6 @@ public class SpriteToObjectLoader : MonoBehaviour
 
 		var prefab = Resources.Load<SpriteToObjectRenderer>("SpriteTo3D");
 		var temp = Instantiate<SpriteToObjectRenderer>(prefab, transform);
-		temp.SetImage(spriteRenderer, emissionOn:EmissionOn, rotateToCamOn:RotateToCamOn);
+		temp.Setup(spriteRenderer, emissionOn:EmissionOn, rotateToCamOn:RotateToCamOn);
     }
 }
