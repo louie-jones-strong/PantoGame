@@ -39,7 +39,6 @@ public class Agent : MonoBehaviour
 
 		LastVelocity = velocity;
 		LastPos = pos;
-		Logger.Log($"velocity: {velocity}");
     }
 
 	protected void UpdateVisuals(Vector3 acceleration, Vector3 velocity)
