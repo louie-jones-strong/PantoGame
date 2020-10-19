@@ -58,6 +58,7 @@ public class CameraController : MonoBehaviour
 	{
 		if (Instance == null)
 		{
+			Logger.LogError("AddTarget called but Instance is null");
 			return;
 		}
 		var trackerTarget = new TrackerTarget(toAdd, weighting);

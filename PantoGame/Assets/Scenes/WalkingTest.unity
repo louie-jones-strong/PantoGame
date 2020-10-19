@@ -315,14 +315,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c516abd923ee21b489da136b58b2da1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 2229273628982793845, guid: 8bd9cb8160bf82744b61a9c2925214db, type: 3}
   CurrentScript:
     SceneIndex: 0
     Scenes: []
   Toilet: {fileID: 1628503823}
-  Tasks: []
   Generator:
     Scenes: []
-  Player: {fileID: 2229273628982793845, guid: 8bd9cb8160bf82744b61a9c2925214db, type: 3}
   Audience: {fileID: 972033207960869405, guid: c32af72e559a1b24faf2c500ec0dba38, type: 3}
 --- !u!4 &153317277
 Transform:
@@ -1327,7 +1326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 860ffd09d729f1c4f9e9a3421ec90aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OpenBootScreen: 0
+  OpenBootScreen: 1
 --- !u!1001 &917751329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2155,7 +2154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891c75333a6d2da44aba2f0ab0c440da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TriggerDistance: 2
+  TriggerXDistance: 2
+  TriggerYDistance: 2
   LightToControl: {fileID: 1384300405}
   MinXAxis: -6
   MaxXAxis: 6

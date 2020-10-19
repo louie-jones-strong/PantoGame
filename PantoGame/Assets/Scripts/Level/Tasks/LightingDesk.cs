@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightingDesk : Task
+public class LightingDesk : Interactable
 {
 	[SerializeField] Light LightToControl;
 	[SerializeField] float MinXAxis;

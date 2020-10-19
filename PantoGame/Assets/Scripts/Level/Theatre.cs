@@ -2,51 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Theatre : MonoBehaviour
+public class Theatre : PlayerManger
 {
 	public static Theatre Instance;
 	public Transform Toilet;
-	public List<Task> Tasks = new List<Task>();
 
-	[SerializeField] PlayerAgent Player;
 	[SerializeField] AudienceAgent Audience;
-	Dictionary<int, PlayerAgent> Players = new Dictionary<int, PlayerAgent>();
 
 	Chair[] Chairs;
 	List<AudienceAgent> AudienceAgents = new List<AudienceAgent>();
 
 
-	void Awake()
+	protected override void Awake()
 	{
 		if (Instance == null)
 		{
 			Instance = this;
-			Chairs = GetComponentsInChildren<Chair>();
-			for (int i = 0; i < Chairs.Length; i++)
-			{
-				Instantiate(Audience);
-			}
 		}
-		else
-		{
-			Logger.LogError("Theatre.Instance already set");
-		}
+		base.Awake();
 	}
 
-	void Update()
+	protected override void Start()
 	{
-		for (int loop = 0; loop < SimpleInput.ControlSetCount; loop++)
-		{
-			if (!Players.ContainsKey(loop) &&
-				SimpleInput.GetInputActive(eInput.Dash, loop))
+		Chairs = GetComponentsInChildren<Chair>();
+		for (int i = 0; i < Chairs.Length; i++)
 			{
-				Players[loop] = Instantiate<PlayerAgent>(Player);
-				Players[loop].ControlType = loop;
+			var agent = Instantiate<AudienceAgent>(Audience);
+			agent.Setup(AddAudienceAgent(agent));
 			}
 		}
+
+	void OnDestroy()
+	{
+		Instance = null;
 	}
 
-	public Chair AddAudienceAgent(AudienceAgent agent)
+	Chair AddAudienceAgent(AudienceAgent agent)
 	{
 		Chair chair = null;
 		if(Chairs.Length > AudienceAgents.Count)

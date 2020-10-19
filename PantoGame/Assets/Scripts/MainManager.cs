@@ -37,11 +37,28 @@ public class MainManager : MonoBehaviour
 		for (int i = 0; i < SceneManager.sceneCount; i++)
 		{
 			var scene = SceneManager.GetSceneAt(i);
-			if (scene.name != Settings.BootScreenName)
+			if (scene.name != Settings.BootScreenName &&
+				scene.name != Settings.MenuScreenName)
 			{
 				yield return SceneManager.UnloadSceneAsync(scene);
 			}
 		}
+		AddScene(Settings.MenuScreenName);
+	}
+
+	public void TransToScreen(string screenTo, string sceneFrom="")
+	{
+		StartCoroutine(TransToScreenCo(screenTo, sceneFrom));
+	}
+
+	IEnumerator TransToScreenCo(string screenTo, string sceneFrom)
+	{
+		if (!string.IsNullOrEmpty(sceneFrom))
+		{
+			yield return StartCoroutine(SubtractSceneCo(sceneFrom));
+		}
+
+		yield return StartCoroutine(AddSceneCo(screenTo));
 	}
 
 

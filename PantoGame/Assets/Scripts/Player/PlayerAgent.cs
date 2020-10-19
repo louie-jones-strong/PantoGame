@@ -17,7 +17,7 @@ public class PlayerAgent : Agent
 	float TimeLeftOfDash;
 	float DashCoolDownLeft;
 
-	Task CurrentTask;
+	Interactable CurrentTask;
 
 	protected override void Start()
 	{
@@ -36,7 +36,7 @@ public class PlayerAgent : Agent
 			if (SimpleInput.IsInputInState(eInput.Interact, eButtonState.Pressed, index: ControlType))
 			{
 				float minDistance = float.MaxValue;
-				foreach (var task in Theatre.Instance.Tasks)
+				foreach (var task in Interactable.Interactables)
 				{
 					var distance = (transform.position-task.transform.position).magnitude;
 					if (distance <= minDistance && task.CanInteract(transform.position))

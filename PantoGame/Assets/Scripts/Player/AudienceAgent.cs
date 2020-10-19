@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class AudienceAgent : Agent
 {
 	public AudienceProfileData ProfileData;
-	Chair SetSeat;
+	public Chair SetSeat;
 	float BladderTime = 0;
 	eIntent AudienceIntent;
 
@@ -18,11 +18,10 @@ public class AudienceAgent : Agent
 		RandomWalk
 	}
 	
-	protected override void Start()
+	public void Setup(Chair chair)
 	{
-		SetSeat = Theatre.Instance.AddAudienceAgent(this);
+		SetSeat = chair;
 		CameraController.AddTarget(transform, weighting:Settings.AudienceCamWeighting);
-		base.Start();
 		BladderTime = ProfileData.BladderStartFill;
 	}
 
