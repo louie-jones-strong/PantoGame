@@ -13,7 +13,21 @@ public class AdditiveSceneManager : MonoBehaviour
 		{
 			if (OpenBootScreen)
 			{
-				StartCoroutine(MainManager.LoadBootCo());
+				StartCoroutine(LoadBootCo());
+			}
+		}
+	}
+
+	IEnumerator LoadBootCo()
+	{
+		yield return MainManager.AddSceneCo(Settings.BootScreenName);
+		for (int i = 0; i < SceneManager.sceneCount; i++)
+		{
+			var scene = SceneManager.GetSceneAt(i);
+			if (scene.name != Settings.BootScreenName &&
+				scene.name != Settings.MenuScreenName)
+			{
+				yield return SceneManager.UnloadSceneAsync(scene);
 			}
 		}
 	}

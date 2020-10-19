@@ -7,10 +7,10 @@ public class Menu : PlayerManger
 {
 	[SerializeField] MenuButton MenuButtonPrefab;
 
-	protected override void Awake()
+	protected override void Start()
 	{
 		MainMenu();
-		base.Awake();
+		base.Start();
 	}
 
 	void MainMenu()

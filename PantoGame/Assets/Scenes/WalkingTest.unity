@@ -1326,7 +1326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 860ffd09d729f1c4f9e9a3421ec90aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OpenBootScreen: 1
+  OpenBootScreen: 0
 --- !u!1001 &917751329
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class MainManager : MonoBehaviour
 		if (Instance == null)
 		{
 			Instance = this;
+			AddScene(Settings.MenuScreenName);
 		}
 		else
 		{
@@ -28,22 +29,6 @@ public class MainManager : MonoBehaviour
 			Debug.Log("Quitting");
 			Application.Quit();
 		}
-	}
-
-
-	public static IEnumerator LoadBootCo()
-	{
-		yield return AddSceneCo(Settings.BootScreenName);
-		for (int i = 0; i < SceneManager.sceneCount; i++)
-		{
-			var scene = SceneManager.GetSceneAt(i);
-			if (scene.name != Settings.BootScreenName &&
-				scene.name != Settings.MenuScreenName)
-			{
-				yield return SceneManager.UnloadSceneAsync(scene);
-			}
-		}
-		AddScene(Settings.MenuScreenName);
 	}
 
 	public void TransToScreen(string screenTo, string sceneFrom="")
@@ -68,7 +53,7 @@ public class MainManager : MonoBehaviour
 	{
 		Instance.StartCoroutine(AddSceneCo(scene));
 	}
-	static IEnumerator AddSceneCo(string scene)
+	public static IEnumerator AddSceneCo(string scene)
 	{
 		if (!SceneManager.GetSceneByName(scene).isLoaded)
 		{
@@ -80,7 +65,7 @@ public class MainManager : MonoBehaviour
 	{
 		Instance.StartCoroutine(SubtractSceneCo(scene));
 	}
-	static IEnumerator SubtractSceneCo(string scene)
+	public static IEnumerator SubtractSceneCo(string scene)
 	{
 		if (SceneManager.GetSceneByName(scene).isLoaded)
 		{
