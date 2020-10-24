@@ -46,7 +46,6 @@ public class Agent : MonoBehaviour
         RefreshPhysicsParts(acceleration);
 		PlayerAnimator.SetFloat("XV", velocity.x);
 		PlayerAnimator.SetFloat("YV", velocity.z);
-		PlayerAnimator.speed = Mathf.Clamp01(Mathf.Abs(velocity.x) / MaxMoveSpeed);
     }
 
     void RefreshPhysicsParts(Vector3 acceleration)

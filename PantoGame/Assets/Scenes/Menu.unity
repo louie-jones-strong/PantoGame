@@ -153,7 +153,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 1833327209}
-  TargetList: []
   MinZoom: 50
   MaxZoom: 50
   MaxTargetDistance: 100
@@ -161,6 +160,7 @@ MonoBehaviour:
   MaxXMove: 0
   MinYMove: 0
   MaxYMove: 0
+  TargetList: []
 --- !u!4 &215160601
 Transform:
   m_ObjectHideFlags: 0
