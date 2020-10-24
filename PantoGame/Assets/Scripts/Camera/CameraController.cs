@@ -7,8 +7,19 @@ public class CameraController : MonoBehaviour
 	public static CameraController Instance;
 	
 	public Camera Camera;
-	[SerializeField] List<TrackerTarget> TargetList;
+	float MoveSmoothTime = 0.5f;
+	[SerializeField] float MinZoom = 70;
+	[SerializeField] float MaxZoom = 20;
+	[SerializeField] float MaxTargetDistance = 50f;
 
+	[SerializeField] float MinXMove = -7.5f;
+	[SerializeField] float MaxXMove = 7.5f;
+
+	[SerializeField] float MinYMove = -7.5f;
+	[SerializeField] float MaxYMove = 7.5f;
+
+	[SerializeField] List<TrackerTarget> TargetList;
+	
 	[Serializable]
 	class TrackerTarget
 	{
@@ -22,16 +33,7 @@ public class CameraController : MonoBehaviour
 		}
 	}
 
-	float MoveSmoothTime = 0.5f;
-	[SerializeField] float MinZoom = 70;
-	[SerializeField] float MaxZoom = 20;
-	[SerializeField] float MaxTargetDistance = 50f;
-
-	[SerializeField] float MinXMove = -7.5f;
-	[SerializeField] float MaxXMove = 7.5f;
-
-	[SerializeField] float MinYMove = -7.5f;
-	[SerializeField] float MaxYMove = 7.5f;
+	float LargestWeight;
 
 
 	Vector3 Velocity;
@@ -64,6 +66,7 @@ public class CameraController : MonoBehaviour
 		var trackerTarget = new TrackerTarget(toAdd, weighting);
 
 		Instance.TargetList.Add(trackerTarget);
+		Instance.UpdateLargestWeight();
 	}
 
 	public static void RemoveTarget(Transform toRemove)
@@ -86,8 +89,20 @@ public class CameraController : MonoBehaviour
 				index += 1;
 			}
 		}
+		Instance.UpdateLargestWeight();
 	}
 
+	void UpdateLargestWeight()
+	{
+		LargestWeight = float.MaxValue;
+		foreach (var target in TargetList)
+		{
+			if (target.Weighting > LargestWeight)
+			{
+				LargestWeight = target.Weighting;
+			}
+		}
+	}
 
 	void LateUpdate()
 	{
@@ -130,10 +145,21 @@ public class CameraController : MonoBehaviour
 		float totalWeight = 0;
 		foreach (var target in TargetList)
 		{
-			center += target.Transform.position * target.Weighting;
-			totalWeight += target.Weighting;
+			if (CheckCutOff(target.Weighting))
+			{
+				center += target.Transform.position * target.Weighting;
+				totalWeight += target.Weighting;
+			}
 		}
-		return center / totalWeight;
+
+		if (totalWeight == 0)
+		{
+			return center;
+		}
+		else
+		{
+			return center / totalWeight;
+		}
 	}
 
 	float GetMaxDistanceFromCenter(Vector3 center)
@@ -141,14 +167,24 @@ public class CameraController : MonoBehaviour
 		float largestDistance = 0;
 		foreach (var target in TargetList)
 		{
-			var distance = (target.Transform.position - center).magnitude;
-			if (distance >= largestDistance)
+			if (CheckCutOff(target.Weighting))
 			{
-				largestDistance = distance;
+				var distance = (target.Transform.position - center).magnitude;
+				if (distance >= largestDistance)
+				{
+					largestDistance = distance;
+				}
 			}
 		}
 
 		return largestDistance;
+	}
+
+	bool CheckCutOff(float weighting)
+	{
+		return (LargestWeight > Settings.CamWeightingCutOff && 
+				weighting > Settings.CamWeightingCutOff) ||
+				LargestWeight >= weighting;
 	}
 
 }
