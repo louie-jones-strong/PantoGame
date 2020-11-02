@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpriteToObjectRenderer : RotateToCam
 {
@@ -10,6 +11,9 @@ public class SpriteToObjectRenderer : RotateToCam
 
 	[SerializeField] bool EmissionOn;
 	[SerializeField] bool RotateToCamOn;
+
+	Material CurrentMaterial;
+	Color CurrentColour = Color.white;
 
 
 	static Dictionary<string, MaterialData> MaterialCache = new Dictionary<string, MaterialData>();
@@ -44,6 +48,23 @@ public class SpriteToObjectRenderer : RotateToCam
 		UpdateMaterial();
 	}
 
+	public void SetColour(Color colour)
+	{
+		if (CurrentColour == colour)
+		{
+			return;
+		}
+		CurrentColour = colour;
+		UpdateMaterialColour();
+	}
+
+	void UpdateMaterialColour()
+	{
+		CurrentMaterial.color = CurrentColour;
+		CurrentMaterial.SetColor("_Color", CurrentColour);
+		CurrentMaterial.SetColor("_EmissionColor", CurrentColour);
+	}
+
 	void UpdateMaterial()
 	{
 		if (SpriteRenderer?.sprite == null)
@@ -67,12 +88,15 @@ public class SpriteToObjectRenderer : RotateToCam
 		}
 
 		var data = MaterialCache[texName];
-		FrontRenderer.material = data.Material;
-		BackRenderer.material = data.Material;
+		CurrentMaterial = new Material(data.Material);
+		FrontRenderer.material = CurrentMaterial;
+		BackRenderer.material = CurrentMaterial;
 
+		UpdateMaterialColour();
 
 		transform.localScale = new Vector3(data.Width, data.Height, 1);
 		transform.localPosition = new Vector3(data.XPos, data.YPos, 0);
+		LastSprite = sprite;
 	}
 
 	MaterialData MakeNewMaterial()

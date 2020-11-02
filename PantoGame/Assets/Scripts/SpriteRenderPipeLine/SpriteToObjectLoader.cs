@@ -5,6 +5,7 @@ public class SpriteToObjectLoader : MonoBehaviour
 {
 	[SerializeField] bool EmissionOn;
 	[SerializeField] bool RotateToCamOn;
+	public SpriteToObjectRenderer Renderer {get; private set;}
 	
     void Awake()
     {
@@ -12,7 +13,7 @@ public class SpriteToObjectLoader : MonoBehaviour
 		spriteRenderer.enabled = false;
 
 		var prefab = Resources.Load<SpriteToObjectRenderer>("SpriteTo3D");
-		var temp = Instantiate<SpriteToObjectRenderer>(prefab, transform);
-		temp.Setup(spriteRenderer, emissionOn:EmissionOn, rotateToCamOn:RotateToCamOn);
+		Renderer = Instantiate<SpriteToObjectRenderer>(prefab, transform);
+		Renderer.Setup(spriteRenderer, emissionOn:EmissionOn, rotateToCamOn:RotateToCamOn);
     }
 }

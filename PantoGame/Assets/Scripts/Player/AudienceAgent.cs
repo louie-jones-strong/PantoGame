@@ -18,10 +18,15 @@ public class AudienceAgent : Agent
 		RandomWalk
 	}
 	
+	protected override void Start()
+	{
+		CameraController.AddTarget(transform, weighting:Settings.AudienceCamWeighting);
+		base.Start();
+	}
+	
 	public void Setup(Chair chair)
 	{
 		SetSeat = chair;
-		CameraController.AddTarget(transform, weighting:Settings.AudienceCamWeighting);
 		BladderTime = ProfileData.BladderStartFill;
 	}
 

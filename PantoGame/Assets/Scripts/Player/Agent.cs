@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using System;
 
 public class Agent : MonoBehaviour
 {
@@ -11,6 +10,7 @@ public class Agent : MonoBehaviour
 	[SerializeField] protected Transform BodyCenter;
 	[SerializeField] protected Animator PlayerAnimator;
 	[SerializeField] protected float MaxMoveSpeed = 7.5f;
+	[SerializeField] protected List<SpriteToObjectLoader> PartsToColour;
     protected PhysicsRotation[] PhysicsParts;
 
 	Vector3 LastVelocity;
@@ -19,6 +19,12 @@ public class Agent : MonoBehaviour
     protected virtual void Start()
     {
         PhysicsParts = GetComponentsInChildren<PhysicsRotation>();
+		
+		var colour = Random.ColorHSV();
+		foreach (var part in PartsToColour)
+		{
+			part.Renderer.SetColour(colour);
+		}
     }
 
 	void Update()
