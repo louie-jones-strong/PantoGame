@@ -9,14 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4110958259888655842}
-  - component: {fileID: 2229273628982793845}
+  - component: {fileID: 5997939789808853774}
   - component: {fileID: 4110958259888655840}
   - component: {fileID: 221350471689225714}
   - component: {fileID: 6646928866572163647}
   - component: {fileID: 4861688044921338700}
   - component: {fileID: 1679723919424694261}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Actor
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 33, y: 0, z: 0}
---- !u!114 &2229273628982793845
+--- !u!114 &5997939789808853774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4110958259888655843}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c81de294b44ddf4e81f3f25f8ddac29, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d9da2af3f9354648a2fa9f05ee94449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   NavMeshAgent: {fileID: 1679723919424694261}
@@ -61,12 +61,6 @@ MonoBehaviour:
   - {fileID: 6215781569488478385}
   - {fileID: 6747839729452643745}
   - {fileID: 6747839729452643745}
-  ControlType: -1
-  Speed: 50
-  DashSpeedMultiplier: 2
-  DashCoolDown: 1.5
-  DashAffectTime: 0.5
-  Drag: 3.5
 --- !u!95 &4110958259888655840
 Animator:
   serializedVersion: 3
