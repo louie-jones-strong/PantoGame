@@ -24,7 +24,7 @@ public class PlayerManger : MonoBehaviour
 			if (!Players.ContainsKey(loop) &&
 				SimpleInput.GetInputActive(eInput.Dash, loop))
 			{
-				Players[loop] = Instantiate<PlayerAgent>(Player);
+				Players[loop] = Instantiate<PlayerAgent>(Player, transform);
 				Players[loop].ControlType = loop;
 			}
 		}

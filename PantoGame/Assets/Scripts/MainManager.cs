@@ -12,13 +12,26 @@ public class MainManager : MonoBehaviour
 		if (Instance == null)
 		{
 			Instance = this;
-			AddScene(Settings.MenuScreenName);
+			StartCoroutine(BootCo());
 		}
 		else
 		{
 			enabled = false;
 			return;
 		}
+	}
+
+	IEnumerator BootCo()
+	{
+		for (int i = 0; i < SceneManager.sceneCount; i++)
+		{
+			var scene = SceneManager.GetSceneAt(i);
+			if (scene.name != Settings.BootScreenName)
+			{
+				yield return SceneManager.UnloadSceneAsync(scene);
+			}
+		}
+		AddScene(Settings.MenuScreenName);
 	}
 
 	void Update()

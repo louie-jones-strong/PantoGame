@@ -27,7 +27,7 @@ public class Theatre : PlayerManger
 		Chairs = GetComponentsInChildren<Chair>();
 		for (int i = 0; i < Chairs.Length; i++)
 			{
-			var agent = Instantiate<AudienceAgent>(Audience);
+			var agent = Instantiate<AudienceAgent>(Audience, transform);
 			agent.Setup(AddAudienceAgent(agent));
 			}
 		}
