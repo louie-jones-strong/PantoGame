@@ -37,39 +37,26 @@ public class MaterialCache: MonoBehaviour
 		Logger.Log($"LoadSpritesInFolder called with {path}");
 
 		var files = Directory.GetFiles(path);
-
 		foreach (var file in files)
 		{
-			if(File.Exists(file))
-            {
-                var items = UnityEditor.AssetDatabase.LoadAllAssetsAtPath(file);
-				foreach (var item in items)
-				{
-					var sprite = item as Sprite;
-					if (sprite != null)
-					{
-						GetMaterial(sprite);
-					}
-				}
-            }
-			else
+			var items = UnityEditor.AssetDatabase.LoadAllAssetsAtPath(file);
+			foreach (var item in items)
 			{
-				Logger.LogError($"Path: {file} not a file or a folder");
+				var sprite = item as Sprite;
+				if (sprite != null)
+				{
+					GetMaterial(sprite);
+				}
 			}
 		}
 
 		files = Directory.GetDirectories(path);
-
 		foreach (var file in files)
 		{
 			if(Directory.Exists(file))
             {
                 LoadSpritesInFolder(file);
             }
-			else
-			{
-				Logger.LogError($"Path: {file} not a file or a folder");
-			}
 		}
 	}
 
