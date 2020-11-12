@@ -28,36 +28,6 @@ public class MaterialCache: MonoBehaviour
 			return;
 		}
 		Instance = this;
-
-		LoadSpritesInFolder("Assets/Sprites");
-	}
-
-	void LoadSpritesInFolder(string path)
-	{
-		Logger.Log($"LoadSpritesInFolder called with {path}");
-
-		var files = Directory.GetFiles(path);
-		foreach (var file in files)
-		{
-			var items = UnityEditor.AssetDatabase.LoadAllAssetsAtPath(file);
-			foreach (var item in items)
-			{
-				var sprite = item as Sprite;
-				if (sprite != null)
-				{
-					GetMaterial(sprite);
-				}
-			}
-		}
-
-		files = Directory.GetDirectories(path);
-		foreach (var file in files)
-		{
-			if(Directory.Exists(file))
-            {
-                LoadSpritesInFolder(file);
-            }
-		}
 	}
 
 	void OnDestroy()
