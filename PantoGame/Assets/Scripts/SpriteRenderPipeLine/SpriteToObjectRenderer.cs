@@ -15,17 +15,6 @@ public class SpriteToObjectRenderer : RotateToCam
 	Material CurrentMaterial;
 	Color CurrentColour = Color.white;
 
-
-	static Dictionary<string, MaterialData> MaterialCache = new Dictionary<string, MaterialData>();
-	class MaterialData
-	{
-		public Material Material;
-		public float Width;
-		public float Height;
-		public float XPos;
-		public float YPos;
-	}
-
 	SpriteRenderer SpriteRenderer;
 	Sprite LastSprite = null;
 
@@ -58,13 +47,6 @@ public class SpriteToObjectRenderer : RotateToCam
 		UpdateMaterialColour();
 	}
 
-	void UpdateMaterialColour()
-	{
-		CurrentMaterial.color = CurrentColour;
-		CurrentMaterial.SetColor("_Color", CurrentColour);
-		CurrentMaterial.SetColor("_EmissionColor", CurrentColour);
-	}
-
 	void UpdateMaterial()
 	{
 		if (SpriteRenderer?.sprite == null)
@@ -78,85 +60,45 @@ public class SpriteToObjectRenderer : RotateToCam
 			return;
 		}
 
-		var texName = sprite.name;
-		if (!MaterialCache.ContainsKey(texName))
-		{
-			var newMaterial = MakeNewMaterial();
-			newMaterial.Material.name = texName;
-
-			MaterialCache[texName] = newMaterial;
-		}
-
-		var data = MaterialCache[texName];
+		var data = MaterialCache.GetMaterial(sprite);
+		
 		CurrentMaterial = new Material(data.Material);
+		
 		FrontRenderer.material = CurrentMaterial;
 		BackRenderer.material = CurrentMaterial;
 
 		UpdateMaterialColour();
+
+		if (SpriteRenderer.flipX)
+		{
+			data.Width *= -1;
+			data.XPos *= -1;
+		}
+		
+		if (SpriteRenderer.flipY)
+		{
+			data.Height *= -1;
+			data.YPos *= -1;
+		}
 
 		transform.localScale = new Vector3(data.Width, data.Height, 1);
 		transform.localPosition = new Vector3(data.XPos, data.YPos, 0);
 		LastSprite = sprite;
 	}
 
-	MaterialData MakeNewMaterial()
+	void UpdateMaterialColour()
 	{
-		var sprite = SpriteRenderer.sprite;
-		var newMaterial = new Material(FrontRenderer.material);
-		var materialData = new MaterialData();
-		materialData.Material = newMaterial;
+		CurrentMaterial.color = CurrentColour;
+		CurrentMaterial.SetColor("_Color", CurrentColour);
 
 		if (EmissionOn)
 		{
-			newMaterial.EnableKeyword("_EMISSION");
+			CurrentMaterial.EnableKeyword("_EMISSION");
 		}
 		else
 		{
-			newMaterial.DisableKeyword("_EMISSION");
+			CurrentMaterial.DisableKeyword("_EMISSION");
 		}
-
-		Texture spriteTexture = GetSpriteTexture(sprite);
-
-		if (spriteTexture == null)
-		{
-			return materialData;
-		}
-		
-		newMaterial.mainTexture = spriteTexture;
-		newMaterial.SetTexture("_EmissionMap", spriteTexture);
-
-		//set pos
-		materialData.Width = spriteTexture.width / sprite.pixelsPerUnit;
-		materialData.Height = spriteTexture.height / sprite.pixelsPerUnit;
-
-		materialData.XPos = ((spriteTexture.width/2) - sprite.pivot.x) / sprite.pixelsPerUnit;
-		materialData.YPos = ((spriteTexture.height/2) - sprite.pivot.y) / sprite.pixelsPerUnit;
-
-		if (SpriteRenderer.flipX)
-		{
-			materialData.Width *= -1;
-			materialData.XPos *= -1;
-		}
-		
-		if (SpriteRenderer.flipY)
-		{
-			materialData.Height *= -1;
-			materialData.YPos *= -1;
-		}
-
-		return materialData;
-	}
-
-	Texture GetSpriteTexture(Sprite sprite)
-	{
-		var spriteRect = sprite.rect;
-		int width = (int)spriteRect.width;
-		int height = (int)spriteRect.height;
-
-		var spriteTexture = new Texture2D(width, height, sprite.texture.format, false);
-
-		Graphics.CopyTexture(sprite.texture, 0, 0, (int)spriteRect.x, (int)spriteRect.y, width, height, spriteTexture, 0, 0, 0, 0);
-
-		return spriteTexture;
+		CurrentMaterial.SetColor("_EmissionColor", CurrentColour);
 	}
 }

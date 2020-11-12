@@ -44,6 +44,8 @@ public class MainManager : MonoBehaviour
 		}
 	}
 
+#region screen stuff
+
 	public void TransToScreen(string screenTo, string sceneFrom="")
 	{
 		StartCoroutine(TransToScreenCo(screenTo, sceneFrom));
@@ -58,8 +60,6 @@ public class MainManager : MonoBehaviour
 
 		yield return StartCoroutine(AddSceneCo(screenTo));
 	}
-
-
 
 #region private Screen stuff
 	static void AddScene(string scene)
@@ -85,5 +85,6 @@ public class MainManager : MonoBehaviour
 			yield return SceneManager.UnloadSceneAsync(scene);
 		}
 	}
+#endregion
 #endregion
 }
