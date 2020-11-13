@@ -32,6 +32,7 @@ public class MainManager : MonoBehaviour
 			}
 		}
 		AddScene(Settings.MenuScreenName);
+		AddScene(Settings.HudScreenName);
 	}
 
 	void Update()

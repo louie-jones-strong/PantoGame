@@ -11,5 +11,6 @@ public class Settings
 
 	public const string BootScreenName = "Boot";
 	public const string MenuScreenName = "Menu";
+	public const string HudScreenName = "Hud";
 	public const string WalkingTestScreenName = "WalkingTest";
 }

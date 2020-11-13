@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WalkingTest.unity
     guid: 9c7e0a2b3d85af847acd5866240f9b57
+  - enabled: 1
+    path: Assets/Scenes/Hud.unity
+    guid: d682e96904a92ca4c98d90fc9ae5e3a9
   m_configObjects: {}
