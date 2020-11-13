@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LightingDesk : Interactable
 {
-	[SerializeField] Light LightToControl;
+	public Light LightToControl;
 	[SerializeField] float MinXAxis;
 	[SerializeField] float MaxXAxis;
 	[SerializeField] float MinYAxis;

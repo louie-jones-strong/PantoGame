@@ -14,6 +14,47 @@ public class ActorAgent : Agent
 
 	void Update()
     {
+		if (CurrentTask != null)
+		{
+			
+			if (CurrentTask.EndConditionsMet())
+			{
+				CurrentTask.SetState(eTaskState.Completed);
+			}
+		}
+
+		if (CurrentTask == null || CurrentTask.State == eTaskState.Completed)
+		{
+			CurrentTask = GetTarget();
+			if (CurrentTask != null)
+			{
+				NavMeshAgent.SetDestination(CurrentTask.Target.position);
+			}
+		}
+		
 		UpdateVisuals();
     }
+
+	ActorTask GetTarget()
+	{
+		if (Theatre.Instance.CurrentScript?.CurrentScene == null)
+		{
+			return null;
+		}
+
+		var currentScene = Theatre.Instance.CurrentScript.CurrentScene;
+		foreach (var task in currentScene.Tasks)
+		{
+			var actorTask = task as ActorTask;
+
+			if (actorTask != null &&
+				actorTask.State != eTaskState.Completed &&
+				actorTask.StartConditionsMet() &&
+				actorTask.Actor == this)
+			{
+				return actorTask;
+			}
+		}
+		return null;
+	}
 }

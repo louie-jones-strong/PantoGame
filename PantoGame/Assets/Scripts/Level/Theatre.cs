@@ -5,7 +5,9 @@ using UnityEngine;
 public class Theatre : PlayerManger
 {
 	public static Theatre Instance;
+	public Script CurrentScript {get; private set;}
 	public Transform Toilet;
+	public ScriptGenerator Generator;
 
 	[SerializeField] AudienceAgent Audience;
 
@@ -19,6 +21,8 @@ public class Theatre : PlayerManger
 		{
 			Instance = this;
 		}
+		CurrentScript = Generator.CreateScript();
+		
 		base.Awake();
 	}
 
@@ -26,11 +30,11 @@ public class Theatre : PlayerManger
 	{
 		Chairs = GetComponentsInChildren<Chair>();
 		for (int i = 0; i < Chairs.Length; i++)
-			{
+		{
 			var agent = Instantiate<AudienceAgent>(Audience, transform);
 			agent.Setup(AddAudienceAgent(agent));
-			}
 		}
+	}
 
 	void OnDestroy()
 	{
