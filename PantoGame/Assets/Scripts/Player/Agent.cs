@@ -13,6 +13,8 @@ public class Agent : MonoBehaviour
 	[SerializeField] protected List<SpriteToObjectLoader> PartsToColour;
     protected PhysicsRotation[] PhysicsParts;
 
+	public Color Colour;
+
 	Vector3 LastVelocity;
 	Vector3 LastPos;
     
@@ -20,10 +22,10 @@ public class Agent : MonoBehaviour
     {
         PhysicsParts = GetComponentsInChildren<PhysicsRotation>();
 		
-		var colour = Random.ColorHSV();
+		Colour = Random.ColorHSV();
 		foreach (var part in PartsToColour)
 		{
-			part.Renderer.SetColour(colour);
+			part.Renderer.SetColour(Colour);
 		}
     }
 
