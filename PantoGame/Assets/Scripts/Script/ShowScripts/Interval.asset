@@ -29,7 +29,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4acb81a97ea3d4382fba3b0e9be0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TaskId: 
+  TaskId: test2
   StartRequiredActionStates: []
   EndRequiredActionStates: []
 --- !u!114 &11400000
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d176c52ee1f7ba94d93c1dd3ac791d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TaskId: 
+  TaskId: temp
   StartRequiredActionStates: []
   EndRequiredActionStates: []
   Target: {fileID: 0}
