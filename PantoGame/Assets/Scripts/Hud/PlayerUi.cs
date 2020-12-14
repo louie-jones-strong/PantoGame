@@ -12,7 +12,7 @@ public class PlayerUi : MonoBehaviour
 
 	void Update()
 	{
-		Name.text = $"ControlType: {ControlType}";
+		Name.text = $"Player: {ControlType}";
 		var playerActive = PlayerManger.Players.TryGetValue(ControlType, out var player);
 		playerActive = playerActive && player != null;
 
