@@ -317,7 +317,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 2229273628982793845, guid: 8bd9cb8160bf82744b61a9c2925214db, type: 3}
   Toilet: {fileID: 1628503823}
-  Generator: {fileID: 11400000, guid: 30dd3e07549334141a8846322c04fb2d, type: 2}
+  Generator:
+    SceneIndex: 0
+    Scenes:
+    - SceneName: test
+      Tasks:
+      - {fileID: 840548897}
   Audience: {fileID: 972033207960869405, guid: c32af72e559a1b24faf2c500ec0dba38, type: 3}
 --- !u!4 &153317277
 Transform:
@@ -1286,6 +1291,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2619337244408616859, guid: 4c804405daf25424f864466d9fc09907, type: 3}
   m_PrefabInstance: {fileID: 2096081619}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &840548897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4acb81a97ea3d4382fba3b0e9be0e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskId: temp
+  StartRequiredActionStates: []
+  EndRequiredActionStates: []
 --- !u!1001 &841129686
 PrefabInstance:
   m_ObjectHideFlags: 0

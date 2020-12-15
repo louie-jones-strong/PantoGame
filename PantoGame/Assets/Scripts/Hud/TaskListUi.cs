@@ -24,7 +24,7 @@ public class TaskListUi : MonoBehaviour
 
 		var scene = Theatre.Instance.CurrentScript.CurrentScene;
 
-		SceneName.text = $"Scene: {scene.name}";
+		SceneName.text = $"Scene: {scene}";
 
 		HideAllPoolItems();
 

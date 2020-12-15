@@ -7,7 +7,7 @@ public class Theatre : PlayerManger
 	public static Theatre Instance;
 	public Script CurrentScript {get; private set;}
 	public Transform Toilet;
-	public ScriptGenerator Generator;
+	public Script Generator = new Script();//todo make this Generator not script
 
 	[SerializeField] AudienceAgent Audience;
 
@@ -21,7 +21,8 @@ public class Theatre : PlayerManger
 		{
 			Instance = this;
 		}
-		CurrentScript = Generator.CreateScript();
+		
+		CurrentScript = Generator;
 		
 		base.Awake();
 	}
