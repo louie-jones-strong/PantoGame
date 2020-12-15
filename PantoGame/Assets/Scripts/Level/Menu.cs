@@ -16,7 +16,11 @@ public class Menu : PlayerManger
 
 	void MainMenu()
 	{
-		AddButton("Play", true, LevelPickerMenu);
+		var pos = Vector2.zero;
+
+		AddButton("Play", true, LevelPickerMenu, pos);
+
+		pos.y += 10;
 	}
 
 	void LevelPickerMenu()
@@ -31,11 +35,9 @@ public class Menu : PlayerManger
 		Busy = true;
 	}
 
-
-
-	void AddButton(string label, bool triggerNeedsEveryone, Action onClick, float xSize=10, float ySize=4)
+	void AddButton(string label, bool triggerNeedsEveryone, Action onClick, Vector2 pos, float xSize=10, float ySize=4)
 	{
 		var button = Instantiate<MenuButton>(MenuButtonPrefab, transform);
-		button.Setup(this, label, triggerNeedsEveryone, xSize, ySize, onClick);
+		button.Setup(this, label, triggerNeedsEveryone, pos, xSize, ySize, onClick);
 	}
 }

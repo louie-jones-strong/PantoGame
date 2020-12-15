@@ -17,7 +17,7 @@ public class MenuButton : Interactable
 	Menu Menu;
 	float LoadAmount;
 
-	public void Setup(Menu menu, string label, bool triggerNeedsEveryone, float xSize, float ySize, Action onClick=null)
+	public void Setup(Menu menu, string label, bool triggerNeedsEveryone, Vector2 Pos, float xSize, float ySize, Action onClick=null)
 	{
 		Menu = menu;
 		TriggerNeedsEveryone = triggerNeedsEveryone;
@@ -31,6 +31,8 @@ public class MenuButton : Interactable
 
 		Root.localScale = new Vector3(xSize, ySize, 0);
 		LoadingBar.localPosition = new Vector3(0, -(ySize-1), 0);
+
+		transform.position = new Vector3(Pos.x, 0, Pos.y);
 	}
 
 	void Update()
