@@ -17,9 +17,12 @@ public class Scene
 		Tasks = new List<Task>();
 	}
 
-	public Scene(Scene sceneToCopy)
+	public void Update()
 	{
-		Tasks = sceneToCopy.Tasks;
+		foreach (var task in Tasks)
+		{
+			task.Update();
+		}
 	}
 
 #if UNITY_EDITOR

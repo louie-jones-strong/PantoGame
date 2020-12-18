@@ -11,4 +11,12 @@ public class Script
 
 	//todo add textures to add to theater walls
 	//todo add costume sprites
+
+	public void Update()
+	{
+		foreach (var scene in Scenes)
+		{
+			scene.Update();
+		}
+	}
 }

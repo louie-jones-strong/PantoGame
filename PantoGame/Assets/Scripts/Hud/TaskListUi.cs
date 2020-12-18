@@ -9,6 +9,7 @@ public class TaskListUi : MonoBehaviour
 	[SerializeField] Text SceneName;
 
 	List<TaskItemUi> TaskItemPool = new List<TaskItemUi>();
+	List<Task> LastTask;
 	
 	void Awake()
 	{
@@ -26,6 +27,15 @@ public class TaskListUi : MonoBehaviour
 
 		SceneName.text = $"Scene: {scene}";
 
+		if (LastTask != scene.Tasks)
+		{
+			UpdateTasks(scene);
+			LastTask = scene.Tasks;
+		}
+	}
+
+	void UpdateTasks(Scene scene)
+	{
 		HideAllPoolItems();
 
 		foreach (var task in scene.Tasks)

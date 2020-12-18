@@ -29,12 +29,20 @@ public class Theatre : PlayerManger
 
 	protected override void Start()
 	{
+		base.Start();
+
 		Chairs = GetComponentsInChildren<Chair>();
 		for (int i = 0; i < Chairs.Length; i++)
 		{
 			var agent = Instantiate<AudienceAgent>(Audience, transform);
 			agent.Setup(AddAudienceAgent(agent));
 		}
+	}
+
+	protected override void Update()
+	{
+		base.Update();
+		CurrentScript.Update();
 	}
 
 	void OnDestroy()

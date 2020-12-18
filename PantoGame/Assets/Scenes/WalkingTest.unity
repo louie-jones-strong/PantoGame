@@ -323,7 +323,7 @@ MonoBehaviour:
     Scenes:
     - SceneName: test
       Tasks:
-      - {fileID: 840548897}
+      - {fileID: 753536815}
   Audience: {fileID: 972033207960869405, guid: c32af72e559a1b24faf2c500ec0dba38, type: 3}
 --- !u!4 &153317277
 Transform:
@@ -929,6 +929,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6930382988276659813, guid: 94641faea85378e4981884964526d3df, type: 3}
+--- !u!114 &753536815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a4c380a927bae43909bf249c588681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskId: Move Light
+  StartRequiredActionStates: []
+  EndRequiredActionStates: []
+  Target: {fileID: 224036009}
+  Light: {fileID: 1508095817}
 --- !u!4 &778977137 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2619337244408616859, guid: 4c804405daf25424f864466d9fc09907, type: 3}
@@ -1321,21 +1338,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2619337244408616859, guid: 4c804405daf25424f864466d9fc09907, type: 3}
   m_PrefabInstance: {fileID: 2096081619}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &840548897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c4acb81a97ea3d4382fba3b0e9be0e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskId: temp
-  StartRequiredActionStates: []
-  EndRequiredActionStates: []
 --- !u!1001 &841129686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2287,7 +2289,7 @@ MonoBehaviour:
   LightToControl: {fileID: 1384300405}
   MinXAxis: -6
   MaxXAxis: 6
-  MinYAxis: 15
+  MinYAxis: 10
   MaxYAxis: 22
   Speed: 5
 --- !u!1001 &1520820958

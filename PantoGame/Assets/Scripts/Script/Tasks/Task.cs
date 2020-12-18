@@ -72,7 +72,30 @@ public class Task : ScriptableObject
 
 	public void SetState(eTaskState newState)
 	{
+		if (State == newState)
+		{
+			return;
+		}
+
+		if (State == eTaskState.Completed)
+		{
+			return;
+		}
+
+		Logger.Log($"{this} set state {State} -> {newState}");
 		State = newState;
+	}
+
+	public void Update()
+	{
+		if (EndConditionsMet())
+		{
+			SetState(eTaskState.Completed);
+		}
+		else if (StartConditionsMet())
+		{
+			SetState(eTaskState.NotStarted);
+		}
 	}
 
 #if UNITY_EDITOR

@@ -16,7 +16,7 @@ public class PlayerManger : MonoBehaviour
 
 	}
 
-	void Update()
+	protected virtual void Update()
 	{
 		for (int loop = 0; loop < SimpleInput.ControlSetCount; loop++)
 		{

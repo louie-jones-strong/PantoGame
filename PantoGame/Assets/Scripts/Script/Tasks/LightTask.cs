@@ -15,7 +15,10 @@ public class LightTask : Task
 
 	public override bool EndConditionsMet()
 	{
-		bool withinRange = (Light.LightToControl.transform.position - Target.transform.position).magnitude <= 2;
+		var delta = Light.LightToControl.transform.position - Target.transform.position;
+
+		var distance = (new Vector2(delta.x, delta.z)).magnitude;
+		bool withinRange = distance <= 2;
 		return withinRange && base.EndConditionsMet();
 	}
 

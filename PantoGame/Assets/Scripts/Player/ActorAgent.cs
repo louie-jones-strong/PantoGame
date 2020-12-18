@@ -14,15 +14,6 @@ public class ActorAgent : Agent
 
 	void Update()
     {
-		if (CurrentTask != null)
-		{
-			
-			if (CurrentTask.EndConditionsMet())
-			{
-				CurrentTask.SetState(eTaskState.Completed);
-			}
-		}
-
 		if (CurrentTask == null || CurrentTask.State == eTaskState.Completed)
 		{
 			CurrentTask = GetTarget();
