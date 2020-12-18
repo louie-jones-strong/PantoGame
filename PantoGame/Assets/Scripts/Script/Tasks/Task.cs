@@ -9,7 +9,8 @@ using UnityEditor;
 [Serializable]
 public enum eTaskState
 {
-	NotStarted,
+	CannotStart,
+	CanStarted,
 	InProgress,
 	Completed
 }
@@ -26,6 +27,7 @@ public class Task : ScriptableObject
 {
 	public eTaskState State {get; private set;}
 	public string TaskId;
+	public PlayerAgent PlayerDoingTask;
 
 	public List<TaskStateRequirement> StartRequiredActionStates = new List<TaskStateRequirement>();
 	public List<TaskStateRequirement> EndRequiredActionStates = new List<TaskStateRequirement>();
@@ -91,10 +93,16 @@ public class Task : ScriptableObject
 		if (EndConditionsMet())
 		{
 			SetState(eTaskState.Completed);
+			PlayerDoingTask = null;
 		}
 		else if (StartConditionsMet())
 		{
-			SetState(eTaskState.NotStarted);
+			SetState(eTaskState.CanStarted);
+		}
+		else
+		{
+			SetState(eTaskState.CannotStart);
+			PlayerDoingTask = null;
 		}
 	}
 

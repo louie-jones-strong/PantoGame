@@ -7,6 +7,7 @@ public class TaskItemUi : MonoBehaviour
 {
 	[SerializeField] Text SceneName;
 	[SerializeField] Animator Animator;
+	[SerializeField] PlayerIcon PlayerIcon;
 
 	Task Task;
 
@@ -15,6 +16,16 @@ public class TaskItemUi : MonoBehaviour
 		Task = task;
 		gameObject.SetActive(true);
 		SceneName.text = Task.TaskId;
+
+		if (Task.PlayerDoingTask == null)
+		{
+			PlayerIcon.gameObject.SetActive(false);
+		}
+		else
+		{
+			PlayerIcon.gameObject.SetActive(true);
+			PlayerIcon.SetIcon(Task.PlayerDoingTask);
+		}
 	}
 
 	void Update()

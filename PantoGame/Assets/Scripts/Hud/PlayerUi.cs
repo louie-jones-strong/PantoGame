@@ -9,6 +9,7 @@ public class PlayerUi : MonoBehaviour
 	[SerializeField] Text Name;
 	[SerializeField] Animator AnimatorUi;
 	[SerializeField] Image BackGround;
+	[SerializeField] PlayerIcon PlayerIcon;
 
 	void Update()
 	{
@@ -22,5 +23,6 @@ public class PlayerUi : MonoBehaviour
 		{
 			BackGround.color = player.Colour;
 		}
+		PlayerIcon.SetIcon(player);
 	}
 }
