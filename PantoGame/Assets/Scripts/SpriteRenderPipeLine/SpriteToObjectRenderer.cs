@@ -61,7 +61,12 @@ public class SpriteToObjectRenderer : RotateToCam
 		}
 
 		var data = MaterialCache.GetMaterial(sprite);
-		
+		if (data == null)
+		{
+			Logger.LogWarning($"GetMaterial returned null");
+			return;
+		}
+
 		CurrentMaterial = new Material(data.Material);
 		
 		FrontRenderer.material = CurrentMaterial;
@@ -88,6 +93,12 @@ public class SpriteToObjectRenderer : RotateToCam
 
 	void UpdateMaterialColour()
 	{
+		if (CurrentMaterial == null)
+		{
+			Logger.LogWarning($"CurrentColour == null");
+			return;
+		}
+
 		CurrentMaterial.color = CurrentColour;
 		CurrentMaterial.SetColor("_Color", CurrentColour);
 

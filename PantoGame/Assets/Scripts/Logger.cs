@@ -19,10 +19,7 @@ public class Logger
 
 	public static void LogWarning(string message, Object context=null)
 	{
-		if (LoggingAllowed)
-		{
-			Debug.LogWarning(message, context);
-		}
+		Debug.LogWarning(message, context);
 	}
 
 	public static void LogError(string message, Object context=null)

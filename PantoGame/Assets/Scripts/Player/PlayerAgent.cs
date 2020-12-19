@@ -63,7 +63,7 @@ public class PlayerAgent : Agent
 		
 		UpdateVisuals(acceleration, Velocity);
 		TryHideObjectsHiddingPlayer();
-
+		base.Update();
     }
 
 	Vector3 UpdateMovement()

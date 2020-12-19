@@ -37,6 +37,11 @@ public class MaterialCache: MonoBehaviour
 
 	public static MaterialData GetMaterial(Sprite sprite)
 	{
+		if (Instance == null)
+		{
+			return null;
+		}
+
 		var key = sprite.name;
 		if (!Instance.Cache.ContainsKey(key))
 		{

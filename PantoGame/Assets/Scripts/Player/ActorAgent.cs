@@ -24,6 +24,7 @@ public class ActorAgent : Agent
 		}
 		
 		UpdateVisuals();
+		base.Update();
     }
 
 	ActorTask GetTarget()

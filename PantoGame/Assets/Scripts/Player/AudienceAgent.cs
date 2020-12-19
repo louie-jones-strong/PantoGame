@@ -66,6 +66,7 @@ public class AudienceAgent : Agent
 			BladderTime = 0;
 		}
 		UpdateVisuals();
+		base.Update();
     }
 
 	eIntent GetIntent()
