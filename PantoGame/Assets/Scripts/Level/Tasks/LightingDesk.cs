@@ -11,12 +11,31 @@ public class LightingDesk : Interactable
 	[SerializeField] float MaxYAxis;
 	[SerializeField] float Speed = 5;
 	
-	public override void Interact(int controlIndex)
+	public override void StartInteraction(PlayerAgent playerAgent)
 	{
+		CameraController.AddTarget(LightToControl.transform, 100);
+		base.StartInteraction(playerAgent);
+	}
+
+	public override void EndInteraction()
+	{
+		CameraController.RemoveTarget(LightToControl.transform);
+		base.EndInteraction();
+	}
+
+	protected void Update()
+	{
+		base.Update();
+
+		if (CurrentUser == null)
+		{
+			return;
+		}
+
 		var velocity = Vector3.zero;
 
-		velocity.z = -SimpleInput.GetInputValue(eInput.XAxis, index: controlIndex) * Speed;
-		velocity.x = SimpleInput.GetInputValue(eInput.YAxis, index: controlIndex) * Speed;
+		velocity.z = -SimpleInput.GetInputValue(eInput.XAxis, index: CurrentUser.ControlType) * Speed;
+		velocity.x = SimpleInput.GetInputValue(eInput.YAxis, index: CurrentUser.ControlType) * Speed;
 
 		MoveLight(velocity);
 	}

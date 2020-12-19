@@ -8,14 +8,22 @@ public class Interactable : MonoBehaviour
 
 	[SerializeField] protected float TriggerXDistance = 2;
 	[SerializeField] protected float TriggerYDistance = 2;
+	
+	public PlayerAgent CurrentUser { get; private set; }
 
 	protected void Awake()
 	{
+		CurrentUser = null;
 	}
 
 	protected void Start()
 	{
 		Interactables.Add(this);
+	}
+
+	protected void Update()
+	{
+
 	}
 
 	protected void OnDestroy()
@@ -30,9 +38,22 @@ public class Interactable : MonoBehaviour
 				Mathf.Abs(distance.z) <= TriggerYDistance;
 	}
 
-	public virtual void Interact(int controlIndex)
+	public virtual void StartInteraction(PlayerAgent playerAgent)
 	{
+		if (CurrentUser != null)
+		{
+			Logger.Log($"Cannot start interaction as user({CurrentUser}) already using it");
+			return;
+		}
 
+		Logger.Log($"StartInteraction user \"{playerAgent}\"");
+		CurrentUser = playerAgent;
+	}
+
+	public virtual void EndInteraction()
+	{
+		Logger.Log($"EndInteraction user \"{CurrentUser}\" -> null");
+		CurrentUser = null;
 	}
 
 #if UNITY_EDITOR

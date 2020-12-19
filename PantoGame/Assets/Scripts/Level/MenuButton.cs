@@ -35,7 +35,7 @@ public class MenuButton : Interactable
 		transform.position = new Vector3(Pos.x, 0, Pos.y);
 	}
 
-	void Update()
+	protected void Update()
 	{
 		if (TriggerNeedsEveryone)
 		{
@@ -67,6 +67,7 @@ public class MenuButton : Interactable
 		float loadRatio = (LoadAmount / LoadTime);
 		loadRatio = LoadBarCurve.Evaluate(loadRatio);
 		LoadingBar.transform.localScale = new Vector3(TriggerXDistance * 2 * loadRatio, 1, 1);
+		base.Update();
 	}
 
 	public override bool CanInteract(Vector3 pos)
@@ -74,7 +75,7 @@ public class MenuButton : Interactable
 		return base.CanInteract(pos) && !TriggerNeedsEveryone;
 	}
 
-	public override void Interact(int controlIndex)
+	public void StartInteration(int controlIndex)
 	{
 		if (OnClick != null)
 		{

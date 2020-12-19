@@ -8,7 +8,13 @@ public enum eInput { none = -1, XAxis, YAxis, Dash, Interact};
 public class SimpleInput : MonoBehaviour
 {
 	static SimpleInput Instance;
-	static List<ControlSet> ControlSets = new List<ControlSet>();
+	static List<ControlSet> ControlSets = new List<ControlSet>
+		{
+			new ControlSet("Horizontal_1", "Vertical_1", "Dash_1", "Dash_1"),
+			new ControlSet("Horizontal_2", "Vertical_2", "Dash_2", "Dash_2"),
+			new ControlSet("Horizontal_3", "Vertical_3", "Dash_3", "Dash_3"),
+			new ControlSet("Horizontal_4", "Vertical_4", "Dash_4", "Dash_4"),
+		};
 	public static int ControlSetCount {get {return ControlSets.Count;}}
 
 	void Awake()
@@ -16,11 +22,6 @@ public class SimpleInput : MonoBehaviour
 		if (Instance == null)
 		{
 			Instance = this;
-
-			ControlSets.Add(new ControlSet("Horizontal_1", "Vertical_1", "Dash_1", "Dash_1"));
-			ControlSets.Add(new ControlSet("Horizontal_2", "Vertical_2", "Dash_2", "Dash_2"));
-			ControlSets.Add(new ControlSet("Horizontal_3", "Vertical_3", "Dash_3", "Dash_3"));
-			ControlSets.Add(new ControlSet("Horizontal_4", "Vertical_4", "Dash_4", "Dash_4"));
 		}
 		else
 		{
@@ -44,7 +45,7 @@ public class SimpleInput : MonoBehaviour
 			Logger.LogError($"IsInputInState called with index({index}) out of range");
 		}
 
-		for (int loop = 0; loop < ControlSets.Count; loop++)
+		for (int loop = 0; loop < ControlSetCount; loop++)
 		{
 			if (ControlSets[loop].GetInputState(input) == state && (index == -1 || index == loop))
 			{
@@ -63,7 +64,7 @@ public class SimpleInput : MonoBehaviour
 
 		float value = 0;
 		int count = 0;
-		for (int loop = 0; loop < ControlSets.Count; loop++)
+		for (int loop = 0; loop < ControlSetCount; loop++)
 		{
 			if (ControlSets[loop].GetInputActive(input) && (index == -1 || index == loop))
 			{
@@ -85,9 +86,10 @@ public class SimpleInput : MonoBehaviour
 		if (index >= ControlSetCount || index < -1)
 		{
 			Logger.LogError($"GetInputActive called with index({index}) out of range");
+			return false;
 		}
 
-		for (int loop = 0; loop < ControlSets.Count; loop++)
+		for (int loop = 0; loop < ControlSetCount; loop++)
 		{
 			if (ControlSets[loop].GetInputActive(input) && (index == -1 || index == loop))
 			{

@@ -18,9 +18,15 @@ public class Curtain : Interactable
 		base.Awake();
 	}
 	
-	public override void Interact(int controlIndex)
+	protected void Update()
 	{
-		var delta = SimpleInput.GetInputValue(eInput.YAxis, index: controlIndex) * Speed;
+		base.Update();
+		
+		if (CurrentUser == null)
+		{
+			return;
+		}
+		var delta = SimpleInput.GetInputValue(eInput.YAxis, index: CurrentUser.ControlType) * Speed;
 
 		OpenAmount += delta * Time.deltaTime;
 		OpenAmount = Mathf.Clamp01(OpenAmount);

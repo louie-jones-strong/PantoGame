@@ -7,9 +7,10 @@ public class ActorAgent : Agent
 {
 	ActorTask CurrentTask;
 	
-	public void Setup()
+	void Start()
 	{
 		CameraController.AddTarget(transform, weighting:Settings.ActorCamWeighting);
+		base.Start();
 	}
 
 	void Update()

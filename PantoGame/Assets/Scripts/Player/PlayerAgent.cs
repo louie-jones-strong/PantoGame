@@ -43,6 +43,7 @@ public class PlayerAgent : Agent
 					{
 						CurrentTask = task;
 						minDistance = distance;
+						CurrentTask.StartInteraction(this);
 					}
 				}
 			}
@@ -55,13 +56,9 @@ public class PlayerAgent : Agent
 			Debug.DrawLine(transform.position, CurrentTask.transform.position, Color.green);
 			if (SimpleInput.IsInputInState(eInput.Interact, eButtonState.Pressed, index: ControlType))
 			{
+				CurrentTask.EndInteraction();
 				CurrentTask = null;
 			}
-			else
-			{
-				CurrentTask.Interact(ControlType);
-			}
-			
 		}
 		
 		UpdateVisuals(acceleration, Velocity);

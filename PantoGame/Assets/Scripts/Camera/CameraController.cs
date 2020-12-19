@@ -67,6 +67,7 @@ public class CameraController : MonoBehaviour
 
 		Instance.TargetList.Add(trackerTarget);
 		Instance.UpdateLargestWeight();
+		Logger.Log($"CameraController.AddTarget: {toAdd}");
 	}
 
 	public static void RemoveTarget(Transform toRemove)
@@ -90,6 +91,7 @@ public class CameraController : MonoBehaviour
 			}
 		}
 		Instance.UpdateLargestWeight();
+		Logger.Log($"CameraController.RemoveTarget: {toRemove}");
 	}
 
 	void UpdateLargestWeight()

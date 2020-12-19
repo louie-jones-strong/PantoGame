@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerManger : MonoBehaviour
 {
 	[SerializeField] PlayerAgent Player;
-	public static Dictionary<int, PlayerAgent> Players = new Dictionary<int, PlayerAgent>();
+	public static Dictionary<int, PlayerAgent> Players { get; private set; } = new Dictionary<int, PlayerAgent>();
 
 	protected virtual void Awake()
 	{
