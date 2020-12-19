@@ -477,6 +477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224036009}
   - component: {fileID: 224036010}
+  - component: {fileID: 224036011}
   m_Layer: 0
   m_Name: Tape
   m_TagString: Untagged
@@ -549,6 +550,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &224036011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224036008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512b670e9cc6d0b40bcb175021f0c828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmissionOn: 0
+  RotateToCamOn: 0
 --- !u!1 &308009178
 GameObject:
   m_ObjectHideFlags: 0
@@ -2495,7 +2510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891c75333a6d2da44aba2f0ab0c440da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TriggerXDistance: 2
+  TriggerXDistance: 3.3
   TriggerYDistance: 2
   LightToControl: {fileID: 1384300405}
   MinXAxis: -6
@@ -3085,8 +3100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 637092352c7fc644e87a7f619efa046e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TriggerXDistance: 2
-  TriggerYDistance: 2
+  TriggerXDistance: 3.5
+  TriggerYDistance: 2.5
   Speed: 0.5
   Root: {fileID: 1354606416}
   Min: 0
@@ -3631,7 +3646,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2032369337}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.02, z: 1.07}
+  m_LocalPosition: {x: 0, y: -0.02, z: 1}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
   m_Father: {fileID: 1508095816}
