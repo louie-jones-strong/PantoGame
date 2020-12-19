@@ -6,11 +6,20 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+
+public enum eSceneState
+{
+	NotStarted,
+	InProgress,
+	Completed
+}
+
 [Serializable]
 public class Scene
 {
 	public string SceneName;
 	public List<Task> Tasks;
+	public eSceneState State {get; private set;}
 	
 	public Scene()
 	{
@@ -35,6 +44,7 @@ public class Scene
 		None,
 		Light,
 		Actor,
+		Curtain,
 	}
 
 	public void OnDrawScene()
@@ -117,6 +127,10 @@ public class Scene
 			case eActionType.Actor:
 			{
 				return new ActorTask();
+			}
+			case eActionType.Curtain:
+			{
+				return new CurtainTask();
 			}
 			default:
 			{
