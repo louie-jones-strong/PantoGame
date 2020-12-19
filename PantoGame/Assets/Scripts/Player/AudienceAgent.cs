@@ -71,7 +71,8 @@ public class AudienceAgent : Agent
 
 	eIntent GetIntent()
 	{
-		if (ProfileData.BladderTimeToFill <= BladderTime)
+		if (ProfileData.BladderTimeToFill <= BladderTime &&
+			Settings.AudienceUseToilet)
 		{
 			return eIntent.Toilet;
 		}
