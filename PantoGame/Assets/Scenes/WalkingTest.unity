@@ -235,7 +235,7 @@ MonoBehaviour:
   PlayerDoingTask: {fileID: 0}
   StartRequiredActionStates: []
   EndRequiredActionStates: []
-  TargetCurtain: {fileID: 0}
+  TargetCurtain: {fileID: 1796806895}
   TargetOpenAmount: 0
 --- !u!1001 &114612888
 PrefabInstance:
@@ -3051,7 +3051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TriggerXDistance: 2
   TriggerYDistance: 2
-  Speed: 0.1
+  Speed: 0.5
   Root: {fileID: 1354606416}
   Min: 0
   Max: 20
