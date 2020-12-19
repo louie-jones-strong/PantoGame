@@ -78,7 +78,7 @@ public class CameraController : MonoBehaviour
 		}
 
 		int index = 0;
-		while (Instance.TargetList.Count <= index)
+		while (index < Instance.TargetList.Count)
 		{
 			
 			if (Instance.TargetList[index].Transform == toRemove)
