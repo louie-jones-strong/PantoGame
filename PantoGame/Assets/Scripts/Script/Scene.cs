@@ -28,9 +28,23 @@ public class Scene
 
 	public void Update()
 	{
+		if (State == eSceneState.Completed)
+		{
+			return;
+		}
+
+		bool allStatesFinished = true;
 		foreach (var task in Tasks)
 		{
 			task.Update();
+			if (task.State == eTaskState.Completed)
+			{
+				allStatesFinished = false;
+			}
+		}
+		if (allStatesFinished)
+		{
+			State = eSceneState.Completed;
 		}
 	}
 

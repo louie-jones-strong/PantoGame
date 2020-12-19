@@ -54,6 +54,11 @@ public class Task : ScriptableObject
 
 	public virtual bool EndConditionsMet()
 	{
+		if (!StartConditionsMet())
+		{
+			return false;
+		}
+
 		var tasks = Theatre.Instance.CurrentScript.CurrentScene.Tasks;
 
 		foreach (var requirement in EndRequiredActionStates)
@@ -90,6 +95,11 @@ public class Task : ScriptableObject
 
 	public void Update()
 	{
+		if (State == eTaskState.Completed)
+		{
+			return;
+		}
+
 		if (EndConditionsMet())
 		{
 			SetState(eTaskState.Completed);

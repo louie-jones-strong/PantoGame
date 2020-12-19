@@ -28,10 +28,15 @@ public class Script
 			loop += 1;
 		}
 
+		if (newSceneIndex >= Scenes.Count)
+		{
+			newSceneIndex = Scenes.Count-1;
+		}
+
 		if (SceneIndex != newSceneIndex)
 		{
 			Logger.Log($"Script setting SceneIndex {SceneIndex} -> {newSceneIndex}");
-			SceneIndex += newSceneIndex;
+			SceneIndex = newSceneIndex;
 		}
 	}
 }

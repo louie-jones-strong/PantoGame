@@ -62,7 +62,6 @@ public class MainManager : MonoBehaviour
 		yield return StartCoroutine(AddSceneCo(screenTo));
 	}
 
-#region private Screen stuff
 	static void AddScene(string scene)
 	{
 		Instance.StartCoroutine(AddSceneCo(scene));
@@ -86,6 +85,5 @@ public class MainManager : MonoBehaviour
 			yield return SceneManager.UnloadSceneAsync(scene);
 		}
 	}
-#endregion
 #endregion
 }

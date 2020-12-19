@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SimpleInput))]
+[RequireComponent(typeof(MaterialCache))]
 public class AdditiveSceneManager : MonoBehaviour
 {
 	[SerializeField] bool OpenBootScreen = true;
