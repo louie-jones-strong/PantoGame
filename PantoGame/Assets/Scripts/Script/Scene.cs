@@ -37,13 +37,14 @@ public class Scene
 		foreach (var task in Tasks)
 		{
 			task.Update();
-			if (task.State == eTaskState.Completed)
+			if (task.State != eTaskState.Completed)
 			{
 				allStatesFinished = false;
 			}
 		}
 		if (allStatesFinished)
 		{
+			Logger.Log($"set Scene ({SceneName}) State {State} -> {eSceneState.Completed}");
 			State = eSceneState.Completed;
 		}
 	}
