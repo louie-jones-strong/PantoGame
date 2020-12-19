@@ -9,12 +9,16 @@ public class Interactable : MonoBehaviour
 	[SerializeField] protected float TriggerXDistance = 2;
 	[SerializeField] protected float TriggerYDistance = 2;
 
-	void Start()
+	protected void Awake()
+	{
+	}
+
+	protected void Start()
 	{
 		Interactables.Add(this);
 	}
 
-	void OnDestroy()
+	protected void OnDestroy()
 	{
 		Interactables.Remove(this);
 	}
