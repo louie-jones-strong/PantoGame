@@ -5,11 +5,10 @@ using UnityEngine;
 public class Theatre : PlayerManger
 {
 	public static Theatre Instance;
+	[SerializeField] AudienceAgent Audience;
 	public Script CurrentScript {get; private set;}
 	public Transform Toilet;
 	public Script Generator = new Script();//todo make this Generator not script
-
-	[SerializeField] AudienceAgent Audience;
 
 	Chair[] Chairs;
 	List<AudienceAgent> AudienceAgents = new List<AudienceAgent>();
