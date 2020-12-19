@@ -49,6 +49,9 @@ public class PlayerAgent : Agent
 		}
 		else
 		{
+			acceleration -= Velocity;
+			Velocity = Vector3.zero;
+			
 			Debug.DrawLine(transform.position, CurrentTask.transform.position, Color.green);
 			if (SimpleInput.IsInputInState(eInput.Interact, eButtonState.Pressed, index: ControlType))
 			{
