@@ -27,7 +27,7 @@ public class Task : ScriptableObject
 {
 	public eTaskState State {get; private set;}
 	public string TaskId;
-	public PlayerAgent PlayerDoingTask;
+	public PlayerAgent PlayerDoingTask {get; private set;}
 
 	public List<TaskStateRequirement> StartRequiredActionStates = new List<TaskStateRequirement>();
 	public List<TaskStateRequirement> EndRequiredActionStates = new List<TaskStateRequirement>();
