@@ -109,6 +109,7 @@ public class Task : ScriptableObject
 		if (EndConditionsMet())
 		{
 			SetState(eTaskState.Completed);
+			PlayerDoingTask = null;
 		}
 		else if (StartConditionsMet())
 		{
