@@ -35,22 +35,7 @@ public class Task : ScriptableObject
 
 	public virtual bool StartConditionsMet()
 	{
-		var tasks = Theatre.Instance.CurrentScript.CurrentScene.Tasks;
-
-		foreach (var requirement in StartRequiredActionStates)
-		{
-			foreach (var item in tasks)
-			{
-				if(requirement.TaskId == item.TaskId)
-				{
-					if (requirement.State != item.State)
-					{
-						return false;
-					}
-				}
-			}
-		}
-		return true;
+		return CheckStateRequirement(StartRequiredActionStates);
 	}
 
 	public virtual bool EndConditionsMet()
@@ -59,20 +44,35 @@ public class Task : ScriptableObject
 		{
 			return false;
 		}
+		return CheckStateRequirement(EndRequiredActionStates);
+	}
 
+	bool CheckStateRequirement(List<TaskStateRequirement> requirements)
+	{
 		var tasks = Theatre.Instance.CurrentScript.CurrentScene.Tasks;
 
-		foreach (var requirement in EndRequiredActionStates)
+		foreach (var requirement in requirements)
 		{
-			foreach (var item in tasks)
+			bool requirementMet = false;
+			foreach (var task in tasks)
 			{
-				if(requirement.TaskId == item.TaskId)
+				if(requirement.TaskId == task.TaskId)
 				{
-					if (requirement.State != item.State)
+					if (requirement.State == task.State)
+					{
+						requirementMet = true;
+						break;
+					}
+					else
 					{
 						return false;
 					}
 				}
+			}
+
+			if (!requirementMet)
+			{
+				return false;
 			}
 		}
 		return true;

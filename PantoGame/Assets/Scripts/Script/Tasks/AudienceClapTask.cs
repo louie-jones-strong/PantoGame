@@ -17,6 +17,16 @@ public class AudienceClapTask : Task
 		return TimeClapping >= TargetTimeToClap && base.EndConditionsMet();
 	}
 
+	public override void Update()
+	{
+		if (State == eTaskState.CanStart ||
+			State == eTaskState.InProgress)
+		{
+			TimeClapping += Time.deltaTime;
+		}
+		base.Update();
+	}
+	
 	public override float GetProgress()
 	{
 		return TimeClapping / TargetTimeToClap;

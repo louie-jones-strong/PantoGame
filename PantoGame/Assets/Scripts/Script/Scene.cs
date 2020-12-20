@@ -60,7 +60,8 @@ public class Scene
 		Light,
 		Actor,
 		Curtain,
-		Clapping
+		Clapping,
+		Toilet
 	}
 
 	public void OnDrawScene()
@@ -151,6 +152,10 @@ public class Scene
 			case eActionType.Clapping:
 			{
 				return new AudienceClapTask();
+			}
+			case eActionType.Toilet:
+			{
+				return new AudienceToiletTask();
 			}
 			default:
 			{

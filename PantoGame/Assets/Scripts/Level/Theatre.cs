@@ -11,7 +11,7 @@ public class Theatre : PlayerManger
 	public Script Generator = new Script();//todo make this Generator not script
 
 	Chair[] Chairs;
-	List<AudienceAgent> AudienceAgents = new List<AudienceAgent>();
+	public List<AudienceAgent> AudienceAgents {get; private set;} = new List<AudienceAgent>();
 
 
 	protected override void Awake()

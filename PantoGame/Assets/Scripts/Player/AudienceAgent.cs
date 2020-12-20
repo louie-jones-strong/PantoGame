@@ -7,7 +7,7 @@ public class AudienceAgent : Agent
 {
 	public AudienceProfileData ProfileData;
 	public Chair SetSeat;
-	float BladderTime = 0;
+	public float TimeSinceLastToilet {get; private set;}
 	eIntent AudienceIntent;
 
 	enum eIntent
@@ -28,12 +28,11 @@ public class AudienceAgent : Agent
 	public void Setup(Chair chair)
 	{
 		SetSeat = chair;
-		BladderTime = ProfileData.BladderStartFill;
 	}
 
 	void Update()
     {
-		BladderTime += Time.deltaTime;
+		TimeSinceLastToilet += Time.deltaTime;
 		var intent = GetIntent();
 
 		Vector3 target = transform.position;
@@ -60,7 +59,7 @@ public class AudienceAgent : Agent
 
 		if (AudienceIntent == eIntent.Toilet && (target-transform.position).magnitude <= 1)
 		{
-			BladderTime = 0;
+			TimeSinceLastToilet = 0;
 		}
 		PlayerAnimator.SetBool("Clapping", AudienceIntent == eIntent.Clapping);
 
@@ -86,14 +85,12 @@ public class AudienceAgent : Agent
 				{
 					return eIntent.Clapping;
 				}
+				if (task is AudienceToiletTask &&
+					TimeSinceLastToilet >= 10f)
+				{
+					return eIntent.Toilet;
+				}
 			}
-		}
-
-
-		if (ProfileData.BladderTimeToFill <= BladderTime &&
-			Settings.AudienceUseToilet)
-		{
-			return eIntent.Toilet;
 		}
 		return eIntent.Sit;
 	}
