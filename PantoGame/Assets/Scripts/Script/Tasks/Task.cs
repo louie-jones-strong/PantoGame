@@ -117,7 +117,6 @@ public class Task : ScriptableObject
 		else
 		{
 			SetState(eTaskState.CannotStart);
-			PlayerDoingTask = null;
 		}
 
 		Progress = GetProgress();

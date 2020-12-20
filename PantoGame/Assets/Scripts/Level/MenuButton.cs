@@ -17,6 +17,11 @@ public class MenuButton : Interactable
 	Menu Menu;
 	float LoadAmount;
 
+	protected override void Awake()
+	{
+		
+	}
+
 	public void Setup(Menu menu, string label, bool triggerNeedsEveryone, Vector2 Pos, float xSize, float ySize, Action onClick=null)
 	{
 		Menu = menu;

@@ -10,10 +10,13 @@ public class Interactable : MonoBehaviour
 	[SerializeField] protected float TriggerYDistance = 2;
 	
 	public PlayerAgent CurrentUser { get; private set; }
+	InteractableIcon Icon;
 
 	protected virtual void Awake()
 	{
 		CurrentUser = null;
+		var prefab = Resources.Load<InteractableIcon>(InteractableIcon.PrefabName);
+		Icon = Instantiate<InteractableIcon>(prefab, transform);
 	}
 
 	protected virtual void Start()
