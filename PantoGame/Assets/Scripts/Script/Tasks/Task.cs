@@ -80,7 +80,7 @@ public class Task : ScriptableObject
 
 	public virtual float GetProgress()
 	{
-		return 0f;
+		return State == eTaskState.Completed? 1f : 0f;
 	}
 
 	public void SetState(eTaskState newState)

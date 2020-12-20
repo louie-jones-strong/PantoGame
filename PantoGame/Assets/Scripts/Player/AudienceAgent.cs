@@ -65,6 +65,7 @@ public class AudienceAgent : Agent
 		{
 			BladderTime = 0;
 		}
+		PlayerAnimator.SetBool("Clapping", true);
 		UpdateVisuals();
 		base.Update();
     }

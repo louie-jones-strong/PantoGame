@@ -52,14 +52,15 @@ MonoBehaviour:
   NavMeshAgent: {fileID: 972033207960869403}
   Root: {fileID: 972033208015368304}
   BodyCenter: {fileID: 972033207393149996}
-  PlayerAnimator: {fileID: 972033207960869404}
   MaxMoveSpeed: 15
+  PlayerAnimator: {fileID: 972033207960869404}
   PartsToColour:
   - {fileID: 2130417552872717275}
   - {fileID: 3311250088162067085}
   - {fileID: 6237002699437388959}
   - {fileID: 8055375051883118349}
   - {fileID: 7218620335158225437}
+  Colour: {r: 0, g: 0, b: 0, a: 0}
   ProfileData:
     Name: jeff
     Age: 13
