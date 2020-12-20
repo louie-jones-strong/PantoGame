@@ -15,6 +15,7 @@ public class AudienceAgent : Agent
 		None,
 		Sit,
 		Toilet,
+		Clapping,
 		RandomWalk
 	}
 	
@@ -35,7 +36,7 @@ public class AudienceAgent : Agent
 		BladderTime += Time.deltaTime;
 		var intent = GetIntent();
 
-		Vector3 target = Vector3.zero;
+		Vector3 target = transform.position;
 		switch (intent)
 		{
 			case eIntent.Sit:
@@ -46,10 +47,6 @@ public class AudienceAgent : Agent
 			case eIntent.Toilet:
 			{
 				target = Theatre.Instance.Toilet.position;
-				break;
-			}
-			default:
-			{
 				break;
 			}
 		}
@@ -65,13 +62,34 @@ public class AudienceAgent : Agent
 		{
 			BladderTime = 0;
 		}
-		PlayerAnimator.SetBool("Clapping", true);
+		PlayerAnimator.SetBool("Clapping", AudienceIntent == eIntent.Clapping);
+
+
 		UpdateVisuals();
 		base.Update();
     }
 
 	eIntent GetIntent()
 	{
+		var currentScene = Theatre.Instance.CurrentScript.CurrentScene;
+		if (currentScene == null)
+		{
+			return eIntent.Sit;
+		}
+		
+		foreach (var task in currentScene.Tasks)
+		{
+			if (task.State == eTaskState.CanStart || 
+				task.State == eTaskState.InProgress)
+			{
+				if (task is AudienceClapTask)
+				{
+					return eIntent.Clapping;
+				}
+			}
+		}
+
+
 		if (ProfileData.BladderTimeToFill <= BladderTime &&
 			Settings.AudienceUseToilet)
 		{

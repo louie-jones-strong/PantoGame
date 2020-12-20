@@ -10,7 +10,7 @@ using UnityEditor;
 public enum eTaskState
 {
 	CannotStart,
-	CanStarted,
+	CanStart,
 	InProgress,
 	Completed
 }
@@ -112,7 +112,7 @@ public class Task : ScriptableObject
 		}
 		else if (StartConditionsMet())
 		{
-			SetState(eTaskState.CanStarted);
+			SetState(eTaskState.CanStart);
 		}
 		else
 		{

@@ -232,7 +232,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TaskId: Close
-  PlayerDoingTask: {fileID: 0}
   StartRequiredActionStates: []
   EndRequiredActionStates: []
   TargetCurtain: {fileID: 1796806895}
@@ -347,6 +346,7 @@ MonoBehaviour:
     - SceneName: ShowEnd
       Tasks:
       - {fileID: 107681450}
+      - {fileID: 1068809080}
 --- !u!4 &153317277
 Transform:
   m_ObjectHideFlags: 0
@@ -1011,7 +1011,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TaskId: Move Light
-  PlayerDoingTask: {fileID: 0}
   StartRequiredActionStates:
   - TaskId: Actor Move
     State: 3
@@ -1691,6 +1690,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4493585093827132993, guid: 94641faea85378e4981884964526d3df, type: 3}
+--- !u!114 &1068809080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b6a6c6a497a8741a38a2d8374eb13a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskId: Clap
+  StartRequiredActionStates:
+  - TaskId: Close
+    State: 1
+  EndRequiredActionStates:
+  - TaskId: Close
+    State: 3
+  TargetTimeToClap: 5
 --- !u!1001 &1099013700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3615,7 +3634,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TaskId: Actor Move
-  PlayerDoingTask: {fileID: 0}
   StartRequiredActionStates: []
   EndRequiredActionStates: []
   Target: {fileID: 224036009}

@@ -60,6 +60,7 @@ public class Scene
 		Light,
 		Actor,
 		Curtain,
+		Clapping
 	}
 
 	public void OnDrawScene()
@@ -146,6 +147,10 @@ public class Scene
 			case eActionType.Curtain:
 			{
 				return new CurtainTask();
+			}
+			case eActionType.Clapping:
+			{
+				return new AudienceClapTask();
 			}
 			default:
 			{
