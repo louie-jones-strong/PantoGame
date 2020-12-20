@@ -28,6 +28,7 @@ public class Task : ScriptableObject
 	public eTaskState State {get; private set;}
 	public string TaskId;
 	public PlayerAgent PlayerDoingTask {get; protected set;}
+	public float Progress {get; protected set;}
 
 	public List<TaskStateRequirement> StartRequiredActionStates = new List<TaskStateRequirement>();
 	public List<TaskStateRequirement> EndRequiredActionStates = new List<TaskStateRequirement>();
@@ -77,6 +78,11 @@ public class Task : ScriptableObject
 		return true;
 	}
 
+	public virtual float GetProgress()
+	{
+		return 0f;
+	}
+
 	public void SetState(eTaskState newState)
 	{
 		if (State == newState)
@@ -113,6 +119,9 @@ public class Task : ScriptableObject
 			SetState(eTaskState.CannotStart);
 			PlayerDoingTask = null;
 		}
+
+		Progress = GetProgress();
+		Progress = Mathf.Clamp01(Progress);
 	}
 
 #if UNITY_EDITOR

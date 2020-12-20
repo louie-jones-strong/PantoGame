@@ -13,13 +13,31 @@ public class LightTask : Task
 
 	public LightingDesk Light;
 
+	float LargestDistance = 1;
+
 	public override bool EndConditionsMet()
+	{
+		var distance = GetDistance();
+		bool withinRange = distance <= 2;
+		return withinRange && base.EndConditionsMet();
+	}
+
+	public override float GetProgress()
+	{
+		var distance = GetDistance();
+		if (distance >= LargestDistance)
+		{
+			LargestDistance = distance;
+		}
+		return 1 - (distance / LargestDistance);
+	}
+
+	float GetDistance()
 	{
 		var delta = Light.LightToControl.transform.position - Target.transform.position;
 
 		var distance = (new Vector2(delta.x, delta.z)).magnitude;
-		bool withinRange = distance <= 2;
-		return withinRange && base.EndConditionsMet();
+		return distance;
 	}
 
 	public override void Update()

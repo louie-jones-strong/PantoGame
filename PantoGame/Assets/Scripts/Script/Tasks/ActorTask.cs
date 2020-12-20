@@ -12,11 +12,22 @@ public class ActorTask : Task
 	public Transform Target;
 
 	public ActorAgent Actor;
+	float LargestDistance = 1;
 
 	public override bool EndConditionsMet()
 	{
 		bool withinRange = (Actor.transform.position - Target.transform.position).magnitude <= 2;
 		return withinRange && base.EndConditionsMet();
+	}
+
+	public override float GetProgress()
+	{
+		var distance = (Actor.transform.position - Target.transform.position).magnitude;
+		if (distance >= LargestDistance)
+		{
+			LargestDistance = distance;
+		}
+		return 1 - (distance / LargestDistance);
 	}
 
 #if UNITY_EDITOR

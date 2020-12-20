@@ -18,6 +18,11 @@ public class CurtainTask : Task
 		return correctState && base.EndConditionsMet();
 	}
 
+	public override float GetProgress()
+	{
+		return 1 - Mathf.Abs(TargetCurtain.OpenAmount - TargetOpenAmount);
+	}
+
 	public override void Update()
 	{
 		PlayerDoingTask = TargetCurtain.CurrentUser;
