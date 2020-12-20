@@ -7,13 +7,13 @@ public class ActorAgent : Agent
 {
 	ActorTask CurrentTask;
 	
-	void Start()
+	protected override void Start()
 	{
 		CameraController.AddTarget(transform, weighting:Settings.ActorCamWeighting);
 		base.Start();
 	}
 
-	void Update()
+	protected override void Update()
     {
 		if (CurrentTask == null || CurrentTask.State == eTaskState.Completed)
 		{

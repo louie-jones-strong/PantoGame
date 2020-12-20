@@ -25,7 +25,7 @@ public class PlayerAgent : Agent
 		base.Start();
 	}
     
-    void Update()
+    protected override void Update()
     {
 		var acceleration = Vector3.zero;
 

@@ -42,7 +42,7 @@ public class Agent : MonoBehaviour
 		}
     }
 
-	protected void Update()
+	protected virtual void Update()
 	{
 	}
 

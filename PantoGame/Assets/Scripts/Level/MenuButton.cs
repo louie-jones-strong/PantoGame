@@ -35,7 +35,7 @@ public class MenuButton : Interactable
 		transform.position = new Vector3(Pos.x, 0, Pos.y);
 	}
 
-	protected void Update()
+	protected override void Update()
 	{
 		if (TriggerNeedsEveryone)
 		{

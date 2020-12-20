@@ -23,7 +23,7 @@ public class LightingDesk : Interactable
 		base.EndInteraction();
 	}
 
-	protected void Update()
+	protected override void Update()
 	{
 		base.Update();
 

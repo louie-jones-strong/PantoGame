@@ -34,7 +34,7 @@ public class CurtainTask : Task
 	{
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("Curtain");
-		TargetCurtain = (Curtain)EditorGUILayout.ObjectField(TargetCurtain, typeof(Curtain));
+		TargetCurtain = (Curtain)EditorGUILayout.ObjectField(TargetCurtain, typeof(Curtain), true);
 		EditorGUILayout.EndHorizontal();
 
 		EditorGUILayout.BeginHorizontal();

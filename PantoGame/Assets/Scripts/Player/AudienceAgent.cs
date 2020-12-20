@@ -30,7 +30,7 @@ public class AudienceAgent : Agent
 		SetSeat = chair;
 	}
 
-	void Update()
+	protected override void Update()
     {
 		TimeSinceLastToilet += Time.deltaTime;
 		var intent = GetIntent();

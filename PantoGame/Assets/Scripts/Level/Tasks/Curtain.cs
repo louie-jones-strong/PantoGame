@@ -12,13 +12,13 @@ public class Curtain : Interactable
 
 	public float OpenAmount;
 
-	protected void Awake()
+	protected override void Awake()
 	{
 		SetOpenAmount();
 		base.Awake();
 	}
 	
-	protected void Update()
+	protected override void Update()
 	{
 		base.Update();
 		

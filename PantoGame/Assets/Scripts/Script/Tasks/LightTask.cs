@@ -51,12 +51,12 @@ public class LightTask : Task
 	{
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("Target");
-		Target = (Transform)EditorGUILayout.ObjectField(Target, typeof(Transform));
+		Target = (Transform)EditorGUILayout.ObjectField(Target, typeof(Transform), true);
 		EditorGUILayout.EndHorizontal();
 
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("Light");
-		Light = (LightingDesk)EditorGUILayout.ObjectField(Light, typeof(LightingDesk));
+		Light = (LightingDesk)EditorGUILayout.ObjectField(Light, typeof(LightingDesk), true);
 		EditorGUILayout.EndHorizontal();
 
 		base.DrawTask();

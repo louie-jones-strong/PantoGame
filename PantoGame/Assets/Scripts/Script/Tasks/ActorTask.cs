@@ -35,12 +35,12 @@ public class ActorTask : Task
 	{
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("Target");
-		Target = (Transform)EditorGUILayout.ObjectField(Target, typeof(Transform));
+		Target = (Transform)EditorGUILayout.ObjectField(Target, typeof(Transform), true);
 		EditorGUILayout.EndHorizontal();
 
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("Actor");
-		Actor = (ActorAgent)EditorGUILayout.ObjectField(Actor, typeof(ActorAgent));
+		Actor = (ActorAgent)EditorGUILayout.ObjectField(Actor, typeof(ActorAgent), true);
 		EditorGUILayout.EndHorizontal();
 
 		base.DrawTask();

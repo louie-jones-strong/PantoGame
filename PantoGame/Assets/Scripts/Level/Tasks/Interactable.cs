@@ -11,17 +11,17 @@ public class Interactable : MonoBehaviour
 	
 	public PlayerAgent CurrentUser { get; private set; }
 
-	protected void Awake()
+	protected virtual void Awake()
 	{
 		CurrentUser = null;
 	}
 
-	protected void Start()
+	protected virtual void Start()
 	{
 		Interactables.Add(this);
 	}
 
-	protected void Update()
+	protected virtual void Update()
 	{
 
 	}
