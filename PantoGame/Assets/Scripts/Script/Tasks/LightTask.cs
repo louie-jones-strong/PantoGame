@@ -22,6 +22,12 @@ public class LightTask : Task
 		return withinRange && base.EndConditionsMet();
 	}
 
+	public override void Update()
+	{
+		PlayerDoingTask = Light.CurrentUser;
+		base.Update();
+	}
+
 #if UNITY_EDITOR
 	public override void DrawTask()
 	{

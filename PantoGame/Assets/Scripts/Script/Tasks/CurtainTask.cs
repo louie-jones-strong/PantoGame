@@ -18,6 +18,12 @@ public class CurtainTask : Task
 		return correctState && base.EndConditionsMet();
 	}
 
+	public override void Update()
+	{
+		PlayerDoingTask = TargetCurtain.CurrentUser;
+		base.Update();
+	}
+
 #if UNITY_EDITOR
 	public override void DrawTask()
 	{

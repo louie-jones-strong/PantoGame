@@ -27,7 +27,7 @@ public class Task : ScriptableObject
 {
 	public eTaskState State {get; private set;}
 	public string TaskId;
-	public PlayerAgent PlayerDoingTask {get; private set;}
+	public PlayerAgent PlayerDoingTask {get; protected set;}
 
 	public List<TaskStateRequirement> StartRequiredActionStates = new List<TaskStateRequirement>();
 	public List<TaskStateRequirement> EndRequiredActionStates = new List<TaskStateRequirement>();
@@ -93,7 +93,7 @@ public class Task : ScriptableObject
 		State = newState;
 	}
 
-	public void Update()
+	public virtual void Update()
 	{
 		if (State == eTaskState.Completed)
 		{
@@ -103,7 +103,6 @@ public class Task : ScriptableObject
 		if (EndConditionsMet())
 		{
 			SetState(eTaskState.Completed);
-			PlayerDoingTask = null;
 		}
 		else if (StartConditionsMet())
 		{

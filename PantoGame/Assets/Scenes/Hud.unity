@@ -1091,9 +1091,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: TaskItem
       objectReference: {fileID: 0}
-    - target: {fileID: 9183677446097822910, guid: 296a09d741649874a96f5ff9c926022a, type: 3}
-      propertyPath: m_PreferredWidth
-      value: 275
+    - target: {fileID: 5615157928818852310, guid: 296a09d741649874a96f5ff9c926022a, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925841572075262655, guid: 296a09d741649874a96f5ff9c926022a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925841572075262655, guid: 296a09d741649874a96f5ff9c926022a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 296a09d741649874a96f5ff9c926022a, type: 3}

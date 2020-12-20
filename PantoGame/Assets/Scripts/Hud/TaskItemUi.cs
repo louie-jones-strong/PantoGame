@@ -16,20 +16,15 @@ public class TaskItemUi : MonoBehaviour
 		Task = task;
 		gameObject.SetActive(true);
 		SceneName.text = Task.TaskId;
-
-		if (Task.PlayerDoingTask == null)
-		{
-			PlayerIcon.gameObject.SetActive(false);
-		}
-		else
-		{
-			PlayerIcon.gameObject.SetActive(true);
-			PlayerIcon.SetIcon(Task.PlayerDoingTask);
-		}
 	}
 
 	void Update()
 	{
 		Animator.SetBool("Finished", Task.State == eTaskState.Completed);
+		Animator.SetBool("ShowPlayerIcon", Task.PlayerDoingTask != null);
+		if (Task.PlayerDoingTask != null)
+		{
+			PlayerIcon.SetIcon(Task.PlayerDoingTask);
+		}
 	}
 }

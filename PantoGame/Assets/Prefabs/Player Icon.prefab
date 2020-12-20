@@ -85,6 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6602736796289287493}
   - component: {fileID: 7929976845379070528}
+  - component: {fileID: 4931582069781812780}
   m_Layer: 0
   m_Name: Player Icon
   m_TagString: Untagged
@@ -125,3 +126,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Icon: {fileID: 3175932571650618153}
+--- !u!225 &4931582069781812780
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6321971897621854838}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
