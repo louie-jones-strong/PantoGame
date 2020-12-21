@@ -45,6 +45,7 @@ public class ActorAgent : Agent
 				actorTask.StartConditionsMet() &&
 				actorTask.Actor == this)
 			{
+				NavMeshAgent.speed = actorTask.ActorSpeed;
 				return actorTask;
 			}
 		}

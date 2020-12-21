@@ -12,6 +12,9 @@ public class ActorTask : Task
 	public Transform Target;
 
 	public ActorAgent Actor;
+	public float ActorSpeed = 5;
+
+
 	float LargestDistance = 1;
 
 	public override bool EndConditionsMet()
@@ -41,6 +44,11 @@ public class ActorTask : Task
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("Actor");
 		Actor = (ActorAgent)EditorGUILayout.ObjectField(Actor, typeof(ActorAgent), true);
+		EditorGUILayout.EndHorizontal();
+
+		EditorGUILayout.BeginHorizontal();
+		EditorGUILayout.LabelField("ActorSpeed");
+		ActorSpeed = EditorGUILayout.FloatField(ActorSpeed);
 		EditorGUILayout.EndHorizontal();
 
 		base.DrawTask();

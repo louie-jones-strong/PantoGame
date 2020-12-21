@@ -64,8 +64,6 @@ MonoBehaviour:
   ProfileData:
     Name: jeff
     Age: 13
-    BladderTimeToFill: 10
-    BladderStartFill: 0
   SetSeat: {fileID: 0}
 --- !u!95 &972033207960869404
 Animator:
@@ -97,7 +95,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 1.25
   m_Speed: 15
-  m_Acceleration: 100
+  m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 30
   m_StoppingDistance: 0

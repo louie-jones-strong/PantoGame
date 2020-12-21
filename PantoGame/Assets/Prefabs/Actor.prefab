@@ -52,8 +52,8 @@ MonoBehaviour:
   NavMeshAgent: {fileID: 1679723919424694261}
   Root: {fileID: 3816184429125906380}
   BodyCenter: {fileID: 3816184428368231312}
-  PlayerAnimator: {fileID: 4110958259888655840}
   MaxMoveSpeed: 7.5
+  PlayerAnimator: {fileID: 4110958259888655840}
   PartsToColour:
   - {fileID: 2600925488158516327}
   - {fileID: 1475906209678564657}
@@ -61,6 +61,7 @@ MonoBehaviour:
   - {fileID: 6215781569488478385}
   - {fileID: 6747839729452643745}
   - {fileID: 6747839729452643745}
+  Colour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &4110958259888655840
 Animator:
   serializedVersion: 3
@@ -161,10 +162,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.25
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 15
+  m_Acceleration: 50
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 30
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
