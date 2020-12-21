@@ -25,6 +25,7 @@ public class PlayerManger : MonoBehaviour
 				if (player == null)
 				{
 					Players.Remove(loop);
+					AddPlayer(loop);
 				}
 			}
 			
@@ -38,6 +39,12 @@ public class PlayerManger : MonoBehaviour
 
 	void AddPlayer(int controlType)
 	{
+		var parent = transform;
+		if (MainManager.Instance != null)
+		{
+			parent = MainManager.Instance.transform;
+		}
+
 		Players[controlType] = Instantiate<PlayerAgent>(Player, transform);
 		Players[controlType].ControlType = controlType;
 	}
