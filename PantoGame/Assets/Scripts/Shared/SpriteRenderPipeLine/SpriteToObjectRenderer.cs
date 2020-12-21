@@ -34,6 +34,8 @@ public class SpriteToObjectRenderer : RotateToCam
 		EmissionOn = emissionOn;
 		RotateToCamOn = rotateToCamOn;
 
+		CurrentColour = spriteRenderer.color;
+
 		UpdateMaterial();
 	}
 
