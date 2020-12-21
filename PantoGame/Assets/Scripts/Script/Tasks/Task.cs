@@ -140,9 +140,12 @@ public class Task : ScriptableObject
 		{
 			SetState(eTaskState.CannotStart);
 		}
-
-		Progress = GetProgress();
-		Progress = Mathf.Clamp01(Progress);
+		
+		if (StartConditionsMet())
+		{
+			Progress = GetProgress();
+			Progress = Mathf.Clamp01(Progress);
+		}
 	}
 
 #if UNITY_EDITOR
