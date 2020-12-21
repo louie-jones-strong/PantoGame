@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01cd676c0bdf92544b1654c8ae680ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TaskPriority: 1
   TaskId: Close
   StartRequiredActionStates: []
   EndRequiredActionStates: []
@@ -678,6 +679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a4c380a927bae43909bf249c588681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TaskPriority: 1
   TaskId: FollowActor
   StartRequiredActionStates: []
   EndRequiredActionStates:
@@ -1277,6 +1279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a4c380a927bae43909bf249c588681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TaskPriority: 1
   TaskId: Move Light
   StartRequiredActionStates:
   - TaskId: Actor Move
@@ -1969,6 +1972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b6a6c6a497a8741a38a2d8374eb13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TaskPriority: -1
   TaskId: Clap
   StartRequiredActionStates: []
   EndRequiredActionStates:
@@ -3439,6 +3443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d176c52ee1f7ba94d93c1dd3ac791d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TaskPriority: -1
   TaskId: Actor Walk
   StartRequiredActionStates:
   - TaskId: Move Light
@@ -4048,6 +4053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d176c52ee1f7ba94d93c1dd3ac791d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TaskPriority: -1
   TaskId: Actor Move
   StartRequiredActionStates:
   - TaskId: Move Set
@@ -4165,6 +4171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2228cdb9aa6d054daa07fd1e2bf8648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TaskPriority: 1
   TaskId: Move Set
   StartRequiredActionStates: []
   EndRequiredActionStates: []
@@ -4182,6 +4189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4b171b232bf404ca4c14a548a4b291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TaskPriority: -1
   TaskId: Toilet
   StartRequiredActionStates:
   - TaskId: Clap

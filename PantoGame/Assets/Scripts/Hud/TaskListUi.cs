@@ -40,8 +40,11 @@ public class TaskListUi : MonoBehaviour
 
 		foreach (var task in scene.Tasks)
 		{
-			var item = GetItemUi();
-			item.Setup(task);
+			if (task.TaskPriority > 0)
+			{
+				var item = GetItemUi();
+				item.Setup(task);
+			}
 		}
 	}
 

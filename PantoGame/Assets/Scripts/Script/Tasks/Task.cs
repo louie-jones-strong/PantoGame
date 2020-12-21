@@ -25,6 +25,7 @@ public class TaskStateRequirement
 [Serializable]
 public class Task : ScriptableObject
 {
+	public int TaskPriority = 1;
 	public string TaskId;
 	public List<TaskStateRequirement> StartRequiredActionStates = new List<TaskStateRequirement>();
 	public List<TaskStateRequirement> EndRequiredActionStates = new List<TaskStateRequirement>();
@@ -151,6 +152,11 @@ public class Task : ScriptableObject
 #if UNITY_EDITOR
 	public virtual void DrawTask()
 	{
+		EditorGUILayout.BeginHorizontal();
+		GUILayout.Label("TaskPriority");
+		TaskPriority = EditorGUILayout.IntField(TaskPriority);
+		EditorGUILayout.EndHorizontal();
+
 		EditorGUILayout.BeginHorizontal();
 
 		GUILayout.Label("Start Required Action States");
