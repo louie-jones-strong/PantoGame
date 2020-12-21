@@ -54,7 +54,10 @@ public class PlayerAgent : Agent
 			Velocity = Vector3.zero;
 			
 			Debug.DrawLine(transform.position, CurrentTask.transform.position, Color.green);
-			if (SimpleInput.IsInputInState(eInput.Interact, eButtonState.Pressed, index: ControlType))
+
+			var distance = (transform.position-CurrentTask.transform.position).magnitude;
+			if (!CurrentTask.CanInteract(transform.position) ||
+				SimpleInput.IsInputInState(eInput.Interact, eButtonState.Pressed, index: ControlType))
 			{
 				CurrentTask.EndInteraction();
 				CurrentTask = null;
