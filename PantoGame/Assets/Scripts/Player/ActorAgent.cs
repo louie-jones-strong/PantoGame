@@ -14,7 +14,7 @@ public class ActorAgent : Agent
 	}
 
 	protected override void Update()
-    {
+	{
 		if (CurrentTask == null || CurrentTask.State == eTaskState.Completed)
 		{
 			CurrentTask = GetTarget();
@@ -26,7 +26,7 @@ public class ActorAgent : Agent
 		
 		UpdateVisuals();
 		base.Update();
-    }
+	}
 
 	ActorTask GetTarget()
 	{

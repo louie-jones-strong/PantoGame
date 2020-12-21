@@ -7,12 +7,12 @@ using System;
 public class PlayerAgent : Agent
 {
 	public int ControlType = -1;//todo this should be enum
-    public float Speed;
+	public float Speed;
 	public float DashSpeedMultiplier;
 	public float DashCoolDown = 1.5f;
 	public float DashAffectTime = 0.5f;
-    public float Drag;
-    Vector3 Velocity;
+	public float Drag;
+	Vector3 Velocity;
 
 	float TimeLeftOfDash;
 	float DashCoolDownLeft;
@@ -24,14 +24,14 @@ public class PlayerAgent : Agent
 		CameraController.AddTarget(transform, weighting:Settings.PlayerCamWeighting);
 		base.Start();
 	}
-    
-    protected override void Update()
-    {
+	
+	protected override void Update()
+	{
 		var acceleration = Vector3.zero;
 
 		if (CurrentTask == null)
 		{
-        	acceleration = UpdateMovement();
+			acceleration = UpdateMovement();
 
 			if (SimpleInput.IsInputInState(eInput.Interact, eButtonState.Pressed, index: ControlType))
 			{
@@ -64,7 +64,7 @@ public class PlayerAgent : Agent
 		UpdateVisuals(acceleration, Velocity);
 		TryHideObjectsHiddingPlayer();
 		base.Update();
-    }
+	}
 
 	Vector3 UpdateMovement()
 	{
@@ -89,10 +89,10 @@ public class PlayerAgent : Agent
 			DashCoolDownLeft -= Time.deltaTime;
 		}
 
-        acceleration += -(Velocity * Drag);
+		acceleration += -(Velocity * Drag);
 
-        acceleration *= Time.deltaTime;
-        Velocity += acceleration;
+		acceleration *= Time.deltaTime;
+		Velocity += acceleration;
 
 		var moveAmount = Velocity * Time.deltaTime;
 		NavMeshAgent.Move(moveAmount);

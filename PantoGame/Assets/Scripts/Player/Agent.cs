@@ -20,7 +20,7 @@ public class Agent : MonoBehaviour
 
 	[SerializeField] protected Animator PlayerAnimator;
 	[SerializeField] protected List<SpriteToObjectLoader> PartsToColour;
-    protected PhysicsRotation[] PhysicsParts;
+	protected PhysicsRotation[] PhysicsParts;
 	public Color Colour;
 
 	float TimeUntilBlink;
@@ -30,17 +30,17 @@ public class Agent : MonoBehaviour
 
 #endregion
 
-    
-    protected virtual void Start()
-    {
-        PhysicsParts = GetComponentsInChildren<PhysicsRotation>();
+	
+	protected virtual void Start()
+	{
+		PhysicsParts = GetComponentsInChildren<PhysicsRotation>();
 		
 		Colour = Random.ColorHSV();
 		foreach (var part in PartsToColour)
 		{
 			part.Renderer.SetColour(Colour);
 		}
-    }
+	}
 
 	protected virtual void Update()
 	{
@@ -51,8 +51,8 @@ public class Agent : MonoBehaviour
 		Root.localEulerAngles = -transform.localEulerAngles + (CameraController.Instance.Camera.transform.eulerAngles * Settings.RotateToCamMultiplier);
 	}
 
-    protected void UpdateVisuals()
-    {
+	protected void UpdateVisuals()
+	{
 		var pos = transform.localPosition;
 		var velocity = pos - LastPos;
 		var acceleration = velocity - LastVelocity;
@@ -60,11 +60,11 @@ public class Agent : MonoBehaviour
 
 		LastVelocity = velocity;
 		LastPos = pos;
-    }
+	}
 
 	protected void UpdateVisuals(Vector3 acceleration, Vector3 velocity)
-    {
-        RefreshPhysicsParts(acceleration);
+	{
+		RefreshPhysicsParts(acceleration);
 		PlayerAnimator.SetFloat("XV", velocity.x);
 		PlayerAnimator.SetFloat("YV", velocity.z);
 
@@ -74,19 +74,19 @@ public class Agent : MonoBehaviour
 			PlayerAnimator.SetTrigger("Blink");
 			TimeUntilBlink = Random.Range(MinBlinkDelay, MaxBlinkDelay);
 		}
-    }
+	}
 
-    void RefreshPhysicsParts(Vector3 acceleration)
-    {
+	void RefreshPhysicsParts(Vector3 acceleration)
+	{
 		if (PhysicsParts == null)
 		{
 			Logger.LogError("found no PhysicsParts");
 			return;
 		}
 
-        foreach (var part in PhysicsParts)
-        {
-            part.Refresh(acceleration);
-        }
-    }
+		foreach (var part in PhysicsParts)
+		{
+			part.Refresh(acceleration);
+		}
+	}
 }

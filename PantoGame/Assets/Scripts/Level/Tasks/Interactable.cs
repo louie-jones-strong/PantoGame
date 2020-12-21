@@ -67,12 +67,16 @@ public class Interactable : MonoBehaviour
 	}
 
 #if UNITY_EDITOR
-	void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
+	protected virtual void OnDrawGizmos()
+	{
+		Gizmos.color = Color.yellow;
 		var size = new Vector3(TriggerXDistance, 2, TriggerYDistance);
 		size *= 2;
-        Gizmos.DrawWireCube(transform.position, size);
-    }
+		Gizmos.DrawWireCube(transform.position, size);
+	}
+
+	protected virtual void OnDrawGizmosSelected()
+	{
+	}
 #endif
 }

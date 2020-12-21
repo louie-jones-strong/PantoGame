@@ -31,7 +31,7 @@ public class AudienceAgent : Agent
 	}
 
 	protected override void Update()
-    {
+	{
 		TimeSinceLastToilet += Time.deltaTime;
 		var intent = GetIntent();
 
@@ -66,7 +66,7 @@ public class AudienceAgent : Agent
 
 		UpdateVisuals();
 		base.Update();
-    }
+	}
 
 	eIntent GetIntent()
 	{
