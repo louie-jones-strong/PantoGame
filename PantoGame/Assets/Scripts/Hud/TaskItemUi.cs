@@ -22,6 +22,7 @@ public class TaskItemUi : MonoBehaviour
 
 	void Update()
 	{
+		Animator.SetBool("ReadyStart", Task.State != eTaskState.CannotStart);
 		Animator.SetBool("Finished", Task.State == eTaskState.Completed);
 		Animator.SetBool("ShowPlayerIcon", Task.PlayerDoingTask != null);
 		if (Task.PlayerDoingTask != null)
