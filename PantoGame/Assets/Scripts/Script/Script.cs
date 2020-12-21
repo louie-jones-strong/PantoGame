@@ -38,5 +38,6 @@ public class Script
 			Logger.Log($"Script setting SceneIndex {SceneIndex} -> {newSceneIndex}");
 			SceneIndex = newSceneIndex;
 		}
+		Scenes[SceneIndex].SetState(eSceneState.InProgress);
 	}
 }

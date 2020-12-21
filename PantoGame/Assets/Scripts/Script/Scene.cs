@@ -26,9 +26,15 @@ public class Scene
 		Tasks = new List<Task>();
 	}
 
+	public void SetState(eSceneState state)
+	{
+		State = state;
+	}
+
 	public void Update()
 	{
-		if (State == eSceneState.Completed)
+		if (State == eSceneState.Completed ||
+			State == eSceneState.NotStarted)
 		{
 			return;
 		}
@@ -45,7 +51,7 @@ public class Scene
 		if (allStatesFinished)
 		{
 			Logger.Log($"set Scene ({SceneName}) State {State} -> {eSceneState.Completed}");
-			State = eSceneState.Completed;
+			SetState(eSceneState.Completed);
 		}
 	}
 
