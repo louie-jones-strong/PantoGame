@@ -61,7 +61,8 @@ public class Scene
 		Actor,
 		Curtain,
 		Clapping,
-		Toilet
+		Toilet,
+		MoveSet
 	}
 
 	public void OnDrawScene()
@@ -156,6 +157,10 @@ public class Scene
 			case eActionType.Toilet:
 			{
 				return new AudienceToiletTask();
+			}
+			case eActionType.MoveSet:
+			{
+				return new MoveSetTask();
 			}
 			default:
 			{

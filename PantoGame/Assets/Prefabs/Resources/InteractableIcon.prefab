@@ -107,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6673427849002508030}
   - component: {fileID: 6931183125268103293}
-  - component: {fileID: 7842388792833702340}
+  - component: {fileID: 2709309265061339115}
   m_Layer: 0
   m_Name: Highlight
   m_TagString: Untagged
@@ -180,7 +180,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7842388792833702340
+--- !u!114 &2709309265061339115
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,11 +189,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3321239371415593342}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 512b670e9cc6d0b40bcb175021f0c828, type: 3}
+  m_Script: {fileID: 11500000, guid: da7a944a7886104479d12b5e2237eefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EmissionOn: 1
-  RotateToCamOn: 1
 --- !u!1 &4805235130186398410
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9117287554070729097}
   - component: {fileID: 2996912719860246895}
-  - component: {fileID: 5492718370377071574}
+  - component: {fileID: 8266884474883376406}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -277,7 +275,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5492718370377071574
+--- !u!114 &8266884474883376406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,8 +284,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4805235130186398410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 512b670e9cc6d0b40bcb175021f0c828, type: 3}
+  m_Script: {fileID: 11500000, guid: da7a944a7886104479d12b5e2237eefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EmissionOn: 1
-  RotateToCamOn: 1

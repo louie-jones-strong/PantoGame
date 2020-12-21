@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetToMove : Interactable
+public class SetPiece : Interactable
 {
 	[SerializeField] float MinXAxis;
 	[SerializeField] float MaxXAxis;
