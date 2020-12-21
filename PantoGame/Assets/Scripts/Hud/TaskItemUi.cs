@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class TaskItemUi : MonoBehaviour
 {
-	[SerializeField] Text SceneName;
+	[SerializeField] Image TaskTypeIcon;
+	[SerializeField] Text TaskName;
 	[SerializeField] Image ProgressBar;
 	[SerializeField] Animator Animator;
 	[SerializeField] PlayerIcon PlayerIcon;
@@ -16,7 +17,7 @@ public class TaskItemUi : MonoBehaviour
 	{
 		Task = task;
 		gameObject.SetActive(true);
-		SceneName.text = Task.TaskId;
+		TaskName.text = Task.TaskId;
 	}
 
 	void Update()
@@ -28,5 +29,8 @@ public class TaskItemUi : MonoBehaviour
 			PlayerIcon.SetIcon(Task.PlayerDoingTask);
 		}
 		ProgressBar.fillAmount = Task.Progress;
+
+		TaskTypeIcon.sprite = Task.TaskIcon;
+		TaskTypeIcon.gameObject.SetActive(Task.TaskIcon != null);
 	}
 }

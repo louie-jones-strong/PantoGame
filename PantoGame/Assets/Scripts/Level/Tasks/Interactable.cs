@@ -34,6 +34,11 @@ public class Interactable : MonoBehaviour
 		Interactables.Remove(this);
 	}
 
+	public virtual void SetHighlight(bool value)
+	{
+		Icon.SetHighlight(value);
+	}
+
 	public virtual bool CanInteract(Vector3 pos)
 	{
 		var distance = transform.position - pos;
@@ -51,10 +56,12 @@ public class Interactable : MonoBehaviour
 
 		Logger.Log($"StartInteraction user \"{playerAgent}\"");
 		CurrentUser = playerAgent;
+		Icon.SetBeingUsed(true);
 	}
 
 	public virtual void EndInteraction()
 	{
+		Icon.SetBeingUsed(false);
 		Logger.Log($"EndInteraction user \"{CurrentUser}\" -> null");
 		CurrentUser = null;
 	}

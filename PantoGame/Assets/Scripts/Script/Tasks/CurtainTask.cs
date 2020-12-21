@@ -9,6 +9,8 @@ using UnityEditor;
 [Serializable]
 public class CurtainTask : Task
 {
+	protected override string TaskIconPath {get { return "CurtainsTaskIcon"; }}
+
 	public Curtain TargetCurtain;
 	public float TargetOpenAmount;
 	

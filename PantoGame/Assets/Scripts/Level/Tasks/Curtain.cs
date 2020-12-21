@@ -20,8 +20,6 @@ public class Curtain : Interactable
 	
 	protected override void Update()
 	{
-		base.Update();
-		
 		if (CurrentUser == null)
 		{
 			return;
@@ -32,6 +30,7 @@ public class Curtain : Interactable
 		OpenAmount = Mathf.Clamp01(OpenAmount);
 		
 		SetOpenAmount();
+		base.Update();
 	}
 
 	void SetOpenAmount()

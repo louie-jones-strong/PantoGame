@@ -9,6 +9,8 @@ using UnityEditor;
 [Serializable]
 public class LightTask : Task
 {
+	protected override string TaskIconPath {get { return "LightTaskIcon"; }}
+
 	public Transform Target;
 
 	public LightingDesk Light;

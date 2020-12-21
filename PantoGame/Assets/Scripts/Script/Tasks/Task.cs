@@ -25,13 +25,31 @@ public class TaskStateRequirement
 [Serializable]
 public class Task : ScriptableObject
 {
-	public eTaskState State {get; private set;}
 	public string TaskId;
+	public List<TaskStateRequirement> StartRequiredActionStates = new List<TaskStateRequirement>();
+	public List<TaskStateRequirement> EndRequiredActionStates = new List<TaskStateRequirement>();
+	protected virtual string TaskIconPath {get { return ""; }}
+
+	public Sprite TaskIcon {get; private set;}
+	public eTaskState State {get; private set;}
 	public PlayerAgent PlayerDoingTask {get; protected set;}
 	public float Progress {get; protected set;}
 
-	public List<TaskStateRequirement> StartRequiredActionStates = new List<TaskStateRequirement>();
-	public List<TaskStateRequirement> EndRequiredActionStates = new List<TaskStateRequirement>();
+	bool DoneSetup;
+
+	void Setup()
+	{
+		if (DoneSetup)
+		{
+			return;
+		}
+
+		Logger.Log($"LoadTaskIcon path: {TaskIconPath}");
+
+		var sprite = Resources.Load<Sprite>(TaskIconPath);
+		TaskIcon = sprite;
+		DoneSetup = true;
+	}
 
 	public virtual bool StartConditionsMet()
 	{
@@ -101,8 +119,11 @@ public class Task : ScriptableObject
 
 	public virtual void Update()
 	{
+		Setup();
+
 		if (State == eTaskState.Completed)
 		{
+			PlayerDoingTask = null;
 			return;
 		}
 
