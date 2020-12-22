@@ -15,8 +15,7 @@ public class Interactable : MonoBehaviour
 	protected virtual void Awake()
 	{
 		CurrentUser = null;
-		var prefab = Resources.Load<InteractableIcon>(InteractableIcon.PrefabName);
-		Icon = Instantiate<InteractableIcon>(prefab, transform);
+		Icon = InteractableIcon.Create(this);
 	}
 
 	protected virtual void Start()
@@ -36,7 +35,10 @@ public class Interactable : MonoBehaviour
 
 	public virtual void SetHighlight(bool value)
 	{
-		Icon.SetHighlight(value);
+		if (Icon != null)
+		{
+			Icon.SetHighlight(value);
+		}
 	}
 
 	public virtual bool CanInteract(Vector3 pos)
@@ -56,12 +58,18 @@ public class Interactable : MonoBehaviour
 
 		Logger.Log($"StartInteraction user \"{playerAgent}\"");
 		CurrentUser = playerAgent;
-		Icon.SetBeingUsed(true);
+		if (Icon != null)
+		{
+			Icon.SetBeingUsed(true);
+		}
 	}
 
 	public virtual void EndInteraction()
 	{
-		Icon.SetBeingUsed(false);
+		if (Icon != null)
+		{
+			Icon.SetBeingUsed(false);
+		}
 		Logger.Log($"EndInteraction user \"{CurrentUser}\" -> null");
 		CurrentUser = null;
 	}

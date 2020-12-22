@@ -94,6 +94,17 @@ public class CameraController : MonoBehaviour
 		Logger.Log($"CameraController.RemoveTarget: {toRemove}");
 	}
 
+	public static float GetDistanceToPoint(Vector3 point)
+	{
+		if (Instance == null)
+		{
+			return 1f;
+		}
+
+		var delta = (Instance.Camera.transform.position - point);
+		return delta.magnitude;
+	}
+
 	void UpdateLargestWeight()
 	{
 		LargestWeight = float.MaxValue;
