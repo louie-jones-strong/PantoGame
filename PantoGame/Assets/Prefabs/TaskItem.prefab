@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 9183677446097822910}
   - component: {fileID: 8869923818195834948}
   - component: {fileID: 5934817384619756178}
+  - component: {fileID: 5258134104818347696}
   m_Layer: 5
   m_Name: TaskItem
   m_TagString: Untagged
@@ -164,7 +165,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 325
+  m_PreferredWidth: 360
   m_PreferredHeight: 50
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -214,6 +215,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!225 &5258134104818347696
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5346104221848817706}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6716525453056531615
 GameObject:
   m_ObjectHideFlags: 0

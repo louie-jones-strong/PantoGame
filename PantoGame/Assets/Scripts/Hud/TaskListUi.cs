@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class TaskListUi : MonoBehaviour
 {
+	[SerializeField] Animator ListAnimator;
 	[SerializeField] TaskItemUi Prefab;
 	[SerializeField] Text SceneName;
+	[SerializeField] Transform Root;
 
 	List<TaskItemUi> TaskItemPool = new List<TaskItemUi>();
 	List<Task> LastTask;
+	int CurrentSceneIndex;
 	
 	void Awake()
 	{
@@ -18,12 +21,15 @@ public class TaskListUi : MonoBehaviour
 
 	void Update()
 	{
-		if (Theatre.Instance?.CurrentScript.CurrentScene == null)
+		if (Theatre.Instance?.CurrentScript == null)
 		{
 			return;
 		}
-
-		var scene = Theatre.Instance.CurrentScript.CurrentScene;
+		if(Theatre.Instance.CurrentScript.Scenes.Count <= CurrentSceneIndex)
+		{
+			return;
+		}
+		var scene = Theatre.Instance.CurrentScript.Scenes[CurrentSceneIndex];
 
 		SceneName.text = $"Scene: {scene.SceneName}";
 
@@ -31,6 +37,21 @@ public class TaskListUi : MonoBehaviour
 		{
 			UpdateTasks(scene);
 			LastTask = scene.Tasks;
+		}
+
+		ListAnimator.SetBool("NextScene", CurrentSceneIndex != Theatre.Instance.CurrentScript.SceneIndex);
+	}
+
+	//anim event
+	public void SwapToNextSceneEvent()
+	{
+		if (CurrentSceneIndex >= Theatre.Instance.CurrentScript.SceneIndex)
+		{
+			CurrentSceneIndex = Theatre.Instance.CurrentScript.SceneIndex;
+		}
+		else
+		{
+			CurrentSceneIndex += 1;
 		}
 	}
 
@@ -65,7 +86,7 @@ public class TaskListUi : MonoBehaviour
 				return item;
 			}
 		}
-		var instance = Instantiate<TaskItemUi>(Prefab, transform);
+		var instance = Instantiate<TaskItemUi>(Prefab, Root);
 
 		TaskItemPool.Add(instance);
 		
