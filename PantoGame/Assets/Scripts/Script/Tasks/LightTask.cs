@@ -45,6 +45,8 @@ public class LightTask : Task
 	public override void Update()
 	{
 		PlayerDoingTask = Light.CurrentUser;
+		Light.SetHighlight(State == eTaskState.CanStart ||
+							State == eTaskState.InProgress);
 		base.Update();
 	}
 

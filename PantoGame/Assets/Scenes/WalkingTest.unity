@@ -841,7 +841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c162c23bc76bda469adf963ab2ec4bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TaskPriority: 1
+  TaskPriority: -1
   TaskId: Stand In Lobby
   StartRequiredActionStates: []
   EndRequiredActionStates:
@@ -1830,7 +1830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d176c52ee1f7ba94d93c1dd3ac791d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TaskPriority: 1
+  TaskPriority: -1
   TaskId: move1
   StartRequiredActionStates:
   - TaskId: Enter
@@ -2300,8 +2300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4b171b232bf404ca4c14a548a4b291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TaskPriority: 1
-  TaskId: Clap
+  TaskPriority: -1
+  TaskId: Toilet
   StartRequiredActionStates: []
   EndRequiredActionStates: []
 --- !u!1 &1133158416 stripped
@@ -4500,7 +4500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d176c52ee1f7ba94d93c1dd3ac791d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TaskPriority: 1
+  TaskPriority: -1
   TaskId: move2
   StartRequiredActionStates:
   - TaskId: move1
@@ -4680,7 +4680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d176c52ee1f7ba94d93c1dd3ac791d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TaskPriority: 1
+  TaskPriority: -1
   TaskId: Enter
   StartRequiredActionStates:
   - TaskId: Red Open

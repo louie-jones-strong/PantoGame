@@ -45,6 +45,8 @@ public class MoveSetTask : Task
 	public override void Update()
 	{
 		PlayerDoingTask = SetPiece.CurrentUser;
+		SetPiece.SetHighlight(State == eTaskState.CanStart ||
+							State == eTaskState.InProgress);
 		base.Update();
 	}
 

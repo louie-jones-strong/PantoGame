@@ -28,6 +28,8 @@ public class CurtainTask : Task
 	public override void Update()
 	{
 		PlayerDoingTask = TargetCurtain.CurrentUser;
+		TargetCurtain.SetHighlight(State == eTaskState.CanStart ||
+							State == eTaskState.InProgress);
 		base.Update();
 	}
 

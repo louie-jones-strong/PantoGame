@@ -25,7 +25,7 @@ public class TaskListUi : MonoBehaviour
 
 		var scene = Theatre.Instance.CurrentScript.CurrentScene;
 
-		SceneName.text = $"Scene: {scene}";
+		SceneName.text = $"Scene: {scene.SceneName}";
 
 		if (LastTask != scene.Tasks)
 		{
