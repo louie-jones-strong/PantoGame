@@ -23,6 +23,7 @@ public class AudienceAgent : Agent
 	protected override void Start()
 	{
 		CameraController.AddTarget(transform, weighting:Settings.AudienceCamWeighting);
+		SetColour(Color.yellow);
 		base.Start();
 	}
 	

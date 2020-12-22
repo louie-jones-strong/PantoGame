@@ -10,6 +10,7 @@ public class ActorAgent : Agent
 	protected override void Start()
 	{
 		CameraController.AddTarget(transform, weighting:Settings.ActorCamWeighting);
+		SetColour(Color.green);
 		base.Start();
 	}
 

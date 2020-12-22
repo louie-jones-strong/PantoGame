@@ -34,8 +34,11 @@ public class Agent : MonoBehaviour
 	protected virtual void Start()
 	{
 		PhysicsParts = GetComponentsInChildren<PhysicsRotation>();
-		
-		Colour = Random.ColorHSV();
+	}
+
+	protected void SetColour(Color colour)
+	{
+		Colour = colour;
 		foreach (var part in PartsToColour)
 		{
 			part.Renderer.SetColour(Colour);

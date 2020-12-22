@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using System;
 
 public class PlayerAgent : Agent
 {
@@ -22,6 +21,7 @@ public class PlayerAgent : Agent
 	protected override void Start()
 	{
 		CameraController.AddTarget(transform, weighting:Settings.PlayerCamWeighting);
+		SetColour(Random.ColorHSV());
 		base.Start();
 	}
 	
