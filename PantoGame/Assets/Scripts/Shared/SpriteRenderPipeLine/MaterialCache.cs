@@ -24,7 +24,7 @@ public class MaterialCache: MonoBehaviour
 	{
 		if (Instance != null)
 		{
-			Logger.LogError("MaterialCache.Instance != null but awake called");
+			Logger.LogWarning("MaterialCache.Instance != null but awake called");
 			return;
 		}
 		Instance = this;

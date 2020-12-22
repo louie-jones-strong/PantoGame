@@ -10,12 +10,35 @@ public class FadeableSet : MonoBehaviour
 	[SerializeField] float FadeAmount = 0.6f;
 
 	Renderer ObjectRender;
+	Material[] MaterialsNormal;
+	Material[] MaterialsFade;
+
 	float TimeSinceLastTrigger = float.MaxValue;
 	float TimeSinceFirstTrigger = float.MaxValue;
 
 	void Awake()
 	{
 		ObjectRender = GetComponent<Renderer>();
+
+		MaterialsNormal = ObjectRender.materials;
+		MaterialsFade = new Material[MaterialsNormal.Length];
+
+		for (int loop = 0; loop < MaterialsNormal.Length; loop++)
+		{
+			var newMaterial = new Material(MaterialsNormal[loop]);
+			newMaterial = new Material(MaterialsNormal[loop]);
+
+			newMaterial.SetFloat("_Mode", 2);
+			newMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+			newMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+			newMaterial.SetInt("_ZWrite", 0);
+			newMaterial.DisableKeyword("_ALPHATEST_ON");
+			newMaterial.EnableKeyword("_ALPHABLEND_ON");
+			newMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+			newMaterial.renderQueue = 3000;
+
+			MaterialsFade[loop] = newMaterial;
+		}
 	}
 
 	public void TriggerFade()
@@ -47,14 +70,17 @@ public class FadeableSet : MonoBehaviour
 
 	void SetFade(float value)
 	{
-		if (ObjectRender == null)
+		if (value == 1)
 		{
-			return;
+			ObjectRender.materials = MaterialsNormal;
 		}
-
-		foreach (var material in ObjectRender.materials)
+		else
 		{
-			material.color = new Color(material.color.r, material.color.g, material.color.b, value);
+			ObjectRender.materials = MaterialsFade;
+			foreach (var material in ObjectRender.materials)
+			{
+				material.color = new Color(material.color.r, material.color.g, material.color.b, value);
+			}
 		}
 	}
 }

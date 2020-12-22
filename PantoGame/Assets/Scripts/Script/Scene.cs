@@ -59,8 +59,8 @@ public class Scene
 	Dictionary<int, bool> CurrentEditActions = new Dictionary<int, bool>();
 
 
-	eActionType CurrentActionType;
-	enum eActionType
+	eTaskType CurrentActionType;
+	enum eTaskType
 	{
 		None,
 		Light,
@@ -77,7 +77,7 @@ public class Scene
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.Separator();
 
-		CurrentActionType = (eActionType)EditorGUILayout.EnumPopup(new GUIContent("Action Type"), CurrentActionType);
+		CurrentActionType = (eTaskType)EditorGUILayout.EnumPopup(new GUIContent("Action Type"), CurrentActionType);
 		if (GUILayout.Button("Add Task"))
 		{
 			var task = MakeTask(CurrentActionType);
@@ -140,31 +140,31 @@ public class Scene
 		}
 	}
 
-	Task MakeTask(eActionType actionType)
+	Task MakeTask(eTaskType actionType)
 	{
 		switch (actionType)
 		{
-			case eActionType.Light:
+			case eTaskType.Light:
 			{
 				return new LightTask();
 			}
-			case eActionType.Actor:
+			case eTaskType.Actor:
 			{
 				return new ActorTask();
 			}
-			case eActionType.Curtain:
+			case eTaskType.Curtain:
 			{
 				return new CurtainTask();
 			}
-			case eActionType.Clapping:
+			case eTaskType.Clapping:
 			{
 				return new AudienceClapTask();
 			}
-			case eActionType.Toilet:
+			case eTaskType.Toilet:
 			{
 				return new AudienceToiletTask();
 			}
-			case eActionType.MoveSet:
+			case eTaskType.MoveSet:
 			{
 				return new MoveSetTask();
 			}

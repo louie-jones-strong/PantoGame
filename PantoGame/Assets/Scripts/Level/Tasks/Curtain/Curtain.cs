@@ -6,14 +6,11 @@ public class Curtain : Interactable
 {
 	[SerializeField] float Speed = 0.1f;
 
-	[SerializeField] GameObject Root;
-	[SerializeField] float Min;
-	[SerializeField] float Max;
-
 	public float OpenAmount;
 
 	protected override void Awake()
 	{
+		OpenAmount = 0f;
 		SetOpenAmount();
 		base.Awake();
 	}
@@ -33,11 +30,8 @@ public class Curtain : Interactable
 		base.Update();
 	}
 
-	void SetOpenAmount()
+	public virtual void SetOpenAmount()
 	{
-		var pos = Root.transform.localPosition;
 		
-		Root.transform.localPosition = new Vector3(pos.x, Min + (Max-Min)*OpenAmount, pos.z);
 	}
-
 }
