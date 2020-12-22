@@ -319,6 +319,7 @@ MonoBehaviour:
   Player: {fileID: 2229273628982793845, guid: 8bd9cb8160bf82744b61a9c2925214db, type: 3}
   Audience: {fileID: 972033207960869405, guid: c32af72e559a1b24faf2c500ec0dba38, type: 3}
   Toilet: {fileID: 1628503823}
+  Lobby: {fileID: 712074300}
   Generator:
     SceneIndex: 0
     Scenes:
@@ -330,6 +331,7 @@ MonoBehaviour:
       - {fileID: 1564311921}
       - {fileID: 981881920}
       - {fileID: 803044968}
+      - {fileID: 387749020}
     - SceneName: house open
       Tasks:
       - {fileID: 898530365}
@@ -359,6 +361,7 @@ Transform:
   - {fileID: 148325844}
   - {fileID: 93068447}
   - {fileID: 1628503823}
+  - {fileID: 712074300}
   - {fileID: 1508095816}
   - {fileID: 1679344544}
   - {fileID: 1884867461}
@@ -826,6 +829,24 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &387749020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c162c23bc76bda469adf963ab2ec4bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskPriority: 1
+  TaskId: Stand In Lobby
+  StartRequiredActionStates: []
+  EndRequiredActionStates:
+  - TaskId: Close Red
+    State: 3
 --- !u!1 &448830242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,6 +1389,36 @@ MonoBehaviour:
   Target: {fileID: 563153204}
   Actor: {fileID: 1217834536}
   ActorSpeed: 5
+--- !u!1 &712074299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 712074300}
+  m_Layer: 0
+  m_Name: Lobby
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &712074300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712074299}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 32.6, y: 0, z: 5.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 153317277}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &746277322 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7642496178127128179, guid: 94641faea85378e4981884964526d3df, type: 3}
@@ -3063,7 +3114,7 @@ Transform:
   m_Children:
   - {fileID: 2032369338}
   m_Father: {fileID: 153317277}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1508095817
 MonoBehaviour:
@@ -3682,7 +3733,7 @@ Transform:
   - {fileID: 1796806894}
   - {fileID: 306474060}
   m_Father: {fileID: 153317277}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1698561307
 GameObject:
@@ -4292,7 +4343,7 @@ Transform:
   m_Children:
   - {fileID: 619739911}
   m_Father: {fileID: 153317277}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1890310891 stripped
 GameObject:

@@ -8,6 +8,7 @@ public class Theatre : PlayerManger
 	[SerializeField] AudienceAgent Audience;
 	public Script CurrentScript {get; private set;}
 	public Transform Toilet;
+	public Transform Lobby;
 	public Script Generator = new Script();//todo make this Generator not script
 
 	Chair[] Chairs;

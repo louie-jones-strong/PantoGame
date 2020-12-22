@@ -68,7 +68,8 @@ public class Scene
 		Curtain,
 		Clapping,
 		Toilet,
-		MoveSet
+		MoveSet,
+		StandInLobby
 	}
 
 	public void OnDrawScene()
@@ -167,6 +168,10 @@ public class Scene
 			case eTaskType.MoveSet:
 			{
 				return new MoveSetTask();
+			}
+			case eTaskType.StandInLobby:
+			{
+				return new AudienceStandInLobbyTask();
 			}
 			default:
 			{

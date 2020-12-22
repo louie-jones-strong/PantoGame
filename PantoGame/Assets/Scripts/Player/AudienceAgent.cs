@@ -16,6 +16,7 @@ public class AudienceAgent : Agent
 		Sit,
 		Toilet,
 		Clapping,
+		StandInLobby,
 		RandomWalk
 	}
 	
@@ -38,6 +39,11 @@ public class AudienceAgent : Agent
 		Vector3 target = transform.position;
 		switch (intent)
 		{
+			case eIntent.StandInLobby:
+			{
+				target = Theatre.Instance.Lobby.position;
+				break;
+			}
 			case eIntent.Sit:
 			{
 				target = SetSeat.transform.position;
@@ -81,6 +87,10 @@ public class AudienceAgent : Agent
 			if (task.State == eTaskState.CanStart || 
 				task.State == eTaskState.InProgress)
 			{
+				if (task is AudienceStandInLobbyTask)
+				{
+					return eIntent.StandInLobby;
+				}
 				if (task is AudienceClapTask)
 				{
 					return eIntent.Clapping;
