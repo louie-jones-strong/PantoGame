@@ -219,24 +219,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2619337244408616859, guid: 4c804405daf25424f864466d9fc09907, type: 3}
   m_PrefabInstance: {fileID: 105063314}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &107681450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01cd676c0bdf92544b1654c8ae680ac8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskPriority: 1
-  TaskId: Close
-  StartRequiredActionStates: []
-  EndRequiredActionStates: []
-  TargetCurtain: {fileID: 1796806895}
-  TargetOpenAmount: 0
 --- !u!1001 &114612888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -340,18 +322,29 @@ MonoBehaviour:
   Generator:
     SceneIndex: 0
     Scenes:
-    - SceneName: Scene 1
+    - SceneName: Pre Show
       Tasks:
-      - {fileID: 753536815}
-      - {fileID: 2013812189}
-      - {fileID: 2045735459}
-      - {fileID: 1824681135}
-      - {fileID: 304785086}
+      - {fileID: 224687167}
+      - {fileID: 211478073}
+      - {fileID: 702874567}
+      - {fileID: 1564311921}
+      - {fileID: 981881920}
+      - {fileID: 803044968}
+    - SceneName: house open
+      Tasks:
+      - {fileID: 898530365}
+    - SceneName: Show Start
+      Tasks:
+      - {fileID: 527570345}
+      - {fileID: 2093311133}
+      - {fileID: 1542393282}
+      - {fileID: 817951921}
+      - {fileID: 1938451035}
     - SceneName: ShowEnd
       Tasks:
-      - {fileID: 107681450}
-      - {fileID: 1068809080}
-      - {fileID: 2082553593}
+      - {fileID: 830378555}
+      - {fileID: 173200422}
+      - {fileID: 1109780612}
 --- !u!4 &153317277
 Transform:
   m_ObjectHideFlags: 0
@@ -401,6 +394,24 @@ MonoBehaviour:
   m_VoxelSize: 0.41666666
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: 3ac937eafce40e24cbbf5e1cf5789029, type: 2}
+--- !u!114 &173200422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01cd676c0bdf92544b1654c8ae680ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskPriority: 1
+  TaskId: CloseRed
+  StartRequiredActionStates: []
+  EndRequiredActionStates: []
+  TargetCurtain: {fileID: 306474061}
+  TargetOpenAmount: 0
 --- !u!1 &200417563 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: 94641faea85378e4981884964526d3df, type: 3}
@@ -420,6 +431,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 94641faea85378e4981884964526d3df, type: 3}
+--- !u!114 &211478073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01cd676c0bdf92544b1654c8ae680ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskPriority: 1
+  TaskId: Open Red Curtain
+  StartRequiredActionStates:
+  - TaskId: Open Fire Curtain
+    State: 3
+  EndRequiredActionStates: []
+  TargetCurtain: {fileID: 306474061}
+  TargetOpenAmount: 1
 --- !u!1 &215160599
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,7 +509,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4411084586161332140, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
   m_PrefabInstance: {fileID: 4411084586105330437}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &304785086
+--- !u!114 &224687167
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -487,17 +518,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19a4c380a927bae43909bf249c588681, type: 3}
+  m_Script: {fileID: 11500000, guid: 01cd676c0bdf92544b1654c8ae680ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TaskPriority: 1
-  TaskId: FollowActor
+  TaskId: Open Fire Curtain
   StartRequiredActionStates: []
-  EndRequiredActionStates:
-  - TaskId: Actor Walk
-    State: 3
-  Target: {fileID: 1217834535}
-  Light: {fileID: 1508095817}
+  EndRequiredActionStates: []
+  TargetCurtain: {fileID: 1796806895}
+  TargetOpenAmount: 1
 --- !u!1 &306474059
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,7 +679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4411084586161332141, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
       propertyPath: m_Name
-      value: Tape (1)
+      value: Tape Set point
       objectReference: {fileID: 0}
     - target: {fileID: 4411084586161332143, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
       propertyPath: m_Color.r
@@ -826,7 +855,7 @@ Transform:
   m_GameObject: {fileID: 448830242}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 2.87, z: 0}
-  m_LocalScale: {x: 5, y: 10, z: 1}
+  m_LocalScale: {x: 20, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 619739911}
   m_RootOrder: 0
@@ -939,6 +968,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &527570345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01cd676c0bdf92544b1654c8ae680ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskPriority: 1
+  TaskId: Red Open
+  StartRequiredActionStates: []
+  EndRequiredActionStates: []
+  TargetCurtain: {fileID: 306474061}
+  TargetOpenAmount: 1
 --- !u!1001 &544179084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1001,6 +1048,92 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2619337244408616859, guid: 4c804405daf25424f864466d9fc09907, type: 3}
   m_PrefabInstance: {fileID: 544179084}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &563153203
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1729513329}
+    m_Modifications:
+    - target: {fileID: 3576908583655040420, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: TapeColour.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576908583655040420, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: TapeColour.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576908583655040420, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: TapeColour.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411084586161332140, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 30.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411084586161332140, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411084586161332140, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411084586161332140, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411084586161332140, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411084586161332140, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411084586161332140, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411084586161332140, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411084586161332140, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411084586161332140, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411084586161332140, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411084586161332141, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: m_Name
+      value: Tape BackStage
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411084586161332143, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411084586161332143, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411084586161332143, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+--- !u!4 &563153204 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4411084586161332140, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
+  m_PrefabInstance: {fileID: 563153203}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &604355937 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1605018716082856250, guid: 94641faea85378e4981884964526d3df, type: 3}
@@ -1060,7 +1193,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619739910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.51, y: 8.32, z: 31.48}
+  m_LocalPosition: {x: -25.07, y: 8.32, z: 34.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 448830243}
@@ -1212,6 +1345,29 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &702874567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d176c52ee1f7ba94d93c1dd3ac791d45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskPriority: -1
+  TaskId: Actor Enter
+  StartRequiredActionStates:
+  - TaskId: Open Fire Curtain
+    State: 3
+  - TaskId: Open Red Curtain
+    State: 3
+  EndRequiredActionStates: []
+  Target: {fileID: 563153204}
+  Actor: {fileID: 1217834536}
+  ActorSpeed: 5
 --- !u!1 &746277322 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7642496178127128179, guid: 94641faea85378e4981884964526d3df, type: 3}
@@ -1231,26 +1387,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6930382988276659813, guid: 94641faea85378e4981884964526d3df, type: 3}
---- !u!114 &753536815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19a4c380a927bae43909bf249c588681, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskPriority: 1
-  TaskId: Move Light
-  StartRequiredActionStates:
-  - TaskId: Actor Move
-    State: 3
-  EndRequiredActionStates: []
-  Target: {fileID: 224036009}
-  Light: {fileID: 1508095817}
 --- !u!4 &778977137 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2619337244408616859, guid: 4c804405daf25424f864466d9fc09907, type: 3}
@@ -1606,11 +1742,71 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7270729055229355988, guid: 94641faea85378e4981884964526d3df, type: 3}
+--- !u!114 &803044968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01cd676c0bdf92544b1654c8ae680ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskPriority: 1
+  TaskId: Close Red
+  StartRequiredActionStates:
+  - TaskId: Move Spot
+    State: 3
+  EndRequiredActionStates: []
+  TargetCurtain: {fileID: 306474061}
+  TargetOpenAmount: 0
 --- !u!4 &815430375 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2619337244408616859, guid: 4c804405daf25424f864466d9fc09907, type: 3}
   m_PrefabInstance: {fileID: 2096081619}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &817951921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d176c52ee1f7ba94d93c1dd3ac791d45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskPriority: 1
+  TaskId: move1
+  StartRequiredActionStates:
+  - TaskId: Enter
+    State: 3
+  EndRequiredActionStates: []
+  Target: {fileID: 1304062751}
+  Actor: {fileID: 1217834536}
+  ActorSpeed: 2
+--- !u!114 &830378555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b6a6c6a497a8741a38a2d8374eb13a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskPriority: -1
+  TaskId: Clap
+  StartRequiredActionStates: []
+  EndRequiredActionStates:
+  - TaskId: CloseRed
+    State: 3
+  TargetTimeToClap: 10
 --- !u!1001 &841129686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1673,6 +1869,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2619337244408616859, guid: 4c804405daf25424f864466d9fc09907, type: 3}
   m_PrefabInstance: {fileID: 841129686}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &898530365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b6a6c6a497a8741a38a2d8374eb13a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskPriority: 1
+  TaskId: 
+  StartRequiredActionStates: []
+  EndRequiredActionStates: []
+  TargetTimeToClap: 5
 --- !u!1 &915592960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,6 +2019,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2619337244408616859, guid: 4c804405daf25424f864466d9fc09907, type: 3}
   m_PrefabInstance: {fileID: 917751329}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &981881920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a4c380a927bae43909bf249c588681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskPriority: 1
+  TaskId: Move Spot
+  StartRequiredActionStates:
+  - TaskId: MoveSet
+    State: 3
+  EndRequiredActionStates: []
+  Target: {fileID: 224036009}
+  Light: {fileID: 1508095817}
 --- !u!4 &999630877 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2619337244408616859, guid: 4c804405daf25424f864466d9fc09907, type: 3}
@@ -1923,25 +2156,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4493585093827132993, guid: 94641faea85378e4981884964526d3df, type: 3}
---- !u!114 &1068809080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3b6a6c6a497a8741a38a2d8374eb13a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskPriority: -1
-  TaskId: Clap
-  StartRequiredActionStates: []
-  EndRequiredActionStates:
-  - TaskId: Close
-    State: 3
-  TargetTimeToClap: 5
 --- !u!1001 &1099013700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2023,6 +2237,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: 94641faea85378e4981884964526d3df, type: 3}
+--- !u!114 &1109780612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4b171b232bf404ca4c14a548a4b291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskPriority: 1
+  TaskId: Clap
+  StartRequiredActionStates: []
+  EndRequiredActionStates: []
 --- !u!1 &1133158416 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6271229923065911820, guid: 94641faea85378e4981884964526d3df, type: 3}
@@ -2219,15 +2449,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4110958259888655842, guid: a9939c482eaee144b87fe0602ae040da, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.78
+      value: 31.36
       objectReference: {fileID: 0}
     - target: {fileID: 4110958259888655842, guid: a9939c482eaee144b87fe0602ae040da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.61
+      value: 0.17
       objectReference: {fileID: 0}
     - target: {fileID: 4110958259888655842, guid: a9939c482eaee144b87fe0602ae040da, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.81
+      value: -15.86
       objectReference: {fileID: 0}
     - target: {fileID: 4110958259888655842, guid: a9939c482eaee144b87fe0602ae040da, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2418,7 +2648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4411084586161332141, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
       propertyPath: m_Name
-      value: Tape (2)
+      value: FrontStage
       objectReference: {fileID: 0}
     - target: {fileID: 4411084586161332143, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
       propertyPath: m_Color.r
@@ -3098,6 +3328,48 @@ Transform:
   m_Father: {fileID: 93068447}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1542393282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a4c380a927bae43909bf249c588681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskPriority: 1
+  TaskId: FollowActor
+  StartRequiredActionStates: []
+  EndRequiredActionStates:
+  - TaskId: move2
+    State: 3
+  Target: {fileID: 1217834535}
+  Light: {fileID: 1508095817}
+--- !u!114 &1564311921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2228cdb9aa6d054daa07fd1e2bf8648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskPriority: 1
+  TaskId: MoveSet
+  StartRequiredActionStates:
+  - TaskId: Open Fire Curtain
+    State: 3
+  - TaskId: Open Red Curtain
+    State: 3
+  EndRequiredActionStates: []
+  Target: {fileID: 324927525}
+  SetPiece: {fileID: 619739912}
 --- !u!1 &1628442522
 GameObject:
   m_ObjectHideFlags: 0
@@ -3535,6 +3807,7 @@ Transform:
   - {fileID: 224036009}
   - {fileID: 324927525}
   - {fileID: 1304062751}
+  - {fileID: 563153204}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3734,27 +4007,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7542296154645646452, guid: 94641faea85378e4981884964526d3df, type: 3}
---- !u!114 &1824681135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d176c52ee1f7ba94d93c1dd3ac791d45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskPriority: -1
-  TaskId: Actor Walk
-  StartRequiredActionStates:
-  - TaskId: Move Light
-    State: 3
-  EndRequiredActionStates: []
-  Target: {fileID: 1304062751}
-  Actor: {fileID: 1217834536}
-  ActorSpeed: 5
 --- !u!1 &1833327207
 GameObject:
   m_ObjectHideFlags: 0
@@ -4185,6 +4437,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2619337244408616859, guid: 4c804405daf25424f864466d9fc09907, type: 3}
   m_PrefabInstance: {fileID: 1915629971}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1938451035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d176c52ee1f7ba94d93c1dd3ac791d45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskPriority: 1
+  TaskId: move2
+  StartRequiredActionStates:
+  - TaskId: move1
+    State: 3
+  EndRequiredActionStates: []
+  Target: {fileID: 224036009}
+  Actor: {fileID: 1217834536}
+  ActorSpeed: 5
 --- !u!1001 &1989613584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4247,27 +4520,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2619337244408616859, guid: 4c804405daf25424f864466d9fc09907, type: 3}
   m_PrefabInstance: {fileID: 1989613584}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2013812189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d176c52ee1f7ba94d93c1dd3ac791d45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskPriority: -1
-  TaskId: Actor Move
-  StartRequiredActionStates:
-  - TaskId: Move Set
-    State: 3
-  EndRequiredActionStates: []
-  Target: {fileID: 224036009}
-  Actor: {fileID: 1217834536}
-  ActorSpeed: 15
 --- !u!1 &2032369337
 GameObject:
   m_ObjectHideFlags: 0
@@ -4365,7 +4617,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2045735459
+--- !u!114 &2093311133
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4374,35 +4626,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2228cdb9aa6d054daa07fd1e2bf8648, type: 3}
+  m_Script: {fileID: 11500000, guid: d176c52ee1f7ba94d93c1dd3ac791d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TaskPriority: 1
-  TaskId: Move Set
-  StartRequiredActionStates: []
-  EndRequiredActionStates: []
-  Target: {fileID: 324927525}
-  SetPiece: {fileID: 619739912}
---- !u!114 &2082553593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be4b171b232bf404ca4c14a548a4b291, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskPriority: -1
-  TaskId: Toilet
+  TaskId: Enter
   StartRequiredActionStates:
-  - TaskId: Clap
-    State: 3
-  - TaskId: Close
+  - TaskId: Red Open
     State: 3
   EndRequiredActionStates: []
+  Target: {fileID: 224036009}
+  Actor: {fileID: 1217834536}
+  ActorSpeed: 15
 --- !u!1001 &2096081619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4644,7 +4879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4411084586161332141, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
       propertyPath: m_Name
-      value: Tape
+      value: tape Mid stage
       objectReference: {fileID: 0}
     - target: {fileID: 4411084586161332143, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
       propertyPath: m_Color.r
