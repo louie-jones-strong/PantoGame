@@ -40,9 +40,21 @@ public class MainManager : MonoBehaviour
 
 		if (Input.GetButton("Exit"))
 		{
-			Debug.Log("Quitting");
-			Application.Quit();
+			CloseGame();
 		}
+	}
+
+	public void CloseGame()
+	{
+		Debug.Log("Quitting");
+		Application.Quit();
+#if UNITY_EDITOR
+		// Application.Quit() does not work in the editor so
+		// UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+		UnityEditor.EditorApplication.isPlaying = false;
+#else
+		Application.Quit();
+#endif
 	}
 
 #region screen stuff

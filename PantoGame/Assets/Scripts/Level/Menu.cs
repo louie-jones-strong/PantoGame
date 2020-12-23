@@ -10,7 +10,8 @@ public class Menu : PlayerManger
 	{
 		Main,
 		Settings,
-		LevelSelect
+		LevelSelect,
+		ExitConfirm
 	}
 
 	[SerializeField] AnimationCurve FadeDown;
@@ -103,6 +104,9 @@ public class Menu : PlayerManger
 					case eMenuState.LevelSelect: 
 						LevelPickerMenu();
 						break;
+					case eMenuState.ExitConfirm: 
+						ExitConfirm();
+						break;
 					default:
 						Logger.LogError($"unexpected state: {TargetState}");
 						break;
@@ -127,6 +131,8 @@ public class Menu : PlayerManger
 		AddButton("Play", true, () => {SetTarget(eMenuState.LevelSelect);}, pos);
 		pos.y -= 10;
 		AddButton("Settings", false, () => {SetTarget(eMenuState.Settings);}, pos);
+		pos.y -= 10;
+		AddButton("Exit", false, () => {SetTarget(eMenuState.ExitConfirm);}, pos);
 	}
 
 	void SettingsMenu()
@@ -141,6 +147,14 @@ public class Menu : PlayerManger
 	{
 		//todo when we have more levels add them in here
 		MainManager.Instance.TransToScreen(Settings.WalkingTestScreenName, Settings.MenuScreenName);
+	}
+
+	void ExitConfirm()
+	{
+		var pos = new Vector2(-10, 0);
+		AddButton("Exit", false, MainManager.Instance.CloseGame, pos);
+		pos.x += 20;
+		AddButton("Back", false, () => SetTarget(eMenuState.Main), pos);
 	}
 #endregion
 
