@@ -156,10 +156,10 @@ MonoBehaviour:
   MinZoom: 50
   MaxZoom: 50
   MaxTargetDistance: 100
-  MinXMove: 0
-  MaxXMove: 0
-  MinYMove: 0
-  MaxYMove: 0
+  MinXMove: -5
+  MaxXMove: 5
+  MinYMove: -5
+  MaxYMove: 5
   TargetList: []
 --- !u!4 &215160601
 Transform:
@@ -207,6 +207,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 2229273628982793845, guid: 8bd9cb8160bf82744b61a9c2925214db, type: 3}
+  FadeDown:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.4361339
+      outSlope: -0.4361339
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.022682445
+    - serializedVersion: 3
+      time: 0.5
+      value: 0
+      inSlope: -6.7097507
+      outSlope: -6.7097507
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.032687843
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  FadeUp:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0007324219
+      value: -0.0042419434
+      inSlope: 0.047686234
+      outSlope: 0.047686234
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.07624682
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 5.9462447
+      outSlope: 5.9462447
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.057052203
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   MenuButtonPrefab: {fileID: 8997649247530338302, guid: 5d4e77191dad37a43a49d921976a8cf2, type: 3}
 --- !u!4 &293057432
 Transform:
@@ -249,7 +297,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.41666666
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: 89716bcc0d754654fa704065c690ad71, type: 2}
 --- !u!1 &540496661

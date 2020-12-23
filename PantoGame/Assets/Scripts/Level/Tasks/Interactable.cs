@@ -45,7 +45,8 @@ public class Interactable : MonoBehaviour
 	{
 		var distance = transform.position - pos;
 		return Mathf.Abs(distance.x) <= TriggerXDistance &&
-				Mathf.Abs(distance.z) <= TriggerYDistance;
+				Mathf.Abs(distance.z) <= TriggerYDistance &&
+				Mathf.Abs(distance.y) <= 2;
 	}
 
 	public virtual void StartInteraction(PlayerAgent playerAgent)

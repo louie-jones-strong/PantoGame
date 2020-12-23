@@ -19,7 +19,6 @@ public class MenuButton : Interactable
 
 	protected override void Awake()
 	{
-		
 	}
 
 	public void Setup(Menu menu, string label, bool triggerNeedsEveryone, Vector2 Pos, float xSize, float ySize, Action onClick=null)
@@ -38,6 +37,7 @@ public class MenuButton : Interactable
 		LoadingBar.localPosition = new Vector3(0, -(ySize-1), 0);
 
 		transform.position = new Vector3(Pos.x, 0, Pos.y);
+		CameraController.AddTarget(transform, 1);
 	}
 
 	protected override void Update()
@@ -80,11 +80,19 @@ public class MenuButton : Interactable
 		return base.CanInteract(pos) && !TriggerNeedsEveryone;
 	}
 
-	public void StartInteration(int controlIndex)
+	public override void StartInteraction(PlayerAgent playerAgent)
 	{
 		if (OnClick != null)
 		{
 			OnClick();
 		}
+		base.StartInteraction(playerAgent);
+	}
+
+	public virtual void SetFade(float value)
+	{
+		var pos = transform.localPosition;
+		pos.y = (1-value) * 10;
+		transform.localPosition = pos;
 	}
 }
