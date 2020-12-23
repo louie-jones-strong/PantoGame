@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Curtain : Interactable
 {
-	[SerializeField] float Speed = 0.1f;
+	[SerializeField] float Acceleration = 0.05f;
+	[SerializeField] float Drag = 0.4f;
 
 	public float OpenAmount;
+
+	float Velocity;
 
 	protected override void Awake()
 	{
@@ -17,14 +20,26 @@ public class Curtain : Interactable
 	
 	protected override void Update()
 	{
-		if (CurrentUser == null)
+		if (CurrentUser != null)
 		{
-			return;
-		}
-		var delta = SimpleInput.GetInputValue(eInput.YAxis, index: CurrentUser.ControlType) * Speed;
+			var delta = SimpleInput.GetInputValue(eInput.YAxis, index: CurrentUser.ControlType) * Acceleration;
 
-		OpenAmount += delta * Time.deltaTime;
-		OpenAmount = Mathf.Clamp01(OpenAmount);
+			Velocity += delta * Time.deltaTime;
+		}
+
+		Velocity -= (Velocity*Drag) * Time.deltaTime;
+		OpenAmount += Velocity * Time.deltaTime;
+
+		if (OpenAmount >= 1f)
+		{
+			OpenAmount = 1f;
+			Velocity = 0;
+		}
+		else if (OpenAmount <= 0f)
+		{
+			OpenAmount = 0f;
+			Velocity = 0;
+		}
 		
 		SetOpenAmount();
 		base.Update();

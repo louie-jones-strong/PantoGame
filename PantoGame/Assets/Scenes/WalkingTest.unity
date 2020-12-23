@@ -577,7 +577,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TriggerXDistance: 3.5
   TriggerYDistance: 2.5
-  Speed: 0.5
+  Acceleration: 0.15
+  Drag: 0.5
   OpenAmount: 0
   RootLeft: {fileID: 1016166279}
   RootRight: {fileID: 1698561307}
@@ -4019,7 +4020,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TriggerXDistance: 3.5
   TriggerYDistance: 2.5
-  Speed: 0.5
+  Acceleration: 0.1
+  Drag: 0.5
   OpenAmount: 0
   Root: {fileID: 1354606416}
   Min: 0
