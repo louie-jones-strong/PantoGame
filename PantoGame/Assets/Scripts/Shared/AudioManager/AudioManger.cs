@@ -14,6 +14,7 @@ public class AudioManger : MonoBehaviour
 	Dictionary<string, Sound> Sounds = new Dictionary<string, Sound>();
 	List<AudioSource> CurrentSources = new List<AudioSource>();
 
+	const float DefaultMusicVolume = 0.8f;
 	static float _MusicVolume;
 	public static float MusicVolume {get {return _MusicVolume;} set {SetMusicVolume(value);}}
 	public static void SetMusicVolume(float value)
@@ -22,6 +23,7 @@ public class AudioManger : MonoBehaviour
 		Instance.Mixer.SetFloat("MusicVol", Mathf.Log10(value) * 20);
 	}
 
+	const float DefaultSfxVolume = 0.8f;
 	static float _SfxVolume;
 	public static float SfxVolume {get {return _SfxVolume;} set {SetSfxVolume(value);}}
 	public static void SetSfxVolume(float value)
@@ -30,6 +32,7 @@ public class AudioManger : MonoBehaviour
 		Instance.Mixer.SetFloat("SfxVol", Mathf.Log10(value) * 20);
 	}
 
+	const float DefaultAmbienceVolume = 0.8f;
 	static float _AmbienceVolume;
 	public static float AmbienceVolume {get {return _AmbienceVolume;} set {SetAmbienceVolume(value);}}
 	public static void SetAmbienceVolume(float value)
@@ -47,6 +50,10 @@ public class AudioManger : MonoBehaviour
 
 		Instance = this;
 		LoadSounds();
+
+		MusicVolume = DefaultMusicVolume;
+		SfxVolume = DefaultSfxVolume;
+		AmbienceVolume = DefaultAmbienceVolume;
 	}
 
 	void LoadSounds()

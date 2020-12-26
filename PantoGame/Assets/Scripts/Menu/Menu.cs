@@ -187,7 +187,25 @@ public class Menu : PlayerManger
 #endif
 
 		pos = new Vector2(10, 10);
-		AddSlider("SFX Volume", AudioManger.SfxVolume, pos,changedAction:(v) => {AudioManger.SfxVolume = v;});
+		AddSlider("Music Volume", AudioManger.MusicVolume, pos, changedAction:(v) => 
+			{
+				AudioManger.MusicVolume = v;
+			});
+
+		pos.y -= 6;
+		AddSlider("SFX Volume", AudioManger.SfxVolume, pos, changedAction:(v) => 
+			{
+				AudioManger.SfxVolume = v;
+				AudioManger.PlayEvent("SfxVolChange");
+			});
+
+		pos.y -= 6;
+		AddSlider("Ambience Volume", AudioManger.AmbienceVolume, pos, changedAction:(v) => 
+			{
+				AudioManger.AmbienceVolume = v;
+			});
+
+		pos.y -= 6;
 
 	}
 

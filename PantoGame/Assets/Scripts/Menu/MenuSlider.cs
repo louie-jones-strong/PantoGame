@@ -51,12 +51,12 @@ public class MenuSlider : MenuInteractable
 		
 		value = Mathf.Clamp(value, Min, Max);
 
-		Value = value;
-		ValueText.text = $"{Value}";
 
 		if (Value != value && ChangedAction != null)
 		{
 			ChangedAction.Invoke(value);
 		}
+		Value = value;
+		ValueText.text = $"{Value}";
 	}
 }
