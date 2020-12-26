@@ -20,7 +20,7 @@ public class AudioManger : MonoBehaviour
 	public static void SetMusicVolume(float value)
 	{
 		_MusicVolume = value;
-		Instance.Mixer.SetFloat("MusicVol", Mathf.Log10(value) * 20);
+		Instance.Mixer.SetFloat("MusicVol", VolumeToDb(value));
 	}
 
 	const float DefaultSfxVolume = 0.8f;
@@ -29,7 +29,7 @@ public class AudioManger : MonoBehaviour
 	public static void SetSfxVolume(float value)
 	{
 		_SfxVolume = value;
-		Instance.Mixer.SetFloat("SfxVol", Mathf.Log10(value) * 20);
+		Instance.Mixer.SetFloat("SfxVol", VolumeToDb(value));
 	}
 
 	const float DefaultAmbienceVolume = 0.8f;
@@ -38,7 +38,15 @@ public class AudioManger : MonoBehaviour
 	public static void SetAmbienceVolume(float value)
 	{
 		_AmbienceVolume = value;
-		Instance.Mixer.SetFloat("AmbienceVol", Mathf.Log10(value) * 20);
+		Instance.Mixer.SetFloat("AmbienceVol", VolumeToDb(value));
+	}
+
+	public static float VolumeToDb(float volume)
+	{
+		if (volume != 0)
+			return Mathf.Log10(volume) * 20;
+		else
+			return -144.0f;
 	}
 
 	void Awake()
