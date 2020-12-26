@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 2131402753}
   - component: {fileID: 2131402755}
   - component: {fileID: 2131402756}
+  - component: {fileID: 2131402757}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -197,3 +198,17 @@ MonoBehaviour:
   MusicMixerGroup: {fileID: -3809440831236885134, guid: 33ebab0513f5c574fbf628cafbc364de, type: 2}
   SfxMixerGroup: {fileID: 8485898271651365978, guid: 33ebab0513f5c574fbf628cafbc364de, type: 2}
   AmbienceMixerGroup: {fileID: 7598444933555437800, guid: 33ebab0513f5c574fbf628cafbc364de, type: 2}
+--- !u!114 &2131402757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131402752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9d5819e1daa0f4ca85744b8da95457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MenuMusic: []
+  InGameMusic: []

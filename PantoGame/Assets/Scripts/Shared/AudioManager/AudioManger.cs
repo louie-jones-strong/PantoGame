@@ -81,8 +81,17 @@ public class AudioManger : MonoBehaviour
 		{
 			root = Instance.transform;
 		}
-
-		root.gameObject.TryGetComponent<AudioSource>(out AudioSource source);
+		
+		var sources = root.gameObject.GetComponents<AudioSource>();
+		AudioSource source = null;
+		foreach (var item in sources)
+		{
+			if (!item.enabled)
+			{
+				source = item;
+				break;
+			}
+		}
 
 		if (source == null)
 		{
@@ -93,10 +102,23 @@ public class AudioManger : MonoBehaviour
 		Instance.CurrentSources.Add(source);
 
 		source.clip = sound.GetAudioClip();
-		source.outputAudioMixerGroup = Instance.SfxMixerGroup;
+		source.outputAudioMixerGroup = Instance.GetGetAudioBus(sound.AudioBus);
 		source.playOnAwake = false;
 		source.Play();
 		return source;
+	}
+
+	AudioMixerGroup GetGetAudioBus(eAudioBusType busType)
+	{
+		switch (busType)
+		{
+			case eAudioBusType.Music:
+				return MusicMixerGroup;
+			case eAudioBusType.Ambience:
+				return AmbienceMixerGroup;
+			default:
+				return SfxMixerGroup;
+		}
 	}
 
 	void Update()

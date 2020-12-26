@@ -8,6 +8,7 @@ class Sound: ScriptableObject
 {
 	public string Name;
 	public List<AudioClip> Clips;
+	public eAudioBusType AudioBus;
 
 	
 	public AudioClip GetAudioClip()
