@@ -256,6 +256,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   MenuButtonPrefab: {fileID: 8997649247530338302, guid: 5d4e77191dad37a43a49d921976a8cf2, type: 3}
+  MenuSliderPrefab: {fileID: 1963472068837154989, guid: de678186c921fa94a9b4e3cb3e1343d2, type: 3}
 --- !u!4 &293057432
 Transform:
   m_ObjectHideFlags: 0

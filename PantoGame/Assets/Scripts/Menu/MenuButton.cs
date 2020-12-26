@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class MenuButton : Interactable
+public class MenuButton : MenuInteractable
 {
 	[SerializeField] bool TriggerNeedsEveryone;
 	[SerializeField] float LoadTime = 2f;
 
-	[SerializeField] Transform Root;
 	[SerializeField] Transform LoadingBar;
 	[SerializeField] TextMesh Label;
 	[SerializeField] AnimationCurve LoadBarCurve;
@@ -17,27 +16,16 @@ public class MenuButton : Interactable
 	Menu Menu;
 	float LoadAmount;
 
-	protected override void Awake()
+	public void Setup(Menu menu, string label, bool triggerNeedsEveryone, Vector2 pos, float xSize, float ySize, Action onClick=null)
 	{
-	}
-
-	public void Setup(Menu menu, string label, bool triggerNeedsEveryone, Vector2 Pos, float xSize, float ySize, Action onClick=null)
-	{
-		Menu = menu;
 		TriggerNeedsEveryone = triggerNeedsEveryone;
 		Label.text = label;
-		OnClick = onClick;
 		LoadAmount = 0;
+		OnClick = onClick;
 
-
-		TriggerXDistance = xSize / 2;
-		TriggerYDistance = ySize / 2;
-
-		Root.localScale = new Vector3(xSize, ySize, 0);
 		LoadingBar.localPosition = new Vector3(0, -(ySize-1), 0);
 
-		transform.position = new Vector3(Pos.x, 0, Pos.y);
-		CameraController.AddTarget(transform, 1);
+		base.Setup(menu, pos, xSize, ySize);
 	}
 
 	protected override void Update()
@@ -75,11 +63,6 @@ public class MenuButton : Interactable
 		base.Update();
 	}
 
-	public override bool CanInteract(Vector3 pos)
-	{
-		return base.CanInteract(pos) && !TriggerNeedsEveryone;
-	}
-
 	public override void StartInteraction(PlayerAgent playerAgent)
 	{
 		if (OnClick != null)
@@ -89,10 +72,8 @@ public class MenuButton : Interactable
 		base.StartInteraction(playerAgent);
 	}
 
-	public virtual void SetFade(float value)
+	public override bool CanInteract(Vector3 pos)
 	{
-		var pos = transform.localPosition;
-		pos.y = (1-value) * 10;
-		transform.localPosition = pos;
+		return base.CanInteract(pos) && !TriggerNeedsEveryone;
 	}
 }

@@ -18,7 +18,8 @@ public class Menu : PlayerManger
 	[SerializeField] AnimationCurve FadeDown;
 	[SerializeField] AnimationCurve FadeUp;
 	[SerializeField] MenuButton MenuButtonPrefab;
-	List<MenuButton> Buttons = new List<MenuButton>();
+	[SerializeField] MenuSlider MenuSliderPrefab;
+	List<MenuInteractable> MenuInteractables = new List<MenuInteractable>();
 	eMenuState CurrentState;
 	eMenuState TargetState;
 	float TimeInState = 1;
@@ -31,9 +32,9 @@ public class Menu : PlayerManger
 
 	void SetAllButtonFade(float value)
 	{
-		foreach (var button in Buttons)
+		foreach (var item in MenuInteractables)
 		{
-			button.SetFade(value);
+			item.SetFade(value);
 		}
 	}
 
@@ -41,11 +42,17 @@ public class Menu : PlayerManger
 	void AddButton(string label, bool triggerNeedsEveryone, Action onClick, Vector2 pos, float xSize=10, float ySize=4)
 	{
 		MenuButton button = null;
-		foreach (var item in Buttons)
+		foreach (var item in MenuInteractables)
 		{
+			var tempButton = item as MenuButton;
+			if (tempButton == null)
+			{
+				continue;
+			}
+
 			if (!item.gameObject.activeSelf)
 			{
-				button = item;
+				button = tempButton;
 				button.gameObject.SetActive(true);
 				break;
 			}
@@ -54,10 +61,38 @@ public class Menu : PlayerManger
 		if (button == null)
 		{
 			button = Instantiate<MenuButton>(MenuButtonPrefab, transform);
-			Buttons.Add(button);
+			MenuInteractables.Add(button);
 		}
 
 		button.Setup(this, label, triggerNeedsEveryone, pos, xSize, ySize, onClick);
+	}
+
+	void AddSlider(string label, float value, Vector2 pos, float xSize=10, float ySize=4, Action<float> changedAction=null, float min=0, float max=1)
+	{
+		MenuSlider slider = null;
+		foreach (var item in MenuInteractables)
+		{
+			var temp = item as MenuSlider;
+			if (temp == null)
+			{
+				continue;
+			}
+
+			if (!item.gameObject.activeSelf)
+			{
+				slider = temp;
+				slider.gameObject.SetActive(true);
+				break;
+			}
+		}
+
+		if (slider == null)
+		{
+			slider = Instantiate<MenuSlider>(MenuSliderPrefab, transform);
+			MenuInteractables.Add(slider);
+		}
+
+		slider.Setup(this, label, value, pos, xSize, ySize, changedAction:changedAction, min:min, max:max);
 	}
 
 	void SetTarget(eMenuState state)
@@ -73,9 +108,9 @@ public class Menu : PlayerManger
 
 	void RemoveAllButtons()
 	{
-		foreach (var button in Buttons)
+		foreach (var item in MenuInteractables)
 		{
-			button.gameObject.SetActive(false);
+			item.gameObject.SetActive(false);
 		}
 	}
 
@@ -150,6 +185,9 @@ public class Menu : PlayerManger
 		AddButton("Debug", false, () => SetTarget(eMenuState.DebugSettings), pos);
 		pos.y -= 10;
 #endif
+
+		pos = new Vector2(10, 10);
+		AddSlider("SFX Volume", AudioManger.SfxVolume, pos,changedAction:(v) => {AudioManger.SfxVolume = v;});
 
 	}
 
