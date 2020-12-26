@@ -63,6 +63,8 @@ public class Interactable : MonoBehaviour
 		{
 			Icon.SetBeingUsed(true);
 		}
+
+		AudioManger.PlayEvent("Interact");
 	}
 
 	public virtual void EndInteraction()

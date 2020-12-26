@@ -10,6 +10,7 @@ public class Menu : PlayerManger
 	{
 		Main,
 		Settings,
+		DebugSettings,
 		LevelSelect,
 		ExitConfirm
 	}
@@ -101,6 +102,9 @@ public class Menu : PlayerManger
 					case eMenuState.Settings: 
 						SettingsMenu();
 						break;
+					case eMenuState.DebugSettings: 
+						DebugSettingsMenu();
+						break;
 					case eMenuState.LevelSelect: 
 						LevelPickerMenu();
 						break;
@@ -141,6 +145,24 @@ public class Menu : PlayerManger
 
 		AddButton("Back", false, () => SetTarget(eMenuState.Main), pos);
 		pos.y -= 10;
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+		AddButton("Debug", false, () => SetTarget(eMenuState.DebugSettings), pos);
+		pos.y -= 10;
+#endif
+
+	}
+
+	void DebugSettingsMenu()
+	{
+		var pos = new Vector2(-10, 10);
+
+		AddButton("Back", false, () => SetTarget(eMenuState.Settings), pos);
+		pos.y -= 10;
+
+		AddButton("PlaySound", false, () => {}, pos);
+		pos.y -= 10;
+
 	}
 
 	void LevelPickerMenu()
