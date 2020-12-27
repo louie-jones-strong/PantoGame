@@ -11,6 +11,7 @@ public class Menu : PlayerManger
 		Main,
 		Settings,
 		DebugSettings,
+		Credits,
 		LevelSelect,
 		ExitConfirm
 	}
@@ -137,6 +138,9 @@ public class Menu : PlayerManger
 					case eMenuState.Settings: 
 						SettingsMenu();
 						break;
+					case eMenuState.Credits: 
+						CreditsMenu();
+						break;
 					case eMenuState.DebugSettings: 
 						DebugSettingsMenu();
 						break;
@@ -186,6 +190,9 @@ public class Menu : PlayerManger
 		pos.y -= 10;
 #endif
 
+		AddButton("Credits", false, () => SetTarget(eMenuState.Credits), pos);
+		pos.y -= 10;
+
 		pos = new Vector2(10, 10);
 		AddSlider("Music Volume", AudioManger.MusicVolume, pos, changedAction:(v) => 
 			{
@@ -225,6 +232,14 @@ public class Menu : PlayerManger
 	{
 		//todo when we have more levels add them in here
 		MainManager.Instance.TransToScreen(Settings.WalkingTestScreenName, Settings.MenuScreenName);
+	}
+
+	void CreditsMenu()
+	{
+		var pos = new Vector2(-10, 10);
+
+		AddButton("Back", false, () => SetTarget(eMenuState.Settings), pos);
+
 	}
 
 	void ExitConfirm()
