@@ -27,11 +27,11 @@ public class PlayerAgent : Agent
 	
 	protected override void Update()
 	{
-		var acceleration = UpdateMovement();
+		var acceleration = Vector3.zero;
 
 		if (CurrentTask == null && PropSlot == null)
 		{
-
+			acceleration = UpdateMovement();
 			if (SimpleInput.IsInputInState(eInput.Interact, eButtonState.Pressed, index: ControlType))
 			{
 				float minDistance = float.MaxValue;
@@ -69,6 +69,7 @@ public class PlayerAgent : Agent
 		}
 		else if (PropSlot != null)
 		{
+			acceleration = UpdateMovement();
 			if (SimpleInput.IsInputInState(eInput.Interact, eButtonState.Pressed, index: ControlType))
 			{
 				PropSlot.DropProp();
