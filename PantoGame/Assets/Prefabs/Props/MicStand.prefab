@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2496617492560565605}
+  - component: {fileID: 2663702856695935105}
   m_Layer: 0
   m_Name: MicTarget
   m_TagString: Untagged
@@ -30,6 +31,19 @@ Transform:
   m_Father: {fileID: 8489338603663585443}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2663702856695935105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2559124876877089211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f07f39c107dc0f45b9594d23a0dd5d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PropSlotRoot: {fileID: 2496617492560565605}
 --- !u!1 &8489338603663585441
 GameObject:
   m_ObjectHideFlags: 0
@@ -39,7 +53,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8489338603663585443}
-  - component: {fileID: 8489338603663585442}
+  - component: {fileID: 1033475962471711047}
   m_Layer: 0
   m_Name: MicStand
   m_TagString: Untagged
@@ -63,7 +77,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8489338603663585442
+--- !u!114 &1033475962471711047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,10 +86,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8489338603663585441}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f07f39c107dc0f45b9594d23a0dd5d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d5738e52eab3c045b3ae7aaf7544e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MicRoot: {fileID: 2496617492560565605}
+  PropSize: 2
 --- !u!1 &8489338603972712275
 GameObject:
   m_ObjectHideFlags: 0

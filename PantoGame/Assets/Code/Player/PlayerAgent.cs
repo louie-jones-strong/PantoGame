@@ -27,28 +27,54 @@ public class PlayerAgent : Agent
 	
 	protected override void Update()
 	{
-		var acceleration = Vector3.zero;
+		var acceleration = UpdateMovement();
 
-		if (CurrentTask == null)
+		if (CurrentTask == null && PropSlot == null)
 		{
-			acceleration = UpdateMovement();
 
 			if (SimpleInput.IsInputInState(eInput.Interact, eButtonState.Pressed, index: ControlType))
 			{
 				float minDistance = float.MaxValue;
-				foreach (var task in Interactable.Interactables)
+				Prop closestProp = null;
+				foreach (var prop in Prop.PropsList)
 				{
-					var distance = (transform.position-task.transform.position).magnitude;
-					if (distance <= minDistance && task.CanInteract(transform.position))
+					var distance = (transform.position - prop.transform.position).magnitude;
+					if (CanHoldProp(prop) && distance < minDistance)
 					{
-						CurrentTask = task;
+						closestProp = prop;
 						minDistance = distance;
-						CurrentTask.StartInteraction(this);
+					}
+				}
+
+				if (closestProp != null)
+				{
+					closestProp.PickUpProp(this);
+				}
+
+
+				if (PropSlot == null)
+				{
+					foreach (var task in Interactable.Interactables)
+					{
+						var distance = (transform.position-task.transform.position).magnitude;
+						if (distance <= minDistance && task.CanInteract(transform.position))
+						{
+							CurrentTask = task;
+							minDistance = distance;
+							CurrentTask.StartInteraction(this);
+						}
 					}
 				}
 			}
 		}
-		else
+		else if (PropSlot != null)
+		{
+			if (SimpleInput.IsInputInState(eInput.Interact, eButtonState.Pressed, index: ControlType))
+			{
+				PropSlot.DropProp();
+			}
+		}
+		else if (CurrentTask != null)
 		{
 			acceleration -= Velocity;
 			Velocity = Vector3.zero;

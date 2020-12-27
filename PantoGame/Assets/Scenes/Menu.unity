@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae9d1c44ea613d4a832b75da4db803e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PropsRoot: {fileID: 293057432}
   Player: {fileID: 2229273628982793845, guid: 8bd9cb8160bf82744b61a9c2925214db, type: 3}
   FadeDown:
     serializedVersion: 2

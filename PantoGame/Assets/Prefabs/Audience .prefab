@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad296e8659d3df74a8bca60412ecfd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PropSlotRoot: {fileID: 5161566312968947098}
   NavMeshAgent: {fileID: 972033207960869403}
   Root: {fileID: 972033208015368304}
   BodyCenter: {fileID: 972033207393149996}
@@ -288,6 +289,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512b670e9cc6d0b40bcb175021f0c828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &5161566312968947098 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8550029023043193810, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}
+  m_PrefabInstance: {fileID: 3532615610383339080}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2130417552872717275 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3212927270089536915, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}

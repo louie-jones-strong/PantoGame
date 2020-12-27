@@ -2,35 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-class MicStand : Prop, PropHolderInterface
+class MicStand : PropHolder
 {
-	[SerializeField] Transform MicRoot;
-
-	PropInterface PropSlot;
-
-	public bool CanHoldProp(PropInterface prop)
+	public override bool CanHoldProp(Prop prop)
 	{
-		var mic = prop as Microphone;
-		return mic != null && PropSlot == null;
-	}
-
-	public void AddProp(PropInterface prop)
-	{
-		if (CanHoldProp(prop))
+		if (!(prop is Microphone))
 		{
-			PropSlot = prop;
+			return false;
 		}
-	}
-	
-	public void RemoveProp(PropInterface prop)
-	{
-		if (prop == PropSlot)
-		{
-			PropSlot = null;
-		}
-		else
-		{
-			Logger.LogError($"Trying to remove prop: {prop} != PropSlot: {PropSlot}");
-		}
+		return base.CanHoldProp(prop);
 	}
 }

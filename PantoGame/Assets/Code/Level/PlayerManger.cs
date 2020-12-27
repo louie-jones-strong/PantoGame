@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlayerManger : MonoBehaviour
 {
+	public Transform PropsRoot;
 	[SerializeField] PlayerAgent Player;
 	public static Dictionary<int, PlayerAgent> Players { get; private set; } = new Dictionary<int, PlayerAgent>();
+	public static PlayerManger MangerInstance;
 
 	protected virtual void Awake()
 	{
+		MangerInstance = this;
 	}
 
 	protected virtual void Start()

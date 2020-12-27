@@ -11,6 +11,6 @@ public class RotateToCam : MonoBehaviour
 
 	public void PointAtCam()
 	{
-		transform.localEulerAngles = CameraController.Instance.Camera.transform.eulerAngles * Settings.RotateToCamMultiplier;
+		transform.eulerAngles = CameraController.Instance.Camera.transform.eulerAngles * Settings.RotateToCamMultiplier;
 	}
 }

@@ -49,11 +49,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c81de294b44ddf4e81f3f25f8ddac29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PropSlotRoot: {fileID: 9090803642867227174}
   NavMeshAgent: {fileID: 1679723919424694261}
   Root: {fileID: 3816184429125906380}
   BodyCenter: {fileID: 3816184428368231312}
-  PlayerAnimator: {fileID: 4110958259888655840}
   MaxMoveSpeed: 7.5
+  PlayerAnimator: {fileID: 4110958259888655840}
   PartsToColour:
   - {fileID: 2600925488158516327}
   - {fileID: 1475906209678564657}
@@ -61,6 +62,7 @@ MonoBehaviour:
   - {fileID: 6215781569488478385}
   - {fileID: 6747839729452643745}
   - {fileID: 6747839729452643745}
+  Colour: {r: 0, g: 0, b: 0, a: 0}
   ControlType: -1
   Speed: 50
   DashSpeedMultiplier: 2
@@ -290,6 +292,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512b670e9cc6d0b40bcb175021f0c828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &9090803642867227174 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8550029023043193810, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}
+  m_PrefabInstance: {fileID: 616654120575078900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2600925488158516327 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3212927270089536915, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}
