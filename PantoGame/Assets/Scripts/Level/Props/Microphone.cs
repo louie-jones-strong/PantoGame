@@ -4,5 +4,4 @@ using UnityEngine;
 
 class Microphone : Prop
 {
-	
 }
