@@ -67,6 +67,57 @@ public class TheatreEditor : Editor
 			
 			loop += 1;
 		}
+
+		EditorGUILayout.Space();
+		if (Application.isPlaying)
+		{
+			DrawDebugSettings(targetTheatre);
+		}
+	}
+
+	void DrawDebugSettings(Theatre theatre)
+	{
+		var script = theatre.CurrentScript;
+
+		EditorGUILayout.BeginHorizontal();
+
+		GUILayout.Label("Scene");
+
+		if (GUILayout.Button("previous Scene") && script.SceneIndex > 0)
+		{
+			script.CurrentScene.SetState(eSceneState.NotStarted);
+			foreach (var task in script.CurrentScene.Tasks)
+			{
+				task.SetState(eTaskState.CannotStart, force:true);
+			}
+			script.SceneIndex -= 1;
+
+			script.CurrentScene.SetState(eSceneState.NotStarted);
+			foreach (var task in script.CurrentScene.Tasks)
+			{
+				task.SetState(eTaskState.CannotStart, force:true);
+			}
+		}
+
+		if (GUILayout.Button("Reset Scene"))
+		{
+			script.CurrentScene.SetState(eSceneState.NotStarted);
+			foreach (var task in script.CurrentScene.Tasks)
+			{
+				task.SetState(eTaskState.CannotStart, force:true);
+			}
+		}
+
+		if (GUILayout.Button("Skip Scene"))
+		{
+			foreach (var task in script.CurrentScene.Tasks)
+			{
+				task.SetState(eTaskState.Completed, force:true);
+			}
+		}
+
+		EditorGUILayout.EndHorizontal();
+
 	}
 }
 #endif

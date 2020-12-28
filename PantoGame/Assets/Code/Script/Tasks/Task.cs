@@ -102,14 +102,14 @@ public class Task : ScriptableObject
 		return State == eTaskState.Completed? 1f : 0f;
 	}
 
-	public void SetState(eTaskState newState)
+	public void SetState(eTaskState newState, bool force=false)
 	{
 		if (State == newState)
 		{
 			return;
 		}
 
-		if (State == eTaskState.Completed)
+		if (State == eTaskState.Completed && !force)
 		{
 			return;
 		}
