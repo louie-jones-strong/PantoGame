@@ -65,6 +65,7 @@ public class Scene
 		None,
 		Light,
 		Actor,
+		ActorTalk,
 		Curtain,
 		Clapping,
 		Toilet,
@@ -152,6 +153,10 @@ public class Scene
 			case eTaskType.Actor:
 			{
 				return new ActorTask();
+			}
+			case eTaskType.ActorTalk:
+			{
+				return new ActorTalkTask();
 			}
 			case eTaskType.Curtain:
 			{

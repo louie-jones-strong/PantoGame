@@ -6,12 +6,12 @@ using UnityEngine.AI;
 public class ActorAgent : Agent
 {
 	ActorTask CurrentTask;
+	ActorTalkTask TalkingTask;
 	
 	protected override void Start()
 	{
 		CameraController.AddTarget(transform, weighting:Settings.ActorCamWeighting);
 		SetColour(Color.green);
-		SpeechBubble.SetTalking(true);
 		base.Start();
 	}
 
@@ -25,6 +25,12 @@ public class ActorAgent : Agent
 				NavMeshAgent.SetDestination(CurrentTask.Target.position);
 			}
 		}
+
+		if (TalkingTask == null || TalkingTask.State == eTaskState.Completed)
+		{
+			TalkingTask = GetTalkTask();
+		}
+		SpeechBubble.SetTalking(TalkingTask != null);
 		
 		UpdateVisuals();
 		base.Update();
@@ -49,6 +55,29 @@ public class ActorAgent : Agent
 			{
 				NavMeshAgent.speed = actorTask.ActorSpeed;
 				return actorTask;
+			}
+		}
+		return null;
+	}
+
+	ActorTalkTask GetTalkTask()
+	{
+		if (Theatre.Instance.CurrentScript?.CurrentScene == null)
+		{
+			return null;
+		}
+
+		var currentScene = Theatre.Instance.CurrentScript.CurrentScene;
+		foreach (var task in currentScene.Tasks)
+		{
+			var talkTask = task as ActorTalkTask;
+
+			if (talkTask != null &&
+				talkTask.State != eTaskState.Completed &&
+				talkTask.StartConditionsMet() &&
+				talkTask.Actor == this)
+			{
+				return talkTask;
 			}
 		}
 		return null;

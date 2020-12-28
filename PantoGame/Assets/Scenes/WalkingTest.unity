@@ -123,6 +123,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 9d16cb2a6fd06b5428857e23c08f0cb5, type: 2}
+--- !u!114 &8990855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f43d6d1d57b1c764595c841cecdfd589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskPriority: -1
+  TaskId: Talking
+  StartRequiredActionStates:
+  - TaskId: Enter
+    State: 3
+  EndRequiredActionStates:
+  - TaskId: move2
+    State: 3
+  Actor: {fileID: 1217834536}
+  TargetTalkTime: 1
 --- !u!1 &93068446
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +365,7 @@ MonoBehaviour:
       - {fileID: 1542393282}
       - {fileID: 817951921}
       - {fileID: 1938451035}
+      - {fileID: 8990855}
     - SceneName: ShowEnd
       Tasks:
       - {fileID: 830378555}
