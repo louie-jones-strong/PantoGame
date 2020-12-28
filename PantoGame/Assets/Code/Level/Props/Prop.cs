@@ -38,12 +38,46 @@ public class Prop : MonoBehaviour
 
 	public virtual void DropProp()
 	{
-		if (PropHolder != null)
+		if (PropHolder == null)
 		{
-			PropHolder.RemoveProp(this);
+			Logger.LogError($"DropProp called with PropHolder == null");
+			return;
+		}
+
+		//find nearest prop holder
+		PropHolder nearestPropHolder = null;
+		float smallestDistance = float.MaxValue;
+		foreach (var holder in PropHolder.PropHoldersList)
+		{
+			if (holder == PropHolder)
+			{
+				continue;
+			}
+
+			var distance = DistanceUtility.Get2d(transform, holder.transform);
+			if (distance <= smallestDistance && 
+				holder.CanHoldProp(this, distance:distance))
+			{
+				smallestDistance = distance;
+				nearestPropHolder = holder;
+			}
+		}
+
+		//remove prop from old prop holder
+		PropHolder.RemoveProp(this);
+
+		if (nearestPropHolder == null)
+		{
+			//set pos to scene prop root
 			transform.parent = PlayerManger.MangerInstance.PropsRoot;
 			transform.localEulerAngles = Vector3.zero;
+			PropHolder = null;
 		}
+		else
+		{
+			nearestPropHolder.AddProp(this);
+		}
+		
 	}
 
 #if UNITY_EDITOR

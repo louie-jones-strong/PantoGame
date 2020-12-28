@@ -12,14 +12,16 @@ public class PropHolder : MonoBehaviour
 	protected virtual void Awake()
 	{
 		PropHoldersList.Add(this);
+		Logger.Log($"Added Prop holder: {this} to list len = {PropHoldersList.Count}");
 	}
 
 	protected virtual void OnDestroy()
 	{
 		PropHoldersList.Remove(this);
+		Logger.Log($"Remove Prop holder: {this} from list len = {PropHoldersList.Count}");
 	}
 
-	public virtual bool CanHoldProp(Prop prop)
+	public virtual bool CanHoldProp(Prop prop, float distance=-1)
 	{
 		if (prop == null)
 		{
@@ -30,7 +32,10 @@ public class PropHolder : MonoBehaviour
 			return false;
 		}
 		
-		var distance = (prop.transform.position - transform.position).magnitude;
+		if (distance < 0)
+		{
+			distance = DistanceUtility.Get2d(prop.transform, transform);
+		}
 		return distance <= prop.PropSize;
 	}
 

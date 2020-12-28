@@ -38,8 +38,8 @@ public class PlayerAgent : Agent
 				Prop closestProp = null;
 				foreach (var prop in Prop.PropsList)
 				{
-					var distance = (transform.position - prop.transform.position).magnitude;
-					if (CanHoldProp(prop) && distance < minDistance)
+					var distance = DistanceUtility.Get2d(prop.transform, transform);
+					if (CanHoldProp(prop, distance:distance) && distance < minDistance)
 					{
 						closestProp = prop;
 						minDistance = distance;
