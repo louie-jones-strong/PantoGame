@@ -18,6 +18,7 @@ public class Agent : PropHolder
 
 #region looks
 
+	[SerializeField] protected SpeechBubble SpeechBubble;
 	[SerializeField] protected Animator PlayerAnimator;
 	[SerializeField] protected List<SpriteToObjectLoader> PartsToColour;
 	protected PhysicsRotation[] PhysicsParts;

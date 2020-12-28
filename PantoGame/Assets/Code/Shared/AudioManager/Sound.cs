@@ -7,8 +7,9 @@ using UnityEngine.Audio;
 class Sound: ScriptableObject
 {
 	public string Name;
-	public List<AudioClip> Clips;
 	public eAudioBusType AudioBus;
+	public bool LoopClip;
+	public List<AudioClip> Clips;
 
 	
 	public AudioClip GetAudioClip()

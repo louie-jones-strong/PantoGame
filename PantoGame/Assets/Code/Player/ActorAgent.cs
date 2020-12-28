@@ -11,6 +11,7 @@ public class ActorAgent : Agent
 	{
 		CameraController.AddTarget(transform, weighting:Settings.ActorCamWeighting);
 		SetColour(Color.green);
+		SpeechBubble.SetTalking(true);
 		base.Start();
 	}
 

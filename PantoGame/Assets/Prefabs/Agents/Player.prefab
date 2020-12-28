@@ -54,6 +54,7 @@ MonoBehaviour:
   Root: {fileID: 3816184429125906380}
   BodyCenter: {fileID: 3816184428368231312}
   MaxMoveSpeed: 7.5
+  SpeechBubble: {fileID: 3877622370287894636}
   PlayerAnimator: {fileID: 4110958259888655840}
   PartsToColour:
   - {fileID: 2600925488158516327}
@@ -306,5 +307,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 512b670e9cc6d0b40bcb175021f0c828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3877622370287894636 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4422216695586148760, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}
+  m_PrefabInstance: {fileID: 616654120575078900}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204907d309c13964d859590c102d3570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -112,6 +112,7 @@ public class AudioManger : MonoBehaviour
 		source.clip = sound.GetAudioClip();
 		source.outputAudioMixerGroup = Instance.GetGetAudioBus(sound.AudioBus);
 		source.playOnAwake = false;
+		source.loop = sound.LoopClip;
 		source.Play();
 		return source;
 	}
