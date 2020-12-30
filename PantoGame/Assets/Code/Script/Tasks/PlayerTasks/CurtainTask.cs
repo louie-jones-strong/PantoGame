@@ -7,7 +7,7 @@ using UnityEditor;
 #endif
 
 [Serializable]
-public class CurtainTask : Task
+public class CurtainTask : PlayerTask
 {
 	protected override string TaskIconPath {get { return "CurtainsTaskIcon"; }}
 

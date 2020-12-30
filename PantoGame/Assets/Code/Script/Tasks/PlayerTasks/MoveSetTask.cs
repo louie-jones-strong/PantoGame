@@ -7,7 +7,7 @@ using UnityEditor;
 #endif
 
 [Serializable]
-public class MoveSetTask : Task
+public class MoveSetTask : PlayerTask
 {
 	protected override string TaskIconPath {get { return "MoveSetTaskIcon"; }}
 

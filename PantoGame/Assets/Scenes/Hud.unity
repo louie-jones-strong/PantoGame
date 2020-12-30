@@ -1345,6 +1345,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4625092463596970793, guid: 296a09d741649874a96f5ff9c926022a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625092463596970793, guid: 296a09d741649874a96f5ff9c926022a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625092463596970793, guid: 296a09d741649874a96f5ff9c926022a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625092463596970793, guid: 296a09d741649874a96f5ff9c926022a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5330427787594113429, guid: 296a09d741649874a96f5ff9c926022a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1432,10 +1448,6 @@ PrefabInstance:
     - target: {fileID: 5346104221848817706, guid: 296a09d741649874a96f5ff9c926022a, type: 3}
       propertyPath: m_Name
       value: TaskItem
-      objectReference: {fileID: 0}
-    - target: {fileID: 5346104221848817706, guid: 296a09d741649874a96f5ff9c926022a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5925841572075262655, guid: 296a09d741649874a96f5ff9c926022a, type: 3}
       propertyPath: m_AnchorMin.y

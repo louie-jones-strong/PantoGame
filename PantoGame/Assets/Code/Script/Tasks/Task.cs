@@ -25,7 +25,7 @@ public class TaskStateRequirement
 [Serializable]
 public class Task : ScriptableObject
 {
-	public int TaskPriority = 1;
+	public int TaskUiPriority = 1;
 	public string TaskId;
 	public List<TaskStateRequirement> StartRequiredActionStates = new List<TaskStateRequirement>();
 	public List<TaskStateRequirement> EndRequiredActionStates = new List<TaskStateRequirement>();
@@ -153,8 +153,8 @@ public class Task : ScriptableObject
 	public virtual void DrawTask()
 	{
 		EditorGUILayout.BeginHorizontal();
-		GUILayout.Label("TaskPriority");
-		TaskPriority = EditorGUILayout.IntField(TaskPriority);
+		GUILayout.Label("Task UI Priority");
+		TaskUiPriority = EditorGUILayout.IntField(TaskUiPriority);
 		EditorGUILayout.EndHorizontal();
 
 		EditorGUILayout.BeginHorizontal();

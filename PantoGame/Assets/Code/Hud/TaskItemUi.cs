@@ -7,6 +7,7 @@ public class TaskItemUi : MonoBehaviour
 {
 	[SerializeField] Image TaskTypeIcon;
 	[SerializeField] Text TaskName;
+	[SerializeField] Text TimeLabel;
 	[SerializeField] Image ProgressBar;
 	[SerializeField] Animator Animator;
 	[SerializeField] PlayerIcon PlayerIcon;
@@ -33,5 +34,19 @@ public class TaskItemUi : MonoBehaviour
 
 		TaskTypeIcon.sprite = Task.TaskIcon;
 		TaskTypeIcon.gameObject.SetActive(Task.TaskIcon != null);
+
+		bool showTimer = false;
+		var playerTask = Task as PlayerTask;
+		if (playerTask != null)
+		{
+			var time = playerTask.TimeUntilDue;
+			TimeLabel.text = TimeUtility.GetTimeString(time);
+			showTimer = true;
+		}
+		Animator.SetBool("ShowTimer", showTimer);
+
+		bool canDoTask = Task.State != eTaskState.CannotStart &&
+						Task.State != eTaskState.Completed;
+		TimeLabel.gameObject.SetActive(showTimer && canDoTask);
 	}
 }
