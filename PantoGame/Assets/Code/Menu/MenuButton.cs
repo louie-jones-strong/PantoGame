@@ -74,6 +74,10 @@ public class MenuButton : MenuInteractable
 
 	public override bool CanInteract(Vector3 pos)
 	{
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+		return base.CanInteract(pos);
+#else
 		return base.CanInteract(pos) && !TriggerNeedsEveryone;
+#endif
 	}
 }
