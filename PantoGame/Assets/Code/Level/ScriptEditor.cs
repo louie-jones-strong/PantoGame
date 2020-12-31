@@ -4,33 +4,31 @@ using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
 
-[CustomEditor(typeof(Theatre))]
-public class TheatreEditor : Editor
+[CustomEditor(typeof(Script))]
+public class ScriptEditor : Editor
 {
 	Dictionary<int, bool> CurrentEditActions = new Dictionary<int, bool>();
 
 	public override void OnInspectorGUI()
 	{
-		DrawDefaultInspector();
-
-		var targetTheatre = (Theatre)target;
+		var targetScript = (Script)target;
 		EditorUtility.SetDirty(target);
 
-		var generator = targetTheatre.Generator;
-		
 		EditorGUILayout.BeginHorizontal();
 		if (GUILayout.Button("Add Scene"))
 		{
 			var scene = new Scene();
-			generator.Scenes.Add(scene);
+			targetScript.Scenes.Add(scene);
 		}
 		EditorGUILayout.EndHorizontal();
 
 		int loop = 0;
-		while (loop < generator.Scenes.Count)
+		while (loop < targetScript.Scenes.Count)
 		{
-			var scene = generator.Scenes[loop];
+			var scene = targetScript.Scenes[loop];
 			
+			EditorGUILayout.Space(10);
+
 			EditorGUILayout.BeginHorizontal();
 			
 			if (!CurrentEditActions.ContainsKey(loop))
@@ -44,7 +42,7 @@ public class TheatreEditor : Editor
 			GUI.backgroundColor = Color.red;
 			if (GUILayout.Button("Remove Scene"))
 			{
-				generator.Scenes.RemoveAt(loop);
+				targetScript.Scenes.RemoveAt(loop);
 				break;
 			}
 			GUI.backgroundColor = Color.white;
@@ -58,10 +56,6 @@ public class TheatreEditor : Editor
 				EditorGUILayout.BeginVertical();
 
 				scene.OnDrawScene();
-
-				EditorGUILayout.Separator();
-				EditorGUILayout.Separator();
-
 				EditorGUILayout.EndVertical();
 			}
 			
@@ -71,13 +65,19 @@ public class TheatreEditor : Editor
 		EditorGUILayout.Space();
 		if (Application.isPlaying)
 		{
-			DrawDebugSettings(targetTheatre);
+			DrawDebugSettings(targetScript);
 		}
 	}
 
-	void DrawDebugSettings(Theatre theatre)
+	void DrawDebugSettings(Script script)
 	{
-		var script = theatre.CurrentScript;
+		EditorGUILayout.BeginHorizontal();
+
+		GUILayout.Label($"Rating: {script.Rating}");
+
+
+
+		EditorGUILayout.EndHorizontal();
 
 		EditorGUILayout.BeginHorizontal();
 

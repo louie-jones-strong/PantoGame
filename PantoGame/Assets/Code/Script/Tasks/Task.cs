@@ -23,7 +23,7 @@ public class TaskStateRequirement
 }
 
 [Serializable]
-public class Task : ScriptableObject
+public class Task : ScriptableObject //this needs to be ScriptableObject so that it doesn't save it as the default type
 {
 	public int TaskUiPriority = 1;
 	public string TaskId;
@@ -37,6 +37,11 @@ public class Task : ScriptableObject
 	public float Progress {get; protected set;}
 
 	bool DoneSetup;
+
+	public Task()
+	{
+		TaskId = this.GetType().FullName;
+	}
 
 	void Setup()
 	{
@@ -153,7 +158,7 @@ public class Task : ScriptableObject
 	public virtual void DrawTask()
 	{
 		EditorGUILayout.BeginHorizontal();
-		GUILayout.Label("Task UI Priority");
+		EditorGUILayout.LabelField("Task UI Priority");
 		TaskUiPriority = EditorGUILayout.IntField(TaskUiPriority);
 		EditorGUILayout.EndHorizontal();
 
@@ -170,9 +175,6 @@ public class Task : ScriptableObject
 
 		DrawRequiredActionStates(StartRequiredActionStates);
 
-		EditorGUILayout.Separator();
-		EditorGUILayout.Separator();
-
 		EditorGUILayout.BeginHorizontal();
 		GUILayout.Label("End Required Action States");
 
@@ -188,7 +190,10 @@ public class Task : ScriptableObject
 
 	void DrawRequiredActionStates(List<TaskStateRequirement> requiredActionStates)
 	{
+		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.Separator();
+		EditorGUILayout.BeginVertical();
+
 
 		int loop = 0;
 		while (loop < requiredActionStates.Count)
@@ -196,7 +201,7 @@ public class Task : ScriptableObject
 			var required = requiredActionStates[loop];
 
 			EditorGUILayout.BeginHorizontal();
-			EditorGUILayout.Separator();
+			
 			GUILayout.Label("TaskID:");
 			required.TaskId = GUILayout.TextField(required.TaskId);
 			required.State = (eTaskState)EditorGUILayout.EnumPopup(new GUIContent(), required.State);
@@ -212,6 +217,8 @@ public class Task : ScriptableObject
 
 			loop += 1;
 		}
+		EditorGUILayout.EndVertical();
+		EditorGUILayout.EndHorizontal();
 	}
 #endif
 }

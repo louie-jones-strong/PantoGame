@@ -42,7 +42,6 @@ public class Theatre : PlayerManger
 	protected override void Update()
 	{
 		base.Update();
-		CurrentScript.Update();
 	}
 
 	void OnDestroy()

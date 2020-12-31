@@ -76,9 +76,12 @@ public class Scene
 
 	public void OnDrawScene()
 	{
-
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.Separator();
+		EditorGUILayout.BeginVertical();
+
+		EditorGUILayout.BeginHorizontal();
+		
 
 		CurrentActionType = (eTaskType)EditorGUILayout.EnumPopup(new GUIContent("Action Type"), CurrentActionType);
 		if (GUILayout.Button("Add Task"))
@@ -87,8 +90,6 @@ public class Scene
 			Tasks.Add(task);
 		}
 		EditorGUILayout.EndHorizontal();
-
-		EditorGUILayout.Separator();
 
 		int loop = 0;
 		while (loop < Tasks.Count)
@@ -100,6 +101,8 @@ public class Scene
 				break;
 				
 			}
+
+			EditorGUILayout.Space(10);
 
 			EditorGUILayout.BeginHorizontal();
 			if (!CurrentEditActions.ContainsKey(loop))
@@ -127,13 +130,9 @@ public class Scene
 			{
 				EditorGUILayout.BeginHorizontal();
 				EditorGUILayout.Separator();
-
 				EditorGUILayout.BeginVertical();
 
 				action.DrawTask();
-
-				EditorGUILayout.Separator();
-				EditorGUILayout.Separator();
 
 				EditorGUILayout.EndVertical();
 				EditorGUILayout.EndHorizontal();
@@ -141,6 +140,10 @@ public class Scene
 			EditorGUILayout.EndFoldoutHeaderGroup();
 			loop += 1;
 		}
+
+		EditorGUILayout.EndVertical();
+		EditorGUILayout.EndHorizontal();
+		EditorGUILayout.Space(10);
 	}
 
 	Task MakeTask(eTaskType actionType)

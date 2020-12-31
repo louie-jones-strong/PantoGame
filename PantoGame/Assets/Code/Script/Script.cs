@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class Script
+public class Script: MonoBehaviour
 {
 	public bool Finished {get; private set;}
 	public Scene CurrentScene {get {return Scenes[SceneIndex];}}
 	public int SceneIndex;
 	public List<Scene> Scenes;
 
-	//todo add textures to add to theater walls
-	//todo add costume sprites
+	public float Rating;
 
-	public void Update()
+	void Update()
 	{
 		int loop = 0;
 		int newSceneIndex = 0;
@@ -39,5 +38,36 @@ public class Script
 			SceneIndex = newSceneIndex;
 		}
 		Scenes[SceneIndex].SetState(eSceneState.InProgress);
+
+		UpdateRatings();
+	}
+
+	void UpdateRatings()
+	{
+		float rating = 0;
+		int tasksCompleted = 0;
+		foreach (var scene in Scenes)
+		{
+			if (scene.State == eSceneState.NotStarted)
+			{
+				continue;
+			}
+
+			foreach (var task in scene.Tasks)
+			{
+				var playerTask = task as PlayerTask;
+				if (playerTask != null)
+				{
+					rating += playerTask.GetRating();
+					tasksCompleted += 1;
+				}
+			}
+		}
+
+		if (tasksCompleted == 0)
+		{
+			tasksCompleted = 1;
+		}
+		Rating = rating / tasksCompleted;
 	}
 }

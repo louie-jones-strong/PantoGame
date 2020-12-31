@@ -70,9 +70,29 @@ public class AudienceAgent : Agent
 		}
 		PlayerAnimator.SetBool("Clapping", AudienceIntent == eIntent.Clapping);
 
-
+		UpdateRatingVisual();
 		UpdateVisuals();
 		base.Update();
+	}
+
+	void UpdateRatingVisual()
+	{
+		var currentScript = Theatre.Instance.CurrentScript;
+
+		var rating = currentScript.Rating;
+
+		if (rating <= -0.5f)
+		{
+			SetColour(Color.red);
+		}
+		else if (rating >= 0.5f)
+		{
+			SetColour(Color.green);
+		}
+		else
+		{
+			SetColour(Color.yellow);
+		}
 	}
 
 	eIntent GetIntent()
