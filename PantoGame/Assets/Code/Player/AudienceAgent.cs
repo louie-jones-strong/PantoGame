@@ -9,6 +9,8 @@ public class AudienceAgent : Agent
 	public Chair SetSeat;
 	public float TimeSinceLastToilet {get; private set;}
 	eIntent AudienceIntent;
+	float TimeHitByPlayer;
+	bool CollidingWithPlayer;
 
 	enum eIntent
 	{
@@ -20,6 +22,26 @@ public class AudienceAgent : Agent
 		RandomWalk
 	}
 	
+	protected override void OnTriggerEnter(Collider collider)
+	{
+		var playerAgent = collider.GetComponent<PlayerAgent>();
+		if (playerAgent != null)
+		{
+			CollidingWithPlayer = true;
+		}
+		base.OnTriggerEnter(collider);
+	}
+
+	protected override void OnTriggerExit(Collider collider)
+	{
+		var playerAgent = collider.GetComponent<PlayerAgent>();
+		if (playerAgent != null)
+		{
+			CollidingWithPlayer = false;
+		}
+		base.OnTriggerExit(collider);
+	}
+
 	protected override void Start()
 	{
 		CameraController.AddTarget(transform, weighting:Settings.AudienceCamWeighting);
@@ -35,6 +57,12 @@ public class AudienceAgent : Agent
 	protected override void Update()
 	{
 		TimeSinceLastToilet += Time.deltaTime;
+
+		if (CollidingWithPlayer)
+		{
+			TimeHitByPlayer += Time.deltaTime;
+		}
+
 		var intent = GetIntent();
 
 		Vector3 target = transform.position;
@@ -80,6 +108,7 @@ public class AudienceAgent : Agent
 		var currentScript = Theatre.Instance.CurrentScript;
 
 		var rating = currentScript.Rating;
+		rating -= TimeHitByPlayer;
 
 		if (rating <= -0.5f)
 		{

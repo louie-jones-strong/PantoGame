@@ -15,6 +15,13 @@ public class PropHolder : MonoBehaviour
 		Logger.Log($"Added Prop holder: {this} to list len = {PropHoldersList.Count}");
 	}
 
+	protected virtual void OnTriggerEnter(Collider other)
+	{
+	}
+	protected virtual void OnTriggerExit(Collider collider)
+	{
+	}
+
 	protected virtual void OnDestroy()
 	{
 		PropHoldersList.Remove(this);
