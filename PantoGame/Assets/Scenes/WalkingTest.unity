@@ -344,6 +344,10 @@ MonoBehaviour:
   Toilet: {fileID: 1628503823}
   Lobby: {fileID: 712074300}
   Generator: {fileID: 153317279}
+  StageMinXAxis: -20
+  StageMaxXAxis: 20
+  StageMinZAxis: 20.1
+  StageMaxZAxis: 45
 --- !u!4 &153317277
 Transform:
   m_ObjectHideFlags: 0
@@ -4320,6 +4324,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2619337244408616859, guid: 4c804405daf25424f864466d9fc09907, type: 3}
   m_PrefabInstance: {fileID: 1910791020}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1912473431 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3236357448956141063, guid: 94641faea85378e4981884964526d3df, type: 3}
+  m_PrefabInstance: {fileID: 795833235}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1912473435
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912473431}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020000007, y: 0.02, z: 0.05094949}
+  m_Center: {x: 0.0000000037252903, y: -6.738721e-18, z: -0.015474746}
 --- !u!1001 &1915629971
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class AudienceAgent : Agent
 	public float TimeSinceLastToilet {get; private set;}
 	eIntent AudienceIntent;
 	float TimeHitByPlayer;
+	float TimeSeeingPlayerOnStage;
 	bool CollidingWithPlayer;
 
 	enum eIntent
@@ -63,6 +64,8 @@ public class AudienceAgent : Agent
 			TimeHitByPlayer += Time.deltaTime;
 		}
 
+		CheckSeeingPlayerOnStage();
+
 		var intent = GetIntent();
 
 		Vector3 target = transform.position;
@@ -109,6 +112,7 @@ public class AudienceAgent : Agent
 
 		var rating = currentScript.Rating;
 		rating -= TimeHitByPlayer;
+		rating -= TimeSeeingPlayerOnStage;
 
 		if (rating <= -0.5f)
 		{
@@ -153,5 +157,36 @@ public class AudienceAgent : Agent
 			}
 		}
 		return eIntent.Sit;
+	}
+
+	void CheckSeeingPlayerOnStage()
+	{
+		var startPos = EyesPoint.position;
+
+		foreach (var kvp in PlayerManger.Players)
+		{
+			var player = kvp.Value;
+			if (player == null)
+			{
+				continue;
+			}
+
+			//check if player on stage
+			if (!Theatre.Instance.IsPointOnStage(player.transform.position))
+			{
+				continue;
+			}
+
+			var delta = player.BodyCenter.position - startPos;
+			Physics.Raycast(startPos, delta, out RaycastHit hitInfo, delta.magnitude);
+			
+			bool canSeePlayer = hitInfo.transform == player.transform;
+			if (canSeePlayer)
+			{
+				TimeSeeingPlayerOnStage += Time.deltaTime;
+			}
+
+			Debug.DrawRay(startPos, delta, canSeePlayer ? Color.green : Color.red);
+		}
 	}
 }

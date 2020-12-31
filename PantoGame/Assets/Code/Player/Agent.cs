@@ -9,7 +9,8 @@ public class Agent : PropHolder
 #region Navigation
 	[SerializeField] protected NavMeshAgent NavMeshAgent;
 	[SerializeField] protected Transform Root;
-	[SerializeField] protected Transform BodyCenter;
+	public Transform BodyCenter;
+	public Transform EyesPoint;
 	[SerializeField] protected float MaxMoveSpeed = 7.5f;
 
 	Vector3 LastVelocity;

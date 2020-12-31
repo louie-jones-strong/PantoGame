@@ -53,6 +53,7 @@ MonoBehaviour:
   NavMeshAgent: {fileID: 972033207960869403}
   Root: {fileID: 972033208015368304}
   BodyCenter: {fileID: 972033207393149996}
+  EyesPoint: {fileID: 7881916024478874235}
   MaxMoveSpeed: 15
   SpeechBubble: {fileID: 889603355118198736}
   PlayerAnimator: {fileID: 972033207960869404}
@@ -268,6 +269,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512b670e9cc6d0b40bcb175021f0c828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7881916024478874235 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6657569240446645299, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}
+  m_PrefabInstance: {fileID: 3532615610383339080}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6237002699437388959 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7460238924661144279, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}
