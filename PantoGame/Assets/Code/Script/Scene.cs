@@ -48,6 +48,7 @@ public class Scene
 				allStatesFinished = false;
 			}
 		}
+		
 		if (allStatesFinished)
 		{
 			Logger.Log($"set Scene ({SceneName}) State {State} -> {eSceneState.Completed}");

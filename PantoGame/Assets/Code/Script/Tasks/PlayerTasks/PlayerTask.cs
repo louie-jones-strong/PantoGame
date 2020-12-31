@@ -10,14 +10,15 @@ using UnityEditor;
 public class PlayerTask : Task
 {
 	public float TimeUntilDue {get {return TargetCompleteTime-TimeSinceStartAble;}}
-	public float TargetCompleteTime = 5f;
-	float TimeSinceStartAble = 0;
+	public float TargetCompleteTime = 15f;
+	float TimeSinceStartAble;
 
 
 	public override void Update()
 	{
 
-		if (State != eTaskState.CannotStart)
+		if (State != eTaskState.CannotStart &&
+			State != eTaskState.Completed)
 		{
 			TimeSinceStartAble += Time.deltaTime;
 		}
