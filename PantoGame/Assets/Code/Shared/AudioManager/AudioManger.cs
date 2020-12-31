@@ -19,6 +19,11 @@ public class AudioManger : MonoBehaviour
 	public static float MusicVolume {get {return _MusicVolume;} set {SetMusicVolume(value);}}
 	public static void SetMusicVolume(float value)
 	{
+		if (Instance == null)
+		{
+			Logger.LogError($"Trying to set Music Volume but Instance == null");
+			return;
+		}
 		_MusicVolume = value;
 		Instance.Mixer.SetFloat("MusicVol", VolumeToDb(value));
 	}
@@ -28,6 +33,11 @@ public class AudioManger : MonoBehaviour
 	public static float SfxVolume {get {return _SfxVolume;} set {SetSfxVolume(value);}}
 	public static void SetSfxVolume(float value)
 	{
+		if (Instance == null)
+		{
+			Logger.LogError($"Trying to set Sfx Volume but Instance == null");
+			return;
+		}
 		_SfxVolume = value;
 		Instance.Mixer.SetFloat("SfxVol", VolumeToDb(value));
 	}
@@ -37,6 +47,11 @@ public class AudioManger : MonoBehaviour
 	public static float AmbienceVolume {get {return _AmbienceVolume;} set {SetAmbienceVolume(value);}}
 	public static void SetAmbienceVolume(float value)
 	{
+		if (Instance == null)
+		{
+			Logger.LogError($"Trying to set Ambience Volume but Instance == null");
+			return;
+		}
 		_AmbienceVolume = value;
 		Instance.Mixer.SetFloat("AmbienceVol", VolumeToDb(value));
 	}
@@ -76,6 +91,12 @@ public class AudioManger : MonoBehaviour
 
 	public static AudioSource PlayEvent(string path, Transform root=null)
 	{
+		if (Instance == null)
+		{
+			Logger.LogError($"Cannot check if audio path valid as instance == null");
+			return null;
+		}
+		
 		if (!IsPathValid(path))
 		{
 			Logger.LogError($"PlayEvent called with path: \"{path}\" that not valid");
@@ -150,6 +171,11 @@ public class AudioManger : MonoBehaviour
 
 	public static bool IsPathValid(string path)
 	{
+		if (Instance == null)
+		{
+			Logger.LogError($"Cannot check if audio path valid as instance == null");
+			return false;
+		}
 		return Instance.Sounds.ContainsKey(path);
 	}
 }
