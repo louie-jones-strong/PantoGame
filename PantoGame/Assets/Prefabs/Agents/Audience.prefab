@@ -68,6 +68,14 @@ MonoBehaviour:
     Name: jeff
     Age: 13
   SetSeat: {fileID: 0}
+  ColourCurve:
+    PointList:
+    - Value: -1
+      Colour: {r: 1, g: 0, b: 0, a: 1}
+    - Value: 0
+      Colour: {r: 1, g: 0.9493294, b: 0, a: 1}
+    - Value: 1
+      Colour: {r: 0, g: 1, b: 0.030817509, a: 1}
 --- !u!95 &972033207960869404
 Animator:
   serializedVersion: 3

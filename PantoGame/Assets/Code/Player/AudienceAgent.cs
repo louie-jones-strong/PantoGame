@@ -8,6 +8,7 @@ public class AudienceAgent : Agent
 	public AudienceProfileData ProfileData;
 	public Chair SetSeat;
 	public float TimeSinceLastToilet {get; private set;}
+	public ColourCurve ColourCurve;
 	eIntent AudienceIntent;
 	float TimeHitByPlayer;
 	float TimeSeeingPlayerOnStage;
@@ -114,18 +115,7 @@ public class AudienceAgent : Agent
 		rating -= TimeHitByPlayer;
 		rating -= TimeSeeingPlayerOnStage;
 
-		if (rating <= -0.5f)
-		{
-			SetColour(Color.red);
-		}
-		else if (rating >= 0.5f)
-		{
-			SetColour(Color.green);
-		}
-		else
-		{
-			SetColour(Color.yellow);
-		}
+		SetColour(ColourCurve.GetColor(rating));
 	}
 
 	eIntent GetIntent()
