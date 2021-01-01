@@ -56,6 +56,18 @@ public class Scene
 		}
 	}
 
+	public bool CheckTaskId(string taskId)
+	{
+		foreach (var task in Tasks)
+		{
+			if (task.TaskId == taskId)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
 #if UNITY_EDITOR
 	Dictionary<int, bool> CurrentEditActions = new Dictionary<int, bool>();
 
@@ -132,7 +144,7 @@ public class Scene
 				EditorGUILayout.Separator();
 				EditorGUILayout.BeginVertical();
 
-				action.DrawTask();
+				action.DrawTask(this);
 
 				EditorGUILayout.EndVertical();
 				EditorGUILayout.EndHorizontal();

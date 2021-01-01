@@ -155,12 +155,17 @@ public class Task : ScriptableObject //this needs to be ScriptableObject so that
 	}
 
 #if UNITY_EDITOR
-	public virtual void DrawTask()
+	public virtual void DrawTask(Scene scene)
 	{
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("Task UI Priority");
 		TaskUiPriority = EditorGUILayout.IntField(TaskUiPriority);
 		EditorGUILayout.EndHorizontal();
+
+		if (TaskUiPriority < 0)
+		{
+			EditorGUILayout.HelpBox($"This Task Will not be shown In UI", this is PlayerTask ? MessageType.Error : MessageType.Info);
+		}
 
 		EditorGUILayout.BeginHorizontal();
 
@@ -173,7 +178,7 @@ public class Task : ScriptableObject //this needs to be ScriptableObject so that
 
 		EditorGUILayout.EndHorizontal();
 
-		DrawRequiredActionStates(StartRequiredActionStates);
+		DrawRequiredActionStates(StartRequiredActionStates, scene);
 
 		EditorGUILayout.BeginHorizontal();
 		GUILayout.Label("End Required Action States");
@@ -185,10 +190,10 @@ public class Task : ScriptableObject //this needs to be ScriptableObject so that
 
 		EditorGUILayout.EndHorizontal();
 
-		DrawRequiredActionStates(EndRequiredActionStates);
+		DrawRequiredActionStates(EndRequiredActionStates, scene);
 	}
 
-	void DrawRequiredActionStates(List<TaskStateRequirement> requiredActionStates)
+	void DrawRequiredActionStates(List<TaskStateRequirement> requiredActionStates, Scene scene)
 	{
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.Separator();
@@ -215,10 +220,20 @@ public class Task : ScriptableObject //this needs to be ScriptableObject so that
 			GUI.backgroundColor = Color.white;
 			EditorGUILayout.EndHorizontal();
 
+			if (required.TaskId == TaskId)
+			{
+				EditorGUILayout.HelpBox($"TaskID \"{required.TaskId}\" Cannot be set to the as this task", MessageType.Error);
+			}
+			else if (!scene.CheckTaskId(required.TaskId))
+			{
+				EditorGUILayout.HelpBox($"TaskID \"{required.TaskId}\" Not found in scene", MessageType.Error);
+			}
+
 			loop += 1;
 		}
 		EditorGUILayout.EndVertical();
 		EditorGUILayout.EndHorizontal();
 	}
+
 #endif
 }

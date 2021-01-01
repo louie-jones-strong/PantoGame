@@ -34,7 +34,7 @@ public class ActorTask : Task
 	}
 
 #if UNITY_EDITOR
-	public override void DrawTask()
+	public override void DrawTask(Scene scene)
 	{
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("Target");
@@ -51,7 +51,7 @@ public class ActorTask : Task
 		ActorSpeed = EditorGUILayout.FloatField(ActorSpeed);
 		EditorGUILayout.EndHorizontal();
 
-		base.DrawTask();
+		base.DrawTask(scene);
 	}
 #endif
 }

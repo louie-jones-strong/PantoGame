@@ -204,7 +204,7 @@ MonoBehaviour:
   TaskUiPriority: 1
   TaskId: Red Curtain
   StartRequiredActionStates:
-  - TaskId: CurtainTask
+  - TaskId: Curtain
     State: 3
   EndRequiredActionStates: []
   TargetCompleteTime: 10

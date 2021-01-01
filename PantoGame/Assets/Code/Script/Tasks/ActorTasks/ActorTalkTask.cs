@@ -34,7 +34,7 @@ public class ActorTalkTask : Task
 	}
 
 #if UNITY_EDITOR
-	public override void DrawTask()
+	public override void DrawTask(Scene scene)
 	{
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("Actor");
@@ -46,7 +46,7 @@ public class ActorTalkTask : Task
 		TargetTalkTime = EditorGUILayout.FloatField(TargetTalkTime);
 		EditorGUILayout.EndHorizontal();
 
-		base.DrawTask();
+		base.DrawTask(scene);
 	}
 #endif
 }

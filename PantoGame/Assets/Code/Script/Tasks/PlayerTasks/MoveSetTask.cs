@@ -51,7 +51,7 @@ public class MoveSetTask : PlayerTask
 	}
 
 #if UNITY_EDITOR
-	public override void DrawTask()
+	public override void DrawTask(Scene scene)
 	{
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("Target");
@@ -63,7 +63,7 @@ public class MoveSetTask : PlayerTask
 		SetPiece = (SetPiece)EditorGUILayout.ObjectField(SetPiece, typeof(SetPiece), true);
 		EditorGUILayout.EndHorizontal();
 
-		base.DrawTask();
+		base.DrawTask(scene);
 	}
 #endif
 }

@@ -51,7 +51,7 @@ public class LightTask : PlayerTask
 	}
 
 #if UNITY_EDITOR
-	public override void DrawTask()
+	public override void DrawTask(Scene scene)
 	{
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("Target");
@@ -63,7 +63,7 @@ public class LightTask : PlayerTask
 		Light = (LightingDesk)EditorGUILayout.ObjectField(Light, typeof(LightingDesk), true);
 		EditorGUILayout.EndHorizontal();
 
-		base.DrawTask();
+		base.DrawTask(scene);
 	}
 #endif
 }

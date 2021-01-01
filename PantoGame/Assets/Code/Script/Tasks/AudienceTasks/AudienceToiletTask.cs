@@ -29,10 +29,10 @@ public class AudienceToiletTask : Task
 	}
 
 #if UNITY_EDITOR
-	public override void DrawTask()
+	public override void DrawTask(Scene scene)
 	{
 
-		base.DrawTask();
+		base.DrawTask(scene);
 	}
 #endif
 }

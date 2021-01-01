@@ -34,7 +34,7 @@ public class CurtainTask : PlayerTask
 	}
 
 #if UNITY_EDITOR
-	public override void DrawTask()
+	public override void DrawTask(Scene scene)
 	{
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("Curtain");
@@ -46,7 +46,7 @@ public class CurtainTask : PlayerTask
 		TargetOpenAmount = EditorGUILayout.Slider(TargetOpenAmount, 0f, 1f);
 		EditorGUILayout.EndHorizontal();
 
-		base.DrawTask();
+		base.DrawTask(scene);
 	}
 #endif
 }

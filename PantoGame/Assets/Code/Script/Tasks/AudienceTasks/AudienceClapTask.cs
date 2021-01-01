@@ -33,14 +33,14 @@ public class AudienceClapTask : Task
 	}
 
 #if UNITY_EDITOR
-	public override void DrawTask()
+	public override void DrawTask(Scene scene)
 	{
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("Time To Clap");
 		TargetTimeToClap = EditorGUILayout.FloatField(TargetTimeToClap);
 		EditorGUILayout.EndHorizontal();
 
-		base.DrawTask();
+		base.DrawTask(scene);
 	}
 #endif
 }
