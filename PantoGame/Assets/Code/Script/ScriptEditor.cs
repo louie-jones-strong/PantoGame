@@ -39,6 +39,11 @@ public class ScriptEditor : Editor
 
 			scene.SceneName = GUILayout.TextField(scene.SceneName);
 
+			if (GUILayout.Button("Sort"))
+			{
+				scene.SortTasks();
+			}
+
 			GUI.backgroundColor = Color.red;
 			if (GUILayout.Button("Remove Scene"))
 			{

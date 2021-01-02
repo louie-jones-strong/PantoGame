@@ -159,6 +159,11 @@ public class Scene
 		EditorGUILayout.Space(10);
 	}
 
+	public void SortTasks()
+	{
+		Tasks.Sort(Task.TaskSortOrder);
+	}
+
 	Task MakeTask(eTaskType actionType)
 	{
 		switch (actionType)

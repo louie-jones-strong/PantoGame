@@ -235,5 +235,62 @@ public class Task : ScriptableObject //this needs to be ScriptableObject so that
 		EditorGUILayout.EndHorizontal();
 	}
 
+	public static int TaskSortOrder(Task a, Task b)
+	{
+		if (a.StartRequiredActionStates.Count == 0 &&
+			b.StartRequiredActionStates.Count > 0)
+		{
+			//b is later in the show then a
+			return -1;
+		}
+
+		if (b.StartRequiredActionStates.Count == 0 &&
+			a.StartRequiredActionStates.Count > 0)
+		{
+			//a is later in the show then b
+			return 1;
+		}
+
+		//check if b waits on a
+		foreach (var item in b.StartRequiredActionStates)
+		{
+			if (item.TaskId == a.TaskId)
+			{
+				//b is later in the show then a
+				return -1;
+			}
+		}
+		foreach (var item in b.EndRequiredActionStates)
+		{
+			if (item.TaskId == a.TaskId)
+			{
+				//b is later in the show then a
+				return -1;
+			}
+		}
+
+
+		//check if a waits on b
+		foreach (var item in a.StartRequiredActionStates)
+		{
+			if (item.TaskId == b.TaskId)
+			{
+				//a is later in the show then b
+				return 1;
+			}
+		}
+		foreach (var item in a.EndRequiredActionStates)
+		{
+			if (item.TaskId == b.TaskId)
+			{
+				//a is later in the show then b
+				return 1;
+			}
+		}
+
+		//they are both equal
+		return 0;
+	}
+
 #endif
 }
