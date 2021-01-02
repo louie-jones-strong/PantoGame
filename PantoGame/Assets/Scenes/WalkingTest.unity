@@ -204,7 +204,7 @@ MonoBehaviour:
   TaskUiPriority: 1
   TaskId: Red Curtain
   StartRequiredActionStates:
-  - TaskId: Curtain
+  - TaskId: Fire Curtain
     State: 3
   EndRequiredActionStates: []
   TargetCompleteTime: 10
@@ -396,7 +396,6 @@ Transform:
   - {fileID: 712074300}
   - {fileID: 1508095816}
   - {fileID: 1679344544}
-  - {fileID: 1884867461}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -521,7 +520,7 @@ MonoBehaviour:
   TaskUiPriority: -1
   TaskId: ActorTask
   StartRequiredActionStates:
-  - TaskId: Light
+  - TaskId: Red Curtain
     State: 3
   EndRequiredActionStates: []
   Target: {fileID: 563153204}
@@ -961,13 +960,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508657341}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.880815, y: 221.84877, z: -47.27246}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1217834535}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 940859982}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &544179084
 PrefabInstance:
@@ -1959,7 +1958,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1884867461}
+  - {fileID: 1729513329}
+  - {fileID: 508657342}
+  - {fileID: 1243332049}
   m_Father: {fileID: 952680486}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2018,7 +2021,7 @@ Transform:
   m_Children:
   - {fileID: 940859982}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &999630877 stripped
 Transform:
@@ -2560,15 +2563,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243332048}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.880815, y: 221.84877, z: -47.27246}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8222365628792341584}
   - {fileID: 1592599637}
   - {fileID: 1431867396}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 940859982}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1304062750
 PrefabInstance:
@@ -3358,11 +3361,9 @@ MonoBehaviour:
   StartRequiredActionStates:
   - TaskId: Red Curtain
     State: 3
-  - TaskId: MoveSet
-    State: 3
   EndRequiredActionStates: []
   TargetCompleteTime: 15
-  Target: {fileID: 563153204}
+  Target: {fileID: 324927525}
   SetPiece: {fileID: 619739912}
 --- !u!1 &1541481036
 GameObject:
@@ -3892,16 +3893,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729513328}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.880815, y: 221.84877, z: -47.27246}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224036009}
   - {fileID: 324927525}
   - {fileID: 1304062751}
   - {fileID: 563153204}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 940859982}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1742291506
 GameObject:
@@ -4400,13 +4401,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884867460}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.880815, y: 221.84877, z: -47.27246}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 619739911}
-  m_Father: {fileID: 153317277}
-  m_RootOrder: 6
+  m_Father: {fileID: 940859982}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1890310891 stripped
 GameObject:
