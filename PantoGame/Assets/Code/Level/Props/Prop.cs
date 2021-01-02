@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Prop : MonoBehaviour
 {
 	public static List<Prop> PropsList {get; private set;} = new List<Prop>();
 
 	public float PropSize = 2f;
+	Rigidbody Rigidbody;
+
 	PropHolder PropHolder;
 
 	protected virtual void Awake()
 	{
 		PropsList.Add(this);
+		Rigidbody = GetComponent<Rigidbody>();
+		Rigidbody.isKinematic = false;
+		Rigidbody.freezeRotation = true;
 	}
 
 	protected virtual void OnDestroy()
@@ -34,6 +40,7 @@ public class Prop : MonoBehaviour
 
 		PropHolder = propholder;
 		PropHolder.AddProp(this);
+		Rigidbody.isKinematic = true;
 	}
 
 	public virtual void DropProp()
@@ -72,6 +79,7 @@ public class Prop : MonoBehaviour
 			transform.parent = PlayerManger.MangerInstance.PropsRoot;
 			transform.localEulerAngles = Vector3.zero;
 			PropHolder = null;
+			Rigidbody.isKinematic = false;
 		}
 		else
 		{

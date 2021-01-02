@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2605387002715306293}
   - component: {fileID: 2605387002715306292}
+  - component: {fileID: 2305668884526148977}
+  - component: {fileID: 8303472730050629385}
   m_Layer: 0
   m_Name: Microphone
   m_TagString: Untagged
@@ -44,6 +46,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5a1418c4e0ae9468a4c9ec7a2b7780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PropSize: 2
+--- !u!54 &2305668884526148977
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2605387002715306299}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &8303472730050629385
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2605387002715306299}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!1 &2605387003305953529
 GameObject:
   m_ObjectHideFlags: 0
