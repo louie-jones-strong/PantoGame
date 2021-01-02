@@ -25,7 +25,21 @@ public class Interactable : MonoBehaviour
 
 	protected virtual void Update()
 	{
+		//check if any players are near enough to use this task
+		bool canUse = false;
+		foreach (var player in PlayerManger.Players.Values)
+		{
+			if (CanInteract(player.transform.position))
+			{
+				canUse = true;
+				break;
+			}
+		}
 
+		if (Icon != null)
+		{
+			Icon.SetCanUse(canUse);
+		}
 	}
 
 	protected void OnDestroy()

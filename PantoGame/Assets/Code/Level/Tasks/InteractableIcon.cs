@@ -70,6 +70,11 @@ public class InteractableIcon : MonoBehaviour
 		IconAnimator.SetBool("Highlight", value);
 	}
 
+	public void SetCanUse(bool value)
+	{
+		IconAnimator.SetBool("CanUse", value);
+	}
+
 	public void SetBeingUsed(bool value)
 	{
 		IconAnimator.SetBool("BeingUsed", value);
