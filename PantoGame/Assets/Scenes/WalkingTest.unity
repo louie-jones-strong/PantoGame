@@ -826,6 +826,24 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &381682409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866dd227a22723d48b4a09ec9e069918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskUiPriority: 1
+  TaskId: Wait for sitting
+  StartRequiredActionStates: []
+  EndRequiredActionStates: []
+  TargetCurtain: {fileID: 0}
+  TargetWaitTime: 10
 --- !u!1 &448830242
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,6 +955,27 @@ MonoBehaviour:
   AttackTime: 0.25
   DecayTime: 0.25
   FadeAmount: 0.6
+--- !u!114 &467850480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d176c52ee1f7ba94d93c1dd3ac791d45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskUiPriority: -1
+  TaskId: ActorTask
+  StartRequiredActionStates:
+  - TaskId: CurtainTask
+    State: 3
+  EndRequiredActionStates: []
+  Target: {fileID: 224036009}
+  Actor: {fileID: 62601881}
+  ActorSpeed: 15
 --- !u!1 &508657341
 GameObject:
   m_ObjectHideFlags: 0
@@ -1990,7 +2029,13 @@ MonoBehaviour:
     - {fileID: 1831653346}
     - {fileID: 292141965}
   - SceneName: Enter
-    Tasks: []
+    Tasks:
+    - {fileID: 381682409}
+  - SceneName: ShowStart
+    Tasks:
+    - {fileID: 1891763890}
+    - {fileID: 467850480}
+    - {fileID: 1067488372}
   Rating: 0
 --- !u!1 &952680485
 GameObject:
@@ -2140,6 +2185,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4493585093827132993, guid: 94641faea85378e4981884964526d3df, type: 3}
+--- !u!114 &1067488372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f43d6d1d57b1c764595c841cecdfd589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskUiPriority: -1
+  TaskId: ActorTalkTask
+  StartRequiredActionStates:
+  - TaskId: ActorTask
+    State: 3
+  EndRequiredActionStates: []
+  Actor: {fileID: 62601881}
+  TargetTalkTime: 1
 --- !u!1001 &1099013700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4428,6 +4493,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1670560618228564751, guid: 94641faea85378e4981884964526d3df, type: 3}
+--- !u!114 &1891763890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01cd676c0bdf92544b1654c8ae680ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskUiPriority: 1
+  TaskId: CurtainTask
+  StartRequiredActionStates: []
+  EndRequiredActionStates: []
+  TargetCompleteTime: 5
+  TargetCurtain: {fileID: 306474061}
+  TargetOpenAmount: 1
 --- !u!114 &1902388619
 MonoBehaviour:
   m_ObjectHideFlags: 0

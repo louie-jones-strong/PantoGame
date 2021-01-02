@@ -76,6 +76,7 @@ public class Scene
 	enum eTaskType
 	{
 		None,
+		WaitTask,
 		Light,
 		Actor,
 		ActorTalk,
@@ -162,6 +163,10 @@ public class Scene
 	{
 		switch (actionType)
 		{
+			case eTaskType.WaitTask:
+			{
+				return new WaitTask();
+			}
 			case eTaskType.Light:
 			{
 				return new LightTask();
