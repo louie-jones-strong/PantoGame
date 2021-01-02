@@ -14,7 +14,10 @@ public class AudioManger : MonoBehaviour
 	Dictionary<string, Sound> Sounds = new Dictionary<string, Sound>();
 	List<AudioSource> CurrentSources = new List<AudioSource>();
 
+#region Volumes
+#region MusicVolume
 	const float DefaultMusicVolume = 0.8f;
+	const string MusicPlayerPrefKey = "MusicVol";
 	static float _MusicVolume;
 	public static float MusicVolume {get {return _MusicVolume;} set {SetMusicVolume(value);}}
 	public static void SetMusicVolume(float value)
@@ -26,9 +29,13 @@ public class AudioManger : MonoBehaviour
 		}
 		_MusicVolume = value;
 		Instance.Mixer.SetFloat("MusicVol", VolumeToDb(value));
+		PlayerPrefs.SetFloat(MusicPlayerPrefKey, value);
 	}
+#endregion
 
+#region SfxVolume
 	const float DefaultSfxVolume = 0.8f;
+	const string SfxPlayerPrefKey = "SfxVol";
 	static float _SfxVolume;
 	public static float SfxVolume {get {return _SfxVolume;} set {SetSfxVolume(value);}}
 	public static void SetSfxVolume(float value)
@@ -40,9 +47,13 @@ public class AudioManger : MonoBehaviour
 		}
 		_SfxVolume = value;
 		Instance.Mixer.SetFloat("SfxVol", VolumeToDb(value));
+		PlayerPrefs.SetFloat(SfxPlayerPrefKey, value);
 	}
+#endregion
 
+#region AmbienceVolume
 	const float DefaultAmbienceVolume = 0.8f;
+	const string AmbiencePlayerPrefKey = "AmbienceVol";
 	static float _AmbienceVolume;
 	public static float AmbienceVolume {get {return _AmbienceVolume;} set {SetAmbienceVolume(value);}}
 	public static void SetAmbienceVolume(float value)
@@ -54,8 +65,9 @@ public class AudioManger : MonoBehaviour
 		}
 		_AmbienceVolume = value;
 		Instance.Mixer.SetFloat("AmbienceVol", VolumeToDb(value));
+		PlayerPrefs.SetFloat(AmbiencePlayerPrefKey, value);
 	}
-
+#endregion
 	public static float VolumeToDb(float volume)
 	{
 		if (volume != 0)
@@ -63,6 +75,7 @@ public class AudioManger : MonoBehaviour
 		else
 			return -144.0f;
 	}
+#endregion
 
 	void Awake()
 	{
@@ -74,9 +87,9 @@ public class AudioManger : MonoBehaviour
 		Instance = this;
 		LoadSounds();
 
-		MusicVolume = DefaultMusicVolume;
-		SfxVolume = DefaultSfxVolume;
-		AmbienceVolume = DefaultAmbienceVolume;
+		MusicVolume = PlayerPrefs.GetFloat(MusicPlayerPrefKey, DefaultMusicVolume);
+		SfxVolume = PlayerPrefs.GetFloat(SfxPlayerPrefKey, DefaultSfxVolume);
+		AmbienceVolume = PlayerPrefs.GetFloat(AmbiencePlayerPrefKey, DefaultAmbienceVolume);
 	}
 
 	void LoadSounds()
