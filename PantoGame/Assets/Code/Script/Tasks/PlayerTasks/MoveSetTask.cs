@@ -19,27 +19,19 @@ public class MoveSetTask : PlayerTask
 
 	public override bool EndConditionsMet()
 	{
-		var distance = GetDistance();
+		var distance = DistanceUtility.Get2d(SetPiece.transform, Target.transform);
 		bool withinRange = distance <= 2;
 		return withinRange && base.EndConditionsMet();
 	}
 
 	public override float GetProgress()
 	{
-		var distance = GetDistance();
+		var distance = DistanceUtility.Get2d(SetPiece.transform, Target.transform);
 		if (distance >= LargestDistance)
 		{
 			LargestDistance = distance;
 		}
 		return 1 - (distance / LargestDistance);
-	}
-
-	float GetDistance()
-	{
-		var delta = SetPiece.transform.position - Target.transform.position;
-
-		var distance = (new Vector2(delta.x, delta.z)).magnitude;
-		return distance;
 	}
 
 	public override void Update()
@@ -57,11 +49,21 @@ public class MoveSetTask : PlayerTask
 		EditorGUILayout.LabelField("Target");
 		Target = (Transform)EditorGUILayout.ObjectField(Target, typeof(Transform), true);
 		EditorGUILayout.EndHorizontal();
+		
+		if (Target == null)
+		{
+			EditorGUILayout.HelpBox($"Target Cannot be empty", MessageType.Error);
+		}
 
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("SetPiece");
 		SetPiece = (SetPiece)EditorGUILayout.ObjectField(SetPiece, typeof(SetPiece), true);
 		EditorGUILayout.EndHorizontal();
+
+		if (SetPiece == null)
+		{
+			EditorGUILayout.HelpBox($"SetPiece Cannot be empty", MessageType.Error);
+		}
 
 		base.DrawTask(scene);
 	}

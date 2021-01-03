@@ -9,7 +9,6 @@ using UnityEditor;
 [Serializable]
 public class WaitTask : Task
 {
-	public Curtain TargetCurtain;
 	public float TargetWaitTime;
 	float TimeSinceStartAble;
 	

@@ -77,6 +77,7 @@ public class Scene
 	{
 		None,
 		WaitTask,
+		PropTask,
 		Light,
 		Actor,
 		ActorTalk,
@@ -171,6 +172,10 @@ public class Scene
 			case eTaskType.WaitTask:
 			{
 				return new WaitTask();
+			}
+			case eTaskType.PropTask:
+			{
+				return new PropTask();
 			}
 			case eTaskType.Light:
 			{

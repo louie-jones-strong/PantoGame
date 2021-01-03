@@ -58,10 +58,20 @@ public class LightTask : PlayerTask
 		Target = (Transform)EditorGUILayout.ObjectField(Target, typeof(Transform), true);
 		EditorGUILayout.EndHorizontal();
 
+		if (Target == null)
+		{
+			EditorGUILayout.HelpBox($"Target Cannot be empty", MessageType.Error);
+		}
+
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("Light");
 		Light = (LightingDesk)EditorGUILayout.ObjectField(Light, typeof(LightingDesk), true);
 		EditorGUILayout.EndHorizontal();
+
+		if (Light == null)
+		{
+			EditorGUILayout.HelpBox($"Light Cannot be empty", MessageType.Error);
+		}
 
 		base.DrawTask(scene);
 	}

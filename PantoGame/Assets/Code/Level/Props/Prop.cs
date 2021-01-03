@@ -10,7 +10,7 @@ public class Prop : MonoBehaviour
 	public float PropSize = 2f;
 	Rigidbody Rigidbody;
 
-	PropHolder PropHolder;
+	public PropHolder PropHolder {get; private set;}
 
 	protected virtual void Awake()
 	{
@@ -73,17 +73,18 @@ public class Prop : MonoBehaviour
 		//remove prop from old prop holder
 		PropHolder.RemoveProp(this);
 
+		PropHolder = null;
+
 		if (nearestPropHolder == null)
 		{
 			//set pos to scene prop root
 			transform.parent = PlayerManger.MangerInstance.PropsRoot;
 			transform.localEulerAngles = Vector3.zero;
-			PropHolder = null;
 			Rigidbody.isKinematic = false;
 		}
 		else
 		{
-			nearestPropHolder.AddProp(this);
+			PickUpProp(nearestPropHolder);
 		}
 		
 	}

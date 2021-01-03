@@ -41,6 +41,11 @@ public class CurtainTask : PlayerTask
 		TargetCurtain = (Curtain)EditorGUILayout.ObjectField(TargetCurtain, typeof(Curtain), true);
 		EditorGUILayout.EndHorizontal();
 
+		if (TargetCurtain == null)
+		{
+			EditorGUILayout.HelpBox($"TargetCurtain Cannot be empty", MessageType.Error);
+		}
+
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("TargetOpenAmount");
 		TargetOpenAmount = EditorGUILayout.Slider(TargetOpenAmount, 0f, 1f);

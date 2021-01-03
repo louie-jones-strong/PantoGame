@@ -41,6 +41,11 @@ public class ActorTalkTask : Task
 		Actor = (ActorAgent)EditorGUILayout.ObjectField(Actor, typeof(ActorAgent), true);
 		EditorGUILayout.EndHorizontal();
 
+		if (Actor == null)
+		{
+			EditorGUILayout.HelpBox($"Actor Cannot be empty", MessageType.Error);
+		}
+
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("TargetTalkTime");
 		TargetTalkTime = EditorGUILayout.FloatField(TargetTalkTime);

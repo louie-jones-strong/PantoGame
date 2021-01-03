@@ -842,7 +842,6 @@ MonoBehaviour:
   TaskId: Wait for sitting
   StartRequiredActionStates: []
   EndRequiredActionStates: []
-  TargetCurtain: {fileID: 0}
   TargetWaitTime: 10
 --- !u!1 &448830242
 GameObject:
@@ -2028,6 +2027,7 @@ MonoBehaviour:
     - {fileID: 40301440}
     - {fileID: 292141965}
     - {fileID: 1831653346}
+    - {fileID: 1892488970}
   - SceneName: Enter
     Tasks:
     - {fileID: 381682409}
@@ -3528,6 +3528,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2605387002715306293, guid: ce71782b53b5ba94ea4a78f7bbbc4ba4, type: 3}
   m_PrefabInstance: {fileID: 1592599636}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1592599638 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2605387002715306292, guid: ce71782b53b5ba94ea4a78f7bbbc4ba4, type: 3}
+  m_PrefabInstance: {fileID: 1592599636}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5a1418c4e0ae9468a4c9ec7a2b7780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1628442522
 GameObject:
   m_ObjectHideFlags: 0
@@ -4512,6 +4523,27 @@ MonoBehaviour:
   TargetCompleteTime: 5
   TargetCurtain: {fileID: 306474061}
   TargetOpenAmount: 1
+--- !u!114 &1892488970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 480f8ab231fe99046834c32f70e131c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskUiPriority: 1
+  TaskId: Mic On Stage
+  StartRequiredActionStates:
+  - TaskId: Red Curtain
+    State: 3
+  EndRequiredActionStates: []
+  TargetProp: {fileID: 1592599638}
+  TargetPropHolder: {fileID: 8222365628792341585}
+  Target: {fileID: 224036009}
 --- !u!114 &1902388619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5169,3 +5201,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8489338603663585443, guid: 859191ec35835d24caf2e4c2433baa17, type: 3}
   m_PrefabInstance: {fileID: 8222365628792341583}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8222365628792341585 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2663702856695935105, guid: 859191ec35835d24caf2e4c2433baa17, type: 3}
+  m_PrefabInstance: {fileID: 8222365628792341583}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f07f39c107dc0f45b9594d23a0dd5d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -41,10 +41,20 @@ public class ActorTask : Task
 		Target = (Transform)EditorGUILayout.ObjectField(Target, typeof(Transform), true);
 		EditorGUILayout.EndHorizontal();
 
+		if (Target == null)
+		{
+			EditorGUILayout.HelpBox($"Target Cannot be empty", MessageType.Error);
+		}
+
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("Actor");
 		Actor = (ActorAgent)EditorGUILayout.ObjectField(Actor, typeof(ActorAgent), true);
 		EditorGUILayout.EndHorizontal();
+
+		if (Actor == null)
+		{
+			EditorGUILayout.HelpBox($"Actor Cannot be empty", MessageType.Error);
+		}
 
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.LabelField("ActorSpeed");
