@@ -6,23 +6,17 @@ using UnityEngine.AI;
 public class AudienceAgent : Agent
 {
 	public AudienceProfileData ProfileData;
-	public Chair SetSeat;
+	[SerializeField] ColourCurve ColourCurve;
 	public float TimeSinceLastToilet {get; private set;}
-	public ColourCurve ColourCurve;
-	eIntent AudienceIntent;
+
+	Chair SetSeat;
+	eAudienceIntent AudienceIntent;
+	eAudienceIntent TargetIntent;
+	float TargetIntentTime;
+
 	float TimeHitByPlayer;
 	float TimeSeeingPlayerOnStage;
 	bool CollidingWithPlayer;
-
-	enum eIntent
-	{
-		None,
-		Sit,
-		Toilet,
-		Clapping,
-		StandInLobby,
-		RandomWalk
-	}
 	
 	protected override void OnTriggerEnter(Collider collider)
 	{
@@ -67,40 +61,40 @@ public class AudienceAgent : Agent
 
 		CheckSeeingPlayerOnStage();
 
-		var intent = GetIntent();
+		var intentChanged = GetIntent();
 
-		Vector3 target = transform.position;
-		switch (intent)
+		if (intentChanged)
 		{
-			case eIntent.StandInLobby:
+			Vector3 target = transform.position;
+			switch (AudienceIntent)
 			{
-				target = Theatre.Instance.Lobby.position;
-				break;
+				case eAudienceIntent.StandInLobby:
+				{
+					target = Theatre.Instance.Lobby.position;
+					break;
+				}
+				case eAudienceIntent.WatchShow:
+				{
+					target = SetSeat.transform.position;
+					break;
+				}
+				case eAudienceIntent.Toilet:
+				{
+					target = Theatre.Instance.Toilet.position;
+					break;
+				}
 			}
-			case eIntent.Sit:
-			{
-				target = SetSeat.transform.position;
-				break;
-			}
-			case eIntent.Toilet:
-			{
-				target = Theatre.Instance.Toilet.position;
-				break;
-			}
-		}
 
-		if (AudienceIntent != intent)
-		{
 			NavMeshAgent.SetDestination(target);
-			AudienceIntent = intent;
 		}
 
 
-		if (AudienceIntent == eIntent.Toilet && (target-transform.position).magnitude <= 1)
+		if (AudienceIntent == eAudienceIntent.Toilet && 
+			(Theatre.Instance.Toilet.position-transform.position).magnitude <= 1)
 		{
 			TimeSinceLastToilet = 0;
 		}
-		PlayerAnimator.SetBool("Clapping", AudienceIntent == eIntent.Clapping);
+		PlayerAnimator.SetBool("Clapping", AudienceIntent == eAudienceIntent.Clapping);
 
 		UpdateRatingVisual();
 		UpdateVisuals();
@@ -118,35 +112,55 @@ public class AudienceAgent : Agent
 		SetColour(ColourCurve.GetColor(rating));
 	}
 
-	eIntent GetIntent()
+	bool GetIntent()
 	{
+		var intent = eAudienceIntent.WatchShow;
+		TargetIntentTime -= Time.deltaTime;
+
 		var currentScene = Theatre.Instance.CurrentScript.CurrentScene;
-		if (currentScene == null)
+		if (currentScene != null)
 		{
-			return eIntent.Sit;
-		}
-		
-		foreach (var task in currentScene.Tasks)
-		{
-			if (task.State == eTaskState.CanStart || 
-				task.State == eTaskState.InProgress)
+			foreach (var task in currentScene.Tasks)
 			{
-				if (task is AudienceStandInLobbyTask)
+				if (task.State == eTaskState.CanStart || 
+					task.State == eTaskState.InProgress)
 				{
-					return eIntent.StandInLobby;
-				}
-				if (task is AudienceClapTask)
-				{
-					return eIntent.Clapping;
-				}
-				if (task is AudienceToiletTask &&
-					TimeSinceLastToilet >= 10f)
-				{
-					return eIntent.Toilet;
+					if (task is AudienceStandInLobbyTask)
+					{
+						intent = eAudienceIntent.StandInLobby;
+					}
+					if (task is AudienceClapTask)
+					{
+						intent = eAudienceIntent.Clapping;
+					}
+					if (task is AudienceToiletTask &&
+						TimeSinceLastToilet >= 10f)
+					{
+						intent = eAudienceIntent.Toilet;
+					}
 				}
 			}
 		}
-		return eIntent.Sit;
+
+		if (intent != TargetIntent)
+		{
+
+			TargetIntent = intent;
+			TargetIntentTime = ProfileData.GetTransitionTime(TargetIntent, 0f);
+		}
+
+		if (AudienceIntent == TargetIntent)
+		{
+			return false;
+		}
+
+		if (TargetIntentTime <= 0)
+		{
+			AudienceIntent = TargetIntent;
+			return true;
+		}
+		
+		return false;
 	}
 
 	void CheckSeeingPlayerOnStage()
