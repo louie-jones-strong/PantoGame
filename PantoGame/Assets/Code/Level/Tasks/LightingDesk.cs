@@ -34,8 +34,8 @@ public class LightingDesk : Interactable
 
 		var velocity = Vector3.zero;
 
-		velocity.z = SimpleInput.GetInputValue(eInput.YAxis, index: CurrentUser.ControlType) * Speed;
-		velocity.x = SimpleInput.GetInputValue(eInput.XAxis, index: CurrentUser.ControlType) * Speed;
+		velocity.z = CurrentUser.GetInputValue(eInput.YAxis) * Speed;
+		velocity.x = CurrentUser.GetInputValue(eInput.XAxis) * Speed;
 
 		MoveLight(velocity);
 	}

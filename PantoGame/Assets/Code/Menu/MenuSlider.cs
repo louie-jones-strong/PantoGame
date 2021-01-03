@@ -34,9 +34,9 @@ public class MenuSlider : MenuInteractable
 		float value = Value;
 		if (CurrentUser != null)
 		{
-			if (SimpleInput.IsInputInState(eInput.YAxis, eButtonState.Pressed, index: CurrentUser.ControlType))
+			if (CurrentUser.IsInputInState(eInput.YAxis, eButtonState.Pressed))
 			{
-				var yValue = SimpleInput.GetInputValue(eInput.YAxis, index: CurrentUser.ControlType);
+				var yValue = CurrentUser.GetInputValue(eInput.YAxis);
 
 				float delta = (Max-Min)/10;
 				if (yValue < 0)

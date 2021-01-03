@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class PlayerAgent : Agent
 {
-	public int ControlType = -1;//todo this should be enum
+	public int ControlType {set; private get;} = -1;//todo this should be enum
 	public float Speed;
 	public float DashSpeedMultiplier;
 	public float DashCoolDown = 1.5f;
@@ -32,7 +32,7 @@ public class PlayerAgent : Agent
 		if (CurrentTask == null && PropSlot == null)
 		{
 			acceleration = UpdateMovement();
-			if (SimpleInput.IsInputInState(eInput.Interact, eButtonState.Pressed, index: ControlType))
+			if (IsInputInState(eInput.Interact, eButtonState.Pressed))
 			{
 				float minDistance = float.MaxValue;
 				Prop closestProp = null;
@@ -70,7 +70,7 @@ public class PlayerAgent : Agent
 		else if (PropSlot != null)
 		{
 			acceleration = UpdateMovement();
-			if (SimpleInput.IsInputInState(eInput.Interact, eButtonState.Pressed, index: ControlType))
+			if (IsInputInState(eInput.Interact, eButtonState.Pressed))
 			{
 				PropSlot.DropProp();
 			}
@@ -84,13 +84,12 @@ public class PlayerAgent : Agent
 
 			var distance = (transform.position-CurrentTask.transform.position).magnitude;
 			if (!CurrentTask.CanInteract(transform.position) ||
-				SimpleInput.IsInputInState(eInput.Interact, eButtonState.Pressed, index: ControlType))
+				IsInputInState(eInput.Interact, eButtonState.Pressed))
 			{
 				CurrentTask.EndInteraction();
 				CurrentTask = null;
 			}
 		}
-		
 		UpdateVisuals(acceleration, Velocity);
 		TryHideObjectsHiddingPlayer();
 		base.Update();
@@ -99,10 +98,10 @@ public class PlayerAgent : Agent
 	Vector3 UpdateMovement()
 	{
 		var acceleration = Vector3.zero;
-		acceleration.x = SimpleInput.GetInputValue(eInput.XAxis, index: ControlType) * Speed;
-		acceleration.z = SimpleInput.GetInputValue(eInput.YAxis, index: ControlType) * Speed;
+		acceleration.x = GetInputValue(eInput.XAxis) * Speed;
+		acceleration.z = GetInputValue(eInput.YAxis) * Speed;
 
-		if (SimpleInput.IsInputInState(eInput.Dash, eButtonState.Pressed, index: ControlType) &&
+		if (IsInputInState(eInput.Dash, eButtonState.Pressed) &&
 			DashCoolDownLeft <= 0)
 		{
 			TimeLeftOfDash = DashAffectTime;
@@ -157,4 +156,21 @@ public class PlayerAgent : Agent
 
 		Debug.DrawRay(startPos, delta, found > 0 ? Color.red : Color.green);
 	}
+
+#region Get Control input values
+	public bool IsInputInState(eInput input, eButtonState state)
+	{
+		return SimpleInput.IsInputInState(input, state, index:ControlType);
+	}
+
+	public float GetInputValue(eInput input)
+	{
+		return SimpleInput.GetInputValue(input, index:ControlType);
+	}
+
+	public bool GetInputActive(eInput input)
+	{
+		return SimpleInput.GetInputActive(input, index:ControlType);
+	}
+#endregion
 }

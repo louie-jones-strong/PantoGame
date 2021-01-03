@@ -22,7 +22,7 @@ public class Curtain : Interactable
 	{
 		if (CurrentUser != null)
 		{
-			var delta = SimpleInput.GetInputValue(eInput.YAxis, index: CurrentUser.ControlType) * Acceleration;
+			var delta = CurrentUser.GetInputValue(eInput.YAxis) * Acceleration;
 
 			Velocity += delta * Time.deltaTime;
 		}

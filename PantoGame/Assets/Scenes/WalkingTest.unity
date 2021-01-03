@@ -2022,12 +2022,12 @@ MonoBehaviour:
   - SceneName: SetUp
     Tasks:
     - {fileID: 2101622493}
-    - {fileID: 103192249}
     - {fileID: 1902388619}
+    - {fileID: 103192249}
     - {fileID: 1541113630}
     - {fileID: 40301440}
-    - {fileID: 1831653346}
     - {fileID: 292141965}
+    - {fileID: 1831653346}
   - SceneName: Enter
     Tasks:
     - {fileID: 381682409}
