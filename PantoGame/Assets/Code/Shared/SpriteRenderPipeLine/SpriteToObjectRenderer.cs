@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class SpriteToObjectRenderer : RotateToCam
 {
 
-	[SerializeField] MeshRenderer FrontRenderer;
-	[SerializeField] MeshRenderer BackRenderer;
+	[SerializeField] MeshRenderer MeshRenderer;
 
 	[SerializeField] bool EmissionOn;
 	[SerializeField] bool RotateToCamOn;
@@ -71,8 +70,7 @@ public class SpriteToObjectRenderer : RotateToCam
 
 		CurrentMaterial = new Material(data.Material);
 		
-		FrontRenderer.material = CurrentMaterial;
-		BackRenderer.material = CurrentMaterial;
+		MeshRenderer.material = CurrentMaterial;
 
 		UpdateMaterialColour();
 
