@@ -7,13 +7,13 @@ public class PlayerIcon : MonoBehaviour
 {
 	[SerializeField] Image Icon;
 
-	public void SetIcon(PlayerAgent player)
+	public void SetIcon(Agent agent)
 	{
-		if (player == null)
+		if (agent == null)
 		{
 			return;
 		}
 
-		Icon.color = player.Colour;
+		Icon.color = agent.Colour;
 	}
 }

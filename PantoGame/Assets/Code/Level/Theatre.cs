@@ -47,6 +47,11 @@ public class Theatre : PlayerManger
 
 	protected override void Update()
 	{
+		if (CurrentScript.Finished)
+		{
+			HudManger.Instance.ShowResultsScreen(AudienceAgents);
+		}
+
 		base.Update();
 	}
 

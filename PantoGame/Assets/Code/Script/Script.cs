@@ -5,7 +5,11 @@ using UnityEngine;
 [Serializable]
 public class Script: MonoBehaviour
 {
-	public bool Finished {get; private set;}
+	public bool Finished {get 
+		{	return SceneIndex >= Scenes.Count - 1 &&
+			CurrentScene != null &&
+			CurrentScene.State == eSceneState.Completed;}}
+			
 	public Scene CurrentScene {get {return Scenes[SceneIndex];}}
 	public int SceneIndex;
 	public List<Scene> Scenes;
@@ -37,7 +41,11 @@ public class Script: MonoBehaviour
 			Logger.Log($"Script setting SceneIndex {SceneIndex} -> {newSceneIndex}");
 			SceneIndex = newSceneIndex;
 		}
-		Scenes[SceneIndex].SetState(eSceneState.InProgress);
+		
+		if (Scenes[SceneIndex].State == eSceneState.NotStarted)
+		{
+			Scenes[SceneIndex].SetState(eSceneState.InProgress);
+		}
 
 		UpdateRatings();
 	}

@@ -7,6 +7,7 @@ public class HudManger : MonoBehaviour
 {
 	public static HudManger Instance {get; private set;}
 	public RectTransform CanvasRect;
+	[SerializeField] ResultsScreen ResultsScreen;
 
 	void Awake()
 	{
@@ -17,9 +18,15 @@ public class HudManger : MonoBehaviour
 		}
 
 		Instance = this;
+		ResultsScreen.gameObject.SetActive(false);
 	}
 
 	void Update()
 	{
+	}
+
+	public void ShowResultsScreen(List<AudienceAgent> audienceAgents)
+	{
+		ResultsScreen.Show(audienceAgents);
 	}
 }

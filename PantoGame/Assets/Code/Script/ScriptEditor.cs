@@ -79,6 +79,7 @@ public class ScriptEditor : Editor
 		EditorGUILayout.BeginHorizontal();
 
 		GUILayout.Label($"Rating: {script.Rating}");
+		GUILayout.Label($"Finished: {script.Finished}");
 
 
 		EditorGUILayout.EndHorizontal();
