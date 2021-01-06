@@ -45,6 +45,7 @@ public class InteractableIcon : MonoBehaviour
 		if (Target == null)
 		{
 			Logger.LogError($"InteractableIcon Target == null");
+			Destroy(this);
 			return;
 		}
 		

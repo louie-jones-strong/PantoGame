@@ -2,9 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum eTheatreState
+{
+	Intro,
+	ShowInProgress,
+	ShowOver
+}
+
 public class Theatre : PlayerManger
 {
 	public static Theatre Instance;
+	public eTheatreState State;
+
 	[SerializeField] AudienceAgent Audience;
 	[SerializeField] List<Script> Generators;
 	public Script CurrentScript {get; private set;}
@@ -63,10 +72,30 @@ public class Theatre : PlayerManger
 		}
 	}
 
+	void SetState(eTheatreState state)
+	{
+		Logger.Log($"Setting TheatreState {State} -> {state}");
+		State = state;
+	}
+
+	public static bool CanPlayersMove()
+	{
+		if (Theatre.Instance == null)
+		{
+			return true;
+		}
+		if (Theatre.Instance.State == eTheatreState.ShowOver)
+		{
+			return false;
+		}
+		return true;
+	}
+
 	protected override void Update()
 	{
 		if (CurrentScript.Finished)
 		{
+			SetState(eTheatreState.ShowOver);
 			HudManger.Instance.ShowResultsScreen(AudienceAgents);
 		}
 

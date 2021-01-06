@@ -160,16 +160,28 @@ public class PlayerAgent : Agent
 #region Get Control input values
 	public bool IsInputInState(eInput input, eButtonState state)
 	{
+		if (!Theatre.CanPlayersMove())
+		{
+			return false;
+		}
 		return SimpleInput.IsInputInState(input, state, index:ControlType);
 	}
 
 	public float GetInputValue(eInput input)
 	{
+		if (!Theatre.CanPlayersMove())
+		{
+			return 0f;
+		}
 		return SimpleInput.GetInputValue(input, index:ControlType);
 	}
 
 	public bool GetInputActive(eInput input)
 	{
+		if (!Theatre.CanPlayersMove())
+		{
+			return false;
+		}
 		return SimpleInput.GetInputActive(input, index:ControlType);
 	}
 #endregion

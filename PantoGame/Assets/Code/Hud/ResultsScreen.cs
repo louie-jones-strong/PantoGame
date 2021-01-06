@@ -11,6 +11,7 @@ public class ResultsScreen : MonoBehaviour
 
 	List<Review> Reviews = new List<Review>();
 	bool Showing;
+	bool Skip;
 
 	void Awake()
 	{
@@ -43,24 +44,57 @@ public class ResultsScreen : MonoBehaviour
 		StartCoroutine(IntroReviews());
 	}
 
+	void Hide()
+	{
+		Showing = false;
+		Skip = false;
+		gameObject.SetActive(false);
+	}
+
 	IEnumerator IntroReviews()
 	{
-		yield return new WaitForSeconds(0.5f);
+	
+		yield return WaitTimeOrSkip(0.5f);
 		float delayBetweenIntros = 5f;
 		float delayDecay = 1f;
 		float minDelay = 0.25f;
 		foreach (var review in Reviews)
 		{
-			review.Intro(delayBetweenIntros);
-			yield return new WaitForSeconds(delayBetweenIntros);
+			if (Skip)
+			{
+				delayBetweenIntros = 0;
+				minDelay = 0;
+			}
 			delayBetweenIntros -= delayDecay;
 			delayBetweenIntros = Mathf.Max(delayBetweenIntros, minDelay);
+			review.Intro(delayBetweenIntros);
+
+			yield return WaitTimeOrSkip(delayBetweenIntros);
+		}
+
+		while (!SimpleInput.IsInputInState(eInput.Interact, eButtonState.Pressed))
+		{
+			yield return null;
+		}
+		
+		MainManager.Instance.TransToScreen(Settings.MenuScreenName, Settings.TheatreScreenName);
+		Hide();
+	}
+
+	IEnumerator WaitTimeOrSkip(float timer)
+	{
+		while (timer > 0 && !Skip)
+		{
+			timer -= Time.deltaTime;
+			yield return null;
 		}
 	}
+	
 
 	void Update()
 	{
-		
+		Skip = SimpleInput.IsInputInState(eInput.Interact, eButtonState.Pressed);
+
 		float value = 0f;
 		int numberOfReviews = 0;
 		foreach (var review in Reviews)
