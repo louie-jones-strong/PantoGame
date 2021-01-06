@@ -83,7 +83,57 @@ MonoBehaviour:
   Animator: {fileID: 3144316823495636877}
   AgentIcon: {fileID: 5548350851834338482}
   ReviewText: {fileID: 5462363728728048699}
-  RatingText: {fileID: 671208772121557594}
+  RatingValueText: {fileID: 671208772121557594}
+  DistributionValueCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 4.552837
+      outSlope: 4.552837
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.02879116
+    - serializedVersion: 3
+      time: 4.993103
+      value: 10
+      inSlope: 1.9605776
+      outSlope: 1.9605776
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07513979
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  SwapTimeValueCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: -0.17507613
+      outSlope: -0.17507613
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.076793775
+    - serializedVersion: 3
+      time: 5
+      value: 0
+      inSlope: 0.004702813
+      outSlope: 0.004702813
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.0565341
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  CurrentRatingValue: 0
+  Showing: 0
 --- !u!95 &3144316823495636877
 Animator:
   serializedVersion: 3

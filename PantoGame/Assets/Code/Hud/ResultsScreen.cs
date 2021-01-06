@@ -7,6 +7,7 @@ public class ResultsScreen : MonoBehaviour
 {
 	[SerializeField] Review ReviewPrefab;
 	[SerializeField] Transform ReviewListRoot;
+	[SerializeField] Text TotalRatingValueText;
 
 	List<Review> Reviews = new List<Review>();
 	bool Showing;
@@ -44,7 +45,7 @@ public class ResultsScreen : MonoBehaviour
 
 	IEnumerator IntroReviews()
 	{
-		yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(0.5f);
 		float delayBetweenIntros = 5f;
 		float delayDecay = 1f;
 		float minDelay = 0.25f;
@@ -55,5 +56,29 @@ public class ResultsScreen : MonoBehaviour
 			delayBetweenIntros -= delayDecay;
 			delayBetweenIntros = Mathf.Max(delayBetweenIntros, minDelay);
 		}
+	}
+
+	void Update()
+	{
+		
+		float value = 0f;
+		int numberOfReviews = 0;
+		foreach (var review in Reviews)
+		{
+			if (review.Showing)
+			{
+				value += review.CurrentRatingValue;
+				numberOfReviews += 1;
+			}
+		}
+
+		if (numberOfReviews == 0)
+		{
+			numberOfReviews = 1;
+		}
+		value = value / numberOfReviews;
+
+		value = Mathf.Round(value*100)/100;
+		TotalRatingValueText.text = $"Total Ratings: {value}";
 	}
 }
