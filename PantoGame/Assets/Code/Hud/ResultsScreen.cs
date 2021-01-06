@@ -33,11 +33,27 @@ public class ResultsScreen : MonoBehaviour
 			var review = Instantiate<Review>(ReviewPrefab, ReviewListRoot);
 			review.transform.localPosition = Vector3.zero;
 			review.transform.localScale = Vector3.one;
+			review.gameObject.SetActive(true);
 			Reviews.Add(review);
 
 			review.Setup(item, flipped);
-			review.Intro();
 			flipped = !flipped;
+		}
+		StartCoroutine(IntroReviews());
+	}
+
+	IEnumerator IntroReviews()
+	{
+		yield return new WaitForSeconds(1.5f);
+		float delayBetweenIntros = 5f;
+		float delayDecay = 1f;
+		float minDelay = 0.25f;
+		foreach (var review in Reviews)
+		{
+			review.Intro(delayBetweenIntros);
+			yield return new WaitForSeconds(delayBetweenIntros);
+			delayBetweenIntros -= delayDecay;
+			delayBetweenIntros = Mathf.Max(delayBetweenIntros, minDelay);
 		}
 	}
 }

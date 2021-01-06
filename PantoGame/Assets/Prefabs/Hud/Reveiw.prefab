@@ -211,6 +211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3576570243072147014}
+  - component: {fileID: 6018455352717309989}
   m_Layer: 5
   m_Name: Message Box
   m_TagString: Untagged
@@ -239,6 +240,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 900, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &6018455352717309989
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4556274006489987151}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7371268191636831683
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,6 +342,7 @@ GameObject:
   - component: {fileID: 8634642557005443074}
   - component: {fileID: 7573832272204085232}
   - component: {fileID: 671208772121557594}
+  - component: {fileID: 2845766309102804925}
   m_Layer: 5
   m_Name: Rating
   m_TagString: Untagged
@@ -397,6 +411,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 7.9
+--- !u!225 &2845766309102804925
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7545967169452320929}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &2518458154442176242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -404,6 +430,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3750260759900013149}
     m_Modifications:
+    - target: {fileID: 4931582069781812780, guid: 7351d78133fc6854eb774557391bb3b4, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6321971897621854838, guid: 7351d78133fc6854eb774557391bb3b4, type: 3}
       propertyPath: m_Name
       value: Agent Icon

@@ -9,6 +9,7 @@ public class Review : MonoBehaviour
 	[SerializeField] PlayerIcon AgentIcon;
 	[SerializeField] Text ReviewText;
 	[SerializeField] Text RatingText;
+	float IntroTimer;
 
 	public void Setup(AudienceAgent target, bool flipped)
 	{
@@ -16,9 +17,9 @@ public class Review : MonoBehaviour
 		Animator.SetBool("Flipped", flipped);
 	}
 
-	public void Intro()
+	public void Intro(float introTime)
 	{
-		gameObject.SetActive(true);
+		IntroTimer = introTime;
 		Animator.SetTrigger("Intro");
 	}
 }
