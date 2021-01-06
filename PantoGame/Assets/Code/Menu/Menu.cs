@@ -230,8 +230,17 @@ public class Menu : PlayerManger
 
 	void LevelPickerMenu()
 	{
-		//todo when we have more levels add them in here
-		MainManager.Instance.TransToScreen(Settings.WalkingTestScreenName, Settings.MenuScreenName);
+		var pos = new Vector2(-10, 10);
+
+		AddButton("Back", false, () => SetTarget(eMenuState.Main), pos);
+		pos.y -= 10;
+
+		for (int i = 0; i < 2; i++)
+		{
+			var index = i;
+			AddButton($"Level: {index + 1}", true, () => {MainManager.Instance.LoadLevel(index, Settings.MenuScreenName);}, pos);
+			pos.y -= 10;
+		}
 	}
 
 	void CreditsMenu()

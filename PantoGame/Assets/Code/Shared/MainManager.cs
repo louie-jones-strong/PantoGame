@@ -74,6 +74,27 @@ public class MainManager : MonoBehaviour
 		yield return StartCoroutine(AddSceneCo(screenTo));
 	}
 
+	public void LoadLevel(int levelIndex, string sceneFrom="")
+	{
+		StartCoroutine(LoadLevelCo(levelIndex, sceneFrom));
+	}
+	IEnumerator LoadLevelCo(int levelIndex, string sceneFrom)
+	{
+		if (!string.IsNullOrEmpty(sceneFrom))
+		{
+			yield return StartCoroutine(SubtractSceneCo(sceneFrom));
+		}
+
+		yield return StartCoroutine(AddSceneCo(Settings.TheatreScreenName));
+
+		while (Theatre.Instance == null)
+		{
+			yield return null;
+		}
+
+		Theatre.Instance.SetLevel(levelIndex);
+	}
+
 	static void AddScene(string scene)
 	{
 		Instance.StartCoroutine(AddSceneCo(scene));

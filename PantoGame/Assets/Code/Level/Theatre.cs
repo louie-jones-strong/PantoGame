@@ -6,10 +6,10 @@ public class Theatre : PlayerManger
 {
 	public static Theatre Instance;
 	[SerializeField] AudienceAgent Audience;
+	[SerializeField] List<Script> Generators;
 	public Script CurrentScript {get; private set;}
 	public Transform Toilet;
 	public Transform Lobby;
-	public Script Generator = new Script();//todo make this Generator not script
 
 	Chair[] Chairs;
 	public List<AudienceAgent> AudienceAgents {get; private set;} = new List<AudienceAgent>();
@@ -28,9 +28,27 @@ public class Theatre : PlayerManger
 			Instance = this;
 		}
 		
-		CurrentScript = Generator;
-		
+		foreach (var generator in Generators)
+		{
+			generator.gameObject.SetActive(false);
+		}
+
+		SetLevel(0);
 		base.Awake();
+	}
+
+	public void SetLevel(int levelIndex)
+	{
+		if (levelIndex >= Generators.Count ||
+			levelIndex < 0)
+		{
+			Logger.LogError($"trying to set levelIndex: {levelIndex} but not valid Generators.Count: {Generators.Count}");
+			levelIndex = 0;
+		}
+		CurrentScript = Generators[levelIndex];
+		CurrentScript.gameObject.SetActive(true);
+
+		Logger.Log($"SetLevel to {levelIndex}");
 	}
 
 	protected override void Start()
