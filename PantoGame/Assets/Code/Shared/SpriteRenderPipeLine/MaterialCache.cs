@@ -32,7 +32,11 @@ public class MaterialCache: MonoBehaviour
 
 	void OnDestroy()
 	{
-		Instance = null;
+		if (Instance == this)
+		{
+			Logger.LogError("MaterialCache OnDestroy called so Instance == null");
+			Instance = null;
+		}
 	}
 
 	public static MaterialData GetMaterial(Sprite sprite)

@@ -32,7 +32,6 @@ public class MainManager : MonoBehaviour
 			}
 		}
 		AddScene(Settings.MenuScreenName);
-		AddScene(Settings.HudScreenName);
 	}
 
 	void Update()
@@ -86,6 +85,7 @@ public class MainManager : MonoBehaviour
 		}
 
 		yield return StartCoroutine(AddSceneCo(Settings.TheatreScreenName));
+		yield return StartCoroutine(AddSceneCo(Settings.HudScreenName));
 
 		while (Theatre.Instance == null)
 		{
@@ -107,7 +107,7 @@ public class MainManager : MonoBehaviour
 		}
 	}
 
-	static void SubtractScene(string scene)
+	public static void SubtractScene(string scene)
 	{
 		Instance.StartCoroutine(SubtractSceneCo(scene));
 	}

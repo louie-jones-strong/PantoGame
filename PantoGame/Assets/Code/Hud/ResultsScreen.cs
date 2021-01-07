@@ -78,6 +78,7 @@ public class ResultsScreen : MonoBehaviour
 		}
 		
 		MainManager.Instance.TransToScreen(Settings.MenuScreenName, Settings.TheatreScreenName);
+		MainManager.SubtractScene(Settings.HudScreenName);
 		Hide();
 	}
 
