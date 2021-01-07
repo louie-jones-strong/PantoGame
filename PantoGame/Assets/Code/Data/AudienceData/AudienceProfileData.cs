@@ -17,7 +17,7 @@ public class AudienceProfileData
 		public float TransitionTime;
 		public float RatingTimeMultiplier;
 	}
-	public Dictionary<eAudienceIntent, IntentTransition> IntentTransitions = new Dictionary<eAudienceIntent, IntentTransition>();
+	public SaveableDict<eAudienceIntent, IntentTransition> IntentTransitions = new SaveableDict<eAudienceIntent, IntentTransition>();
 
 	[Serializable]
 	public class ActionResponse
@@ -27,7 +27,7 @@ public class AudienceProfileData
 		
 	}
 
-	public Dictionary<eAudienceReviewableActions, ActionResponse> ActionResponses = new Dictionary<eAudienceReviewableActions, ActionResponse>();
+	public SaveableDict<eAudienceReviewableActions, ActionResponse> ActionResponses = new SaveableDict<eAudienceReviewableActions, ActionResponse>();
 
 #region non Serializable
 

@@ -32,23 +32,63 @@
     "Profiles": [
         {
             "Name": "Louie",
-            "Age": 20
+            "Age": 20,
+            "IntentTransitions": {
+                "keys": [],
+                "values": []
+            },
+            "ActionResponses": {
+                "keys": [],
+                "values": []
+            }
         },
         {
             "Name": "Emma",
-            "Age": 22
+            "Age": 22,
+            "IntentTransitions": {
+                "keys": [],
+                "values": []
+            },
+            "ActionResponses": {
+                "keys": [],
+                "values": []
+            }
         },
         {
             "Name": "Derek",
-            "Age": 50
+            "Age": 50,
+            "IntentTransitions": {
+                "keys": [],
+                "values": []
+            },
+            "ActionResponses": {
+                "keys": [],
+                "values": []
+            }
         },
         {
             "Name": "Fred",
-            "Age": 30
+            "Age": 30,
+            "IntentTransitions": {
+                "keys": [],
+                "values": []
+            },
+            "ActionResponses": {
+                "keys": [],
+                "values": []
+            }
         },
         {
             "Name": "Cara",
-            "Age": 40
+            "Age": 40,
+            "IntentTransitions": {
+                "keys": [],
+                "values": []
+            },
+            "ActionResponses": {
+                "keys": [],
+                "values": []
+            }
         }
     ]
 }
