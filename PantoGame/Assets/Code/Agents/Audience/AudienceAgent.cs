@@ -14,8 +14,6 @@ public class AudienceAgent : Agent
 	eAudienceIntent TargetIntent;
 	float TargetIntentTime;
 
-	float TimeHitByPlayer;
-	float TimeSeeingPlayerOnStage;
 	bool CollidingWithPlayer;
 	
 	protected override void OnTriggerEnter(Collider collider)
@@ -56,7 +54,7 @@ public class AudienceAgent : Agent
 
 		if (CollidingWithPlayer)
 		{
-			TimeHitByPlayer += Time.deltaTime;
+			ProfileData.TimeHitByPlayer += Time.deltaTime;
 		}
 
 		CheckSeeingPlayerOnStage();
@@ -103,11 +101,7 @@ public class AudienceAgent : Agent
 
 	void UpdateRatingVisual()
 	{
-		var currentScript = Theatre.Instance.CurrentScript;
-
-		var rating = currentScript.Rating;
-		rating -= TimeHitByPlayer;
-		rating -= TimeSeeingPlayerOnStage;
+		var rating = ProfileData.GetRatingValue();
 
 		SetColour(ColourCurve.GetColor(rating));
 	}
@@ -187,7 +181,7 @@ public class AudienceAgent : Agent
 			bool canSeePlayer = hitInfo.transform == player.transform;
 			if (canSeePlayer)
 			{
-				TimeSeeingPlayerOnStage += Time.deltaTime;
+				ProfileData.TimeSeeingPlayerOnStage += Time.deltaTime;
 			}
 
 			Debug.DrawRay(startPos, delta, canSeePlayer ? Color.green : Color.red);

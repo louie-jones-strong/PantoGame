@@ -12,6 +12,7 @@ public class Review : MonoBehaviour
 	[SerializeField] AnimationCurve DistributionValueCurve;
 	[SerializeField] AnimationCurve SwapTimeValueCurve;
 
+	public float TotalRatingValue;
 	public float CurrentRatingValue;
 	public bool Showing = false;
 
@@ -24,6 +25,9 @@ public class Review : MonoBehaviour
 		Target = target;
 		AgentIcon.SetIcon(target);
 		Animator.SetBool("Flipped", flipped);
+
+		TotalRatingValue = Target.ProfileData.GetRatingValue();
+		ReviewText.text = Target.ProfileData.GetReviewText(TotalRatingValue);
 	}
 
 	public void Intro(float introTime)
@@ -43,7 +47,7 @@ public class Review : MonoBehaviour
 			SwapTime = SwapTimeValueCurve.Evaluate(CurrentIntroTimer);
 			var valueDistribution = DistributionValueCurve.Evaluate(CurrentIntroTimer);
 
-			float rating = 7.9f;
+			float rating = TotalRatingValue;
 
 			if (valueDistribution > 0)
 			{

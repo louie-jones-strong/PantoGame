@@ -1,0 +1,54 @@
+{
+    "ReviewStarter": [
+        {
+            "ReviewString": "Show was good,",
+            "ReviewRating": 1.0
+        },
+        {
+            "ReviewString": "Show was bad,",
+            "ReviewRating": -1.0
+        }
+    ],
+    "ReviewConnectives": [
+        "and",
+        "then",
+        "also"
+    ],
+    "ReviewContradictingConnectives": [
+        "however",
+        "but",
+        "yet"
+    ],
+    "GeneralReviews": [
+        {
+            "ReviewString": "Your Panto show is, Behind you ",
+            "ReviewRating": -1.0
+        },
+        {
+            "ReviewString": "Meh, it was okay",
+            "ReviewRating": 0.0
+        }
+    ],
+    "Profiles": [
+        {
+            "Name": "Louie",
+            "Age": 20
+        },
+        {
+            "Name": "Emma",
+            "Age": 22
+        },
+        {
+            "Name": "Derek",
+            "Age": 50
+        },
+        {
+            "Name": "Fred",
+            "Age": 30
+        },
+        {
+            "Name": "Cara",
+            "Age": 40
+        }
+    ]
+}

@@ -74,6 +74,11 @@ public class Theatre : PlayerManger
 
 	void SetState(eTheatreState state)
 	{
+		if (State == state)
+		{
+			return;
+		}
+		
 		Logger.Log($"Setting TheatreState {State} -> {state}");
 		State = state;
 	}
