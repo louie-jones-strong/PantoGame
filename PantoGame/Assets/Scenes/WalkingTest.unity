@@ -402,6 +402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PropsRoot: {fileID: 1243332049}
   Player: {fileID: 2229273628982793845, guid: 8bd9cb8160bf82744b61a9c2925214db, type: 3}
+  State: 0
   Audience: {fileID: 972033207960869405, guid: c32af72e559a1b24faf2c500ec0dba38, type: 3}
   Generators:
   - {fileID: 940859983}
@@ -410,7 +411,7 @@ MonoBehaviour:
   Lobby: {fileID: 712074300}
   StageMinXAxis: -20
   StageMaxXAxis: 20
-  StageMinZAxis: 20.1
+  StageMinZAxis: 25
   StageMaxZAxis: 45
 --- !u!4 &153317277
 Transform:
