@@ -72,7 +72,8 @@ public class AudienceProfileData
 		foreach (var review in reviews)
 		{
 			float distance = Mathf.Abs(rating - review.ReviewRating);
-			if (bestDistance > distance)
+			if (bestDistance > distance ||
+				(bestDistance == distance && UnityEngine.Random.value >= 0.5f))
 			{
 				bestReview = review.ReviewString;
 				bestDistance = distance;

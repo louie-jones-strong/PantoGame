@@ -12,21 +12,53 @@
     "ReviewConnectives": [
         "and",
         "then",
-        "also"
+        "also",
+        "furthermore",
+        ","
     ],
     "ReviewContradictingConnectives": [
         "however",
         "but",
-        "yet"
+        "yet",
+        "allthough",
+        "on the other hand"
     ],
     "GeneralReviews": [
         {
-            "ReviewString": "Your Panto show is, Behind you ",
+            "ReviewString": "Your Panto carrer  is, Behind you ",
             "ReviewRating": -1.0
         },
         {
             "ReviewString": "Meh, it was okay",
             "ReviewRating": 0.0
+        },
+        {
+            "ReviewString": "Good story line",
+            "ReviewRating": 0.5
+        },
+        {
+            "ReviewString": "Such fun",
+            "ReviewRating": 1.0
+        },
+        {
+            "ReviewString": "It was like a damp t towel",
+            "ReviewRating": -2.0
+        },
+        {
+            "ReviewString": "Boring.... Zzz..",
+            "ReviewRating": -1.0
+        },
+        {
+            "ReviewString": "It was boring",
+            "ReviewRating": 1.0
+        },
+        {
+            "ReviewString": "not worth the money",
+            "ReviewRating": -5.0
+        },
+        {
+            "ReviewString": "Can I get my money back",
+            "ReviewRating": -6.0
         }
     ],
     "Profiles": [

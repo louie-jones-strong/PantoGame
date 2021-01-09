@@ -224,25 +224,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudienceData:
+    ReviewStarter:
+    - ReviewString: Show was good,
+      ReviewRating: 1
+    - ReviewString: Show was bad,
+      ReviewRating: -1
     ReviewConnectives:
     - and
     - then
     - also
+    - furthermore
+    - ','
     ReviewContradictingConnectives:
     - however
     - but
     - yet
+    - allthough
+    - on the other hand
     GeneralReviews:
-    - ReviewRating: -1
-      ReviewString: 'Your Panto show is, Behide you '
+    - ReviewString: 'Your Panto carrer  is, Behind you '
+      ReviewRating: -1
+    - ReviewString: Meh, it was okay
+      ReviewRating: 0
+    - ReviewString: Good story line
+      ReviewRating: 0.5
+    - ReviewString: Such fun
+      ReviewRating: 1
+    - ReviewString: It was like a damp t towel
+      ReviewRating: -2
+    - ReviewString: Boring.... Zzz..
+      ReviewRating: -1
+    - ReviewString: It was boring
+      ReviewRating: 1
+    - ReviewString: not worth the money
+      ReviewRating: -5
+    - ReviewString: Can I get my money back
+      ReviewRating: -6
     Profiles:
     - Name: Louie
       Age: 20
+      IntentTransitions:
+        keys: 
+        values: []
+      ActionResponses:
+        keys: 
+        values: []
     - Name: Emma
       Age: 22
+      IntentTransitions:
+        keys: 
+        values: []
+      ActionResponses:
+        keys: 
+        values: []
     - Name: Derek
       Age: 50
+      IntentTransitions:
+        keys: 
+        values: []
+      ActionResponses:
+        keys: 
+        values: []
     - Name: Fred
       Age: 30
+      IntentTransitions:
+        keys: 
+        values: []
+      ActionResponses:
+        keys: 
+        values: []
     - Name: Cara
       Age: 40
+      IntentTransitions:
+        keys: 
+        values: []
+      ActionResponses:
+        keys: 
+        values: []
