@@ -242,7 +242,7 @@ MonoBehaviour:
     - allthough
     - on the other hand
     GeneralReviews:
-    - ReviewString: 'Your Panto carrer  is, Behind you '
+    - ReviewString: 'Your Panto carrer. Is Behind you '
       ReviewRating: -1
     - ReviewString: Meh, it was okay
       ReviewRating: 0

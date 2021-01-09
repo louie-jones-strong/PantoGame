@@ -126,17 +126,19 @@ public class AudioManger : MonoBehaviour
 		
 		var sources = root.gameObject.GetComponents<AudioSource>();
 		AudioSource source = null;
-		foreach (var item in sources)
-		{
-			if (!item.enabled)
-			{
-				source = item;
-				break;
-			}
-		}
+		// foreach (var item in sources)
+		// {
+		// 	if (!item.enabled && !item.isPlaying && item.clip == null)
+		// 	{
+		// 		Logger.Log("Found free source");
+		// 		source = item;
+		// 		break;
+		// 	}
+		// }
 
 		if (source == null)
 		{
+			Logger.Log("didn't find free source so making one");
 			source = root.gameObject.AddComponent<AudioSource>();
 		}
 		source.enabled = true;
@@ -148,6 +150,9 @@ public class AudioManger : MonoBehaviour
 		source.playOnAwake = false;
 		source.loop = sound.LoopClip;
 		source.Play();
+
+		Logger.Log($"Playing Audio event: \"{path}\" on source: {source.GetInstanceID()} on gameobject: {source}");
+
 		return source;
 	}
 
@@ -173,6 +178,7 @@ public class AudioManger : MonoBehaviour
 			if (!source.isPlaying)
 			{
 				source.enabled = false;
+				source.clip = null;
 				CurrentSources.RemoveAt(loop);
 			}
 			else

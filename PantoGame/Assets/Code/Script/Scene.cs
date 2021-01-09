@@ -77,6 +77,7 @@ public class Scene
 	{
 		None,
 		WaitTask,
+		AudioTrigger,
 		PropTask,
 		Light,
 		Actor,
@@ -208,6 +209,10 @@ public class Scene
 			case eTaskType.StandInLobby:
 			{
 				return new AudienceStandInLobbyTask();
+			}
+			case eTaskType.AudioTrigger:
+			{
+				return new AudioTriggerTask();
 			}
 			default:
 			{
