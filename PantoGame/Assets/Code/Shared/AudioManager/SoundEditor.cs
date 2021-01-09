@@ -9,9 +9,20 @@ public class SoundEditor : Editor
 {
 	public override void OnInspectorGUI()
 	{
-		DrawDefaultInspector();
-		
 		var targetSound = (Sound)target;
+
+		GUI.backgroundColor = Color.green;
+
+		EditorGUILayout.BeginHorizontal();
+		if (GUILayout.Button("Play Sound"))
+		{
+			AudioManger.PlayEvent(targetSound.Name);
+		}
+		EditorGUILayout.EndHorizontal();
+
+		GUI.backgroundColor = Color.white;
+
+		DrawDefaultInspector();
 
 		if (targetSound.name != targetSound.Name)
 		{
