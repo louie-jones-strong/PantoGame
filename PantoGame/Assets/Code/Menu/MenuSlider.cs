@@ -57,6 +57,6 @@ public class MenuSlider : MenuInteractable
 			ChangedAction.Invoke(value);
 		}
 		Value = value;
-		ValueText.text = $"{Value}";
+		ValueText.text = $"{Mathf.Round(Value*10)/10}";
 	}
 }
