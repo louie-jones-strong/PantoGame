@@ -171,7 +171,7 @@ public class Menu : PlayerManger
 	{
 		var pos = new Vector2(-10, 10);
 
-		AddButton("Play", true, () => {SetTarget(eMenuState.LevelSelect);}, pos);
+		AddButton("Play", false, () => {SetTarget(eMenuState.LevelSelect);}, pos);
 		pos.y -= 10;
 		AddButton("Settings", false, () => {SetTarget(eMenuState.Settings);}, pos);
 		pos.y -= 10;

@@ -14,6 +14,6 @@ class Sound: ScriptableObject
 	
 	public AudioClip GetAudioClip()
 	{
-		return Clips[UnityEngine.Random.Range(0, Clips.Count)];
+		return Clips[Random.Range(0, Clips.Count)];
 	}
 }
