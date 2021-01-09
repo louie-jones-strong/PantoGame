@@ -48,7 +48,15 @@ public class PlayerManger : MonoBehaviour
 			parent = MainManager.Instance.transform;
 		}
 
-		Players[controlType] = Instantiate<PlayerAgent>(Player, transform);
+		var player = Instantiate<PlayerAgent>(Player, transform);
+		Players[controlType] = player;
 		Players[controlType].ControlType = controlType;
+
+		AudioManger.PlayEvent("PlayerJoin", player.transform);
+	}
+
+	void RemovePlayer(int controlType)
+	{
+		//AudioManger.PlayEvent("PlayerLeave", player.transform);
 	}
 }
