@@ -5,16 +5,46 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-	const string MenuMusic = "MenuMusic";
+	const string GameMusic = "GameMusic";
+	AudioSource CurrentGameSource;
 
-	AudioSource CurrentSource;
+	const string MenuMusic = "MenuMusic";
+	AudioSource CurrentMenuSource;
 
 	void Update()
 	{
-		if (CurrentSource == null ||
-			!CurrentSource.isPlaying)
+		bool inMenu = true;
+		if (Theatre.Instance != null &&
+			Theatre.Instance.State != eTheatreState.ShowOver)
 		{
-			CurrentSource = AudioManger.PlayEvent(MenuMusic);
+			inMenu = false;
+		}
+
+		if (inMenu)
+		{
+			if (CurrentGameSource != null && CurrentGameSource.isPlaying)
+			{
+				CurrentGameSource.Stop();
+			}
+
+			if (CurrentMenuSource == null ||
+			!CurrentMenuSource.isPlaying)
+			{
+				CurrentMenuSource = AudioManger.PlayEvent(MenuMusic);
+			}
+		}
+		else
+		{
+			if (CurrentMenuSource != null && CurrentMenuSource.isPlaying)
+			{
+				CurrentMenuSource.Stop();
+			}
+			
+			if (CurrentGameSource == null ||
+			!CurrentGameSource.isPlaying)
+			{
+				CurrentGameSource = AudioManger.PlayEvent(GameMusic);
+			}
 		}
 	}
 }
