@@ -238,9 +238,10 @@ public class Menu : PlayerManger
 		int index = 0;
 		for (int i = 0; i < 2; i++)
 		{
+			var scriptIndex = i;
 			AddButton($"Level: {index + 1}", true, () => 
 				{
-					MainManager.Instance.LoadLevel(Settings.TheatreScreenName, index, Settings.MenuScreenName);
+					MainManager.Instance.LoadLevel(Settings.TheatreScreenName, scriptIndex, Settings.MenuScreenName);
 				}, pos);
 
 			pos.y -= 10;
@@ -250,9 +251,10 @@ public class Menu : PlayerManger
 		pos = new Vector2(10, 0);
 		for (int i = 0; i < 1; i++)
 		{
+			var scriptIndex = i;
 			AddButton($"Level: {index + 1}", true, () => 
 				{
-					MainManager.Instance.LoadLevel(Settings.TheatreFlippedScreenName, index, Settings.MenuScreenName);
+					MainManager.Instance.LoadLevel(Settings.TheatreFlippedScreenName, scriptIndex, Settings.MenuScreenName);
 				}, pos);
 			pos.y -= 10;
 			index += 1;
