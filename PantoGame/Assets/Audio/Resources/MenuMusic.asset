@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: MenuMusic
   m_EditorClassIdentifier: 
   Name: MenuMusic
+  AudioBus: 1
+  LoopClip: 0
   Clips:
   - {fileID: 8300000, guid: 533177a5616b2e048b8ccebdb283afde, type: 3}
   - {fileID: 8300000, guid: 2311c4490ac379d4393d4818c54dc206, type: 3}
-  AudioBus: 1
+  - {fileID: 8300000, guid: 7196fd8af348fa343a548309f61a29a4, type: 3}
