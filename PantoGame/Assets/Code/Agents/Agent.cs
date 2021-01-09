@@ -53,7 +53,7 @@ public class Agent : PropHolder
 
 	protected void LateUpdate()
 	{
-		Root.localEulerAngles = -transform.localEulerAngles + (CameraController.Instance.Camera.transform.eulerAngles * Settings.RotateToCamMultiplier);
+		RotateToCam.PointAtCam(Root);
 	}
 
 	protected void UpdateVisuals()

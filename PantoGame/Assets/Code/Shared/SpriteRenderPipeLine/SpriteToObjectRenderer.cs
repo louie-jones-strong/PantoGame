@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpriteToObjectRenderer : RotateToCam
+public class SpriteToObjectRenderer : MonoBehaviour
 {
 
 	[SerializeField] MeshRenderer MeshRenderer;
@@ -17,11 +17,11 @@ public class SpriteToObjectRenderer : RotateToCam
 	SpriteRenderer SpriteRenderer;
 	Sprite LastSprite = null;
 
-	protected override void LateUpdate()
+	void LateUpdate()
 	{
 		if (RotateToCamOn)
 		{
-			PointAtCam();
+			RotateToCam.PointAtCam(transform);
 		}
 
 		UpdateMaterial();

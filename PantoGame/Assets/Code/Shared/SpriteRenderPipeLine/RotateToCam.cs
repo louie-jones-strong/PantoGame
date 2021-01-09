@@ -6,11 +6,11 @@ public class RotateToCam : MonoBehaviour
 {
 	protected virtual void LateUpdate()
 	{
-		PointAtCam();
+		PointAtCam(transform);
 	}
 
-	public void PointAtCam()
+	public static void PointAtCam(Transform targetTransform)
 	{
-		transform.eulerAngles = CameraController.Instance.Camera.transform.eulerAngles * Settings.RotateToCamMultiplier;
+		targetTransform.eulerAngles = CameraController.Instance.Camera.transform.eulerAngles * Settings.RotateToCamMultiplier;
 	}
 }
