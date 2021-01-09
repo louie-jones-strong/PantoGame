@@ -235,11 +235,27 @@ public class Menu : PlayerManger
 		AddButton("Back", false, () => SetTarget(eMenuState.Main), pos);
 		pos.y -= 10;
 
+		int index = 0;
 		for (int i = 0; i < 2; i++)
 		{
-			var index = i;
-			AddButton($"Level: {index + 1}", true, () => {MainManager.Instance.LoadLevel(index, Settings.MenuScreenName);}, pos);
+			AddButton($"Level: {index + 1}", true, () => 
+				{
+					MainManager.Instance.LoadLevel(Settings.TheatreScreenName, index, Settings.MenuScreenName);
+				}, pos);
+
 			pos.y -= 10;
+			index += 1;
+		}
+
+		pos = new Vector2(10, 0);
+		for (int i = 0; i < 1; i++)
+		{
+			AddButton($"Level: {index + 1}", true, () => 
+				{
+					MainManager.Instance.LoadLevel(Settings.TheatreFlippedScreenName, index, Settings.MenuScreenName);
+				}, pos);
+			pos.y -= 10;
+			index += 1;
 		}
 	}
 

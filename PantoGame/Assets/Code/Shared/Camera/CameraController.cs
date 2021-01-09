@@ -200,4 +200,19 @@ public class CameraController : MonoBehaviour
 				LargestWeight >= weighting;
 	}
 
+#if UNITY_EDITOR
+	protected virtual void OnDrawGizmosSelected()
+	{
+		Gizmos.color = Color.magenta;
+
+		var pos = new Vector3(
+			MinXMove + (MaxXMove - MinXMove)/2, 
+			Camera.transform.position.y,
+			MinYMove + (MaxYMove - MinYMove)/2);
+
+		var size = new Vector3(MaxXMove - MinXMove, 10f, MaxYMove - MinYMove);
+
+		Gizmos.DrawWireCube(pos, size);
+	}
+#endif
 }

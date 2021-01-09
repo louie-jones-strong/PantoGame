@@ -73,18 +73,18 @@ public class MainManager : MonoBehaviour
 		yield return StartCoroutine(AddSceneCo(screenTo));
 	}
 
-	public void LoadLevel(int levelIndex, string sceneFrom="")
+	public void LoadLevel(string theatreTo, int levelIndex, string sceneFrom="")
 	{
-		StartCoroutine(LoadLevelCo(levelIndex, sceneFrom));
+		StartCoroutine(LoadLevelCo(theatreTo, levelIndex, sceneFrom));
 	}
-	IEnumerator LoadLevelCo(int levelIndex, string sceneFrom)
+	IEnumerator LoadLevelCo(string theatreTo, int levelIndex, string sceneFrom)
 	{
 		if (!string.IsNullOrEmpty(sceneFrom))
 		{
 			yield return StartCoroutine(SubtractSceneCo(sceneFrom));
 		}
 
-		yield return StartCoroutine(AddSceneCo(Settings.TheatreScreenName));
+		yield return StartCoroutine(AddSceneCo(theatreTo));
 		yield return StartCoroutine(AddSceneCo(Settings.HudScreenName));
 
 		while (Theatre.Instance == null)
