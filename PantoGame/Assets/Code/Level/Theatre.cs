@@ -43,6 +43,7 @@ public class Theatre : PlayerManger
 		}
 
 		SetLevel(0);
+		SetState(eTheatreState.ShowInProgress);
 		base.Awake();
 	}
 

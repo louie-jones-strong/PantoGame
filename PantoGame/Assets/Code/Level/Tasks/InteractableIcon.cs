@@ -37,18 +37,24 @@ public class InteractableIcon : MonoBehaviour
 			Logger.LogError($"InteractableIcon Camera == null");
 			return;
 		}
+
 		if (HudManger.Instance?.CanvasRect == null)
 		{
 			Logger.LogError($"InteractableIcon CanvasRect == null");
 			return;
 		}
+
 		if (Target == null)
 		{
 			Logger.LogError($"InteractableIcon Target == null");
+			gameObject.SetActive(false);
 			Destroy(this);
 			return;
 		}
-		
+
+		IconAnimator.SetBool("Show", Theatre.Instance == null ||
+			Theatre.Instance.State == eTheatreState.ShowInProgress);
+
 		var worldPos = Target.transform.position;
 		
 		var screenPos = CameraController.Instance.Camera.WorldToViewportPoint(worldPos);
