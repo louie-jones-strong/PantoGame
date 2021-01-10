@@ -16,15 +16,27 @@ MonoBehaviour:
   AudioBus: 0
   LoopClip: 0
   Clips:
-  - {fileID: 8300000, guid: 1c5da66bd5f176e42b3c5ec5772ee6e9, type: 3}
-  - {fileID: 8300000, guid: d8729cb29d95bc64f9fea9c65f60a72a, type: 3}
-  - {fileID: 8300000, guid: 24b814e0e356aa14cb75b97bf11ae8aa, type: 3}
-  - {fileID: 8300000, guid: ea3d24590988de444a07db55d9754eb3, type: 3}
-  - {fileID: 8300000, guid: 29fe469cfb758ec4fa9e5276d28c705d, type: 3}
-  - {fileID: 8300000, guid: 8083bc75cb4fdee4b9a7351481c34666, type: 3}
-  - {fileID: 8300000, guid: 80e6d2fd0e1fb8e488dca36c66a52269, type: 3}
-  - {fileID: 8300000, guid: 7670670a894354044a5a5923497c2a44, type: 3}
-  - {fileID: 8300000, guid: 89445cbbbccffc547a38a29ac8f2b4dd, type: 3}
-  - {fileID: 8300000, guid: 6efbd0cf26d9b7648b22af268aff9b96, type: 3}
-  - {fileID: 8300000, guid: 995e1b02d9f1e6d46943ccb52ac4ce08, type: 3}
-  - {fileID: 8300000, guid: fd88a47fea60367429defc4078905659, type: 3}
+  - Clip: {fileID: 8300000, guid: 1c5da66bd5f176e42b3c5ec5772ee6e9, type: 3}
+    Volume: 0.5
+  - Clip: {fileID: 8300000, guid: d8729cb29d95bc64f9fea9c65f60a72a, type: 3}
+    Volume: 0.5
+  - Clip: {fileID: 8300000, guid: 24b814e0e356aa14cb75b97bf11ae8aa, type: 3}
+    Volume: 0.5
+  - Clip: {fileID: 8300000, guid: ea3d24590988de444a07db55d9754eb3, type: 3}
+    Volume: 0.5
+  - Clip: {fileID: 8300000, guid: 29fe469cfb758ec4fa9e5276d28c705d, type: 3}
+    Volume: 0.5
+  - Clip: {fileID: 8300000, guid: 8083bc75cb4fdee4b9a7351481c34666, type: 3}
+    Volume: 0.5
+  - Clip: {fileID: 8300000, guid: 80e6d2fd0e1fb8e488dca36c66a52269, type: 3}
+    Volume: 0.5
+  - Clip: {fileID: 8300000, guid: 7670670a894354044a5a5923497c2a44, type: 3}
+    Volume: 0.5
+  - Clip: {fileID: 8300000, guid: 89445cbbbccffc547a38a29ac8f2b4dd, type: 3}
+    Volume: 0.5
+  - Clip: {fileID: 8300000, guid: 6efbd0cf26d9b7648b22af268aff9b96, type: 3}
+    Volume: 0.5
+  - Clip: {fileID: 8300000, guid: 995e1b02d9f1e6d46943ccb52ac4ce08, type: 3}
+    Volume: 0.5
+  - Clip: {fileID: 8300000, guid: fd88a47fea60367429defc4078905659, type: 3}
+    Volume: 0.5

@@ -16,4 +16,5 @@ MonoBehaviour:
   AudioBus: 0
   LoopClip: 0
   Clips:
-  - {fileID: 8300000, guid: ac1878f544d68bc4ba6823a4264fe61b, type: 3}
+  - Clip: {fileID: 8300000, guid: ac1878f544d68bc4ba6823a4264fe61b, type: 3}
+    Volume: 0.5

@@ -151,7 +151,9 @@ public class AudioManger : MonoBehaviour
 		
 		Instance.CurrentSources.Add(source);
 
-		source.clip = sound.GetAudioClip();
+		var clipAndVolume = sound.GetAudioClip();
+		source.clip = clipAndVolume.Clip;
+		source.volume = clipAndVolume.Volume;
 		source.outputAudioMixerGroup = Instance.GetGetAudioBus(sound.AudioBus);
 		source.playOnAwake = false;
 		source.loop = sound.LoopClip;

@@ -16,7 +16,11 @@ MonoBehaviour:
   AudioBus: 0
   LoopClip: 0
   Clips:
-  - {fileID: 8300000, guid: 6f3438376484b0149ba3a4ca0c5d555f, type: 3}
-  - {fileID: 8300000, guid: 9c10c537be7102047b04693ea6216d85, type: 3}
-  - {fileID: 8300000, guid: dc43a324b37ae52488d3e8734de83232, type: 3}
-  - {fileID: 8300000, guid: a448099a74cf97a44ae82c88fa33574b, type: 3}
+  - Clip: {fileID: 8300000, guid: 6f3438376484b0149ba3a4ca0c5d555f, type: 3}
+    Volume: 0.5
+  - Clip: {fileID: 8300000, guid: 9c10c537be7102047b04693ea6216d85, type: 3}
+    Volume: 0.5
+  - Clip: {fileID: 8300000, guid: dc43a324b37ae52488d3e8734de83232, type: 3}
+    Volume: 0.5
+  - Clip: {fileID: 8300000, guid: a448099a74cf97a44ae82c88fa33574b, type: 3}
+    Volume: 0.5
