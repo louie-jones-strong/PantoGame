@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4aadb0f09c548e45804b43cef92dd40, type: 3}
-  m_Name: Laughing
+  m_Name: Clap
   m_EditorClassIdentifier: 
-  Name: Laughing
+  Name: Clap
   AudioBus: 0
   LoopClip: 0
   Clips:
-  - Clip: {fileID: 8300000, guid: 6c5d7f7bad577f644aaeae8da86f71ce, type: 3}
+  - Clip: {fileID: 8300000, guid: 77567602858d34f4a829b34939cb5017, type: 3}
     Volume: 0.5
-  - Clip: {fileID: 8300000, guid: 6fb407a28c044a4478366f4bf3eed05a, type: 3}
+  - Clip: {fileID: 8300000, guid: ec1605b21fd5d5143a30cee79e335eaa, type: 3}
     Volume: 0.5
-  - Clip: {fileID: 8300000, guid: 421534074f168b444ba0ab5e8c80796d, type: 3}
+  - Clip: {fileID: 8300000, guid: 8561acbfc023f8d4c8927c3505a076d4, type: 3}
+    Volume: 0.5
+  - Clip: {fileID: 8300000, guid: 236fca4441d6ffa4cbbfbb38454a2c6d, type: 3}
     Volume: 0.5

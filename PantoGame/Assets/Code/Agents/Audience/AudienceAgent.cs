@@ -101,6 +101,10 @@ public class AudienceAgent : Agent
 			{
 				CurrentAudioSource = AudioManger.PlayEvent("Laughing", transform);
 			}
+			if (AudienceIntent == eAudienceIntent.Clapping)
+			{
+				CurrentAudioSource = AudioManger.PlayEvent("Clap", transform);
+			}
 		}
 
 		UpdateRatingVisual();

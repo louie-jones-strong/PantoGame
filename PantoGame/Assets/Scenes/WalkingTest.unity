@@ -5731,7 +5731,7 @@ MonoBehaviour:
   - TaskId: WaitTask2
     State: 3
   TargetIntent: 4
-  TargetTimeForIntent: 100
+  TargetTimeForIntent: 10
 --- !u!1 &1912473431 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3236357448956141063, guid: 94641faea85378e4981884964526d3df, type: 3}
