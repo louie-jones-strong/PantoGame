@@ -4,6 +4,7 @@ public enum eAudienceIntent
 	WatchShow,
 	Toilet,
 	Clapping,
+	Laughing,
 	StandInLobby,
 	RandomWalk
 }

@@ -15,6 +15,7 @@ public class AudienceAgent : Agent
 	float TargetIntentTime;
 
 	bool CollidingWithPlayer;
+	AudioSource CurrentAudioSource;
 	
 	protected override void OnTriggerEnter(Collider collider)
 	{
@@ -93,6 +94,14 @@ public class AudienceAgent : Agent
 			TimeSinceLastToilet = 0;
 		}
 		PlayerAnimator.SetBool("Clapping", AudienceIntent == eAudienceIntent.Clapping);
+
+		if (CurrentAudioSource == null || !CurrentAudioSource.isPlaying)
+		{
+			if (AudienceIntent == eAudienceIntent.Laughing)
+			{
+				CurrentAudioSource = AudioManger.PlayEvent("Laughing", transform);
+			}
+		}
 
 		UpdateRatingVisual();
 		UpdateVisuals();
