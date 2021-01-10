@@ -83,6 +83,7 @@ public class Scene
 		Actor,
 		ActorTalk,
 		Curtain,
+		AudienceIntent,
 		Clapping,
 		Toilet,
 		MoveSet,
@@ -194,25 +195,17 @@ public class Scene
 			{
 				return new CurtainTask();
 			}
-			case eTaskType.Clapping:
-			{
-				return new AudienceClapTask();
-			}
-			case eTaskType.Toilet:
-			{
-				return new AudienceToiletTask();
-			}
 			case eTaskType.MoveSet:
 			{
 				return new MoveSetTask();
 			}
-			case eTaskType.StandInLobby:
-			{
-				return new AudienceStandInLobbyTask();
-			}
 			case eTaskType.AudioTrigger:
 			{
 				return new AudioTriggerTask();
+			}
+			case eTaskType.AudienceIntent:
+			{
+				return new AudienceIntentTask();
 			}
 			default:
 			{

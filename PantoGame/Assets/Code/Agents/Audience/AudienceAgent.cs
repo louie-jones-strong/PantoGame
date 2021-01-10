@@ -119,18 +119,10 @@ public class AudienceAgent : Agent
 				if (task.State == eTaskState.CanStart || 
 					task.State == eTaskState.InProgress)
 				{
-					if (task is AudienceStandInLobbyTask)
+					var intentTask = task as AudienceIntentTask;
+					if (intentTask != null)
 					{
-						intent = eAudienceIntent.StandInLobby;
-					}
-					if (task is AudienceClapTask)
-					{
-						intent = eAudienceIntent.Clapping;
-					}
-					if (task is AudienceToiletTask &&
-						TimeSinceLastToilet >= 10f)
-					{
-						intent = eAudienceIntent.Toilet;
+						intent = intentTask.TargetIntent;
 					}
 				}
 			}
