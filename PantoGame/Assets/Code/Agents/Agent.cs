@@ -69,7 +69,7 @@ public class Agent : PropHolder
 
 	protected void UpdateVisuals(Vector3 acceleration, Vector3 velocity)
 	{
-		RefreshPhysicsParts(acceleration);
+		RefreshPhysicsParts(acceleration, velocity);
 		PlayerAnimator.SetFloat("XV", velocity.x);
 		PlayerAnimator.SetFloat("YV", velocity.z);
 
@@ -81,7 +81,7 @@ public class Agent : PropHolder
 		}
 	}
 
-	void RefreshPhysicsParts(Vector3 acceleration)
+	void RefreshPhysicsParts(Vector3 acceleration, Vector3 velocity)
 	{
 		if (PhysicsParts == null)
 		{
@@ -89,9 +89,19 @@ public class Agent : PropHolder
 			return;
 		}
 
-		foreach (var part in PhysicsParts)
+		if (acceleration.magnitude < Mathf.Epsilon && velocity.magnitude < Mathf.Epsilon)
 		{
-			part.Refresh(acceleration);
+			foreach (var part in PhysicsParts)
+			{
+				part.Reset();
+			}
+		}
+		else
+		{
+			foreach (var part in PhysicsParts)
+			{
+				part.Refresh(acceleration);
+			}
 		}
 	}
 }

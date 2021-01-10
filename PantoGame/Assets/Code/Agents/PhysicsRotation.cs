@@ -12,7 +12,7 @@ public class PhysicsRotation : MonoBehaviour
 
 	void Awake()
 	{
-		StartingRotation = transform.rotation;
+		StartingRotation = transform.localRotation;
 	}
 
 	public void Refresh(Vector3 acceleration)
@@ -24,5 +24,10 @@ public class PhysicsRotation : MonoBehaviour
 		//transform.Rotate(-rotation.z, 0, 0);
 		transform.Rotate(0, 0, rotation.x);
 
+	}
+
+	public void Reset()
+	{
+		transform.localRotation = StartingRotation;
 	}
 }
