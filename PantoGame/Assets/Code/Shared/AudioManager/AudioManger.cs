@@ -27,6 +27,7 @@ public class AudioManger : MonoBehaviour
 			Logger.LogError($"Trying to set Music Volume but Instance == null");
 			return;
 		}
+		Logger.Log($"Setting Music Volume to {value}");
 		_MusicVolume = value;
 		Instance.Mixer.SetFloat("MusicVol", VolumeToDb(value));
 		PlayerPrefs.SetFloat(MusicPlayerPrefKey, value);
@@ -45,6 +46,7 @@ public class AudioManger : MonoBehaviour
 			Logger.LogError($"Trying to set Sfx Volume but Instance == null");
 			return;
 		}
+		Logger.Log($"Setting Sfx Volume to {value}");
 		_SfxVolume = value;
 		Instance.Mixer.SetFloat("SfxVol", VolumeToDb(value));
 		PlayerPrefs.SetFloat(SfxPlayerPrefKey, value);
@@ -63,6 +65,7 @@ public class AudioManger : MonoBehaviour
 			Logger.LogError($"Trying to set Ambience Volume but Instance == null");
 			return;
 		}
+		Logger.Log($"Setting Ambience Volume to {value}");
 		_AmbienceVolume = value;
 		Instance.Mixer.SetFloat("AmbienceVol", VolumeToDb(value));
 		PlayerPrefs.SetFloat(AmbiencePlayerPrefKey, value);
@@ -86,7 +89,10 @@ public class AudioManger : MonoBehaviour
 
 		Instance = this;
 		LoadSounds();
+	}
 
+	void Start()
+	{
 		MusicVolume = PlayerPrefs.GetFloat(MusicPlayerPrefKey, DefaultMusicVolume);
 		SfxVolume = PlayerPrefs.GetFloat(SfxPlayerPrefKey, DefaultSfxVolume);
 		AmbienceVolume = PlayerPrefs.GetFloat(AmbiencePlayerPrefKey, DefaultAmbienceVolume);
