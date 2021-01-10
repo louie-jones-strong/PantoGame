@@ -127,9 +127,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TriggerXDistance: 2
   TriggerYDistance: 2
+  Root: {fileID: 5488759535480282158}
+  FadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 2.1633878
+      outSlope: 2.1633878
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.041564185
+    - serializedVersion: 3
+      time: 0.16509333
+      value: 1.0037351
+      inSlope: -2.2148213
+      outSlope: -2.2148213
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.050111957
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0.03060415
+      outSlope: 0.03060415
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.09746503
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   TriggerNeedsEveryone: 0
   LoadTime: 3
-  Root: {fileID: 5488759535480282158}
   LoadingBar: {fileID: 3775106790524232902}
   Label: {fileID: 8015032077838708661}
   LoadBarCurve:

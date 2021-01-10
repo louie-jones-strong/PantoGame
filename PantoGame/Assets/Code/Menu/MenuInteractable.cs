@@ -6,6 +6,7 @@ using System;
 public class MenuInteractable : Interactable
 {
 	[SerializeField] Transform Root;
+	[SerializeField] AnimationCurve FadeCurve;
 	Menu Menu;
 
 	protected override void Awake()
@@ -27,8 +28,7 @@ public class MenuInteractable : Interactable
 
 	public virtual void SetFade(float value)
 	{
-		var pos = transform.localPosition;
-		pos.y = (1-value) * 10;
-		transform.localPosition = pos;
+		var size = FadeCurve.Evaluate(1-value);
+		transform.localScale = new Vector3(size, 1, size);
 	}
 }
