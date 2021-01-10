@@ -2537,8 +2537,6 @@ GameObject:
   - component: {fileID: 915592961}
   - component: {fileID: 915592963}
   - component: {fileID: 915592964}
-  - component: {fileID: 915592965}
-  - component: {fileID: 915592966}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -2598,34 +2596,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultMaterial: {fileID: 2100000, guid: eebc6821d5416df469477427e3cff025, type: 2}
---- !u!114 &915592965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915592960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52c81a0475eca57409bbc9bfa3984c56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mixer: {fileID: 24100000, guid: 33ebab0513f5c574fbf628cafbc364de, type: 2}
-  MusicMixerGroup: {fileID: -3809440831236885134, guid: 33ebab0513f5c574fbf628cafbc364de, type: 2}
-  SfxMixerGroup: {fileID: 8485898271651365978, guid: 33ebab0513f5c574fbf628cafbc364de, type: 2}
-  AmbienceMixerGroup: {fileID: 7598444933555437800, guid: 33ebab0513f5c574fbf628cafbc364de, type: 2}
---- !u!114 &915592966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915592960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de9d5819e1daa0f4ca85744b8da95457, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &917751329
 PrefabInstance:
   m_ObjectHideFlags: 0
