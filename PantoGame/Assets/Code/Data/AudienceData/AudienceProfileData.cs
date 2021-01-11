@@ -47,6 +47,8 @@ public class AudienceProfileData
 		return time;
 	}
 
+
+	//get rating value between 0 and 10
 	public float GetRatingValue()
 	{
 		var currentScript = Theatre.Instance.CurrentScript;
@@ -54,6 +56,9 @@ public class AudienceProfileData
 		var rating = currentScript.Rating;
 		rating -= TimeHitByPlayer;
 		rating -= TimeSeeingPlayerOnStage;
+
+		rating += 5;
+		rating = Mathf.Clamp(rating, 0f, 10f);
 		return rating;
 	}
 
