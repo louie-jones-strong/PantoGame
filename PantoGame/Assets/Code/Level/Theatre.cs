@@ -55,6 +55,12 @@ public class Theatre : PlayerManger
 			Logger.LogError($"trying to set levelIndex: {levelIndex} but not valid Generators.Count: {Generators.Count}");
 			levelIndex = 0;
 		}
+
+		foreach (var generator in Generators)
+		{
+			generator.gameObject.SetActive(false);
+		}
+
 		CurrentScript = Generators[levelIndex];
 		CurrentScript.gameObject.SetActive(true);
 

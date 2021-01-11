@@ -123,38 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 1c2111c399650ba4c89275425a7c42f7, type: 2}
---- !u!114 &40301440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19a4c380a927bae43909bf249c588681, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskUiPriority: 1
-  TaskId: Light
-  StartRequiredActionStates:
-  - TaskId: Red Curtain
-    State: 3
-  EndRequiredActionStates: []
-  TargetCompleteTime: 15
-  Target: {fileID: 224036009}
-  Light: {fileID: 1508095817}
---- !u!114 &62601881 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5997939789808853774, guid: a9939c482eaee144b87fe0602ae040da, type: 3}
-  m_PrefabInstance: {fileID: 1217834534}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d9da2af3f9354648a2fa9f05ee94449, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &93068446
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,27 +157,6 @@ Transform:
   m_Father: {fileID: 153317277}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &103192249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01cd676c0bdf92544b1654c8ae680ac8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskUiPriority: 1
-  TaskId: Red Curtain
-  StartRequiredActionStates:
-  - TaskId: Fire Curtain
-    State: 3
-  EndRequiredActionStates: []
-  TargetCompleteTime: 10
-  TargetCurtain: {fileID: 306474061}
-  TargetOpenAmount: 1
 --- !u!1001 &105063314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -479,7 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 1833327209}
-  MinZoom: 90
+  MinZoom: 50
   MaxZoom: 15
   MaxTargetDistance: 100
   MinXMove: -5
@@ -559,27 +506,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4411084586161332140, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
   m_PrefabInstance: {fileID: 4411084586105330437}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &292141965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d176c52ee1f7ba94d93c1dd3ac791d45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskUiPriority: -1
-  TaskId: ActorTask
-  StartRequiredActionStates:
-  - TaskId: Red Curtain
-    State: 3
-  EndRequiredActionStates: []
-  Target: {fileID: 563153204}
-  Actor: {fileID: 62601881}
-  ActorSpeed: 5
 --- !u!1 &306474059
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,23 +806,6 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &381682409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 866dd227a22723d48b4a09ec9e069918, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskUiPriority: 1
-  TaskId: Wait for sitting
-  StartRequiredActionStates: []
-  EndRequiredActionStates: []
-  TargetWaitTime: 10
 --- !u!1 &448830242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,27 +917,6 @@ MonoBehaviour:
   AttackTime: 0.25
   DecayTime: 0.25
   FadeAmount: 0.6
---- !u!114 &467850480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d176c52ee1f7ba94d93c1dd3ac791d45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskUiPriority: -1
-  TaskId: ActorTask
-  StartRequiredActionStates:
-  - TaskId: CurtainTask
-    State: 3
-  EndRequiredActionStates: []
-  Target: {fileID: 224036009}
-  Actor: {fileID: 62601881}
-  ActorSpeed: 15
 --- !u!1 &508657341
 GameObject:
   m_ObjectHideFlags: 0
@@ -2071,25 +1959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneIndex: 0
-  Scenes:
-  - SceneName: SetUp
-    Tasks:
-    - {fileID: 2101622493}
-    - {fileID: 1902388619}
-    - {fileID: 103192249}
-    - {fileID: 1541113630}
-    - {fileID: 40301440}
-    - {fileID: 292141965}
-    - {fileID: 1831653346}
-    - {fileID: 1892488970}
-  - SceneName: Enter
-    Tasks:
-    - {fileID: 381682409}
-  - SceneName: ShowStart
-    Tasks:
-    - {fileID: 1891763890}
-    - {fileID: 467850480}
-    - {fileID: 1067488372}
+  Scenes: []
   Rating: 0
 --- !u!1 &952680485
 GameObject:
@@ -2239,26 +2109,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4493585093827132993, guid: 94641faea85378e4981884964526d3df, type: 3}
---- !u!114 &1067488372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f43d6d1d57b1c764595c841cecdfd589, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskUiPriority: -1
-  TaskId: ActorTalkTask
-  StartRequiredActionStates:
-  - TaskId: ActorTask
-    State: 3
-  EndRequiredActionStates: []
-  Actor: {fileID: 62601881}
-  TargetTalkTime: 1
 --- !u!1001 &1099013700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3463,27 +3313,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2579374746921168206, guid: 94641faea85378e4981884964526d3df, type: 3}
---- !u!114 &1541113630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2228cdb9aa6d054daa07fd1e2bf8648, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskUiPriority: 1
-  TaskId: MoveSet
-  StartRequiredActionStates:
-  - TaskId: Red Curtain
-    State: 3
-  EndRequiredActionStates: []
-  TargetCompleteTime: 15
-  Target: {fileID: 324927525}
-  SetPiece: {fileID: 619739912}
 --- !u!1 &1541481036
 GameObject:
   m_ObjectHideFlags: 0
@@ -3582,17 +3411,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2605387002715306293, guid: ce71782b53b5ba94ea4a78f7bbbc4ba4, type: 3}
   m_PrefabInstance: {fileID: 1592599636}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1592599638 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2605387002715306292, guid: ce71782b53b5ba94ea4a78f7bbbc4ba4, type: 3}
-  m_PrefabInstance: {fileID: 1592599636}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d5a1418c4e0ae9468a4c9ec7a2b7780, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1628442522
 GameObject:
   m_ObjectHideFlags: 0
@@ -4231,27 +4049,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7542296154645646452, guid: 94641faea85378e4981884964526d3df, type: 3}
---- !u!114 &1831653346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01cd676c0bdf92544b1654c8ae680ac8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskUiPriority: 1
-  TaskId: Close Red Curtain
-  StartRequiredActionStates:
-  - TaskId: ActorTask
-    State: 3
-  EndRequiredActionStates: []
-  TargetCompleteTime: 15
-  TargetCurtain: {fileID: 306474061}
-  TargetOpenAmount: 0
 --- !u!1 &1833327207
 GameObject:
   m_ObjectHideFlags: 0
@@ -4328,13 +4125,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833327207}
-  m_LocalRotation: {x: 0.54449266, y: 0, z: 0, w: 0.8387656}
-  m_LocalPosition: {x: 0, y: 39.2, z: -20.2}
+  m_LocalRotation: {x: 0.41628075, y: 0, z: 0, w: 0.9092362}
+  m_LocalPosition: {x: 0, y: 22.8, z: -23.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 215160601}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 65.98, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 49.2, y: 0, z: 0}
 --- !u!1001 &1851694507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4558,65 +4355,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1670560618228564751, guid: 94641faea85378e4981884964526d3df, type: 3}
---- !u!114 &1891763890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01cd676c0bdf92544b1654c8ae680ac8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskUiPriority: 1
-  TaskId: CurtainTask
-  StartRequiredActionStates: []
-  EndRequiredActionStates: []
-  TargetCompleteTime: 5
-  TargetCurtain: {fileID: 306474061}
-  TargetOpenAmount: 1
---- !u!114 &1892488970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 480f8ab231fe99046834c32f70e131c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskUiPriority: 1
-  TaskId: Mic On Stage
-  StartRequiredActionStates:
-  - TaskId: Red Curtain
-    State: 3
-  EndRequiredActionStates: []
-  TargetCompleteTime: 15
-  TargetProp: {fileID: 1592599638}
-  TargetPropHolder: {fileID: 8222365628792341585}
-  Target: {fileID: 224036009}
---- !u!114 &1902388619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c162c23bc76bda469adf963ab2ec4bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskUiPriority: -1
-  TaskId: AudienceStandInLobbyTask
-  StartRequiredActionStates: []
-  EndRequiredActionStates:
-  - TaskId: Close Red Curtain
-    State: 3
 --- !u!1001 &1910791020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4975,25 +4713,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c804405daf25424f864466d9fc09907, type: 3}
---- !u!114 &2101622493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01cd676c0bdf92544b1654c8ae680ac8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskUiPriority: 1
-  TaskId: Fire Curtain
-  StartRequiredActionStates: []
-  EndRequiredActionStates: []
-  TargetCompleteTime: 15
-  TargetCurtain: {fileID: 1796806895}
-  TargetOpenAmount: 1
 --- !u!1001 &2144708625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5256,14 +4975,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8489338603663585443, guid: 859191ec35835d24caf2e4c2433baa17, type: 3}
   m_PrefabInstance: {fileID: 8222365628792341583}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8222365628792341585 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2663702856695935105, guid: 859191ec35835d24caf2e4c2433baa17, type: 3}
-  m_PrefabInstance: {fileID: 8222365628792341583}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f07f39c107dc0f45b9594d23a0dd5d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

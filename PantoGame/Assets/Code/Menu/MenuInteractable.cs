@@ -24,6 +24,7 @@ public class MenuInteractable : Interactable
 
 		transform.position = new Vector3(Pos.x, 0, Pos.y);
 		CameraController.AddTarget(transform, 1);
+		SetFade(0f);
 	}
 
 	public virtual void SetFade(float value)
