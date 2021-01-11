@@ -21,9 +21,8 @@ public class PropTask : PlayerTask
 	{
 		if (Target != null)
 		{
-			var distance = DistanceUtility.Get2d(TargetProp.transform, Target.transform);
-			bool withinRange = distance <= 2;
-			if (distance > 2)
+			var distance = DistanceUtility.Get2d(TargetPropHolder.transform, Target.transform);
+			if (distance >= 3)
 			{
 				return false;
 			}
