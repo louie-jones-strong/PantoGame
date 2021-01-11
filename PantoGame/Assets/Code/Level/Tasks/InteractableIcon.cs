@@ -14,6 +14,7 @@ public class InteractableIcon : MonoBehaviour
 	{
 		if (HudManger.Instance == null)
 		{
+			Logger.LogError($"HudManger.Instance == null");
 			return null;
 		}
 

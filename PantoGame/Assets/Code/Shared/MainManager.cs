@@ -84,8 +84,8 @@ public class MainManager : MonoBehaviour
 			yield return StartCoroutine(SubtractSceneCo(sceneFrom));
 		}
 
-		yield return StartCoroutine(AddSceneCo(theatreTo));
 		yield return StartCoroutine(AddSceneCo(Settings.HudScreenName));
+		yield return StartCoroutine(AddSceneCo(theatreTo));
 
 		while (Theatre.Instance == null)
 		{
