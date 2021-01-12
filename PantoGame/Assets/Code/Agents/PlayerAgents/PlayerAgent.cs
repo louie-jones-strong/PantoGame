@@ -76,10 +76,7 @@ public class PlayerAgent : Agent
 			}
 		}
 		else if (CurrentTask != null)
-		{
-			acceleration -= Velocity;
-			Velocity = Vector3.zero;
-			
+		{			
 			Debug.DrawLine(transform.position, CurrentTask.transform.position, Color.green);
 
 			var distance = (transform.position-CurrentTask.transform.position).magnitude;
@@ -88,6 +85,12 @@ public class PlayerAgent : Agent
 			{
 				CurrentTask.EndInteraction();
 				CurrentTask = null;
+			}
+
+			if (CurrentTask != null)
+			{
+				acceleration -= Velocity;
+				Velocity = Vector3.zero;
 			}
 		}
 		UpdateVisuals(acceleration, Velocity);
