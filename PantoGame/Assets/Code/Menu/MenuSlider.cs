@@ -9,12 +9,11 @@ public class MenuSlider : MenuInteractable
 	[SerializeField] TextMesh ValueText;
 
 	Action<float> ChangedAction;
-	Menu Menu;
 	float Value;
 	float Min;
 	float Max;
 
-	public void Setup(Menu menu, string label, float value, Vector2 pos, float xSize, float ySize, Action<float> changedAction=null, float min=0, float max=1)
+	public void Setup(string label, float value, Vector2 pos, float xSize, float ySize, Action<float> changedAction=null, float min=0, float max=1)
 	{
 		Label.text = label;
 		Value = value;
@@ -23,7 +22,7 @@ public class MenuSlider : MenuInteractable
 		ChangedAction = changedAction;
 
 		
-		base.Setup(menu, pos, xSize, ySize);
+		base.Setup(pos, xSize, ySize);
 	}
 
 

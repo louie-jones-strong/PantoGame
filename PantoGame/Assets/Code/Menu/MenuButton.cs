@@ -13,10 +13,9 @@ public class MenuButton : MenuInteractable
 	[SerializeField] AnimationCurve LoadBarCurve;
 
 	Action OnClick;
-	Menu Menu;
 	float LoadAmount;
 
-	public void Setup(Menu menu, string label, bool triggerNeedsEveryone, Vector2 pos, float xSize, float ySize, Action onClick=null)
+	public virtual void Setup(string label, bool triggerNeedsEveryone, Vector2 pos, float xSize, float ySize, Action onClick=null)
 	{
 		TriggerNeedsEveryone = triggerNeedsEveryone;
 		Label.text = label;
@@ -25,7 +24,7 @@ public class MenuButton : MenuInteractable
 
 		LoadingBar.localPosition = new Vector3(0, -(ySize-1), 0);
 
-		base.Setup(menu, pos, xSize, ySize);
+		base.Setup(pos, xSize, ySize);
 	}
 
 	protected override void Update()

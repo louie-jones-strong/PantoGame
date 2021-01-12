@@ -19,6 +19,7 @@ public class Menu : PlayerManger
 	[SerializeField] AnimationCurve FadeDown;
 	[SerializeField] AnimationCurve FadeUp;
 	[SerializeField] MenuButton MenuButtonPrefab;
+	[SerializeField] MenuColourPicker MenuColourPickerPrefab;
 	[SerializeField] MenuSlider MenuSliderPrefab;
 	List<MenuInteractable> MenuInteractables = new List<MenuInteractable>();
 	eMenuState CurrentState;
@@ -37,6 +38,34 @@ public class Menu : PlayerManger
 		{
 			item.SetFade(value);
 		}
+	}
+
+	void AddColourPicker(Color colour, Action onClick, Vector2 pos, float xSize=10, float ySize=4)
+	{
+		MenuColourPicker picker = null;
+		foreach (var item in MenuInteractables)
+		{
+			var tempButton = item as MenuColourPicker;
+			if (tempButton == null)
+			{
+				continue;
+			}
+
+			if (!item.gameObject.activeSelf)
+			{
+				picker = tempButton;
+				picker.gameObject.SetActive(true);
+				break;
+			}
+		}
+
+		if (picker == null)
+		{
+			picker = Instantiate<MenuColourPicker>(MenuColourPickerPrefab, transform);
+			MenuInteractables.Add(picker);
+		}
+
+		picker.Setup(colour, pos, xSize, ySize, onClick);
 	}
 
 
@@ -65,7 +94,7 @@ public class Menu : PlayerManger
 			MenuInteractables.Add(button);
 		}
 
-		button.Setup(this, label, triggerNeedsEveryone, pos, xSize, ySize, onClick);
+		button.Setup(label, triggerNeedsEveryone, pos, xSize, ySize, onClick);
 	}
 
 	void AddSlider(string label, float value, Vector2 pos, float xSize=10, float ySize=4, Action<float> changedAction=null, float min=0, float max=1)
@@ -93,7 +122,7 @@ public class Menu : PlayerManger
 			MenuInteractables.Add(slider);
 		}
 
-		slider.Setup(this, label, value, pos, xSize, ySize, changedAction:changedAction, min:min, max:max);
+		slider.Setup(label, value, pos, xSize, ySize, changedAction:changedAction, min:min, max:max);
 	}
 
 	void SetTarget(eMenuState state)
@@ -176,6 +205,8 @@ public class Menu : PlayerManger
 		AddButton("Settings", false, () => {SetTarget(eMenuState.Settings);}, pos);
 		pos.y -= 10;
 		AddButton("Exit", false, () => {SetTarget(eMenuState.ExitConfirm);}, pos);
+
+		ColourPicker();
 	}
 
 	void SettingsMenu()
@@ -276,6 +307,14 @@ public class Menu : PlayerManger
 		pos.x += 20;
 		AddButton("Back", false, () => SetTarget(eMenuState.Main), pos);
 	}
-#endregion
 
+	void ColourPicker()
+	{
+		var pos = new Vector2(-10, 15);
+
+		AddColourPicker(Color.yellow, () => {}, pos);
+		pos.x += 10;
+		AddColourPicker(Color.cyan, () => {}, pos);
+	}
+#endregion
 }

@@ -7,20 +7,18 @@ public class MenuInteractable : Interactable
 {
 	[SerializeField] Transform Root;
 	[SerializeField] AnimationCurve FadeCurve;
-	Menu Menu;
 
 	protected override void Awake()
 	{
 	}
 
-	public void Setup(Menu menu, Vector2 Pos, float xSize, float ySize)
+	public void Setup(Vector2 Pos, float xSize, float ySize)
 	{
-		Menu = menu;
 
 
 		TriggerXDistance = xSize / 2;
 		TriggerYDistance = ySize / 2;
-		Root.localScale = new Vector3(xSize, ySize, 0);
+		Root.localScale = new Vector3(xSize, ySize, 1);
 
 		transform.position = new Vector3(Pos.x, 0, Pos.y);
 		CameraController.AddTarget(transform, 1);

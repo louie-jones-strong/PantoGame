@@ -38,8 +38,9 @@ public class Agent : PropHolder
 		PhysicsParts = GetComponentsInChildren<PhysicsRotation>();
 	}
 
-	protected void SetColour(Color colour)
+	public void SetColour(Color colour)
 	{
+		Logger.Log($"setting colour to {Colour} -> {colour}");
 		Colour = colour;
 		foreach (var part in PartsToColour)
 		{
