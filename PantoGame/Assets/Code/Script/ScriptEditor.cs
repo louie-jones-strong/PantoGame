@@ -71,6 +71,8 @@ public class ScriptEditor : Editor
 		if (Application.isPlaying)
 		{
 			DrawDebugSettings(targetScript);
+			EditorGUILayout.Space();
+			DrawAudienceReviews();
 		}
 	}
 
@@ -123,6 +125,43 @@ public class ScriptEditor : Editor
 
 		EditorGUILayout.EndHorizontal();
 
+	}
+
+	void DrawAudienceReviews()
+	{
+		if (Theatre.Instance?.AudienceAgents == null)
+		{
+			return;
+		}
+
+		EditorGUILayout.BeginVertical();
+
+		var audienceAgents = Theatre.Instance.AudienceAgents;
+		for (int index = 0; index < audienceAgents.Count; index++)
+		{
+			var audienceAgent = audienceAgents[index];
+
+			EditorGUILayout.BeginVertical();
+
+			EditorGUILayout.BeginHorizontal();
+			GUILayout.Label($"audience: {index}");
+			EditorGUILayout.ObjectField(audienceAgent, typeof(AudienceAgent), true);
+			EditorGUILayout.ColorField(audienceAgent.Colour);
+			EditorGUILayout.EndHorizontal();
+
+			EditorGUILayout.BeginHorizontal();
+			
+			var rating = audienceAgent.ProfileData.GetRatingValue();
+			var review = audienceAgent.ProfileData.GetReviewText(rating);
+
+			GUILayout.Label($"Rating: {rating} Review: {review}");
+
+			EditorGUILayout.EndHorizontal();
+			
+			EditorGUILayout.EndVertical();
+			EditorGUILayout.Space();
+		}
+		EditorGUILayout.EndVertical();
 	}
 }
 #endif
