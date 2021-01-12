@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Collider))]
 public class Prop : MonoBehaviour
 {
 	public static List<Prop> PropsList {get; private set;} = new List<Prop>();
 
 	public float PropSize = 2f;
 	Rigidbody Rigidbody;
+	Collider Collider;
 
 	public PropHolder PropHolder {get; private set;}
 
@@ -18,6 +20,8 @@ public class Prop : MonoBehaviour
 		Rigidbody = GetComponent<Rigidbody>();
 		Rigidbody.isKinematic = false;
 		Rigidbody.freezeRotation = true;
+
+		Collider = GetComponent<Collider>();
 	}
 
 	protected virtual void OnDestroy()
@@ -41,6 +45,7 @@ public class Prop : MonoBehaviour
 		PropHolder = propholder;
 		PropHolder.AddProp(this);
 		Rigidbody.isKinematic = true;
+		Collider.enabled = false;
 	}
 
 	public virtual void DropProp()
@@ -81,6 +86,7 @@ public class Prop : MonoBehaviour
 			transform.parent = PlayerManger.MangerInstance.PropsRoot;
 			transform.localEulerAngles = Vector3.zero;
 			Rigidbody.isKinematic = false;
+			Collider.enabled = true;
 		}
 		else
 		{
