@@ -119,6 +119,13 @@ public class Task : ScriptableObject //this needs to be ScriptableObject so that
 			return;
 		}
 
+		if (newState == eTaskState.Completed &&
+			State != eTaskState.Completed &&
+			TaskUiPriority >= 0)
+		{
+			AudioManger.PlayEvent("TaskComplete");
+		}
+
 		Logger.Log($"{this} set state {State} -> {newState}");
 		State = newState;
 	}

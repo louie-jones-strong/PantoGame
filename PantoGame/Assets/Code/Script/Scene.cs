@@ -28,6 +28,12 @@ public class Scene
 
 	public void SetState(eSceneState state)
 	{
+		if (state == eSceneState.Completed &&
+			State != eSceneState.Completed)
+		{
+			AudioManger.PlayEvent("SceneComplete");
+		}
+
 		State = state;
 	}
 
