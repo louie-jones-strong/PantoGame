@@ -21,7 +21,7 @@ public class PlayerAgent : Agent
 	protected override void Start()
 	{
 		CameraController.AddTarget(transform, weighting:Settings.PlayerCamWeighting);
-		SetColour(Random.ColorHSV());
+		SetColour(Color.yellow);
 		base.Start();
 	}
 	
