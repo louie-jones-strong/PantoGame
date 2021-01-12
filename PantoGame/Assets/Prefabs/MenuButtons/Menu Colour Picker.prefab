@@ -162,7 +162,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267629399783390481}
-  m_Text: Hello World
+  m_Text: Try Me!
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -284,7 +284,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  Material: {fileID: 2100000, guid: 4c9d59c585e2e9e429e402d5ce65d34d, type: 2}
+  Colour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1267629400510386153
 GameObject:
   m_ObjectHideFlags: 0

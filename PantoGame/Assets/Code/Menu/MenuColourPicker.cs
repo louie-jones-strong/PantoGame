@@ -5,7 +5,7 @@ using System;
 
 public class MenuColourPicker : MenuButton
 {
-	Color Colour;
+	[SerializeField] Color Colour;
 
 	public void Setup(Color colour, Vector2 pos, float xSize, float ySize, Action onClick=null)
 	{

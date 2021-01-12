@@ -206,7 +206,6 @@ public class Menu : PlayerManger
 		pos.y -= 10;
 		AddButton("Exit", false, () => {SetTarget(eMenuState.ExitConfirm);}, pos);
 
-		ColourPicker();
 	}
 
 	void SettingsMenu()
@@ -306,15 +305,6 @@ public class Menu : PlayerManger
 		AddButton("Exit", false, MainManager.Instance.CloseGame, pos);
 		pos.x += 20;
 		AddButton("Back", false, () => SetTarget(eMenuState.Main), pos);
-	}
-
-	void ColourPicker()
-	{
-		var pos = new Vector2(-10, 15);
-
-		AddColourPicker(Color.yellow, () => {}, pos);
-		pos.x += 10;
-		AddColourPicker(Color.cyan, () => {}, pos);
 	}
 #endregion
 }
