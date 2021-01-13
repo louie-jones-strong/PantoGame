@@ -42,7 +42,6 @@ public class Theatre : PlayerManger
 			generator.gameObject.SetActive(false);
 		}
 
-		SetLevel(0);
 		SetState(eTheatreState.ShowInProgress);
 		base.Awake();
 	}
