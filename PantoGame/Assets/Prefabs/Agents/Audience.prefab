@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3414133246972012009}
   - component: {fileID: 6805501789981603284}
   m_Layer: 0
-  m_Name: 'Audience '
+  m_Name: Audience
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -67,14 +67,19 @@ MonoBehaviour:
   ProfileData:
     Name: jeff
     Age: 13
-  SetSeat: {fileID: 0}
+    IntentTransitions:
+      keys: 
+      values: []
+    ActionResponses:
+      keys: 
+      values: []
   ColourCurve:
     PointList:
-    - Value: -1
-      Colour: {r: 1, g: 0, b: 0, a: 1}
     - Value: 0
+      Colour: {r: 1, g: 0, b: 0, a: 1}
+    - Value: 5
       Colour: {r: 1, g: 0.9493294, b: 0, a: 1}
-    - Value: 1
+    - Value: 10
       Colour: {r: 0, g: 1, b: 0.030817509, a: 1}
 --- !u!95 &972033207960869404
 Animator:
