@@ -226,9 +226,15 @@ MonoBehaviour:
   AudienceData:
     ReviewStarter:
     - ReviewString: Show was good,
-      ReviewRating: 1
+      ReviewRating: 7.5
     - ReviewString: Show was bad,
-      ReviewRating: -1
+      ReviewRating: 3.5
+    - ReviewString: Show was Okay,
+      ReviewRating: 5
+    - ReviewString: Show was shit,
+      ReviewRating: 0
+    - ReviewString: Show was amazing,
+      ReviewRating: 10
     ReviewConnectives:
     - and
     - then
@@ -243,23 +249,23 @@ MonoBehaviour:
     - on the other hand
     GeneralReviews:
     - ReviewString: 'Your Panto carrer. Is Behind you '
-      ReviewRating: -1
+      ReviewRating: 4
     - ReviewString: Meh, it was okay
-      ReviewRating: 0
+      ReviewRating: 5
     - ReviewString: Good story line
-      ReviewRating: 0.5
+      ReviewRating: 6
     - ReviewString: Such fun
-      ReviewRating: 1
-    - ReviewString: It was like a damp t towel
-      ReviewRating: -2
+      ReviewRating: 7
+    - ReviewString: It was like a damp T towel
+      ReviewRating: 2
     - ReviewString: Boring.... Zzz..
-      ReviewRating: -1
+      ReviewRating: 3
     - ReviewString: It was boring
-      ReviewRating: 1
+      ReviewRating: 3
     - ReviewString: not worth the money
-      ReviewRating: -5
+      ReviewRating: 1
     - ReviewString: Can I get my money back
-      ReviewRating: -6
+      ReviewRating: 0
     Profiles:
     - Name: Louie
       Age: 20
