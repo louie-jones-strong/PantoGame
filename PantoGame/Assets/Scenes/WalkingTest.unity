@@ -186,6 +186,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9da2af3f9354648a2fa9f05ee94449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &87515084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866dd227a22723d48b4a09ec9e069918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskUiPriority: -1
+  TaskId: WaitTask
+  StartRequiredActionStates:
+  - TaskId: ActorTalkTask
+    State: 3
+  EndRequiredActionStates: []
+  TargetWaitTime: 0.1
 --- !u!1 &93068446
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,8 +552,8 @@ MonoBehaviour:
   MinZoom: 110
   MaxZoom: 15
   MaxTargetDistance: 100
-  MinXMove: -5
-  MaxXMove: 5
+  MinXMove: 0
+  MaxXMove: 0
   MinYMove: -1
   MaxYMove: 25
   TargetList: []
@@ -644,25 +663,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4411084586161332140, guid: 0a0e4c1853a5993488cd295bf76198c8, type: 3}
   m_PrefabInstance: {fileID: 284696179}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &285841952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1f3ae0539f6db444a8b6036509b28eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskUiPriority: 1
-  TaskId: Drums
-  StartRequiredActionStates:
-  - TaskId: ActorTalkTask
-    State: 3
-  EndRequiredActionStates: []
-  AudioEvent: JokeDrums
 --- !u!114 &292141965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1914,6 +1914,26 @@ Transform:
   m_Father: {fileID: 797572039}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &699942648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a2d13f885619c43818652d77402fb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskUiPriority: -1
+  TaskId: Clap
+  StartRequiredActionStates:
+  - TaskId: ActorTalkTask2
+    State: 3
+  EndRequiredActionStates: []
+  TargetIntent: 3
+  TargetTimeForIntent: 5
 --- !u!1 &712074299
 GameObject:
   m_ObjectHideFlags: 0
@@ -2716,6 +2736,7 @@ MonoBehaviour:
     - {fileID: 292141965}
     - {fileID: 1831653346}
     - {fileID: 1892488970}
+    - {fileID: 1157963536}
   - SceneName: Enter
     Tasks:
     - {fileID: 381682409}
@@ -2724,7 +2745,10 @@ MonoBehaviour:
     - {fileID: 1891763890}
     - {fileID: 467850480}
     - {fileID: 1067488372}
-    - {fileID: 285841952}
+    - {fileID: 87515084}
+    - {fileID: 999950844}
+    - {fileID: 1031151937}
+    - {fileID: 699942648}
   Rating: 0
 --- !u!1 &952680485
 GameObject:
@@ -2763,6 +2787,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2619337244408616859, guid: 4c804405daf25424f864466d9fc09907, type: 3}
   m_PrefabInstance: {fileID: 2619337245021716358}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &999950844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f43d6d1d57b1c764595c841cecdfd589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskUiPriority: -1
+  TaskId: ActorTalkTask2
+  StartRequiredActionStates:
+  - TaskId: WaitTask
+    State: 3
+  EndRequiredActionStates: []
+  Actor: {fileID: 0}
+  TargetTalkTime: 0.5
 --- !u!1001 &1014508835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2875,6 +2919,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4493585093827132993, guid: 94641faea85378e4981884964526d3df, type: 3}
+--- !u!114 &1031151937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1f3ae0539f6db444a8b6036509b28eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskUiPriority: -1
+  TaskId: Drums
+  StartRequiredActionStates:
+  - TaskId: ActorTalkTask2
+    State: 3
+  EndRequiredActionStates: []
+  AudioEvent: JokeDrums
 --- !u!1001 &1067372857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2980,7 +3043,7 @@ MonoBehaviour:
     State: 3
   EndRequiredActionStates: []
   Actor: {fileID: 62601881}
-  TargetTalkTime: 1
+  TargetTalkTime: 2
 --- !u!1001 &1099013700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3147,6 +3210,28 @@ MonoBehaviour:
   AttackTime: 0.25
   DecayTime: 0.25
   FadeAmount: 0.6
+--- !u!114 &1157963536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a2d13f885619c43818652d77402fb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskUiPriority: -1
+  TaskId: AudienceIntentTask
+  StartRequiredActionStates: []
+  EndRequiredActionStates:
+  - TaskId: Close Red Curtain
+    State: 3
+  - TaskId: Mic On Stage
+    State: 3
+  TargetIntent: 5
+  TargetTimeForIntent: 5
 --- !u!1 &1194200342 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8248153654567880095, guid: 94641faea85378e4981884964526d3df, type: 3}
@@ -5350,7 +5435,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833327207}
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: -0.3, y: 30, z: -20}
+  m_LocalPosition: {x: 0, y: 30, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 215160601}
