@@ -39,6 +39,8 @@ public class ScriptEditor : Editor
 
 			scene.SceneName = GUILayout.TextField(scene.SceneName);
 
+			GUILayout.Label($"State: {scene.State}");
+
 			if (GUILayout.Button("Sort"))
 			{
 				scene.SortTasks();

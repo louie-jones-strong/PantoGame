@@ -116,8 +116,8 @@ public class Scene
 		int loop = 0;
 		while (loop < Tasks.Count)
 		{
-			var action = Tasks[loop];
-			if (action == null)
+			var task = Tasks[loop];
+			if (task == null)
 			{
 				Tasks.RemoveAt(loop);
 				break;
@@ -133,9 +133,11 @@ public class Scene
 			}
 			CurrentEditActions[loop] = EditorGUILayout.BeginFoldoutHeaderGroup(CurrentEditActions[loop], $"Action ID:");
 
-			action.TaskId = EditorGUILayout.TextField(action.TaskId);
+			task.TaskId = EditorGUILayout.TextField(task.TaskId);
 
-			EditorGUILayout.LabelField($"Task Type: {action.GetType()}");
+			EditorGUILayout.LabelField($"Task Type: {task.GetType()}");
+
+			GUILayout.Label($"State: {task.State}");
 
 
 			GUI.backgroundColor = Color.red;
@@ -154,7 +156,7 @@ public class Scene
 				EditorGUILayout.Separator();
 				EditorGUILayout.BeginVertical();
 
-				action.DrawTask(this);
+				task.DrawTask(this);
 
 				EditorGUILayout.EndVertical();
 				EditorGUILayout.EndHorizontal();
