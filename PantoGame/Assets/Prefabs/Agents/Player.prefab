@@ -65,7 +65,6 @@ MonoBehaviour:
   - {fileID: 6747839729452643745}
   - {fileID: 6747839729452643745}
   Colour: {r: 0, g: 0, b: 0, a: 0}
-  ControlType: -1
   Speed: 50
   DashSpeedMultiplier: 2
   DashCoolDown: 1.5
@@ -190,6 +189,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4110958259888655842}
     m_Modifications:
+    - target: {fileID: 393789200381699302, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3138f5c7cac70d548977aa80a9f482d3, type: 3}
+    - target: {fileID: 393789200381699302, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 393789200381699302, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 393789200381699302, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}
+      propertyPath: m_Size.y
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393262052885234349, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c9dd29eac31c27f48bbf63e530a2d384, type: 3}
+    - target: {fileID: 1393262052885234349, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4358081613339672119, guid: 59571e0fc66ca5941a77354c0636b95a, type: 3}
       propertyPath: m_Name
       value: Root

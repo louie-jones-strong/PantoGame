@@ -116,6 +116,9 @@ public class AudienceAgent : Agent
 	{
 		var rating = ProfileData.GetRatingValue();
 
+		var normalizedRating = (rating - 5) / 5;
+		PlayerAnimator.SetFloat("Ratting", normalizedRating);
+
 		SetColour(ColourCurve.GetColor(rating));
 	}
 
