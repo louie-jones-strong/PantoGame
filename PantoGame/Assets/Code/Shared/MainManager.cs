@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
+	[SerializeField] Animator ScreenTransition;
 	public static MainManager Instance { get; private set; }
 
 	void Awake()
@@ -32,6 +33,7 @@ public class MainManager : MonoBehaviour
 			}
 		}
 		AddScene(Settings.MenuScreenName);
+		SetFadeToBlack(false);
 	}
 
 	void Update()
@@ -57,6 +59,11 @@ public class MainManager : MonoBehaviour
 	}
 
 #region screen stuff
+	
+	void SetFadeToBlack(bool value)
+	{
+		ScreenTransition.SetBool("Open", !value);
+	}
 
 	public void TransToScreen(string screenTo, string sceneFrom="")
 	{
@@ -65,12 +72,14 @@ public class MainManager : MonoBehaviour
 
 	IEnumerator TransToScreenCo(string screenTo, string sceneFrom)
 	{
+		SetFadeToBlack(true);
 		if (!string.IsNullOrEmpty(sceneFrom))
 		{
 			yield return StartCoroutine(SubtractSceneCo(sceneFrom));
 		}
 
 		yield return StartCoroutine(AddSceneCo(screenTo));
+		SetFadeToBlack(false);
 	}
 
 	public void LoadLevel(string theatreTo, int levelIndex, string sceneFrom="")
@@ -79,6 +88,7 @@ public class MainManager : MonoBehaviour
 	}
 	IEnumerator LoadLevelCo(string theatreTo, int levelIndex, string sceneFrom)
 	{
+		SetFadeToBlack(true);
 		if (!string.IsNullOrEmpty(sceneFrom))
 		{
 			yield return StartCoroutine(SubtractSceneCo(sceneFrom));
@@ -93,6 +103,7 @@ public class MainManager : MonoBehaviour
 		}
 
 		Theatre.Instance.SetLevel(levelIndex);
+		SetFadeToBlack(false);
 	}
 
 	static void AddScene(string scene)
