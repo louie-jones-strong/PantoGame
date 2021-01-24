@@ -9,7 +9,7 @@ public class SpriteToObjectRenderer : MonoBehaviour
 	[SerializeField] MeshRenderer MeshRenderer;
 
 	[SerializeField] bool EmissionOn;
-	[SerializeField] bool RotateToCamOn;
+	public bool RotateToCamOn;
 
 	Material CurrentMaterial;
 	Color CurrentColour = Color.white;

@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PropSize: 2
+  SpriteImage: {fileID: 2605387003305953531}
 --- !u!54 &2305668884526148977
 Rigidbody:
   m_ObjectHideFlags: 0

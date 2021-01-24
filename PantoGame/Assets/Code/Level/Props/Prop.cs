@@ -9,6 +9,8 @@ public class Prop : MonoBehaviour
 	public static List<Prop> PropsList {get; private set;} = new List<Prop>();
 
 	public float PropSize = 2f;
+	[SerializeField] SpriteToObjectLoader SpriteImage;
+
 	Rigidbody Rigidbody;
 	Collider Collider;
 
@@ -46,6 +48,8 @@ public class Prop : MonoBehaviour
 		PropHolder.AddProp(this);
 		Rigidbody.isKinematic = true;
 		Collider.enabled = false;
+
+		SetRotateToCam(false);
 	}
 
 	public virtual void DropProp()
@@ -87,12 +91,21 @@ public class Prop : MonoBehaviour
 			transform.localEulerAngles = Vector3.zero;
 			Rigidbody.isKinematic = false;
 			Collider.enabled = true;
+			SetRotateToCam(true);
 		}
 		else
 		{
 			PickUpProp(nearestPropHolder);
 		}
 		
+	}
+
+	void SetRotateToCam(bool rotateToCamOn)
+	{
+		if (SpriteImage?.Renderer != null)
+		{
+			SpriteImage.Renderer.RotateToCamOn = rotateToCamOn;
+		}
 	}
 
 #if UNITY_EDITOR
