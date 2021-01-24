@@ -16,4 +16,17 @@ public class SpriteToObjectLoader : MonoBehaviour
 		Renderer = Instantiate<SpriteToObjectRenderer>(prefab, transform);
 		Renderer.Setup(spriteRenderer, emissionOn:EmissionOn, rotateToCamOn:RotateToCamOn);
 	}
+
+#if UNITY_EDITOR
+	SpriteRenderer Sprite;
+	protected virtual void OnDrawGizmos()
+	{
+		if (Sprite == null)
+		{
+			Sprite = GetComponent<SpriteRenderer>();
+		}
+
+		Sprite.sortingOrder = Mathf.RoundToInt(-transform.position.z * 100);
+	}
+#endif
 }
