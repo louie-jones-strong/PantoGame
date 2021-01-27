@@ -3,7 +3,32 @@ guid: 94641faea85378e4981884964526d3df
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlackedOut
+    second: {fileID: 2100000, guid: 2cab714314f71c74c87c90cf2c38e061, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlackedOut.001
+    second: {fileID: 2100000, guid: d6eef321e1985fe46b42bc91fe58693c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 1b91ad09d8f21f74dbe2bfdd621f8eef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 464f9e4b075352f44bae0cd411b6cc63, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stage Floor
+    second: {fileID: 2100000, guid: 105d736187401844ba372634c1dbeb6f, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
