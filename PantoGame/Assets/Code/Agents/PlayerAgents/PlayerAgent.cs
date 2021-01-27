@@ -39,7 +39,9 @@ public class PlayerAgent : Agent
 				foreach (var prop in Prop.PropsList)
 				{
 					var distance = DistanceUtility.Get2d(prop.transform, transform);
-					if (CanHoldProp(prop, distance:distance) && distance < minDistance)
+					if (CanHoldProp(prop, distance:distance) && 
+						prop.CanMoveProp() &&
+						distance < minDistance)
 					{
 						closestProp = prop;
 						minDistance = distance;

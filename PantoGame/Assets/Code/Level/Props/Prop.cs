@@ -31,6 +31,11 @@ public class Prop : MonoBehaviour
 		PropsList.Remove(this);
 	}
 
+	public virtual bool CanMoveProp()
+	{
+		return true;
+	}
+
 	public virtual void PickUpProp(PropHolder propholder)
 	{
 		if (propholder == null)
