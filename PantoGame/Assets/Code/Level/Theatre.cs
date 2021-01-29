@@ -62,6 +62,7 @@ public class Theatre : PlayerManger
 
 		CurrentScript = Generators[levelIndex];
 		CurrentScript.gameObject.SetActive(true);
+		PropsRoot = CurrentScript.PropHolder;
 
 		Logger.Log($"SetLevel to {levelIndex}");
 	}

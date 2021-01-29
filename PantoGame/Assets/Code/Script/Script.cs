@@ -13,6 +13,7 @@ public class Script: MonoBehaviour
 	public Scene CurrentScene {get {return Scenes[SceneIndex];}}
 	public int SceneIndex;
 	public List<Scene> Scenes;
+	public Transform PropHolder;
 
 	public float Rating;
 
