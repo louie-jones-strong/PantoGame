@@ -12,12 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 403653e32780f254a92256c153d213f0
   - enabled: 1
-    path: Assets/Scenes/WalkingTest.unity
+    path: Assets/Scenes/Levels/WalkingTest.unity
     guid: 9c7e0a2b3d85af847acd5866240f9b57
   - enabled: 1
     path: Assets/Scenes/Hud.unity
     guid: d682e96904a92ca4c98d90fc9ae5e3a9
   - enabled: 1
-    path: Assets/Scenes/TheatreFlipped.unity
+    path: Assets/Scenes/Levels/TheatreFlipped.unity
     guid: ae92923884bdac449b145931e711916f
   m_configObjects: {}
