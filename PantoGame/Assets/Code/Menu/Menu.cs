@@ -25,6 +25,7 @@ public class Menu : PlayerManger
 	eMenuState CurrentState;
 	eMenuState TargetState;
 	float TimeInState = 1;
+	bool ScreenBusy;
 
 	protected override void Start()
 	{
@@ -194,6 +195,16 @@ public class Menu : PlayerManger
 	}
 
 
+	void LoadLevel( string theatreScreenName, int scriptIndex)
+	{
+		if (ScreenBusy)
+		{
+			return;
+		}
+		ScreenBusy = true;
+		MainManager.Instance.LoadLevel(theatreScreenName, scriptIndex, Settings.MenuScreenName);
+	}
+
 #region Menu screens
 
 	void MainMenu()
@@ -271,9 +282,21 @@ public class Menu : PlayerManger
 			var scriptIndex = i;
 			AddButton($"Level: {index + 1}", true, () => 
 				{
-					MainManager.Instance.LoadLevel(Settings.TheatreScreenName, scriptIndex, Settings.MenuScreenName);
+					LoadLevel(Settings.TheatreScreenName, scriptIndex);
 				}, pos);
 
+			pos.y -= 10;
+			index += 1;
+		}
+
+		pos = new Vector2(0, 0);
+		for (int i = 0; i < 1; i++)
+		{
+			var scriptIndex = i;
+			AddButton($"Level: {index + 1}", true, () => 
+				{
+					LoadLevel(Settings.TheatreFlippedScreenName, scriptIndex);
+				}, pos);
 			pos.y -= 10;
 			index += 1;
 		}
@@ -284,7 +307,7 @@ public class Menu : PlayerManger
 			var scriptIndex = i;
 			AddButton($"Level: {index + 1}", true, () => 
 				{
-					MainManager.Instance.LoadLevel(Settings.TheatreFlippedScreenName, scriptIndex, Settings.MenuScreenName);
+					LoadLevel(Settings.TheatreBarScreenName, scriptIndex);
 				}, pos);
 			pos.y -= 10;
 			index += 1;
