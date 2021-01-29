@@ -13,4 +13,5 @@ public class Settings
 	public const string HudScreenName = "Hud";
 	public const string TheatreScreenName = "WalkingTest";
 	public const string TheatreFlippedScreenName = "TheatreFlipped";
+	public const string TheatreBarScreenName = "Bar";
 }

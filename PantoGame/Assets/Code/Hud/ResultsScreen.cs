@@ -77,9 +77,10 @@ public class ResultsScreen : MonoBehaviour
 			yield return null;
 		}
 		
-		MainManager.Instance.TransToScreen(Settings.MenuScreenName, Settings.TheatreScreenName);
+		MainManager.Instance.TransToScreen(Settings.MenuScreenName, Settings.HudScreenName);
+		MainManager.SubtractScene(Settings.TheatreScreenName);
 		MainManager.SubtractScene(Settings.TheatreFlippedScreenName);
-		MainManager.SubtractScene(Settings.HudScreenName);
+		MainManager.SubtractScene(Settings.TheatreBarScreenName);
 		Hide();
 	}
 

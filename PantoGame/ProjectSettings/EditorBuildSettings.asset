@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/TheatreFlipped.unity
     guid: ae92923884bdac449b145931e711916f
+  - enabled: 1
+    path: Assets/Scenes/Levels/Bar.unity
+    guid: 4a291f06110627c49b25a44db6f0665f
   m_configObjects: {}
