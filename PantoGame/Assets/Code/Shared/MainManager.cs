@@ -33,7 +33,7 @@ public class MainManager : MonoBehaviour
 			}
 		}
 		AddScene(Settings.MenuScreenName);
-		SetFadeToBlack(false);
+		SetShowBlack(false);
 	}
 
 	void Update()
@@ -59,11 +59,6 @@ public class MainManager : MonoBehaviour
 	}
 
 #region screen stuff
-	
-	void SetFadeToBlack(bool value)
-	{
-		ScreenTransition.SetBool("Open", !value);
-	}
 
 	public void TransToScreen(string screenTo, string sceneFrom="")
 	{
@@ -72,14 +67,14 @@ public class MainManager : MonoBehaviour
 
 	IEnumerator TransToScreenCo(string screenTo, string sceneFrom)
 	{
-		SetFadeToBlack(true);
+		yield return StartCoroutine(WaitForSetBlack(true));
 		if (!string.IsNullOrEmpty(sceneFrom))
 		{
 			yield return StartCoroutine(SubtractSceneCo(sceneFrom));
 		}
 
 		yield return StartCoroutine(AddSceneCo(screenTo));
-		SetFadeToBlack(false);
+		SetShowBlack(false);
 	}
 
 	public void LoadLevel(string theatreTo, int levelIndex, string sceneFrom="")
@@ -88,7 +83,7 @@ public class MainManager : MonoBehaviour
 	}
 	IEnumerator LoadLevelCo(string theatreTo, int levelIndex, string sceneFrom)
 	{
-		SetFadeToBlack(true);
+		yield return StartCoroutine(WaitForSetBlack(true));
 		if (!string.IsNullOrEmpty(sceneFrom))
 		{
 			yield return StartCoroutine(SubtractSceneCo(sceneFrom));
@@ -103,7 +98,7 @@ public class MainManager : MonoBehaviour
 		}
 
 		Theatre.Instance.SetLevel(levelIndex);
-		SetFadeToBlack(false);
+		SetShowBlack(false);
 	}
 
 	static void AddScene(string scene)
@@ -128,6 +123,42 @@ public class MainManager : MonoBehaviour
 		{
 			yield return SceneManager.UnloadSceneAsync(scene);
 		}
+	}
+#endregion
+
+#region ScreenTransition
+
+	bool IsAnimating
+	{get
+		{
+			var stateInfo = ScreenTransition.GetCurrentAnimatorStateInfo(0);
+			return !stateInfo.IsName("Black") && !stateInfo.IsName("Open");
+		}
+	}
+
+	bool ShowingBlack;
+
+	void SetShowBlack(bool showBlack)
+	{
+		ScreenTransition.SetBool("Open", !showBlack);
+
+		Logger.Log($"setting show black to: {showBlack} was {ShowingBlack}");
+		ShowingBlack = showBlack;
+
+		ScreenTransition.speed = 1;
+	}
+
+	IEnumerator WaitForSetBlack(bool showBlack)
+	{
+		SetShowBlack(showBlack);
+		yield return null;
+
+		do
+		{
+			yield return null;
+		} while (IsAnimating);
+
+		yield break;
 	}
 #endregion
 }
