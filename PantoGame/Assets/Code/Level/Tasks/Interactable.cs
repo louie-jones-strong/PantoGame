@@ -29,6 +29,11 @@ public class Interactable : MonoBehaviour
 		bool canUse = false;
 		foreach (var player in PlayerManger.Players.Values)
 		{
+			if (player == null)
+			{
+				continue;
+			}
+			
 			if (CanInteract(player.transform.position))
 			{
 				canUse = true;
